@@ -1,0 +1,68 @@
+# Core Framework
+streamlit
+
+# LangChain Ecosystem
+langgraph
+langchain
+langchain-openai
+langchain-community
+
+# LLM APIs & Tokenization
+openai
+tiktoken
+
+# Vector DB & Embeddings
+chromadb
+sentence-transformers
+lancedb
+pyarrow
+huggingface_hub
+
+# Async & HTTP
+aiohttp
+requests
+
+# Research & Search APIs
+arxiv
+duckduckgo-search
+newsapi-python
+youtube-transcript-api
+serpapi
+tavily-python
+google-api-python-client
+yt-dlp
+
+# Document Processing
+pymupdf
+beautifulsoup4
+lxml
+
+# Export & Formatting
+reportlab
+markdown2
+python-docx
+
+# Audio/Transcription
+openai-whisper
+torch
+torchaudio
+ffmpeg-python
+
+# Data Processing
+pandas
+numpy
+
+# Environment & Config
+python-dotenv
+anyio
+typing-extensions
+pydantic
+pydantic-settings
+
+# Utilities
+tqdm
+jsonschema
+
+# Development & Testing
+pytest
+pytest-asyncio
