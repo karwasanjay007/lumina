@@ -1,11 +1,11 @@
 # ============================================================================
 # FILE: app.py
-# DESCRIPTION: Main Streamlit application with enhanced results display
-# VERSION: 2.0 Enhanced Edition
+# DESCRIPTION: Main Streamlit application - Fixed for Streamlit 1.40+
+# VERSION: 2.0.1 - No Warnings Edition
 # ============================================================================
 """
 Multi-Agent AI Deep Researcher - Main Application
-Complete Streamlit UI with intelligent synthesis and professional display
+Fixed: Streamlit deprecation warnings and Pylance type hints
 """
 
 import streamlit as st
@@ -13,7 +13,7 @@ import asyncio
 import json
 import re
 from datetime import datetime
-from typing import Dict, List, Any
+from typing import Dict, List, Any, Optional
 import pandas as pd
 
 # Import workflow
@@ -31,7 +31,7 @@ st.set_page_config(
     menu_items={
         'Get Help': 'https://github.com/yourusername/multi-agent-researcher',
         'Report a bug': 'https://github.com/yourusername/multi-agent-researcher/issues',
-        'About': '# Multi-Agent AI Deep Researcher\nv2.0 - Enhanced Edition'
+        'About': '# Multi-Agent AI Deep Researcher\nv2.0.1 - No Warnings Edition'
     }
 )
 
@@ -240,12 +240,12 @@ with st.sidebar:
         with col2:
             st.metric("Total Cost", f"${total_cost:.4f}")
         
-        if st.button("Clear History", use_container_width=True):
+        if st.button("Clear History", width='stretch'):
             st.session_state.research_history = []
             st.rerun()
     
     st.markdown("---")
-    st.caption("v2.0 Enhanced | © 2025")
+    st.caption("v2.0.1 No Warnings | © 2025")
 
 # ============================================================================
 # MAIN CONTENT AREA
@@ -302,7 +302,7 @@ examples = {
 
 for idx, (domain_key, example_text) in enumerate(examples.items()):
     with example_cols[idx]:
-        if st.button(f"{domain_key.capitalize()}", key=f"example_{domain_key}", use_container_width=True):
+        if st.button(f"{domain_key.capitalize()}", key=f"example_{domain_key}", width='stretch'):
             st.session_state.example_query = example_text
             st.rerun()
 
@@ -312,7 +312,7 @@ for idx, (domain_key, example_text) in enumerate(examples.items()):
 
 st.markdown("---")
 
-if st.button("🚀 Start Research", type="primary", use_container_width=True):
+if st.button("🚀 Start Research", type="primary", width='stretch'):
     if not query_input:
         st.error("⚠️ Please enter a research question")
     else:
@@ -331,11 +331,11 @@ if st.button("🚀 Start Research", type="primary", use_container_width=True):
             # Show progress
             with st.spinner("🔬 Conducting research... This may take 20-30 seconds"):
                 try:
-                    # Create config
-                    config = {
-                        "max_perplexity_sources": max_perplexity,
-                        "max_youtube_sources": max_youtube,
-                        "max_api_sources": max_api
+                    # Create config - Fix type warning by ensuring Dict[str, Any]
+                    config: Dict[str, Any] = {
+                        "max_perplexity_sources": int(max_perplexity),
+                        "max_youtube_sources": int(max_youtube),
+                        "max_api_sources": int(max_api)
                     }
                     
                     # Execute workflow
@@ -390,7 +390,7 @@ if st.session_state.research_results:
     
     with metric_cols[4]:
         confidence = results.get('confidence_score', 0)
-        st.metric("🎯 Confidence", f"{confidence}/100")
+        st.metric("🎯 Confidence", f"{int(confidence)}/100")
     
     # ========================================================================
     # AGENT PERFORMANCE
@@ -398,7 +398,7 @@ if st.session_state.research_results:
     
     st.subheader("🤖 Agent Performance")
     
-    agent_results = results.get('agent_results', [])
+    agent_results: List[Dict[str, Any]] = results.get('agent_results', [])
     
     if agent_results:
         perf_data = []
@@ -414,7 +414,7 @@ if st.session_state.research_results:
             })
         
         df = pd.DataFrame(perf_data)
-        st.dataframe(df, use_container_width=True, hide_index=True)
+        st.dataframe(df, width='stretch', hide_index=True)
     
     # ========================================================================
     # ENHANCED RESULTS TABS
@@ -461,12 +461,11 @@ if st.session_state.research_results:
         st.markdown("### 🔍 Key Discoveries")
         st.markdown("*Findings ranked by confidence and validated across multiple sources*")
         
-        findings = results.get('key_findings', [])
+        findings: List[str] = results.get('key_findings', [])
         
         if findings:
             for idx, finding in enumerate(findings, 1):
-                # Calculate confidence score (from consolidation in real usage)
-                # For display purposes, we'll use a gradient
+                # Calculate confidence score
                 confidence = min(95, 70 + (len(findings) - idx) * 3)
                 
                 if confidence >= 85:
@@ -498,7 +497,7 @@ if st.session_state.research_results:
         st.markdown("### 💡 Strategic Insights & Analysis")
         st.markdown("*Categorized insights derived from multi-agent analysis*")
         
-        insights = results.get('insights', [])
+        insights: List[str] = results.get('insights', [])
         
         # Domain-specific categories
         domain_categories = {
@@ -541,7 +540,7 @@ if st.session_state.research_results:
         
         for agent_result in agent_results:
             agent_name = agent_result.get('agent_name', 'Unknown')
-            sources = agent_result.get('sources', [])
+            sources: List[Dict[str, Any]] = agent_result.get('sources', [])
             
             if not sources:
                 continue
@@ -552,13 +551,13 @@ if st.session_state.research_results:
                 for idx, source in enumerate(sources, 1):
                     title = str(source.get('title', 'Untitled'))
                     url = str(source.get('url', '#'))
-                    summary = str(source.get('summary', 'No description available'))
-                    confidence = source.get('confidence', 3.0)
-                    date = source.get('date', 'N/A')
+                    summary_text = str(source.get('summary', 'No description available'))
+                    confidence_val = float(source.get('confidence', 3.0))
+                    date = str(source.get('date', 'N/A'))
                     
                     # Truncate summary
-                    if len(summary) > 200:
-                        summary = summary[:200] + "..."
+                    if len(summary_text) > 200:
+                        summary_text = summary_text[:200] + "..."
                     
                     st.markdown(f"""
                     <div class="source-card-enhanced">
@@ -570,10 +569,10 @@ if st.session_state.research_results:
                             </strong>
                         </div>
                         <p style="font-size: 13px; color: #4b5563; margin: 8px 0;">
-                            {summary}
+                            {summary_text}
                         </p>
                         <div style="font-size: 11px; color: #9ca3af; margin-top: 8px;">
-                            📅 {date} | ⭐ {confidence:.1f}/5.0
+                            📅 {date} | ⭐ {confidence_val:.1f}/5.0
                         </div>
                     </div>
                     """, unsafe_allow_html=True)
@@ -587,7 +586,7 @@ if st.session_state.research_results:
         # Agent performance table
         st.markdown("#### 🤖 Agent Performance Breakdown")
         if agent_results:
-            st.dataframe(df, use_container_width=True, hide_index=True)
+            st.dataframe(df, width='stretch', hide_index=True)
         
         # Coverage metrics
         st.markdown("#### 📊 Research Quality Metrics")
@@ -596,15 +595,15 @@ if st.session_state.research_results:
         
         with col1:
             st.markdown("**Coverage Analysis**")
-            coverage = results.get('coverage_analysis', {})
+            coverage: Dict[str, Any] = results.get('coverage_analysis', {})
             
             st.write(f"- **Research Breadth:** {coverage.get('breadth', 'N/A').capitalize()}")
             st.write(f"- **Research Depth:** {coverage.get('depth', 'N/A').capitalize()}")
             st.write(f"- **Synthesis Quality:** {results.get('synthesis_quality', 'N/A').capitalize()}")
-            st.write(f"- **Confidence Score:** {results.get('confidence_score', 0)}/100")
+            st.write(f"- **Confidence Score:** {int(results.get('confidence_score', 0))}/100")
             
             # Recommendations
-            recommendations = coverage.get('recommendations', [])
+            recommendations: List[str] = coverage.get('recommendations', [])
             if recommendations:
                 st.markdown("**Recommendations:**")
                 for rec in recommendations:
@@ -612,15 +611,15 @@ if st.session_state.research_results:
         
         with col2:
             st.markdown("**Source Distribution**")
+            total_sources = results.get('total_sources', 1)
             for agent_result in agent_results:
                 agent_name = agent_result.get('agent_name', 'Unknown')
                 source_count = agent_result.get('source_count', 0)
-                total = results.get('total_sources', 1)
-                percentage = (source_count / total) * 100 if total > 0 else 0
+                percentage = (source_count / total_sources) * 100 if total_sources > 0 else 0
                 st.write(f"- **{agent_name.capitalize()}:** {source_count} sources ({percentage:.1f}%)")
         
         # Contradictions if any
-        contradictions = results.get('contradictions', [])
+        contradictions: List[Dict[str, str]] = results.get('contradictions', [])
         if contradictions:
             st.markdown("---")
             st.markdown("#### ⚠️ Potential Contradictions Detected")
@@ -656,7 +655,7 @@ if st.session_state.research_results:
             file_name=f"research_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json",
             mime="application/json",
             key="download_json",
-            use_container_width=True
+            width='stretch'
         )
     
     with export_cols[1]:
@@ -665,7 +664,7 @@ if st.session_state.research_results:
         md_content += f"**Query:** {results.get('query', 'N/A')}\n\n"
         md_content += f"**Domain:** {results.get('domain', 'N/A').capitalize()}\n\n"
         md_content += f"**Date:** {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n"
-        md_content += f"**Confidence Score:** {results.get('confidence_score', 0)}/100\n\n"
+        md_content += f"**Confidence Score:** {int(results.get('confidence_score', 0))}/100\n\n"
         md_content += f"---\n\n"
         
         md_content += f"## Executive Summary\n\n{results.get('summary', 'N/A')}\n\n"
@@ -694,13 +693,13 @@ if st.session_state.research_results:
             file_name=f"research_{datetime.now().strftime('%Y%m%d_%H%M%S')}.md",
             mime="text/markdown",
             key="download_md",
-            use_container_width=True
+            width='stretch'
         )
     
     with export_cols[2]:
         st.button(
             "📄 Export PDF",
-            use_container_width=True,
+            width='stretch',
             help="PDF export coming soon",
             disabled=True
         )
@@ -712,7 +711,7 @@ if st.session_state.research_results:
 st.markdown("---")
 st.markdown("""
 <div style="text-align: center; color: #6b7280; padding: 1rem;">
-    <p>Multi-Agent AI Deep Researcher v2.0 Enhanced Edition</p>
+    <p>Multi-Agent AI Deep Researcher v2.0.1 No Warnings Edition</p>
     <p style="font-size: 0.9rem;">Powered by Perplexity AI | © 2025</p>
 </div>
 """, unsafe_allow_html=True)

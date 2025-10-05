@@ -1,30 +1,31 @@
 # ============================================================================
 # FILE: workflows/langgraph_workflow.py
-# DESCRIPTION: Complete LangGraph workflow with enhanced consolidation
+# DESCRIPTION: Complete workflow with built-in enhanced consolidation
+# VERSION: 2.0.1 - Single File - No Warnings
 # ============================================================================
 """
 Multi-Agent Research Workflow with Enhanced Consolidation
-Orchestrates parallel agent execution and intelligently synthesizes results
+All consolidation logic built-in - no separate files needed
 """
 
 import asyncio
 import re
-from typing import Dict, List, Any
+from typing import Dict, List, Any, Optional, Set
 from datetime import datetime
-from collections import Counter
 
 
 class ResearchWorkflow:
     """
     Orchestrates multi-agent research workflow with enhanced consolidation
+    All functionality in one class for simplicity
     """
     
-    def __init__(self):
+    def __init__(self) -> None:
         """Initialize workflow - agents loaded lazily on first execute()"""
-        self.agents = {}
-        self._agents_initialized = False
+        self.agents: Dict[str, Any] = {}
+        self._agents_initialized: bool = False
     
-    def _initialize_agents(self):
+    def _initialize_agents(self) -> None:
         """
         Initialize agents with proper error handling
         Called on first execute() to avoid import errors at startup
@@ -79,7 +80,7 @@ class ResearchWorkflow:
         query: str,
         domain: str,
         selected_agents: List[str],
-        config: Dict[str, Any] = None
+        config: Optional[Dict[str, Any]] = None
     ) -> Dict[str, Any]:
         """
         Execute research workflow with selected agents
@@ -87,7 +88,7 @@ class ResearchWorkflow:
         Args:
             query: Research question
             domain: Research domain (technology, medical, academic, stocks)
-            selected_agents: List of agent names to use ['perplexity', 'youtube', 'api']
+            selected_agents: List of agent names to use
             config: Optional configuration parameters
             
         Returns:
@@ -124,32 +125,17 @@ class ResearchWorkflow:
         
         if not tasks:
             # No agents available - return error state
-            return {
-                "query": query,
-                "domain": domain,
-                "summary": "No agents available to execute research",
-                "key_findings": [],
-                "insights": [],
-                "contradictions": [],
-                "agent_results": [],
-                "total_sources": 0,
-                "total_tokens": 0,
-                "total_cost": 0.0,
-                "execution_time": 0.0,
-                "confidence_score": 0.0,
-                "timestamp": datetime.now().isoformat(),
-                "error": "No agents available"
-            }
+            return self._create_empty_result(query, domain)
         
         # Wait for all agents to complete
         agent_results = await asyncio.gather(*tasks, return_exceptions=True)
         
         # Filter out exceptions and collect valid results
-        valid_results = []
-        for i, result in enumerate(agent_results):
+        valid_results: List[Dict[str, Any]] = []
+        for result in agent_results:
             if isinstance(result, Exception):
                 print(f"   ⚠️ Agent task failed: {result}")
-            else:
+            elif isinstance(result, dict):
                 valid_results.append(result)
         
         # Calculate execution time
@@ -171,6 +157,37 @@ class ResearchWorkflow:
         
         return consolidated
     
+    def _create_empty_result(self, query: str, domain: str) -> Dict[str, Any]:
+        """Create empty result structure when no agents available"""
+        return {
+            "query": query,
+            "domain": domain,
+            "summary": "No agents available to execute research",
+            "key_findings": [],
+            "insights": [],
+            "contradictions": [],
+            "agent_results": [],
+            "successful_agents": [],
+            "total_sources": 0,
+            "total_tokens": 0,
+            "total_cost": 0.0,
+            "execution_time": 0.0,
+            "confidence_score": 0.0,
+            "coverage_analysis": {
+                "breadth": "none",
+                "depth": "none",
+                "source_types": [],
+                "recommendations": ["Please select and configure agents"]
+            },
+            "timestamp": datetime.now().isoformat(),
+            "synthesis_quality": "none",
+            "error": "No agents available"
+        }
+    
+    # ========================================================================
+    # CONSOLIDATION - MAIN METHOD
+    # ========================================================================
+    
     def _consolidate_results(
         self,
         query: str,
@@ -181,20 +198,13 @@ class ResearchWorkflow:
         """
         Enhanced consolidation with multi-agent synthesis
         
-        Args:
-            query: Original query
-            domain: Research domain
-            agent_results: List of agent result dictionaries
-            execution_time: Total execution time in seconds
-            
-        Returns:
-            Consolidated results with intelligent synthesis
+        This is the main consolidation method that orchestrates all synthesis
         """
         # Aggregate basic metrics
-        all_sources = []
+        all_sources: List[Dict[str, Any]] = []
         total_tokens = 0
         total_cost = 0.0
-        successful_agents = []
+        successful_agents: List[str] = []
         
         for result in agent_results:
             if result.get('status') == 'success':
@@ -204,7 +214,7 @@ class ResearchWorkflow:
                 total_cost += result.get('cost', 0.0)
                 successful_agents.append(result.get('agent_name', 'unknown'))
         
-        # Enhanced synthesis
+        # Enhanced synthesis - call specialized methods
         summary = self._synthesize_summary(agent_results, query, domain)
         key_findings = self._synthesize_findings(agent_results)
         insights = self._synthesize_insights(agent_results, domain)
@@ -214,7 +224,8 @@ class ResearchWorkflow:
         confidence_score = self._calculate_confidence_score(agent_results)
         coverage_analysis = self._analyze_coverage(agent_results, domain)
         
-        consolidated = {
+        # Build consolidated result
+        consolidated: Dict[str, Any] = {
             "query": query,
             "domain": domain,
             "summary": summary,
@@ -236,7 +247,7 @@ class ResearchWorkflow:
         return consolidated
     
     # ========================================================================
-    # ENHANCED SYNTHESIS METHODS
+    # SYNTHESIS METHODS
     # ========================================================================
     
     def _synthesize_summary(
@@ -246,7 +257,7 @@ class ResearchWorkflow:
         domain: str
     ) -> str:
         """Intelligently synthesize summaries from multiple agents"""
-        summaries = []
+        summaries: List[Dict[str, Any]] = []
         
         for result in agent_results:
             if result.get('status') == 'success':
@@ -280,7 +291,7 @@ class ResearchWorkflow:
     
     def _synthesize_findings(self, agent_results: List[Dict[str, Any]]) -> List[str]:
         """Extract and deduplicate findings with semantic similarity"""
-        findings_data = []
+        findings_data: List[Dict[str, str]] = []
         
         for result in agent_results:
             if result.get('status') == 'success':
@@ -297,8 +308,8 @@ class ResearchWorkflow:
             return []
         
         # Deduplicate using semantic similarity
-        unique_findings = []
-        seen_normalized = set()
+        unique_findings: List[str] = []
+        seen_normalized: Set[str] = set()
         
         for finding_item in findings_data:
             normalized = finding_item['normalized']
@@ -321,7 +332,7 @@ class ResearchWorkflow:
         domain: str
     ) -> List[str]:
         """Generate domain-specific insights"""
-        insights_data = []
+        insights_data: List[str] = []
         
         for result in agent_results:
             if result.get('status') == 'success':
@@ -332,7 +343,7 @@ class ResearchWorkflow:
                         insights_data.append(clean_insight)
         
         # Deduplicate
-        unique_insights = []
+        unique_insights: List[str] = []
         for insight in insights_data:
             normalized = self._normalize_text(insight)
             
@@ -353,9 +364,9 @@ class ResearchWorkflow:
     
     def _detect_contradictions(self, agent_results: List[Dict[str, Any]]) -> List[Dict[str, str]]:
         """Detect potential contradictions between agent findings"""
-        contradictions = []
+        contradictions: List[Dict[str, str]] = []
         
-        all_statements = []
+        all_statements: List[Dict[str, str]] = []
         for result in agent_results:
             if result.get('status') == 'success':
                 agent_name = result.get('agent_name', 'unknown')
@@ -385,7 +396,9 @@ class ResearchWorkflow:
             ('bullish', 'bearish'),
             ('effective', 'ineffective'),
             ('safe', 'unsafe'),
-            ('recommended', 'not recommended')
+            ('recommended', 'not recommended'),
+            ('growth', 'decline'),
+            ('up', 'down')
         ]
         
         for i, stmt1 in enumerate(all_statements):
@@ -408,16 +421,20 @@ class ResearchWorkflow:
         
         return contradictions[:5]
     
+    # ========================================================================
+    # QUALITY METRICS
+    # ========================================================================
+    
     def _calculate_confidence_score(self, agent_results: List[Dict[str, Any]]) -> float:
         """Calculate overall confidence score (0-100)"""
         if not agent_results:
             return 0.0
         
-        factors = {
-            'agent_success_rate': 0,
-            'source_diversity': 0,
-            'finding_consistency': 0,
-            'insight_depth': 0
+        factors: Dict[str, float] = {
+            'agent_success_rate': 0.0,
+            'source_diversity': 0.0,
+            'finding_consistency': 0.0,
+            'insight_depth': 0.0
         }
         
         # Agent success rate (0-30 points)
@@ -451,7 +468,7 @@ class ResearchWorkflow:
         total_findings = sum(len(r.get('key_findings', [])) for r in agent_results)
         total_insights = sum(len(r.get('insights', [])) for r in agent_results)
         
-        coverage = {
+        coverage: Dict[str, Any] = {
             'breadth': 'medium',
             'depth': 'medium',
             'source_types': [],
@@ -475,7 +492,7 @@ class ResearchWorkflow:
             coverage['depth'] = 'limited'
         
         # Source types
-        agent_types = set()
+        agent_types: Set[str] = set()
         for result in agent_results:
             if result.get('status') == 'success':
                 agent_types.add(result.get('agent_name', 'unknown'))
@@ -492,7 +509,7 @@ class ResearchWorkflow:
         return coverage
     
     # ========================================================================
-    # HELPER METHODS
+    # HELPER METHODS - TEXT PROCESSING
     # ========================================================================
     
     def _clean_text(self, text: str) -> str:
@@ -531,6 +548,10 @@ class ResearchWorkflow:
         similarity = len(intersection) / len(union)
         return similarity >= threshold
     
+    # ========================================================================
+    # FALLBACK CONTENT GENERATION
+    # ========================================================================
+    
     def _generate_fallback_summary(
         self,
         query: str,
@@ -551,18 +572,18 @@ class ResearchWorkflow:
         agent_results: List[Dict[str, Any]],
         domain: str
     ) -> List[str]:
-        """Generate domain-specific meta-insights"""
+        """Generate domain-specific meta-insights when agents don't provide them"""
         total_sources = sum(r.get('source_count', 0) for r in agent_results)
         agent_names = [r.get('agent_name', 'unknown') for r in agent_results if r.get('status') == 'success']
         
-        insights = []
+        insights: List[str] = []
         
         insights.append(
             f"Research incorporates {total_sources} sources from {len(agent_names)} specialized agents, "
             f"providing comprehensive multi-perspective analysis"
         )
         
-        domain_insights = {
+        domain_insights: Dict[str, List[str]] = {
             'technology': [
                 "Technology landscape analysis reveals emerging trends and innovation patterns",
                 "Cross-referencing technical sources provides validation of technological claims"
@@ -572,11 +593,11 @@ class ResearchWorkflow:
                 "Multiple data sources help identify consensus and areas of ongoing research"
             ],
             'academic': [
-                "Scholarly research benefits from diverse source types including peer-reviewed papers and expert analysis",
+                "Scholarly research benefits from diverse source types including peer-reviewed papers",
                 "Academic consensus emerges from systematic evaluation of multiple authoritative sources"
             ],
             'stocks': [
-                "Market analysis requires integration of quantitative data, analyst opinions, and news sentiment",
+                "Market analysis requires integration of quantitative data, analyst opinions, and sentiment",
                 "Multiple information sources help identify investment opportunities while managing risk"
             ]
         }
