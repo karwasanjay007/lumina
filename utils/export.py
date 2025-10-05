@@ -1,79 +1,326 @@
-# ============================================================================
-# FILE: utils/export.py
-# ============================================================================
+"""
+Export utilities with proper PDF and Markdown generation
+Industry-standard implementation
+"""
+
 from datetime import datetime
 from io import BytesIO
+import re
+from typing import Dict, List, Any
 
 try:
-    from reportlab.lib.pagesizes import letter
-    from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
-    from reportlab.lib.styles import getSampleStyleSheet
+    from reportlab.lib.pagesizes import letter, A4
+    from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
     from reportlab.lib.units import inch
+    from reportlab.platypus import (
+        SimpleDocTemplate, Paragraph, Spacer,
+        PageBreak, Table, TableStyle
+    )
+    from reportlab.lib import colors
+    from reportlab.lib.enums import TA_LEFT, TA_CENTER, TA_JUSTIFY
     REPORTLAB_AVAILABLE = True
 except ImportError:
     REPORTLAB_AVAILABLE = False
 
-def export_to_markdown(results: dict) -> str:
+
+def clean_markdown(text: str) -> str:
     """
-    Converts the research results dictionary into a formatted Markdown string.
-
+    Remove markdown formatting characters for clean text display
+    
     Args:
-        results (dict): The dictionary containing research results.
-
+        text: Text with markdown formatting
+        
     Returns:
-        str: A string in Markdown format.
+        Clean text without markdown characters
+    """
+    if not text:
+        return ""
+    
+    # Remove ** for bold
+    text = re.sub(r'\*\*(.+?)\*\*', r'\1', text)
+    # Remove * for italic
+    text = re.sub(r'\*(.+?)\*', r'\1', text)
+    # Remove ### headers but keep text
+    text = re.sub(r'#{1,6}\s+(.+)', r'\1', text)
+    # Remove code backticks
+    text = re.sub(r'`(.+?)`', r'\1', text)
+    # Remove HTML tags if any
+    text = re.sub(r'<[^>]+>', '', text)
+    
+    return text.strip()
+
+
+def export_to_markdown(results: Dict[str, Any]) -> str:
+    """
+    Convert research results to clean Markdown format
+    
+    Args:
+        results: Dictionary containing research results
+        
+    Returns:
+        Formatted Markdown string
     """
     query = results.get('query', 'N/A')
+    domain = results.get('domain', 'N/A')
     summary = results.get('summary', 'No summary provided.')
-    sources = results.get('sources', [])
+    key_findings = results.get('key_findings', [])
+    insights = results.get('insights', [])
+    agent_results = results.get('agent_results', [])
+    total_sources = results.get('total_sources', 0)
+    total_cost = results.get('total_cost', 0)
+    total_tokens = results.get('total_tokens', 0)
+    execution_time = results.get('execution_time', 0)
 
-    md_content = f"# Research Report: {query}\n\n"
-    md_content += f"**Date:** {datetime.now().strftime('%Y-%m-%d')}\n\n"
-    md_content += "## Summary\n"
-    md_content += f"{summary}\n\n"
-
-    if sources:
-        md_content += "## Sources\n"
-        for i, source in enumerate(sources, 1):
-            title = source.get('title', 'No Title')
-            url = source.get('url', '#')
-            md_content += f"{i}. [{title}]({url})\n"
-
-    return md_content
-
-def export_to_pdf(results: dict) -> bytes:
-    """
-    Converts the research results dictionary into a PDF file.
-
-    Args:
-        results (dict): The dictionary containing research results.
-
-    Returns:
-        bytes: The content of the generated PDF file.
-    """
-    if not REPORTLAB_AVAILABLE:
-        raise ImportError("ReportLab library is not installed. Please run 'pip install reportlab'.")
-
-    buffer = BytesIO()
-    doc = SimpleDocTemplate(buffer, pagesize=letter, rightMargin=72, leftMargin=72, topMargin=72, bottomMargin=18)
-    styles = getSampleStyleSheet()
+    md_content = f"# Research Report\n\n"
+    md_content += f"**Query:** {query}\n\n"
+    md_content += f"**Domain:** {domain.title()}\n\n"
+    md_content += f"**Generated:** {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n"
+    md_content += f"---\n\n"
     
-    story = []
-
-    # Title
-    story.append(Paragraph(f"Research Report: {results.get('query', 'N/A')}", styles['h1']))
-    story.append(Spacer(1, 0.2 * inch))
+    # Metrics
+    md_content += f"## Research Metrics\n\n"
+    md_content += f"- **Total Sources:** {total_sources}\n"
+    md_content += f"- **Total Cost:** ${total_cost:.6f}\n"
+    md_content += f"- **Tokens Used:** {total_tokens:,}\n"
+    md_content += f"- **Execution Time:** {execution_time:.1f}s\n\n"
+    md_content += f"---\n\n"
 
     # Summary
-    story.append(Paragraph("Summary", styles['h2']))
-    story.append(Paragraph(results.get('summary', 'No summary provided.'), styles['BodyText']))
+    md_content += f"## Executive Summary\n\n"
+    md_content += f"{clean_markdown(summary)}\n\n"
+
+    # Key Findings
+    if key_findings:
+        md_content += f"## Key Findings\n\n"
+        for i, finding in enumerate(key_findings, 1):
+            clean_finding = clean_markdown(finding)
+            md_content += f"{i}. {clean_finding}\n"
+        md_content += "\n"
+
+    # Insights
+    if insights:
+        md_content += f"## Strategic Insights\n\n"
+        for i, insight in enumerate(insights, 1):
+            clean_insight = clean_markdown(insight)
+            md_content += f"{i}. {clean_insight}\n"
+        md_content += "\n"
+
+    # Sources by agent
+    if agent_results:
+        md_content += f"## Sources\n\n"
+        
+        for agent_result in agent_results:
+            agent_name = agent_result.get('agent_name', 'Unknown').title()
+            sources = agent_result.get('sources', [])
+            
+            if sources:
+                md_content += f"### {agent_name} ({len(sources)} sources)\n\n"
+                
+                for source in sources:
+                    title = source.get('title', 'Untitled')
+                    url = source.get('url', '#')
+                    description = source.get('description', '')
+                    
+                    md_content += f"**[{title}]({url})**\n"
+                    
+                    if description:
+                        clean_desc = clean_markdown(description)
+                        # Truncate long descriptions
+                        if len(clean_desc) > 200:
+                            clean_desc = clean_desc[:200] + "..."
+                        md_content += f"{clean_desc}\n"
+                    
+                    md_content += "\n"
+
+    md_content += f"---\n\n"
+    md_content += f"*Generated by Multi-Agent AI Deep Researcher*\n"
+    
+    return md_content
+
+
+def export_to_pdf(results: Dict[str, Any]) -> bytes:
+    """
+    Convert research results to professional PDF format
+    
+    Args:
+        results: Dictionary containing research results
+        
+    Returns:
+        PDF file as bytes
+        
+    Raises:
+        ImportError: If reportlab is not installed
+    """
+    if not REPORTLAB_AVAILABLE:
+        raise ImportError(
+            "ReportLab library is required for PDF export. "
+            "Install with: pip install reportlab"
+        )
+
+    buffer = BytesIO()
+    
+    # Create document with proper margins
+    doc = SimpleDocTemplate(
+        buffer,
+        pagesize=letter,
+        rightMargin=72,
+        leftMargin=72,
+        topMargin=72,
+        bottomMargin=48
+    )
+    
+    # Get styles
+    styles = getSampleStyleSheet()
+    
+    # Custom styles
+    title_style = ParagraphStyle(
+        'CustomTitle',
+        parent=styles['Heading1'],
+        fontSize=24,
+        textColor=colors.HexColor('#667eea'),
+        spaceAfter=30,
+        alignment=TA_CENTER
+    )
+    
+    heading_style = ParagraphStyle(
+        'CustomHeading',
+        parent=styles['Heading2'],
+        fontSize=14,
+        textColor=colors.HexColor('#764ba2'),
+        spaceAfter=12,
+        spaceBefore=12
+    )
+    
+    body_style = ParagraphStyle(
+        'CustomBody',
+        parent=styles['BodyText'],
+        fontSize=10,
+        alignment=TA_JUSTIFY,
+        spaceAfter=12
+    )
+    
+    # Build story
+    story = []
+    
+    # Title
+    query = results.get('query', 'Research Report')
+    story.append(Paragraph("Research Report", title_style))
     story.append(Spacer(1, 0.2 * inch))
-
+    
+    # Query
+    story.append(Paragraph(f"<b>Query:</b> {query}", body_style))
+    
+    # Metadata
+    domain = results.get('domain', 'N/A')
+    story.append(Paragraph(f"<b>Domain:</b> {domain.title()}", body_style))
+    story.append(Paragraph(
+        f"<b>Generated:</b> {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
+        body_style
+    ))
+    story.append(Spacer(1, 0.3 * inch))
+    
+    # Metrics table
+    story.append(Paragraph("Research Metrics", heading_style))
+    
+    metrics_data = [
+        ['Metric', 'Value'],
+        ['Total Sources', str(results.get('total_sources', 0))],
+        ['Total Cost', f"${results.get('total_cost', 0):.6f}"],
+        ['Tokens Used', f"{results.get('total_tokens', 0):,}"],
+        ['Execution Time', f"{results.get('execution_time', 0):.1f}s"]
+    ]
+    
+    metrics_table = Table(metrics_data, colWidths=[3*inch, 2*inch])
+    metrics_table.setStyle(TableStyle([
+        ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#667eea')),
+        ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
+        ('ALIGN', (0, 0), (-1, -1), 'LEFT'),
+        ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+        ('FONTSIZE', (0, 0), (-1, 0), 12),
+        ('BOTTOMPADDING', (0, 0), (-1, 0), 12),
+        ('BACKGROUND', (0, 1), (-1, -1), colors.beige),
+        ('GRID', (0, 0), (-1, -1), 1, colors.black)
+    ]))
+    
+    story.append(metrics_table)
+    story.append(Spacer(1, 0.3 * inch))
+    
+    # Summary
+    story.append(Paragraph("Executive Summary", heading_style))
+    summary = clean_markdown(results.get('summary', 'No summary provided.'))
+    story.append(Paragraph(summary, body_style))
+    story.append(Spacer(1, 0.2 * inch))
+    
+    # Key Findings
+    key_findings = results.get('key_findings', [])
+    if key_findings:
+        story.append(Paragraph("Key Findings", heading_style))
+        
+        for i, finding in enumerate(key_findings, 1):
+            clean_finding = clean_markdown(finding)
+            story.append(Paragraph(f"{i}. {clean_finding}", body_style))
+        
+        story.append(Spacer(1, 0.2 * inch))
+    
+    # Insights
+    insights = results.get('insights', [])
+    if insights:
+        story.append(Paragraph("Strategic Insights", heading_style))
+        
+        for i, insight in enumerate(insights, 1):
+            clean_insight = clean_markdown(insight)
+            story.append(Paragraph(f"{i}. {clean_insight}", body_style))
+        
+        story.append(Spacer(1, 0.2 * inch))
+    
     # Sources
-    if results.get('sources'):
-        story.append(Paragraph("Sources", styles['h2']))
-        for source in results.get('sources', []):
-            story.append(Paragraph(f"- <link href='{source.get('url')}'>{source.get('title')}</link>", styles['BodyText']))
-
+    agent_results = results.get('agent_results', [])
+    if agent_results:
+        story.append(PageBreak())
+        story.append(Paragraph("Sources", heading_style))
+        
+        for agent_result in agent_results:
+            agent_name = agent_result.get('agent_name', 'Unknown').title()
+            sources = agent_result.get('sources', [])
+            
+            if sources:
+                story.append(Paragraph(
+                    f"{agent_name} ({len(sources)} sources)",
+                    styles['Heading3']
+                ))
+                
+                for source in sources:
+                    title = source.get('title', 'Untitled')
+                    url = source.get('url', '#')
+                    description = source.get('description', '')
+                    
+                    # Title as link
+                    story.append(Paragraph(
+                        f'<b><link href="{url}">{title}</link></b>',
+                        body_style
+                    ))
+                    
+                    # Description
+                    if description:
+                        clean_desc = clean_markdown(description)
+                        if len(clean_desc) > 200:
+                            clean_desc = clean_desc[:200] + "..."
+                        story.append(Paragraph(clean_desc, body_style))
+                    
+                    story.append(Spacer(1, 0.1 * inch))
+    
+    # Footer
+    story.append(Spacer(1, 0.5 * inch))
+    story.append(Paragraph(
+        "<i>Generated by Multi-Agent AI Deep Researcher</i>",
+        styles['Italic']
+    ))
+    
+    # Build PDF
     doc.build(story)
-    return buffer.getvalue()
+    
+    # Get PDF bytes
+    pdf_bytes = buffer.getvalue()
+    buffer.close()
+    
+    return pdf_bytes

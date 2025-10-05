@@ -1,157 +1,181 @@
-# ============================================================================
-# ISSUE 2: Fix YouTube Agent - Simplified Version WITHOUT transcript API
-# FILE: agents/youtube_agent.py
-# ============================================================================
 """
-YouTube Agent - Simplified without transcript dependency
+YouTube Agent with proper token tracking
+Industry-standard implementation
 """
+
 import os
-from typing import Dict, List
-import requests
+import aiohttp
+from typing import Dict, List, Any
+from datetime import datetime
 
-def search_youtube(query: str, max_results: int = 2) -> List[Dict]:
+
+class YouTubeAgent:
     """
-    Search YouTube videos - NO TRANSCRIPT NEEDED
-    
-    Args:
-        query: Search query
-        max_results: Maximum number of videos to return
-        
-    Returns:
-        List of video dictionaries
+    YouTube video research agent with token tracking
     """
-    try:
-        api_key = os.getenv("YOUTUBE_API_KEY")
+    
+    def __init__(self):
+        self.api_key = os.getenv("YOUTUBE_API_KEY")
+        self.api_url = "https://www.googleapis.com/youtube/v3/search"
         
-        if not api_key:
-            print(f"   ⚠️  YOUTUBE_API_KEY not found")
-            return []
+        # Token estimation for YouTube metadata
+        self.avg_tokens_per_video = 200  # Estimated tokens per video metadata
         
-        from datetime import datetime, timedelta
+    async def research(
+        self,
+        query: str,
+        domain: str = "general",
+        max_sources: int = 10
+    ) -> Dict[str, Any]:
+        """
+        Execute YouTube research
         
-        # Calculate date 30 days ago
-        published_after = (datetime.utcnow() - timedelta(days=30)).isoformat("T") + "Z"
-        
-        # Search YouTube API directly
-        search_url = "https://www.googleapis.com/youtube/v3/search"
-        search_params = {
-            "key": api_key,
-            "q": query,
-            "type": "video",
-            "part": "id,snippet",
-            "maxResults": max_results * 3,  # Get extra to filter
-            "relevanceLanguage": "en",
-            "order": "relevance",
-            "publishedAfter": published_after,
-            "safeSearch": "moderate",
-        }
-        
-        print(f"   📡 Calling YouTube API...")
-        response = requests.get(search_url, params=search_params, timeout=20)
-        
-        if response.status_code != 200:
-            print(f"   ❌ YouTube API error: {response.status_code}")
-            return []
-        
-        data = response.json()
-        items = data.get("items", [])
-        
-        if not items:
-            print(f"   ⚠️  No videos found")
-            return []
-        
-        # Get video IDs
-        video_ids = [item.get("id", {}).get("videoId") for item in items if item.get("id", {}).get("videoId")]
-        
-        if not video_ids:
-            print(f"   ⚠️  No valid video IDs")
-            return []
-        
-        # Fetch video details (duration, views, etc.)
-        videos_url = "https://www.googleapis.com/youtube/v3/videos"
-        videos_params = {
-            "key": api_key,
-            "id": ",".join(video_ids[:max_results]),
-            "part": "contentDetails,statistics,snippet",
-        }
-        
-        details_response = requests.get(videos_url, params=videos_params, timeout=20)
-        
-        if details_response.status_code != 200:
-            print(f"   ⚠️  Could not fetch video details")
-            # Return basic info without details
-            results = []
-            for item in items[:max_results]:
-                snippet = item.get("snippet", {})
-                video_id = item.get("id", {}).get("videoId")
-                results.append({
-                    "title": snippet.get("title", ""),
-                    "url": f"https://www.youtube.com/watch?v={video_id}",
-                    "description": snippet.get("description", ""),
-                    "channel": snippet.get("channelTitle", ""),
-                    "duration": "Unknown",
-                    "views": 0,
-                    "published_at": snippet.get("publishedAt", "")
-                })
-            return results
-        
-        details_data = details_response.json()
-        details_items = details_data.get("items", [])
-        
-        # Format results with details
-        results = []
-        for detail_item in details_items[:max_results]:
-            video_id = detail_item.get("id")
-            snippet = detail_item.get("snippet", {})
-            content_details = detail_item.get("contentDetails", {})
-            statistics = detail_item.get("statistics", {})
+        Args:
+            query: Research question
+            domain: Research domain
+            max_sources: Maximum videos to fetch
             
-            # Parse duration (ISO 8601 format like PT15M30S)
-            duration_iso = content_details.get("duration", "")
-            duration = _parse_duration(duration_iso)
+        Returns:
+            Dictionary with research results and metrics
+        """
+        print(f"   📹 YouTube Agent: Searching videos for '{query}'")
+        
+        if not self.api_key:
+            print(f"   ⚠️ YouTube API key not configured")
+            return {
+                "agent_name": "youtube",
+                "agent_type": "youtube",
+                "status": "skipped",
+                "message": "YouTube API key not configured",
+                "sources": [],
+                "source_count": 0,
+                "tokens": 0,
+                "cost": 0.0
+            }
+        
+        try:
+            sources = await self._search_videos(query, max_sources)
             
-            results.append({
-                "title": snippet.get("title", ""),
-                "url": f"https://www.youtube.com/watch?v={video_id}",
-                "description": snippet.get("description", "")[:200],  # Limit description
-                "channel": snippet.get("channelTitle", ""),
-                "duration": duration,
-                "views": int(statistics.get("viewCount", 0)),
-                "published_at": snippet.get("publishedAt", "")
-            })
+            # Estimate tokens based on actual content
+            total_tokens = self._estimate_tokens(sources)
+            
+            # YouTube API is free (quota-based)
+            cost = 0.0
+            
+            result = {
+                "agent_name": "youtube",
+                "agent_type": "youtube",
+                "status": "success",
+                "query": query,
+                "domain": domain,
+                "sources": sources,
+                "source_count": len(sources),
+                "tokens": total_tokens,  # Properly tracked
+                "cost": cost,
+                "timestamp": datetime.now().isoformat()
+            }
+            
+            print(f"   ✅ YouTube: {len(sources)} videos, {total_tokens} estimated tokens")
+            
+            return result
+            
+        except Exception as e:
+            print(f"   ❌ YouTube error: {e}")
+            return {
+                "agent_name": "youtube",
+                "agent_type": "youtube",
+                "status": "error",
+                "error": str(e),
+                "sources": [],
+                "source_count": 0,
+                "tokens": 0,
+                "cost": 0.0
+            }
+    
+    async def _search_videos(
+        self,
+        query: str,
+        max_results: int = 10
+    ) -> List[Dict[str, Any]]:
+        """
+        Search YouTube videos
         
-        print(f"   ✅ Found {len(results)} videos")
-        return results
+        Args:
+            query: Search query
+            max_results: Maximum results to return
+            
+        Returns:
+            List of video sources
+        """
+        sources = []
         
-    except Exception as e:
-        print(f"   ❌ YouTube error: {e}")
-        import traceback
-        traceback.print_exc()
-        return []
-
-
-def _parse_duration(iso_duration: str) -> str:
-    """Convert YouTube ISO 8601 duration to readable format"""
-    if not iso_duration:
-        return "Unknown"
+        try:
+            params = {
+                "key": self.api_key,
+                "part": "snippet",
+                "q": query,
+                "type": "video",
+                "maxResults": min(max_results, 50),
+                "order": "relevance",
+                "relevanceLanguage": "en"
+            }
+            
+            async with aiohttp.ClientSession() as session:
+                async with session.get(
+                    self.api_url,
+                    params=params,
+                    timeout=aiohttp.ClientTimeout(total=30)
+                ) as response:
+                    response.raise_for_status()
+                    data = await response.json()
+            
+            items = data.get('items', [])
+            
+            for item in items:
+                video_id = item.get('id', {}).get('videoId', '')
+                snippet = item.get('snippet', {})
+                
+                if video_id:
+                    sources.append({
+                        "title": snippet.get('title', 'No Title'),
+                        "url": f"https://www.youtube.com/watch?v={video_id}",
+                        "description": snippet.get('description', 'No description')[:200] + "...",
+                        "source_type": "youtube",
+                        "channel": snippet.get('channelTitle', 'Unknown'),
+                        "published_at": snippet.get('publishedAt', '')
+                    })
+            
+        except Exception as e:
+            print(f"   ⚠️ YouTube search error: {e}")
+        
+        return sources
     
-    hours = minutes = seconds = 0
-    current = ""
-    
-    # Skip PT prefix
-    for ch in iso_duration[2:]:
-        if ch.isdigit():
-            current += ch
-        elif ch == "H":
-            hours = int(current or 0)
-            current = ""
-        elif ch == "M":
-            minutes = int(current or 0)
-            current = ""
-        elif ch == "S":
-            seconds = int(current or 0)
-            current = ""
-    
-    if hours:
-        return f"{hours}:{minutes:02d}:{seconds:02d}"
-    return f"{minutes}:{seconds:02d}"
+    def _estimate_tokens(self, sources: List[Dict[str, Any]]) -> int:
+        """
+        Estimate token count based on actual source content
+        
+        Args:
+            sources: List of source dictionaries
+            
+        Returns:
+            Estimated token count
+        """
+        total_tokens = 0
+        
+        for source in sources:
+            # Count tokens based on actual text length
+            title = source.get('title', '')
+            description = source.get('description', '')
+            channel = source.get('channel', '')
+            
+            # Rough estimation: 1 token ≈ 4 characters
+            title_tokens = len(title) // 4
+            desc_tokens = len(description) // 4
+            channel_tokens = len(channel) // 4
+            
+            # Add metadata overhead (URL, type, published date) - approximately 25 tokens
+            metadata_tokens = 25
+            
+            total_tokens += title_tokens + desc_tokens + channel_tokens + metadata_tokens
+        
+        return total_tokens
