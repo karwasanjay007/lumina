@@ -26,11 +26,10 @@ requests
 arxiv
 duckduckgo-search
 newsapi-python
-youtube-transcript-api
 serpapi
 tavily-python
 google-api-python-client
-yt-dlp
+youtube_transcript_api
 
 # Document Processing
 pymupdf
@@ -42,11 +41,6 @@ reportlab
 markdown2
 python-docx
 
-# Audio/Transcription
-openai-whisper
-torch
-torchaudio
-ffmpeg-python
 
 # Data Processing
 pandas

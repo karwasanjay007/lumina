@@ -272,14 +272,28 @@ with st.sidebar:
         # FIXED: This should only show when there's actually no history
         st.info("No history yet. Start a research query!")
     
+    # ========================================================================
+    # CLEAR HISTORY BUTTON - FIXED VERSION (ONLY ONE!)
+    # ========================================================================
     if st.button("🗑️ Clear History", use_container_width=True, key="clear_history_btn"):
-        if st.session_state.research_history:
-            save_history_to_json()
+        if st.session_state.research_history and len(st.session_state.research_history) > 0:
+            # FIXED: Clear directly without saving first
             st.session_state.research_history = []
             st.session_state.current_results = None
-            st.success("✅ History cleared!")
-            time.sleep(1)
+            st.session_state.current_query = ""
+            
+            # Clear the JSON file
+            try:
+                history_file = Path("data/history/research_history.json")
+                if history_file.exists():
+                    history_file.write_text("[]", encoding='utf-8')
+            except Exception as e:
+                console_log(f"Error clearing history file: {e}", "ERROR")
+            
+            st.success("✅ History cleared successfully!")
             st.rerun()
+        else:
+            st.info("No history to clear")
     
     st.markdown("---")
     

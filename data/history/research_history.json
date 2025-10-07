@@ -1,8 +1,8 @@
 [
   {
-    "query": "Ola electric shares and its future projection",
-    "domain": "Stock Market Analysis",
-    "timestamp": "2025-10-07 16:10:39",
+    "query": "Bio Informatics what types of jobs available and what the future",
+    "domain": "Academic Research",
+    "timestamp": "2025-10-07 22:08:32",
     "agents_state": {
       "Market Intelligence": true,
       "Sentiment Analytics": true,
@@ -13,42 +13,49 @@
     "sentiment_sources": 2,
     "data_sources": 2,
     "results": {
-      "query": "Ola electric shares and its future projection",
-      "domain": "Stock Market Analysis",
-      "timestamp": "2025-10-07 16:10:39",
+      "query": "Bio Informatics what types of jobs available and what the future",
+      "domain": "Academic Research",
+      "timestamp": "2025-10-07 22:08:32",
       "agents_used": [
         "Market Intelligence",
         "Sentiment Analytics",
         "Data Intelligence"
       ],
       "model_type": "Quick Search",
-      "summary": "Academic research analysis from 2 sources",
+      "summary": "Academic analysis from 2 papers",
       "key_findings": [
-        "Here are two key findings and insights regarding Ola Electric shares and their future projections:",
-        "## Key Findings and Insights",
-        "Found 2 academic sources",
-        "Research shows peer-reviewed insights",
-        "Academic consensus on key findings"
+        "**Bioinformatics Scientist**:",
+        "**Role**: Develop algorithms, databases, and software tools to support research in genomics, drug discovery, and disease analysis.",
+        "**Skills**: Proficiency in programming languages like Python, experience with bioinformatics tools, and knowledge of statistical analysis.",
+        "**Industry**: Technology, pharmaceuticals, and research institutions[2].",
+        "**Computational Biologist**:",
+        "No transcript available (attr_error: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript' | whisper_not_installed)....",
+        "No transcript available (attr_error: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript' | whisper_not_installed)....",
+        "Quantum information science and technology (QIST) has progressed\nsignificantly in the last decade, such that it is no longer solely in the\ndomain of r",
+        "Within the framework of Technological Pedagogical and Content Knowledge,\nsubject integration is one possible solution for the introduction of meaningf"
       ],
       "insights": [
-        "### 1. **Recent Performance and Market Trends**",
-        "- **Recent Surge**: Ola Electric shares have experienced significant fluctuations, with a notable surge of 55% in a month, driven by positive technical indicators and the approval of the PLI (Production Linked Incentive) scheme[1]. However, the stock has also faced declines, such as a recent drop of 2.13%[3].",
-        "Academic research validates topic",
-        "Multiple studies support conclusions"
+        "**Role**: Analyze omics data, predict targets and leads, and optimize trial design using machine learning and bioinformatics techniques.",
+        "**Skills**: Expertise in bioinformatics, large-scale data analysis, machine learning, and programming languages like Python.",
+        "**Industry**: Pharmaceutical and biotechnology companies[1].",
+        "Video content provides sentiment perspective",
+        "Expert commentary supports analysis",
+        "Academic research provides evidence-based insights",
+        "Peer-reviewed sources validate findings"
       ],
       "sources": [
         {
-          "title": "Source #1 - Ola electric shares and its future projection",
-          "url": "https://economictimes.com/markets/stocks/news/ola-electric-shares-skyrocket-55-in-a-month-analysts-see-further-rally-till-rs-90/articleshow/123672054.cms",
-          "summary": "Research source for: Ola electric shares and its future projection",
+          "title": "https://www.labiotech.eu/expert-advice/biotechnology-careers-in-high-demand/",
+          "url": "https://www.labiotech.eu/expert-advice/biotechnology-careers-in-high-demand/",
+          "summary": "Citation #1 from Perplexity research",
           "agent": "Market Intelligence",
           "source_type": "Web Research",
           "medium": "Perplexity API"
         },
         {
-          "title": "Source #2 - Ola electric shares and its future projection",
-          "url": "https://scanx.trade/stock-market-news/stocks/ola-electric-shares-surge-7-amid-block-deal-and-future-projections/14804265",
-          "summary": "Research source for: Ola electric shares and its future projection",
+          "title": "https://www.careers360.com/careers/bioinformatics-scientist",
+          "url": "https://www.careers360.com/careers/bioinformatics-scientist",
+          "summary": "Citation #2 from Perplexity research",
           "agent": "Market Intelligence",
           "source_type": "Web Research",
           "medium": "Perplexity API"
@@ -57,30 +64,30 @@
           "name": "video_1",
           "items": [
             {
-              "published_date": "2025-09-07T10:31:38Z",
-              "title": "BUY or Avoid - Ola Share | Fundamental Analysis",
+              "published_date": "2025-07-09T13:52:04Z",
+              "title": "AI Can&#39;t replace these jobs: Bill Gates",
               "authors": [
-                "INVESTOR'S MIND VOICE"
+                "Hey Sourin"
               ],
-              "summary": "No transcript available (attr_error: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript' | ffmpeg_not_found).",
+              "summary": "No transcript available (attr_error: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript' | whisper_not_installed).",
               "content": null,
-              "source": "https://www.youtube.com/watch?v=18NBvlc9Vxw",
+              "source": "https://www.youtube.com/watch?v=hw6vqETl6TU",
               "pdf_url": null
             }
           ],
           "metadata": {
-            "video_id": "18NBvlc9Vxw",
-            "duration": "2:54",
-            "views": "376",
-            "likes": "0",
+            "video_id": "hw6vqETl6TU",
+            "duration": "0:27",
+            "views": "4766",
+            "likes": null,
             "comments": "0",
             "language": "unknown",
             "transcript_path": null,
             "transcript_source": null,
-            "transcript_error": "attr_error: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript' | ffmpeg_not_found",
+            "transcript_error": "attr_error: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript' | whisper_not_installed",
             "debug": [
               "youtube_api: attr_error: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript'",
-              "whisper: ffmpeg_not_found"
+              "whisper: whisper_not_installed"
             ]
           }
         },
@@ -88,53 +95,53 @@
           "name": "video_2",
           "items": [
             {
-              "published_date": "2025-09-07T10:30:45Z",
-              "title": "🛵OLA STOCK | Full Analysis | Fundamental Analysis | EV SECTOR |",
+              "published_date": "2025-01-27T14:00:22Z",
+              "title": "NVIDIA CEO Jensen Huang&#39;s Vision for the Future",
               "authors": [
-                "INVESTOR'S MIND VOICE"
+                "Cleo Abram"
               ],
-              "summary": "No transcript available (attr_error: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript' | ffmpeg_not_found).",
+              "summary": "No transcript available (attr_error: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript' | whisper_not_installed).",
               "content": null,
-              "source": "https://www.youtube.com/watch?v=m-4eBsxYgtI",
+              "source": "https://www.youtube.com/watch?v=7ARBJQn6QkM",
               "pdf_url": null
             }
           ],
           "metadata": {
-            "video_id": "m-4eBsxYgtI",
-            "duration": "9:55",
-            "views": "51",
-            "likes": "1",
-            "comments": "0",
+            "video_id": "7ARBJQn6QkM",
+            "duration": "1:03:03",
+            "views": "3862463",
+            "likes": "114264",
+            "comments": "4908",
             "language": "unknown",
             "transcript_path": null,
             "transcript_source": null,
-            "transcript_error": "attr_error: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript' | ffmpeg_not_found",
+            "transcript_error": "attr_error: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript' | whisper_not_installed",
             "debug": [
               "youtube_api: attr_error: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript'",
-              "whisper: ffmpeg_not_found"
+              "whisper: whisper_not_installed"
             ]
           }
         },
         {
-          "title": "Unbounded: Object-Boundary Interactions in Mixed Reality",
-          "url": "http://arxiv.org/abs/2509.10750v1",
-          "summary": "Boundaries such as walls, windows, and doors are ubiquitous in the physical\nworld, yet their potential in Mixed Reality (MR) remains underexplored. We\npresent Unbounded, a Research through Design inqu",
+          "title": "Assessing the Needs of the Quantum Industry",
+          "url": "http://arxiv.org/abs/2109.03601v1",
+          "summary": "Quantum information science and technology (QIST) has progressed\nsignificantly in the last decade, such that it is no longer solely in the\ndomain of research labs, but is now beginning to be developed",
           "agent": "Data Intelligence",
           "source_type": "Academic",
           "medium": "arXiv API"
         },
         {
-          "title": "An iterative OLA method for inversion of solar spectropolarimetric data:\n  I. Single and multiple variable inversions of thermodynamic quantities",
-          "url": "http://arxiv.org/abs/2209.13734v1",
-          "summary": "This paper describes an adaptation of the Optimal Localized Averaging (OLA)\ninversion technique, originally developed for geo- and helioseismological\napplications, to the interpretation of solar spect",
+          "title": "Subject integration with spreadsheets -- Ignoring education is the\n  greatest risk ever",
+          "url": "http://arxiv.org/abs/2409.12975v1",
+          "summary": "Within the framework of Technological Pedagogical and Content Knowledge,\nsubject integration is one possible solution for the introduction of meaningful\ndigitalization and digitization in schools. Thi",
           "agent": "Data Intelligence",
           "source_type": "Academic",
           "medium": "arXiv API"
         }
       ],
-      "total_cost": 0.000987,
-      "total_tokens": 353,
-      "execution_time": 8.511179685592651,
+      "total_cost": 0.000741,
+      "total_tokens": 741,
+      "execution_time": 17.398191928863525,
       "confidence_score": 79,
       "mock_mode": false,
       "agent_data": [
@@ -142,13 +149,13 @@
           "agent_name": "Market Intelligence",
           "source_count": 2,
           "sources_retrieved": 2,
-          "findings_count": 2,
-          "insights_count": 2,
-          "cost": 0.000987,
-          "tokens": 353,
-          "prompt_tokens": 36,
-          "completion_tokens": 317,
-          "execution_time": 6.599559307098389,
+          "findings_count": 5,
+          "insights_count": 3,
+          "cost": 0.000741,
+          "tokens": 741,
+          "prompt_tokens": 41,
+          "completion_tokens": 700,
+          "execution_time": 8.919646501541138,
           "status": "✅ Success",
           "model_used": "sonar",
           "model_type": "Quick Search",
@@ -159,34 +166,34 @@
           "agent_name": "Sentiment Analytics",
           "source_count": 2,
           "sources_retrieved": 2,
-          "findings_count": 0,
-          "insights_count": 0,
+          "findings_count": 2,
+          "insights_count": 2,
           "cost": 0.0,
           "tokens": 0,
           "prompt_tokens": 0,
           "completion_tokens": 0,
-          "execution_time": 1.0140037536621094,
+          "execution_time": 1.6729710102081299,
           "status": "✅ Success",
           "model_used": "N/A",
           "model_type": "N/A",
-          "medium": "YouTube API",
+          "medium": "YouTube API + LLM",
           "data_type": "Video Analysis"
         },
         {
           "agent_name": "Data Intelligence",
           "source_count": 2,
           "sources_retrieved": 2,
-          "findings_count": 3,
+          "findings_count": 2,
           "insights_count": 2,
           "cost": 0.0,
           "tokens": 0,
           "prompt_tokens": 0,
           "completion_tokens": 0,
-          "execution_time": 0.8976166248321533,
+          "execution_time": 6.805574417114258,
           "status": "✅ Success",
           "model_used": "N/A",
           "model_type": "N/A",
-          "medium": "arXiv API",
+          "medium": "arXiv API + LLM",
           "data_type": "Academic Research"
         }
       ],
@@ -194,28 +201,32 @@
         "Market Intelligence": {
           "success": true,
           "agent_name": "Market Intelligence",
-          "summary": "Here are two key findings and insights regarding Ola Electric shares and their future projections:\n\n## Key Findings and Insights\n\n### 1. **Recent Performance and Market Trends**\n- **Recent Surge**: Ola Electric shares have experienced significant fluctuations, with a notable surge of 55% in a month, driven by positive technical indicators and the approval of the PLI (Production Linked Incentive) scheme[1]. However, the stock has also faced declines, such as a recent drop of 2.13%[3].\n- **Block D",
+          "summary": "## Introduction to Bioinformatics\n\nBioinformatics is a rapidly evolving field that combines biology, computer science, and statistics to analyze and interpret large-scale biological data. This interdisciplinary approach has led to numerous career opportunities in bioinformatics, with applications in genomics, drug discovery, personalized medicine, and agriculture. Here, we will explore the types of jobs available in bioinformatics and the future prospects of this field.\n\n## Types of Jobs Availab",
           "findings": [
-            "Here are two key findings and insights regarding Ola Electric shares and their future projections:",
-            "## Key Findings and Insights"
+            "**Bioinformatics Scientist**:",
+            "**Role**: Develop algorithms, databases, and software tools to support research in genomics, drug discovery, and disease analysis.",
+            "**Skills**: Proficiency in programming languages like Python, experience with bioinformatics tools, and knowledge of statistical analysis.",
+            "**Industry**: Technology, pharmaceuticals, and research institutions[2].",
+            "**Computational Biologist**:"
           ],
           "insights": [
-            "### 1. **Recent Performance and Market Trends**",
-            "- **Recent Surge**: Ola Electric shares have experienced significant fluctuations, with a notable surge of 55% in a month, driven by positive technical indicators and the approval of the PLI (Production Linked Incentive) scheme[1]. However, the stock has also faced declines, such as a recent drop of 2.13%[3]."
+            "**Role**: Analyze omics data, predict targets and leads, and optimize trial design using machine learning and bioinformatics techniques.",
+            "**Skills**: Expertise in bioinformatics, large-scale data analysis, machine learning, and programming languages like Python.",
+            "**Industry**: Pharmaceutical and biotechnology companies[1]."
           ],
           "sources": [
             {
-              "title": "Source #1 - Ola electric shares and its future projection",
-              "url": "https://economictimes.com/markets/stocks/news/ola-electric-shares-skyrocket-55-in-a-month-analysts-see-further-rally-till-rs-90/articleshow/123672054.cms",
-              "summary": "Research source for: Ola electric shares and its future projection",
+              "title": "https://www.labiotech.eu/expert-advice/biotechnology-careers-in-high-demand/",
+              "url": "https://www.labiotech.eu/expert-advice/biotechnology-careers-in-high-demand/",
+              "summary": "Citation #1 from Perplexity research",
               "agent": "Market Intelligence",
               "source_type": "Web Research",
               "medium": "Perplexity API"
             },
             {
-              "title": "Source #2 - Ola electric shares and its future projection",
-              "url": "https://scanx.trade/stock-market-news/stocks/ola-electric-shares-surge-7-amid-block-deal-and-future-projections/14804265",
-              "summary": "Research source for: Ola electric shares and its future projection",
+              "title": "https://www.careers360.com/careers/bioinformatics-scientist",
+              "url": "https://www.careers360.com/careers/bioinformatics-scientist",
+              "summary": "Citation #2 from Perplexity research",
               "agent": "Market Intelligence",
               "source_type": "Web Research",
               "medium": "Perplexity API"
@@ -223,52 +234,58 @@
           ],
           "source_count": 2,
           "sources_retrieved": 2,
-          "tokens": 353,
-          "prompt_tokens": 36,
-          "completion_tokens": 317,
-          "cost": 0.000987,
+          "tokens": 741,
+          "prompt_tokens": 41,
+          "completion_tokens": 700,
+          "cost": 0.000741,
           "status": "✅ Success",
           "model_used": "sonar",
           "model_type": "Quick Search",
           "medium": "Perplexity API",
           "data_type": "Live Research",
-          "execution_time": 6.599559307098389
+          "execution_time": 8.919646501541138
         },
         "Sentiment Analytics": {
           "success": true,
           "agent_name": "Sentiment Analytics",
-          "summary": "YouTube analysis for: Ola electric shares and its future projection",
-          "findings": [],
-          "insights": [],
+          "summary": "YouTube analysis from 2 videos",
+          "findings": [
+            "No transcript available (attr_error: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript' | whisper_not_installed)....",
+            "No transcript available (attr_error: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript' | whisper_not_installed)...."
+          ],
+          "insights": [
+            "Video content provides sentiment perspective",
+            "Expert commentary supports analysis"
+          ],
           "sources": [
             {
               "name": "video_1",
               "items": [
                 {
-                  "published_date": "2025-09-07T10:31:38Z",
-                  "title": "BUY or Avoid - Ola Share | Fundamental Analysis",
+                  "published_date": "2025-07-09T13:52:04Z",
+                  "title": "AI Can&#39;t replace these jobs: Bill Gates",
                   "authors": [
-                    "INVESTOR'S MIND VOICE"
+                    "Hey Sourin"
                   ],
-                  "summary": "No transcript available (attr_error: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript' | ffmpeg_not_found).",
+                  "summary": "No transcript available (attr_error: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript' | whisper_not_installed).",
                   "content": null,
-                  "source": "https://www.youtube.com/watch?v=18NBvlc9Vxw",
+                  "source": "https://www.youtube.com/watch?v=hw6vqETl6TU",
                   "pdf_url": null
                 }
               ],
               "metadata": {
-                "video_id": "18NBvlc9Vxw",
-                "duration": "2:54",
-                "views": "376",
-                "likes": "0",
+                "video_id": "hw6vqETl6TU",
+                "duration": "0:27",
+                "views": "4766",
+                "likes": null,
                 "comments": "0",
                 "language": "unknown",
                 "transcript_path": null,
                 "transcript_source": null,
-                "transcript_error": "attr_error: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript' | ffmpeg_not_found",
+                "transcript_error": "attr_error: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript' | whisper_not_installed",
                 "debug": [
                   "youtube_api: attr_error: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript'",
-                  "whisper: ffmpeg_not_found"
+                  "whisper: whisper_not_installed"
                 ]
               }
             },
@@ -276,30 +293,30 @@
               "name": "video_2",
               "items": [
                 {
-                  "published_date": "2025-09-07T10:30:45Z",
-                  "title": "🛵OLA STOCK | Full Analysis | Fundamental Analysis | EV SECTOR |",
+                  "published_date": "2025-01-27T14:00:22Z",
+                  "title": "NVIDIA CEO Jensen Huang&#39;s Vision for the Future",
                   "authors": [
-                    "INVESTOR'S MIND VOICE"
+                    "Cleo Abram"
                   ],
-                  "summary": "No transcript available (attr_error: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript' | ffmpeg_not_found).",
+                  "summary": "No transcript available (attr_error: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript' | whisper_not_installed).",
                   "content": null,
-                  "source": "https://www.youtube.com/watch?v=m-4eBsxYgtI",
+                  "source": "https://www.youtube.com/watch?v=7ARBJQn6QkM",
                   "pdf_url": null
                 }
               ],
               "metadata": {
-                "video_id": "m-4eBsxYgtI",
-                "duration": "9:55",
-                "views": "51",
-                "likes": "1",
-                "comments": "0",
+                "video_id": "7ARBJQn6QkM",
+                "duration": "1:03:03",
+                "views": "3862463",
+                "likes": "114264",
+                "comments": "4908",
                 "language": "unknown",
                 "transcript_path": null,
                 "transcript_source": null,
-                "transcript_error": "attr_error: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript' | ffmpeg_not_found",
+                "transcript_error": "attr_error: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript' | whisper_not_installed",
                 "debug": [
                   "youtube_api: attr_error: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript'",
-                  "whisper: ffmpeg_not_found"
+                  "whisper: whisper_not_installed"
                 ]
               }
             }
@@ -308,37 +325,36 @@
           "sources_retrieved": 2,
           "tokens": 0,
           "cost": 0.0,
-          "execution_time": 1.0140037536621094,
+          "execution_time": 1.6729710102081299,
           "status": "✅ Success",
-          "medium": "YouTube API",
+          "medium": "YouTube API + LLM",
           "data_type": "Video Analysis"
         },
         "Data Intelligence": {
           "success": true,
           "agent_name": "Data Intelligence",
-          "summary": "Academic research analysis from 2 sources",
+          "summary": "Academic analysis from 2 papers",
           "findings": [
-            "Found 2 academic sources",
-            "Research shows peer-reviewed insights",
-            "Academic consensus on key findings"
+            "Quantum information science and technology (QIST) has progressed\nsignificantly in the last decade, such that it is no longer solely in the\ndomain of r",
+            "Within the framework of Technological Pedagogical and Content Knowledge,\nsubject integration is one possible solution for the introduction of meaningf"
           ],
           "insights": [
-            "Academic research validates topic",
-            "Multiple studies support conclusions"
+            "Academic research provides evidence-based insights",
+            "Peer-reviewed sources validate findings"
           ],
           "sources": [
             {
-              "title": "Unbounded: Object-Boundary Interactions in Mixed Reality",
-              "url": "http://arxiv.org/abs/2509.10750v1",
-              "summary": "Boundaries such as walls, windows, and doors are ubiquitous in the physical\nworld, yet their potential in Mixed Reality (MR) remains underexplored. We\npresent Unbounded, a Research through Design inqu",
+              "title": "Assessing the Needs of the Quantum Industry",
+              "url": "http://arxiv.org/abs/2109.03601v1",
+              "summary": "Quantum information science and technology (QIST) has progressed\nsignificantly in the last decade, such that it is no longer solely in the\ndomain of research labs, but is now beginning to be developed",
               "agent": "Data Intelligence",
               "source_type": "Academic",
               "medium": "arXiv API"
             },
             {
-              "title": "An iterative OLA method for inversion of solar spectropolarimetric data:\n  I. Single and multiple variable inversions of thermodynamic quantities",
-              "url": "http://arxiv.org/abs/2209.13734v1",
-              "summary": "This paper describes an adaptation of the Optimal Localized Averaging (OLA)\ninversion technique, originally developed for geo- and helioseismological\napplications, to the interpretation of solar spect",
+              "title": "Subject integration with spreadsheets -- Ignoring education is the\n  greatest risk ever",
+              "url": "http://arxiv.org/abs/2409.12975v1",
+              "summary": "Within the framework of Technological Pedagogical and Content Knowledge,\nsubject integration is one possible solution for the introduction of meaningful\ndigitalization and digitization in schools. Thi",
               "agent": "Data Intelligence",
               "source_type": "Academic",
               "medium": "arXiv API"
@@ -348,18 +364,18 @@
           "sources_retrieved": 2,
           "tokens": 0,
           "cost": 0.0,
-          "execution_time": 0.8976166248321533,
+          "execution_time": 6.805574417114258,
           "status": "✅ Success",
-          "medium": "arXiv API",
+          "medium": "arXiv API + LLM",
           "data_type": "Academic Research"
         }
       }
     }
   },
   {
-    "query": "SOHO indian IT company in chennai making global waves",
+    "query": "GEN AI latest trends",
     "domain": "Technology Trends",
-    "timestamp": "2025-10-07 16:12:25",
+    "timestamp": "2025-10-07 22:21:31",
     "agents_state": {
       "Market Intelligence": true,
       "Sentiment Analytics": true,
@@ -370,66 +386,67 @@
     "sentiment_sources": 2,
     "data_sources": 2,
     "results": {
-      "query": "SOHO indian IT company in chennai making global waves",
+      "query": "GEN AI latest trends",
       "domain": "Technology Trends",
-      "timestamp": "2025-10-07 16:12:25",
+      "timestamp": "2025-10-07 22:21:31",
       "agents_used": [
         "Market Intelligence",
         "Sentiment Analytics",
         "Data Intelligence"
       ],
       "model_type": "Quick Search",
-      "summary": "Academic research analysis from 2 sources",
+      "summary": "Academic analysis from 2 papers",
       "key_findings": [
-        "Two key findings about **Zoho**, a prominent Indian IT company headquartered in Chennai making global waves, are:",
-        "1. **Innovative Business Model and Global SaaS Leadership**: Zoho has developed a differentiated business model focused on deep product integration, cost efficiency, and customer empowerment. This approach has enabled Zoho to achieve sustainable growth and significant global market relevance, with annual revenues exceeding ₹8,700 crore in FY23. Zoho's verticalized strategy allows it to serve diverse industries such as healthcare, finance, retail, and education effectively. Its commitment to data privacy, product independence, and employee-driven development presents an alternative model for building global software enterprises from emerging economies like India[2].",
-        "Found 2 academic sources",
-        "Research shows peer-reviewed insights",
-        "Academic consensus on key findings"
+        "**Industry Transformation**: Gen AI is transforming industries by automating tasks and creating personalized experiences, but it requires careful management of data privacy and ethical issues[14].",
+        "**Market Potential**: The Gen AI market is poised for significant growth, making it an attractive area for investment and innovation[9].",
+        "**Multimodal Capabilities**: The integration of multimodal AI is crucial for enhancing user interfaces and expanding the applications of Gen AI[6].",
+        "**Academic Impact**: Gen AI can enhance research productivity and quality, but equitable access is essential to maximize its benefits[4].",
+        "This research offers a unique evaluation of how AI systems interpret the\ndigital language of Generation Alpha (Gen Alpha, born 2010-2024). As the firs",
+        "Combing Artificial Intelligence (AI) and wireless communication technologies\nhas become one of the major technologies trends towards 2030. This includ"
       ],
       "insights": [
-        "2. **Global Expansion and Competitive Positioning**: Zoho has successfully expanded its geographic footprint with significant revenue shares from North America, Asia, and Europe. It is recognized for challenging global tech giants like Microsoft and Google in the SaaS (Software as a Service) space, reshaping the global software landscape by leveraging localized innovation and platform thinking. Zoho's rise exemplifies how Indian IT companies can compete on a global scale without compromising on values such as privacy, decentralization, and sustainability[2][6].",
-        "These insights highlight Zoho's role as a Chennai-based IT company that is not only a leader in SaaS innovation but also a global competitor reshaping the software industry.",
-        "Academic research validates topic",
-        "Multiple studies support conclusions"
+        "Research provides valuable market intelligence",
+        "Multiple perspectives analyzed for comprehensive view",
+        "Academic research provides evidence-based insights",
+        "Peer-reviewed sources validate findings"
       ],
       "sources": [
         {
-          "title": "Source #1 - SOHO indian IT company in chennai making global wa",
-          "url": "https://www.guvi.in/blog/top-it-companies-in-chennai/",
-          "summary": "Research source for: SOHO indian IT company in chennai making global wa",
+          "title": "https://reutersinstitute.politics.ox.ac.uk/generative-ai-and-news-report-2025-how-people-think-about-ais-role-journalism-and-society",
+          "url": "https://reutersinstitute.politics.ox.ac.uk/generative-ai-and-news-report-2025-how-people-think-about-ais-role-journalism-and-society",
+          "summary": "Citation #1 from Perplexity research",
           "agent": "Market Intelligence",
           "source_type": "Web Research",
           "medium": "Perplexity API"
         },
         {
-          "title": "Source #2 - SOHO indian IT company in chennai making global wa",
-          "url": "https://kuey.net/index.php/kuey/article/download/10077/7704/18923",
-          "summary": "Research source for: SOHO indian IT company in chennai making global wa",
+          "title": "https://www.businesswire.com/news/home/20251003495521/en/Generative-AI-in-Healthcare-Market-Research-2025-Global-Industry-Trends-and-Forecasts-to-2035---Rising-Administrative-Burden-Funding-and-AIML-Advancements-Drive-Steady-Growth---ResearchAndMarkets.com",
+          "url": "https://www.businesswire.com/news/home/20251003495521/en/Generative-AI-in-Healthcare-Market-Research-2025-Global-Industry-Trends-and-Forecasts-to-2035---Rising-Administrative-Burden-Funding-and-AIML-Advancements-Drive-Steady-Growth---ResearchAndMarkets.com",
+          "summary": "Citation #2 from Perplexity research",
           "agent": "Market Intelligence",
           "source_type": "Web Research",
           "medium": "Perplexity API"
         },
         {
-          "title": "Control of Wave Packet Revivals Using Geometric Phases",
-          "url": "http://arxiv.org/abs/quant-ph/9910101v1",
-          "summary": "Wave packets in a system governed by a Hamiltonian with a generic nonlinear\nspectrum typically exhibit both full and fractional revivals. It is shown that\nthe latter can be eliminated by inducing suit",
+          "title": "Understanding Gen Alpha Digital Language: Evaluation of LLM Safety\n  Systems for Content Moderation",
+          "url": "http://arxiv.org/abs/2505.10588v1",
+          "summary": "This research offers a unique evaluation of how AI systems interpret the\ndigital language of Generation Alpha (Gen Alpha, born 2010-2024). As the first\ncohort raised alongside AI, Gen Alpha faces new ",
           "agent": "Data Intelligence",
           "source_type": "Academic",
           "medium": "arXiv API"
         },
         {
-          "title": "Structure and Evolution of Indian Physics Co-authorship Networks",
-          "url": "http://arxiv.org/abs/1801.05400v1",
-          "summary": "We trace the evolution of Indian physics community from 1919 to 2013 by\nanalysing the coauthorship network constructed from papers published by authors\nin India in American Physical Society journals. ",
+          "title": "On the Combination of AI and Wireless Technologies: 3GPP Standardization\n  Progress",
+          "url": "http://arxiv.org/abs/2407.10984v1",
+          "summary": "Combing Artificial Intelligence (AI) and wireless communication technologies\nhas become one of the major technologies trends towards 2030. This includes\nusing AI to improve the efficiency of the wirel",
           "agent": "Data Intelligence",
           "source_type": "Academic",
           "medium": "arXiv API"
         }
       ],
-      "total_cost": 0.00087,
-      "total_tokens": 316,
-      "execution_time": 7.95637845993042,
+      "total_cost": 0.001047,
+      "total_tokens": 1047,
+      "execution_time": 12.326168537139893,
       "confidence_score": 76,
       "mock_mode": false,
       "agent_data": [
@@ -437,13 +454,13 @@
           "agent_name": "Market Intelligence",
           "source_count": 2,
           "sources_retrieved": 2,
-          "findings_count": 2,
+          "findings_count": 4,
           "insights_count": 2,
-          "cost": 0.00087,
-          "tokens": 316,
-          "prompt_tokens": 39,
-          "completion_tokens": 277,
-          "execution_time": 6.751390218734741,
+          "cost": 0.001047,
+          "tokens": 1047,
+          "prompt_tokens": 33,
+          "completion_tokens": 1014,
+          "execution_time": 10.432213068008423,
           "status": "✅ Success",
           "model_used": "sonar",
           "model_type": "Quick Search",
@@ -458,30 +475,26 @@
           "insights_count": 0,
           "cost": 0.0,
           "tokens": 0,
-          "prompt_tokens": 0,
-          "completion_tokens": 0,
-          "execution_time": 0.2829771041870117,
-          "status": "✅ Success",
-          "model_used": "N/A",
-          "model_type": "N/A",
-          "medium": "YouTube API",
-          "data_type": "Video Analysis"
+          "execution_time": 40.245933294296265,
+          "status": "❌ API Failed",
+          "error": "YouTube API error: 'LLMCallMetrics' object has no attribute 'get'",
+          "medium": "YouTube API"
         },
         {
           "agent_name": "Data Intelligence",
           "source_count": 2,
           "sources_retrieved": 2,
-          "findings_count": 3,
+          "findings_count": 2,
           "insights_count": 2,
           "cost": 0.0,
           "tokens": 0,
           "prompt_tokens": 0,
           "completion_tokens": 0,
-          "execution_time": 0.922011137008667,
+          "execution_time": 1.8939554691314697,
           "status": "✅ Success",
           "model_used": "N/A",
           "model_type": "N/A",
-          "medium": "arXiv API",
+          "medium": "arXiv API + LLM",
           "data_type": "Academic Research"
         }
       ],
@@ -489,28 +502,30 @@
         "Market Intelligence": {
           "success": true,
           "agent_name": "Market Intelligence",
-          "summary": "Two key findings about **Zoho**, a prominent Indian IT company headquartered in Chennai making global waves, are:\n\n1. **Innovative Business Model and Global SaaS Leadership**: Zoho has developed a differentiated business model focused on deep product integration, cost efficiency, and customer empowerment. This approach has enabled Zoho to achieve sustainable growth and significant global market relevance, with annual revenues exceeding ₹8,700 crore in FY23. Zoho's verticalized strategy allows it",
+          "summary": "## Comprehensive Analysis of Generative AI (Gen AI) Latest Trends\n\nGenerative AI (Gen AI) has been rapidly evolving, transforming various industries with its capabilities to automate tasks, create personalized experiences, and enhance efficiency. Here's a detailed analysis of the latest trends in Gen AI, covering its applications, market growth, and future directions.\n\n### 1. **Multimodal AI and Generative Capabilities**\n\nOne of the significant trends in Gen AI is the integration of **multimodal",
           "findings": [
-            "Two key findings about **Zoho**, a prominent Indian IT company headquartered in Chennai making global waves, are:",
-            "1. **Innovative Business Model and Global SaaS Leadership**: Zoho has developed a differentiated business model focused on deep product integration, cost efficiency, and customer empowerment. This approach has enabled Zoho to achieve sustainable growth and significant global market relevance, with annual revenues exceeding ₹8,700 crore in FY23. Zoho's verticalized strategy allows it to serve diverse industries such as healthcare, finance, retail, and education effectively. Its commitment to data privacy, product independence, and employee-driven development presents an alternative model for building global software enterprises from emerging economies like India[2]."
+            "**Industry Transformation**: Gen AI is transforming industries by automating tasks and creating personalized experiences, but it requires careful management of data privacy and ethical issues[14].",
+            "**Market Potential**: The Gen AI market is poised for significant growth, making it an attractive area for investment and innovation[9].",
+            "**Multimodal Capabilities**: The integration of multimodal AI is crucial for enhancing user interfaces and expanding the applications of Gen AI[6].",
+            "**Academic Impact**: Gen AI can enhance research productivity and quality, but equitable access is essential to maximize its benefits[4]."
           ],
           "insights": [
-            "2. **Global Expansion and Competitive Positioning**: Zoho has successfully expanded its geographic footprint with significant revenue shares from North America, Asia, and Europe. It is recognized for challenging global tech giants like Microsoft and Google in the SaaS (Software as a Service) space, reshaping the global software landscape by leveraging localized innovation and platform thinking. Zoho's rise exemplifies how Indian IT companies can compete on a global scale without compromising on values such as privacy, decentralization, and sustainability[2][6].",
-            "These insights highlight Zoho's role as a Chennai-based IT company that is not only a leader in SaaS innovation but also a global competitor reshaping the software industry."
+            "Research provides valuable market intelligence",
+            "Multiple perspectives analyzed for comprehensive view"
           ],
           "sources": [
             {
-              "title": "Source #1 - SOHO indian IT company in chennai making global wa",
-              "url": "https://www.guvi.in/blog/top-it-companies-in-chennai/",
-              "summary": "Research source for: SOHO indian IT company in chennai making global wa",
+              "title": "https://reutersinstitute.politics.ox.ac.uk/generative-ai-and-news-report-2025-how-people-think-about-ais-role-journalism-and-society",
+              "url": "https://reutersinstitute.politics.ox.ac.uk/generative-ai-and-news-report-2025-how-people-think-about-ais-role-journalism-and-society",
+              "summary": "Citation #1 from Perplexity research",
               "agent": "Market Intelligence",
               "source_type": "Web Research",
               "medium": "Perplexity API"
             },
             {
-              "title": "Source #2 - SOHO indian IT company in chennai making global wa",
-              "url": "https://kuey.net/index.php/kuey/article/download/10077/7704/18923",
-              "summary": "Research source for: SOHO indian IT company in chennai making global wa",
+              "title": "https://www.businesswire.com/news/home/20251003495521/en/Generative-AI-in-Healthcare-Market-Research-2025-Global-Industry-Trends-and-Forecasts-to-2035---Rising-Administrative-Burden-Funding-and-AIML-Advancements-Drive-Steady-Growth---ResearchAndMarkets.com",
+              "url": "https://www.businesswire.com/news/home/20251003495521/en/Generative-AI-in-Healthcare-Market-Research-2025-Global-Industry-Trends-and-Forecasts-to-2035---Rising-Administrative-Burden-Funding-and-AIML-Advancements-Drive-Steady-Growth---ResearchAndMarkets.com",
+              "summary": "Citation #2 from Perplexity research",
               "agent": "Market Intelligence",
               "source_type": "Web Research",
               "medium": "Perplexity API"
@@ -518,59 +533,51 @@
           ],
           "source_count": 2,
           "sources_retrieved": 2,
-          "tokens": 316,
-          "prompt_tokens": 39,
-          "completion_tokens": 277,
-          "cost": 0.00087,
+          "tokens": 1047,
+          "prompt_tokens": 33,
+          "completion_tokens": 1014,
+          "cost": 0.001047,
           "status": "✅ Success",
           "model_used": "sonar",
           "model_type": "Quick Search",
           "medium": "Perplexity API",
           "data_type": "Live Research",
-          "execution_time": 6.751390218734741
+          "execution_time": 10.432213068008423
         },
         "Sentiment Analytics": {
-          "success": true,
+          "success": false,
           "agent_name": "Sentiment Analytics",
-          "summary": "YouTube analysis for: SOHO indian IT company in chennai making global waves",
-          "findings": [],
-          "insights": [],
-          "sources": [],
-          "source_count": 0,
-          "sources_retrieved": 0,
-          "tokens": 0,
-          "cost": 0.0,
-          "execution_time": 0.2829771041870117,
-          "status": "✅ Success",
+          "execution_time": 40.245933294296265,
+          "status": "❌ API Failed",
+          "error": "YouTube API error: 'LLMCallMetrics' object has no attribute 'get'",
           "medium": "YouTube API",
-          "data_type": "Video Analysis"
+          "suggestion": "Check YOUTUBE_API_KEY in .env"
         },
         "Data Intelligence": {
           "success": true,
           "agent_name": "Data Intelligence",
-          "summary": "Academic research analysis from 2 sources",
+          "summary": "Academic analysis from 2 papers",
           "findings": [
-            "Found 2 academic sources",
-            "Research shows peer-reviewed insights",
-            "Academic consensus on key findings"
+            "This research offers a unique evaluation of how AI systems interpret the\ndigital language of Generation Alpha (Gen Alpha, born 2010-2024). As the firs",
+            "Combing Artificial Intelligence (AI) and wireless communication technologies\nhas become one of the major technologies trends towards 2030. This includ"
           ],
           "insights": [
-            "Academic research validates topic",
-            "Multiple studies support conclusions"
+            "Academic research provides evidence-based insights",
+            "Peer-reviewed sources validate findings"
           ],
           "sources": [
             {
-              "title": "Control of Wave Packet Revivals Using Geometric Phases",
-              "url": "http://arxiv.org/abs/quant-ph/9910101v1",
-              "summary": "Wave packets in a system governed by a Hamiltonian with a generic nonlinear\nspectrum typically exhibit both full and fractional revivals. It is shown that\nthe latter can be eliminated by inducing suit",
+              "title": "Understanding Gen Alpha Digital Language: Evaluation of LLM Safety\n  Systems for Content Moderation",
+              "url": "http://arxiv.org/abs/2505.10588v1",
+              "summary": "This research offers a unique evaluation of how AI systems interpret the\ndigital language of Generation Alpha (Gen Alpha, born 2010-2024). As the first\ncohort raised alongside AI, Gen Alpha faces new ",
               "agent": "Data Intelligence",
               "source_type": "Academic",
               "medium": "arXiv API"
             },
             {
-              "title": "Structure and Evolution of Indian Physics Co-authorship Networks",
-              "url": "http://arxiv.org/abs/1801.05400v1",
-              "summary": "We trace the evolution of Indian physics community from 1919 to 2013 by\nanalysing the coauthorship network constructed from papers published by authors\nin India in American Physical Society journals. ",
+              "title": "On the Combination of AI and Wireless Technologies: 3GPP Standardization\n  Progress",
+              "url": "http://arxiv.org/abs/2407.10984v1",
+              "summary": "Combing Artificial Intelligence (AI) and wireless communication technologies\nhas become one of the major technologies trends towards 2030. This includes\nusing AI to improve the efficiency of the wirel",
               "agent": "Data Intelligence",
               "source_type": "Academic",
               "medium": "arXiv API"
@@ -580,9 +587,236 @@
           "sources_retrieved": 2,
           "tokens": 0,
           "cost": 0.0,
-          "execution_time": 0.922011137008667,
+          "execution_time": 1.8939554691314697,
           "status": "✅ Success",
-          "medium": "arXiv API",
+          "medium": "arXiv API + LLM",
+          "data_type": "Academic Research"
+        }
+      }
+    }
+  },
+  {
+    "query": "corona virus next steps taken by governments",
+    "domain": "Medical Research",
+    "timestamp": "2025-10-07 22:28:26",
+    "agents_state": {
+      "Market Intelligence": true,
+      "Sentiment Analytics": true,
+      "Data Intelligence": true
+    },
+    "model_type": "Quick Search",
+    "market_sources": 2,
+    "sentiment_sources": 2,
+    "data_sources": 2,
+    "results": {
+      "query": "corona virus next steps taken by governments",
+      "domain": "Medical Research",
+      "timestamp": "2025-10-07 22:28:26",
+      "agents_used": [
+        "Market Intelligence",
+        "Sentiment Analytics",
+        "Data Intelligence"
+      ],
+      "model_type": "Quick Search",
+      "summary": "Academic analysis from 2 papers",
+      "key_findings": [
+        "**Individual-Based Decision-Making**: The CDC has shifted towards individual-based decision-making for COVID-19 vaccinations, emphasizing informed consent and personalized risk-benefit assessments. This approach reflects a move away from blanket recommendations, acknowledging the endemic nature of COVID-19 and concerns about booster safety and efficacy[3][5][9].",
+        "**Global Vaccination Targets**: The World Bank previously aimed to vaccinate at least 60% of the global population by mid-2022 to achieve herd immunity. While this target was not universally met, vaccination efforts have continued, with a focus on equitable distribution and access, especially in low- and middle-income countries[2].",
+        "**Telehealth Policy Cliff**: Key telehealth flexibilities introduced during the pandemic are set to expire on September 30, 2025. This includes the ability of Federally Qualified Health Centers (FQHCs) and Rural Health Clinics (RHCs) to use telecommunication technology for medical visits. However, CMS has extended certain telehealth services, such as mental health visits via live video or audio-only, with reimbursement at the PPS/AIR rate[1].",
+        "**Health System Resilience**: Studies have highlighted the importance of evaluating health system resilience during pandemics. For example, research in Sweden analyzed changes in essential health service utilization, emphasizing the need for adaptable healthcare systems[4].",
+        "**WHO Guidance**: The World Health Organization (WHO) has published guidance to support government decision-making on public health and social measures. This includes recommendations on vaccination, distancing, and other preventive measures to slow transmission[7][8].",
+        "The last leg of the year 2019 gave rise to a virus named COVID-19 (Corona\nVirus Disease 2019). Since the beginning of this infection in India, the\ngov",
+        "In this paper, the authors aim to find out the origin of the corona and the\nduration of the present pandemic caused by it. Besides, they aim to find o"
+      ],
+      "insights": [
+        "**Social and Economic Impacts**: The pandemic has reshaped global economies and social structures. Governments have implemented policies to mitigate these impacts, including financial support for affected industries and populations[10].",
+        "**AI and Data Analytics**: Artificial intelligence and data analytics are expected to play significant roles in future pandemic preparedness and response. These technologies can enhance predictive modeling, contact tracing, and resource allocation[11].",
+        "**Global Cooperation**: International cooperation remains crucial for addressing pandemics. Governments must work together to share data, coordinate public health strategies, and ensure equitable access to vaccines and treatments.",
+        "Academic research provides evidence-based insights",
+        "Peer-reviewed sources validate findings"
+      ],
+      "sources": [
+        {
+          "title": "https://telehealthresourcecenter.org/resources/the-telehealth-policy-cliff-preparing-for-october-1-2025/",
+          "url": "https://telehealthresourcecenter.org/resources/the-telehealth-policy-cliff-preparing-for-october-1-2025/",
+          "summary": "Citation #1 from Perplexity research",
+          "agent": "Market Intelligence",
+          "source_type": "Web Research",
+          "medium": "Perplexity API"
+        },
+        {
+          "title": "https://openknowledge.worldbank.org/entities/publication/30043205-161d-597c-beea-a5ba35a99121",
+          "url": "https://openknowledge.worldbank.org/entities/publication/30043205-161d-597c-beea-a5ba35a99121",
+          "summary": "Citation #2 from Perplexity research",
+          "agent": "Market Intelligence",
+          "source_type": "Web Research",
+          "medium": "Perplexity API"
+        },
+        {
+          "title": "Projections for COVID-19 spread in India and its worst affected five\n  states using the Modified SEIRD and LSTM models",
+          "url": "http://arxiv.org/abs/2009.06457v1",
+          "summary": "The last leg of the year 2019 gave rise to a virus named COVID-19 (Corona\nVirus Disease 2019). Since the beginning of this infection in India, the\ngovernment implemented several policies and restricti",
+          "agent": "Data Intelligence",
+          "source_type": "Academic",
+          "medium": "arXiv API"
+        },
+        {
+          "title": "In search of the origin of Corona virus",
+          "url": "http://arxiv.org/abs/2008.10939v1",
+          "summary": "In this paper, the authors aim to find out the origin of the corona and the\nduration of the present pandemic caused by it. Besides, they aim to find out\nthe reason for such outbreaks occurring often i",
+          "agent": "Data Intelligence",
+          "source_type": "Academic",
+          "medium": "arXiv API"
+        }
+      ],
+      "total_cost": 0.000726,
+      "total_tokens": 726,
+      "execution_time": 9.025448083877563,
+      "confidence_score": 76,
+      "mock_mode": false,
+      "agent_data": [
+        {
+          "agent_name": "Market Intelligence",
+          "source_count": 2,
+          "sources_retrieved": 2,
+          "findings_count": 5,
+          "insights_count": 3,
+          "cost": 0.000726,
+          "tokens": 726,
+          "prompt_tokens": 37,
+          "completion_tokens": 689,
+          "execution_time": 6.99544620513916,
+          "status": "✅ Success",
+          "model_used": "sonar",
+          "model_type": "Quick Search",
+          "medium": "Perplexity API",
+          "data_type": "Live Research"
+        },
+        {
+          "agent_name": "Sentiment Analytics",
+          "source_count": 0,
+          "sources_retrieved": 0,
+          "findings_count": 0,
+          "insights_count": 0,
+          "cost": 0.0,
+          "tokens": 0,
+          "execution_time": 25.21117329597473,
+          "status": "❌ API Failed",
+          "error": "YouTube API error: build_structured_record() got an unexpected keyword argument 'agent_name'",
+          "medium": "YouTube API"
+        },
+        {
+          "agent_name": "Data Intelligence",
+          "source_count": 2,
+          "sources_retrieved": 2,
+          "findings_count": 2,
+          "insights_count": 2,
+          "cost": 0.0,
+          "tokens": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "execution_time": 2.0300018787384033,
+          "status": "✅ Success",
+          "model_used": "N/A",
+          "model_type": "N/A",
+          "medium": "arXiv API + LLM",
+          "data_type": "Academic Research"
+        }
+      ],
+      "agent_results": {
+        "Market Intelligence": {
+          "success": true,
+          "agent_name": "Market Intelligence",
+          "summary": "## Comprehensive Analysis: Next Steps Taken by Governments in Response to COVID-19\n\n### Introduction\n\nThe COVID-19 pandemic has significantly impacted global health, economies, and societal structures. Governments worldwide have implemented various measures to combat the virus, from vaccination strategies to telehealth policies. This analysis will explore recent developments and future directions in government responses to COVID-19.\n\n### Vaccination Strategies\n\n1. **Individual-Based Decision-Mak",
+          "findings": [
+            "**Individual-Based Decision-Making**: The CDC has shifted towards individual-based decision-making for COVID-19 vaccinations, emphasizing informed consent and personalized risk-benefit assessments. This approach reflects a move away from blanket recommendations, acknowledging the endemic nature of COVID-19 and concerns about booster safety and efficacy[3][5][9].",
+            "**Global Vaccination Targets**: The World Bank previously aimed to vaccinate at least 60% of the global population by mid-2022 to achieve herd immunity. While this target was not universally met, vaccination efforts have continued, with a focus on equitable distribution and access, especially in low- and middle-income countries[2].",
+            "**Telehealth Policy Cliff**: Key telehealth flexibilities introduced during the pandemic are set to expire on September 30, 2025. This includes the ability of Federally Qualified Health Centers (FQHCs) and Rural Health Clinics (RHCs) to use telecommunication technology for medical visits. However, CMS has extended certain telehealth services, such as mental health visits via live video or audio-only, with reimbursement at the PPS/AIR rate[1].",
+            "**Health System Resilience**: Studies have highlighted the importance of evaluating health system resilience during pandemics. For example, research in Sweden analyzed changes in essential health service utilization, emphasizing the need for adaptable healthcare systems[4].",
+            "**WHO Guidance**: The World Health Organization (WHO) has published guidance to support government decision-making on public health and social measures. This includes recommendations on vaccination, distancing, and other preventive measures to slow transmission[7][8]."
+          ],
+          "insights": [
+            "**Social and Economic Impacts**: The pandemic has reshaped global economies and social structures. Governments have implemented policies to mitigate these impacts, including financial support for affected industries and populations[10].",
+            "**AI and Data Analytics**: Artificial intelligence and data analytics are expected to play significant roles in future pandemic preparedness and response. These technologies can enhance predictive modeling, contact tracing, and resource allocation[11].",
+            "**Global Cooperation**: International cooperation remains crucial for addressing pandemics. Governments must work together to share data, coordinate public health strategies, and ensure equitable access to vaccines and treatments."
+          ],
+          "sources": [
+            {
+              "title": "https://telehealthresourcecenter.org/resources/the-telehealth-policy-cliff-preparing-for-october-1-2025/",
+              "url": "https://telehealthresourcecenter.org/resources/the-telehealth-policy-cliff-preparing-for-october-1-2025/",
+              "summary": "Citation #1 from Perplexity research",
+              "agent": "Market Intelligence",
+              "source_type": "Web Research",
+              "medium": "Perplexity API"
+            },
+            {
+              "title": "https://openknowledge.worldbank.org/entities/publication/30043205-161d-597c-beea-a5ba35a99121",
+              "url": "https://openknowledge.worldbank.org/entities/publication/30043205-161d-597c-beea-a5ba35a99121",
+              "summary": "Citation #2 from Perplexity research",
+              "agent": "Market Intelligence",
+              "source_type": "Web Research",
+              "medium": "Perplexity API"
+            }
+          ],
+          "source_count": 2,
+          "sources_retrieved": 2,
+          "tokens": 726,
+          "prompt_tokens": 37,
+          "completion_tokens": 689,
+          "cost": 0.000726,
+          "status": "✅ Success",
+          "model_used": "sonar",
+          "model_type": "Quick Search",
+          "medium": "Perplexity API",
+          "data_type": "Live Research",
+          "execution_time": 6.99544620513916
+        },
+        "Sentiment Analytics": {
+          "success": false,
+          "agent_name": "Sentiment Analytics",
+          "execution_time": 25.21117329597473,
+          "status": "❌ API Failed",
+          "error": "YouTube API error: build_structured_record() got an unexpected keyword argument 'agent_name'",
+          "medium": "YouTube API",
+          "suggestion": "Check YOUTUBE_API_KEY in .env"
+        },
+        "Data Intelligence": {
+          "success": true,
+          "agent_name": "Data Intelligence",
+          "summary": "Academic analysis from 2 papers",
+          "findings": [
+            "The last leg of the year 2019 gave rise to a virus named COVID-19 (Corona\nVirus Disease 2019). Since the beginning of this infection in India, the\ngov",
+            "In this paper, the authors aim to find out the origin of the corona and the\nduration of the present pandemic caused by it. Besides, they aim to find o"
+          ],
+          "insights": [
+            "Academic research provides evidence-based insights",
+            "Peer-reviewed sources validate findings"
+          ],
+          "sources": [
+            {
+              "title": "Projections for COVID-19 spread in India and its worst affected five\n  states using the Modified SEIRD and LSTM models",
+              "url": "http://arxiv.org/abs/2009.06457v1",
+              "summary": "The last leg of the year 2019 gave rise to a virus named COVID-19 (Corona\nVirus Disease 2019). Since the beginning of this infection in India, the\ngovernment implemented several policies and restricti",
+              "agent": "Data Intelligence",
+              "source_type": "Academic",
+              "medium": "arXiv API"
+            },
+            {
+              "title": "In search of the origin of Corona virus",
+              "url": "http://arxiv.org/abs/2008.10939v1",
+              "summary": "In this paper, the authors aim to find out the origin of the corona and the\nduration of the present pandemic caused by it. Besides, they aim to find out\nthe reason for such outbreaks occurring often i",
+              "agent": "Data Intelligence",
+              "source_type": "Academic",
+              "medium": "arXiv API"
+            }
+          ],
+          "source_count": 2,
+          "sources_retrieved": 2,
+          "tokens": 0,
+          "cost": 0.0,
+          "execution_time": 2.0300018787384033,
+          "status": "✅ Success",
+          "medium": "arXiv API + LLM",
           "data_type": "Academic Research"
         }
       }

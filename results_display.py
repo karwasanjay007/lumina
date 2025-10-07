@@ -1,12 +1,13 @@
 """
-Results Display Module
-Handles all results visualization and export functionality
+Results Display Module - FIXED VERSION
+Handles all results visualization with proper source structure handling
 """
 
 import streamlit as st
 import json
 from datetime import datetime
 import pandas as pd
+import os
 
 try:
     import matplotlib.pyplot as plt
@@ -15,6 +16,39 @@ except ImportError:
     MATPLOTLIB_AVAILABLE = False
 
 from utils import generate_comprehensive_pdf, PDF_AVAILABLE
+
+def flatten_sources(sources):
+    """
+    Flatten nested source structures from agents
+    Handles both flat lists and nested structures
+    """
+    flattened = []
+    
+    for source in sources:
+        # Check if source has 'items' (nested structure from build_structured_record)
+        if isinstance(source, dict) and 'items' in source:
+            # Extract items from nested structure
+            for item in source.get('items', []):
+                flattened.append({
+                    'title': item.get('title', 'Unknown'),
+                    'url': item.get('source', item.get('url', '#')),
+                    'summary': item.get('summary', 'No description'),
+                    'agent': source.get('agent_name', item.get('authors', ['Unknown'])[0] if item.get('authors') else 'Unknown'),
+                    'source_type': source.get('source_name', 'Web Research'),
+                    'medium': source.get('metadata', {}).get('medium', 'N/A') if 'metadata' in source else 'N/A'
+                })
+        else:
+            # Already flat structure
+            flattened.append({
+                'title': source.get('title', 'Unknown'),
+                'url': source.get('url', '#'),
+                'summary': source.get('summary', 'No description'),
+                'agent': source.get('agent', 'Unknown'),
+                'source_type': source.get('source_type', 'Unknown'),
+                'medium': source.get('medium', 'N/A')
+            })
+    
+    return flattened
 
 def display_results(results):
     """Display comprehensive research results"""
@@ -50,10 +84,12 @@ def display_results(results):
         """, unsafe_allow_html=True)
     
     with col4:
+        # FIXED: Flatten sources before counting
+        all_sources = flatten_sources(results.get('sources', []))
         st.markdown(f"""
         <div class="metric-card">
             <div class="metric-label">Sources</div>
-            <div class="metric-value">{len(results.get('sources', []))}</div>
+            <div class="metric-value">{len(all_sources)}</div>
         </div>
         """, unsafe_allow_html=True)
     
@@ -71,41 +107,38 @@ def display_results(results):
     st.markdown("---")
     col1, col2 = st.columns(2)
     
-    import os
     with col1:
         results_json = json.dumps(results, indent=2, ensure_ascii=False)
         json_filename = f"luminar_results_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
-        # Check if file exists before offering download (for session/history restore)
-        if not os.path.exists(json_filename):
-            st.download_button(
-                "📥 Download Results JSON",
-                results_json,
-                json_filename,
-                "application/json",
-                width='stretch',
-                key="download_results_json_btn"
-            )
-        else:
-            st.info(f"JSON file {json_filename} not found or already downloaded.")
+        st.download_button(
+            "📥 Download Results JSON",
+            results_json,
+            json_filename,
+            "application/json",
+            use_container_width=True,
+            key="download_results_json_btn"
+        )
     
     with col2:
         pdf_filename = f"luminar_report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.pdf"
         if PDF_AVAILABLE:
-            pdf_buffer = generate_comprehensive_pdf(results)
-            # Check if file exists before offering download
-            if pdf_buffer and not os.path.exists(pdf_filename):
-                st.download_button(
-                    "📄 Download Comprehensive PDF",
-                    pdf_buffer,
-                    pdf_filename,
-                    "application/pdf",
-                    width='stretch',
-                    key="download_pdf_btn"
-                )
-            else:
-                st.info(f"PDF file {pdf_filename} not found or already downloaded.")
+            try:
+                pdf_buffer = generate_comprehensive_pdf(results)
+                if pdf_buffer:
+                    st.download_button(
+                        "📄 Download PDF Report",
+                        pdf_buffer,
+                        pdf_filename,
+                        "application/pdf",
+                        use_container_width=True,
+                        key="download_pdf_btn"
+                    )
+                else:
+                    st.button("📄 PDF Export", disabled=True, use_container_width=True)
+            except Exception as e:
+                st.button(f"📄 PDF Error: {str(e)[:30]}", disabled=True, use_container_width=True)
         else:
-            st.button("📄 PDF Export Unavailable", disabled=True, width='stretch')
+            st.button("📄 PDF Unavailable", disabled=True, use_container_width=True)
     
     # TABS
     tabs = st.tabs([
@@ -117,27 +150,21 @@ def display_results(results):
         "📈 Statistics"
     ])
     
-    # TAB 1: Overview
     with tabs[0]:
         display_overview_tab(results)
     
-    # TAB 2: Executive Summary
     with tabs[1]:
         display_summary_tab(results)
     
-    # TAB 3: Key Findings
     with tabs[2]:
         display_findings_tab(results)
     
-    # TAB 4: Strategic Insights
     with tabs[3]:
         display_insights_tab(results)
     
-    # TAB 5: All Sources
     with tabs[4]:
         display_sources_tab(results)
     
-    # TAB 6: Statistics
     with tabs[5]:
         display_statistics_tab(results)
 
@@ -148,48 +175,51 @@ def display_overview_tab(results):
     agent_data = results.get('agent_data', [])
     if agent_data:
         df_data = []
-        if agent_data:
-            df_data = []
-            for agent in agent_data:
-                df_data.append({
-                    "Agent": agent.get('agent_name', 'Unknown'),
-                    "Status": agent.get('status', 'Unknown'),
-                    "Sources": agent.get('source_count', 0),
-                    "Findings": agent.get('findings_count', 0),
-                    "Insights": agent.get('insights_count', 0),
-                    "Tokens": agent.get('tokens', 0),
-                    "Cost": f"${agent.get('cost', 0):.4f}",
-                    "Time": f"{agent.get('execution_time', 0):.2f}s",
-                    "Medium": agent.get('medium', 'N/A')
-                })
-            df = pd.DataFrame(df_data)
-            # Clean currency columns for Arrow compatibility
-            for col in ["Value", "Cost", "Per Source"]:
-                if col in df.columns:
-                    df[col] = df[col].astype(str).str.replace(r"[$,]", "", regex=True)
-                    df[col] = pd.to_numeric(df[col], errors="coerce")
-            st.dataframe(df, width='stretch', hide_index=True)
-            st.markdown("---")
-            # Quality indicators
-            col1, col2, col3 = st.columns(3)
-            with col1:
-                st.markdown("**Coverage**")
-                total_sources = sum(a.get('source_count', 0) for a in agent_data)
-                coverage = "Excellent" if total_sources >= 15 else "Good" if total_sources >= 8 else "Limited"
-                st.info(f"**{coverage}**\n\n{total_sources} total sources")
-            with col2:
-                st.markdown("**Diversity**")
-                successful = sum(1 for a in agent_data if '✅' in a.get('status', ''))
-                diversity = "High" if successful >= 3 else "Medium" if successful >= 2 else "Low"
-                st.info(f"**{diversity}**\n\n{successful}/{len(agent_data)} agents")
-            with col3:
-                st.markdown("**Confidence**")
-                confidence = results.get('confidence_score', 0)
-                level = "High" if confidence >= 75 else "Medium" if confidence >= 50 else "Low"
-                st.info(f"**{level}**\n\n{confidence}/100 score")
-            confidence = results.get('confidence_score', 0)
+        for agent in agent_data:
+            df_data.append({
+                "Agent": agent.get('agent_name', 'Unknown'),
+                "Status": agent.get('status', 'Unknown'),
+                "Sources": agent.get('source_count', 0),
+                "Findings": agent.get('findings_count', 0),
+                "Insights": agent.get('insights_count', 0),
+                "Tokens": agent.get('tokens', 0),
+                "Cost": agent.get('cost', 0),
+                "Time": f"{agent.get('execution_time', 0):.2f}s",
+                "Medium": agent.get('medium', 'N/A')
+            })
+        
+        # Create DataFrame
+        df = pd.DataFrame(df_data)
+        
+        # Format cost column
+        df['Cost'] = df['Cost'].apply(lambda x: f"${x:.4f}")
+        
+        # Display table
+        st.dataframe(
+            df,
+            use_container_width=True,
+            hide_index=True
+        )
+    else:
+        st.warning("No agent performance data available")
+    
+    # Confidence Score
+    st.markdown("---")
+    st.markdown("### 🎯 Research Confidence")
+    
+    confidence = results.get('confidence_score', 0)
+    
+    if confidence > 0:
+        col1, col2 = st.columns([2, 1])
+        
+        with col1:
+            st.progress(confidence / 100)
+        
+        with col2:
             level = "High" if confidence >= 75 else "Medium" if confidence >= 50 else "Low"
-            st.info(f"**{level}**\n\n{confidence}/100 score")
+            st.info(f"**{level}** - {confidence}/100")
+    else:
+        st.info("Confidence score not available")
 
 def display_summary_tab(results):
     """Display executive summary"""
@@ -209,7 +239,7 @@ def display_findings_tab(results):
     
     if findings:
         for idx, finding in enumerate(findings, 1):
-            clean = finding.strip()
+            clean = finding.strip() if isinstance(finding, str) else str(finding)
             if clean:
                 st.markdown(f"""
                 <div class="finding-card">
@@ -227,7 +257,7 @@ def display_insights_tab(results):
     
     if insights:
         for insight in insights:
-            clean = insight.strip()
+            clean = insight.strip() if isinstance(insight, str) else str(insight)
             if clean:
                 st.markdown(f"""
                 <div style="display: inline-block; background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%); color: white; padding: 0.75rem 1.25rem; border-radius: 24px; margin: 0.5rem 0.5rem 0.5rem 0; font-size: 0.95rem; font-weight: 500; box-shadow: 0 2px 8px rgba(14, 165, 233, 0.2);">
@@ -238,11 +268,17 @@ def display_insights_tab(results):
         st.info("No strategic insights available")
 
 def display_sources_tab(results):
-    """Display all sources"""
+    """
+    Display all sources - FIXED to handle nested structures
+    """
     st.markdown('<div class="section-title">🔗 Research Sources</div>', unsafe_allow_html=True)
     
+    # FIXED: Flatten sources first
+    all_sources = flatten_sources(results.get('sources', []))
+    
+    # Group by agent
     sources_by_agent = {}
-    for source in results.get('sources', []):
+    for source in all_sources:
         agent = source.get('agent', 'Unknown')
         if agent not in sources_by_agent:
             sources_by_agent[agent] = []
@@ -253,17 +289,28 @@ def display_sources_tab(results):
             st.markdown(f"#### {agent_name} ({len(sources)} sources)")
             
             for idx, source in enumerate(sources, 1):
+                title = source.get('title', 'Unknown')
                 source_type = source.get('source_type', 'Unknown')
                 medium = source.get('medium', 'N/A')
+                url = source.get('url', '#')
+                summary = source.get('summary', 'No description')
+                
+                # Clean up N/A values
+                if not url or url == '#' or url == 'N/A':
+                    url = '#'
+                    url_display = 'URL not available'
+                else:
+                    url_display = url
+                
                 st.markdown(f"""
                 <div style="background: white; border-radius: 8px; padding: 1.25rem; margin-bottom: 1rem; border: 1px solid #e2e8f0; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
                     <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
-                        <div style="font-weight: 600; color: #0ea5e9; flex: 1;">{idx}. {source.get('title', 'Unknown')}</div>
+                        <div style="font-weight: 600; color: #0ea5e9; flex: 1;">{idx}. {title}</div>
                         <span style="background: #e0f2fe; color: #0284c7; padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.75rem; white-space: nowrap; margin-left: 1rem;">{source_type}</span>
                     </div>
                     <div style="color: #64748b; font-size: 0.85rem; margin-bottom: 0.5rem;">📡 Medium: {medium}</div>
-                    <a href="{source.get('url', '#')}" target="_blank" style="color: #64748b; font-size: 0.85rem; word-break: break-all;">🔗 {source.get('url', 'N/A')}</a>
-                    <div style="color: #475569; margin-top: 0.5rem; font-size: 0.9rem;">{source.get('summary', 'No description')}</div>
+                    <a href="{url}" target="_blank" style="color: #64748b; font-size: 0.85rem; word-break: break-all;">🔗 {url_display}</a>
+                    <div style="color: #475569; margin-top: 0.5rem; font-size: 0.9rem;">{summary}</div>
                 </div>
                 """, unsafe_allow_html=True)
     else:
@@ -294,100 +341,42 @@ def display_statistics_tab(results):
             st.metric("Total Insights", total_insights)
         
         with col4:
-            successful_agents = sum(1 for a in agent_data if '✅' in a.get('status', ''))
-            st.metric("Successful Agents", f"{successful_agents}/{len(agent_data)}")
+            avg_time = sum(a.get('execution_time', 0) for a in agent_data) / len(agent_data)
+            st.metric("Avg Time/Agent", f"{avg_time:.2f}s")
         
         st.markdown("---")
         
-        # Token Usage Statistics
-        st.markdown("### 🔢 Token Usage Analysis")
+        # Token Usage Breakdown
+        st.markdown("### 🎫 Token Usage Breakdown")
         
-        token_data = []
         for agent in agent_data:
             if agent.get('tokens', 0) > 0:
-                token_data.append({
-                    "Agent": agent.get('agent_name', 'Unknown'),
-                    "Total Tokens": agent.get('tokens', 0),
-                    "Prompt Tokens": agent.get('prompt_tokens', 0),
-                    "Completion Tokens": agent.get('completion_tokens', 0),
-                    "Efficiency %": f"{(agent.get('completion_tokens', 0) / max(agent.get('tokens', 1), 1) * 100):.1f}%"
-                })
-        
-        if token_data:
-            df_tokens = pd.DataFrame(token_data)
-            # Clean currency columns for Arrow compatibility
-            for col in ["Value", "Cost", "Per Source"]:
-                if col in df_tokens.columns:
-                    df_tokens[col] = df_tokens[col].astype(str).str.replace(r"[$,]", "", regex=True)
-                    df_tokens[col] = pd.to_numeric(df_tokens[col], errors="coerce")
-            st.dataframe(df_tokens, width='stretch', hide_index=True)
-            
-            # Token chart
-            if MATPLOTLIB_AVAILABLE and len(token_data) > 0:
-                fig, ax = plt.subplots(figsize=(10, 4))
+                col1, col2, col3 = st.columns(3)
                 
-                agents = [d['Agent'][:15] for d in token_data]
-                totals = [d['Total Tokens'] for d in token_data]
+                with col1:
+                    st.write(f"**{agent.get('agent_name')}**")
                 
-                bars = ax.bar(agents, totals, color=['#0ea5e9', '#f97316', '#10b981'])
-                ax.set_title('Total Tokens by Agent', fontsize=12, fontweight='bold')
-                ax.set_ylabel('Tokens', fontsize=10)
+                with col2:
+                    prompt_tokens = agent.get('prompt_tokens', 0)
+                    completion_tokens = agent.get('completion_tokens', 0)
+                    total_tokens = agent.get('tokens', prompt_tokens + completion_tokens)
+                    st.write(f"Total: {total_tokens:,}")
                 
-                for i, v in enumerate(totals):
-                    ax.text(i, v, str(v), ha='center', va='bottom', fontsize=9)
-                
-                plt.tight_layout()
-                st.pyplot(fig)
-                plt.close()
+                with col3:
+                    cost = agent.get('cost', 0)
+                    st.write(f"Cost: ${cost:.4f}")
         
         st.markdown("---")
         
-        # Cost Analysis
-        st.markdown("### 💰 Cost Distribution")
+        # Performance Summary
+        st.markdown("### ⚡ Performance Summary")
         
-        cost_data = []
-        for agent in agent_data:
-            if agent.get('cost', 0) > 0:
-                cost_data.append({
-                    "Agent": agent.get('agent_name', 'Unknown'),
-                    "Cost": f"${agent.get('cost', 0):.4f}",
-                    "Per Source": f"${(agent.get('cost', 0) / max(agent.get('source_count', 1), 1)):.4f}"
-                })
+        success_count = sum(1 for a in agent_data if 'Success' in a.get('status', ''))
+        total_agents = len(agent_data)
+        success_rate = (success_count / total_agents * 100) if total_agents > 0 else 0
         
-        if cost_data:
-            df_cost = pd.DataFrame(cost_data)
-            # Clean currency columns for Arrow compatibility
-            for col in ["Value", "Cost", "Per Source"]:
-                if col in df_cost.columns:
-                    df_cost[col] = df_cost[col].astype(str).str.replace(r"[$,]", "", regex=True)
-                    df_cost[col] = pd.to_numeric(df_cost[col], errors="coerce")
-            st.dataframe(df_cost, width='stretch', hide_index=True)
-        
-        st.markdown("---")
-        
-        # Summary Statistics
-        st.markdown("### 📋 Summary Statistics")
-        
-        summary_stats = {
-            "Total Agents": len(agent_data),
-            "Successful Agents": successful_agents,
-            "Total Sources": sum(a.get('source_count', 0) for a in agent_data),
-            "Total Findings": sum(a.get('findings_count', 0) for a in agent_data),
-            "Total Insights": sum(a.get('insights_count', 0) for a in agent_data),
-            "Total Tokens": results.get('total_tokens', 0),
-            "Total Cost": f"${results.get('total_cost', 0):.4f}",
-            "Total Time": f"{results.get('execution_time', 0):.2f}s",
-            "Confidence Score": f"{results.get('confidence_score', 0)}/100"
-        }
-        
-        summary_df = pd.DataFrame([summary_stats]).T
-        summary_df.columns = ['Value']
-        # Clean currency columns for Arrow compatibility
-        for col in ["Value", "Cost", "Per Source"]:
-            if col in summary_df.columns:
-                summary_df[col] = summary_df[col].astype(str).str.replace(r"[$,]", "", regex=True)
-                summary_df[col] = pd.to_numeric(summary_df[col], errors="coerce")
-        st.dataframe(summary_df, width='stretch')
+        st.progress(success_rate / 100)
+        st.write(f"**Success Rate:** {success_rate:.1f}% ({success_count}/{total_agents} agents)")
         
     else:
         st.info("No statistics available")
