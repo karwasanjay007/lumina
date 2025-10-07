@@ -1,8 +1,8 @@
 [
   {
-    "query": "NVIDIA stocks",
+    "query": "Ola electric shares and its future projection",
     "domain": "Stock Market Analysis",
-    "timestamp": "2025-10-07 10:58:55",
+    "timestamp": "2025-10-07 16:10:39",
     "agents_state": {
       "Market Intelligence": true,
       "Sentiment Analytics": true,
@@ -13,1412 +13,353 @@
     "sentiment_sources": 2,
     "data_sources": 2,
     "results": {
-      "query": "NVIDIA stocks",
+      "query": "Ola electric shares and its future projection",
       "domain": "Stock Market Analysis",
-      "timestamp": "2025-10-07 10:58:55",
+      "timestamp": "2025-10-07 16:10:39",
       "agents_used": [
         "Market Intelligence",
         "Sentiment Analytics",
         "Data Intelligence"
       ],
       "model_type": "Quick Search",
-      "summary": "Comprehensive quantitative analysis of 'NVIDIA stocks' reveals exceptional market positioning with institutional support reaching 78% of float (up from 62% YoY). Current market capitalization demonstrates 25% YoY growth trajectory, significantly outperforming S&P 500 benchmark by 18 percentage points. Financial performance shows revenue growth of $2.4B (42% YoY increase), operating margin expansion to 28.5% (up 3.2 percentage points), and free cash flow surge of 65% to $850M quarterly.",
+      "summary": "Academic research analysis from 2 sources",
       "key_findings": [
-        "Market Leadership Position: Commands 32% market share in high-growth sector, outperforming S&P 500 by 18 percentage points over trailing 12 months with consistent alpha generation",
-        "Financial Performance Metrics: Q3 revenue $2.4B (+42% YoY), operating margin expansion to 28.5% (+3.2pp), FCF surge 65% to $850M quarterly, demonstrating operational leverage",
-        "Institutional Validation: Ownership increased to 78% of float from 62% YoY, major additions from Vanguard (+$420M), BlackRock (+$380M), Fidelity (+$290M)",
-        "Analyst Consensus Bullish: 89% Buy rating from 28 of 32 covering analysts, average price target $285 (+34% upside), recent upgrades from JPMorgan and Goldman Sachs",
-        "Technical Momentum Confirmed: RSI 65 (healthy), MACD golden cross formation, 50-day MA crossing 200-day MA, volume trends support continued trajectory",
-        "Valuation Metrics Attractive: Forward P/E 24.5x (vs sector average 32.1x), PEG ratio 1.4, EV/EBITDA 15.2x suggesting room for multiple expansion",
-        "Analyzed 2 videos with high engagement",
-        "Positive sentiment dominates community discussions",
-        "Expert opinions converge on key recommendations",
-        "Integrated 2 diverse academic sources"
+        "Here are two key findings and insights regarding Ola Electric shares and their future projections:",
+        "## Key Findings and Insights",
+        "Found 2 academic sources",
+        "Research shows peer-reviewed insights",
+        "Academic consensus on key findings"
       ],
       "insights": [
-        "Investment Thesis: Strong buy opportunity based on fundamental strength (42% revenue growth, 28.5% margins), technical momentum (golden cross, RSI 65), and institutional validation (78% ownership)",
-        "Risk Assessment: Key risks include sector rotation (30% probability), regulatory headwinds (15% probability), macro deceleration (25% probability)",
-        "Portfolio Strategy: Recommend 7-12% allocation for growth investors, 18-24 month horizon, $285 price target, stop-loss at $205",
-        "Video content demonstrates practical applications",
-        "Community identifies implementation challenges",
-        "Expert predictions align on adoption timeline",
-        "Research validates trends with statistical confidence"
+        "### 1. **Recent Performance and Market Trends**",
+        "- **Recent Surge**: Ola Electric shares have experienced significant fluctuations, with a notable surge of 55% in a month, driven by positive technical indicators and the approval of the PLI (Production Linked Incentive) scheme[1]. However, the stock has also faced declines, such as a recent drop of 2.13%[3].",
+        "Academic research validates topic",
+        "Multiple studies support conclusions"
       ],
       "sources": [
         {
-          "title": "[MOCK] Reuters - Stock Market Analysis Report #1",
-          "url": "https://example.com/mock-1",
-          "summary": "Comprehensive stock market analysis analysis with data",
+          "title": "Source #1 - Ola electric shares and its future projection",
+          "url": "https://economictimes.com/markets/stocks/news/ola-electric-shares-skyrocket-55-in-a-month-analysts-see-further-rally-till-rs-90/articleshow/123672054.cms",
+          "summary": "Research source for: Ola electric shares and its future projection",
           "agent": "Market Intelligence",
-          "source_type": "Mock Data",
-          "medium": "Mock API"
-        },
-        {
-          "title": "[MOCK] WSJ - Stock Market Analysis Report #2",
-          "url": "https://example.com/mock-2",
-          "summary": "Comprehensive stock market analysis analysis with data",
-          "agent": "Market Intelligence",
-          "source_type": "Mock Data",
-          "medium": "Mock API"
-        },
-        {
-          "title": "[MOCK] Video Analysis #1 - NVIDIA stocks",
-          "url": "https://youtube.com/watch?v=mock1",
-          "summary": "Expert video commentary on NVIDIA stocks",
-          "agent": "Sentiment Analytics",
-          "source_type": "Mock Video",
-          "medium": "Mock YouTube"
-        },
-        {
-          "title": "[MOCK] Video Analysis #2 - NVIDIA stocks",
-          "url": "https://youtube.com/watch?v=mock2",
-          "summary": "Expert video commentary on NVIDIA stocks",
-          "agent": "Sentiment Analytics",
-          "source_type": "Mock Video",
-          "medium": "Mock YouTube"
-        },
-        {
-          "title": "[MOCK] Academic Paper #1 - NVIDIA stocks",
-          "url": "https://example.com/paper-1",
-          "summary": "Peer-reviewed research on NVIDIA stocks",
-          "agent": "Data Intelligence",
-          "source_type": "Mock Academic",
-          "medium": "Mock arXiv+News"
-        },
-        {
-          "title": "[MOCK] Academic Paper #2 - NVIDIA stocks",
-          "url": "https://example.com/paper-2",
-          "summary": "Peer-reviewed research on NVIDIA stocks",
-          "agent": "Data Intelligence",
-          "source_type": "Mock Academic",
-          "medium": "Mock arXiv+News"
-        }
-      ],
-      "total_cost": 0.0037,
-      "total_tokens": 1850,
-      "execution_time": 5.020127296447754,
-      "confidence_score": 79,
-      "mock_mode": true,
-      "agent_data": [
-        {
-          "agent_name": "Market Intelligence",
-          "source_count": 2,
-          "sources_retrieved": 2,
-          "findings_count": 6,
-          "insights_count": 3,
-          "cost": 0.0037,
-          "tokens": 1850,
-          "prompt_tokens": 450,
-          "completion_tokens": 1400,
-          "execution_time": 2.002474069595337,
-          "status": "✅ Success (Mock)",
-          "model_used": "sonar-pro",
-          "model_type": "Quick Search",
-          "medium": "Mock Perplexity API",
-          "data_type": "Simulated Research"
-        },
-        {
-          "agent_name": "Sentiment Analytics",
-          "source_count": 2,
-          "sources_retrieved": 2,
-          "findings_count": 3,
-          "insights_count": 3,
-          "cost": 0.0,
-          "tokens": 0,
-          "prompt_tokens": 0,
-          "completion_tokens": 0,
-          "execution_time": 1.5024170875549316,
-          "status": "✅ Success (Mock)",
-          "model_used": "N/A",
-          "model_type": "N/A",
-          "medium": "Mock YouTube API",
-          "data_type": "Video Analysis"
-        },
-        {
-          "agent_name": "Data Intelligence",
-          "source_count": 2,
-          "sources_retrieved": 2,
-          "findings_count": 4,
-          "insights_count": 3,
-          "cost": 0.0,
-          "tokens": 0,
-          "prompt_tokens": 0,
-          "completion_tokens": 0,
-          "execution_time": 1.5152361392974854,
-          "status": "✅ Success (Mock)",
-          "model_used": "N/A",
-          "model_type": "N/A",
-          "medium": "Mock APIs",
-          "data_type": "Academic Data"
-        }
-      ],
-      "agent_results": {
-        "Market Intelligence": {
-          "success": true,
-          "agent_name": "Market Intelligence",
-          "model_used": "sonar-pro",
-          "model_type": "Quick Search",
-          "summary": "Comprehensive quantitative analysis of 'NVIDIA stocks' reveals exceptional market positioning with institutional support reaching 78% of float (up from 62% YoY). Current market capitalization demonstrates 25% YoY growth trajectory, significantly outperforming S&P 500 benchmark by 18 percentage points. Financial performance shows revenue growth of $2.4B (42% YoY increase), operating margin expansion to 28.5% (up 3.2 percentage points), and free cash flow surge of 65% to $850M quarterly.",
-          "findings": [
-            "Market Leadership Position: Commands 32% market share in high-growth sector, outperforming S&P 500 by 18 percentage points over trailing 12 months with consistent alpha generation",
-            "Financial Performance Metrics: Q3 revenue $2.4B (+42% YoY), operating margin expansion to 28.5% (+3.2pp), FCF surge 65% to $850M quarterly, demonstrating operational leverage",
-            "Institutional Validation: Ownership increased to 78% of float from 62% YoY, major additions from Vanguard (+$420M), BlackRock (+$380M), Fidelity (+$290M)",
-            "Analyst Consensus Bullish: 89% Buy rating from 28 of 32 covering analysts, average price target $285 (+34% upside), recent upgrades from JPMorgan and Goldman Sachs",
-            "Technical Momentum Confirmed: RSI 65 (healthy), MACD golden cross formation, 50-day MA crossing 200-day MA, volume trends support continued trajectory",
-            "Valuation Metrics Attractive: Forward P/E 24.5x (vs sector average 32.1x), PEG ratio 1.4, EV/EBITDA 15.2x suggesting room for multiple expansion"
-          ],
-          "insights": [
-            "Investment Thesis: Strong buy opportunity based on fundamental strength (42% revenue growth, 28.5% margins), technical momentum (golden cross, RSI 65), and institutional validation (78% ownership)",
-            "Risk Assessment: Key risks include sector rotation (30% probability), regulatory headwinds (15% probability), macro deceleration (25% probability)",
-            "Portfolio Strategy: Recommend 7-12% allocation for growth investors, 18-24 month horizon, $285 price target, stop-loss at $205"
-          ],
-          "sources": [
-            {
-              "title": "[MOCK] Reuters - Stock Market Analysis Report #1",
-              "url": "https://example.com/mock-1",
-              "summary": "Comprehensive stock market analysis analysis with data",
-              "agent": "Market Intelligence",
-              "source_type": "Mock Data",
-              "medium": "Mock API"
-            },
-            {
-              "title": "[MOCK] WSJ - Stock Market Analysis Report #2",
-              "url": "https://example.com/mock-2",
-              "summary": "Comprehensive stock market analysis analysis with data",
-              "agent": "Market Intelligence",
-              "source_type": "Mock Data",
-              "medium": "Mock API"
-            }
-          ],
-          "source_count": 2,
-          "sources_retrieved": 2,
-          "tokens": 1850,
-          "prompt_tokens": 450,
-          "completion_tokens": 1400,
-          "cost": 0.0037,
-          "execution_time": 2.002474069595337,
-          "status": "✅ Success (Mock)",
-          "medium": "Mock Perplexity API",
-          "data_type": "Simulated Research"
-        },
-        "Sentiment Analytics": {
-          "success": true,
-          "agent_name": "Sentiment Analytics",
-          "summary": "Sentiment analysis of 2 video sources reveals positive trends",
-          "findings": [
-            "Analyzed 2 videos with high engagement",
-            "Positive sentiment dominates community discussions",
-            "Expert opinions converge on key recommendations"
-          ],
-          "insights": [
-            "Video content demonstrates practical applications",
-            "Community identifies implementation challenges",
-            "Expert predictions align on adoption timeline"
-          ],
-          "sources": [
-            {
-              "title": "[MOCK] Video Analysis #1 - NVIDIA stocks",
-              "url": "https://youtube.com/watch?v=mock1",
-              "summary": "Expert video commentary on NVIDIA stocks",
-              "agent": "Sentiment Analytics",
-              "source_type": "Mock Video",
-              "medium": "Mock YouTube"
-            },
-            {
-              "title": "[MOCK] Video Analysis #2 - NVIDIA stocks",
-              "url": "https://youtube.com/watch?v=mock2",
-              "summary": "Expert video commentary on NVIDIA stocks",
-              "agent": "Sentiment Analytics",
-              "source_type": "Mock Video",
-              "medium": "Mock YouTube"
-            }
-          ],
-          "source_count": 2,
-          "sources_retrieved": 2,
-          "tokens": 0,
-          "cost": 0.0,
-          "execution_time": 1.5024170875549316,
-          "status": "✅ Success (Mock)",
-          "medium": "Mock YouTube API",
-          "data_type": "Video Analysis"
-        },
-        "Data Intelligence": {
-          "success": true,
-          "agent_name": "Data Intelligence",
-          "summary": "Data synthesis of 2 academic sources with statistical validation",
-          "findings": [
-            "Integrated 2 diverse academic sources",
-            "Cross-validation shows high inter-source agreement",
-            "Longitudinal trends demonstrate consistent patterns",
-            "Meta-analysis reveals robust effect sizes"
-          ],
-          "insights": [
-            "Research validates trends with statistical confidence",
-            "Multi-source triangulation increases reliability",
-            "Predictive analytics suggest sustained growth"
-          ],
-          "sources": [
-            {
-              "title": "[MOCK] Academic Paper #1 - NVIDIA stocks",
-              "url": "https://example.com/paper-1",
-              "summary": "Peer-reviewed research on NVIDIA stocks",
-              "agent": "Data Intelligence",
-              "source_type": "Mock Academic",
-              "medium": "Mock arXiv+News"
-            },
-            {
-              "title": "[MOCK] Academic Paper #2 - NVIDIA stocks",
-              "url": "https://example.com/paper-2",
-              "summary": "Peer-reviewed research on NVIDIA stocks",
-              "agent": "Data Intelligence",
-              "source_type": "Mock Academic",
-              "medium": "Mock arXiv+News"
-            }
-          ],
-          "source_count": 2,
-          "sources_retrieved": 2,
-          "tokens": 0,
-          "cost": 0.0,
-          "execution_time": 1.5152361392974854,
-          "status": "✅ Success (Mock)",
-          "medium": "Mock APIs",
-          "data_type": "Academic Data"
-        }
-      }
-    }
-  },
-  {
-    "query": "BSE Stocks in india whats the latest",
-    "domain": "Stock Market Analysis",
-    "timestamp": "2025-10-07 11:09:45",
-    "agents_state": {
-      "Market Intelligence": true,
-      "Sentiment Analytics": true,
-      "Data Intelligence": true
-    },
-    "model_type": "Quick Search",
-    "market_sources": 2,
-    "sentiment_sources": 2,
-    "data_sources": 2,
-    "results": {
-      "query": "BSE Stocks in india whats the latest",
-      "domain": "Stock Market Analysis",
-      "timestamp": "2025-10-07 11:09:45",
-      "agents_used": [
-        "Market Intelligence",
-        "Sentiment Analytics",
-        "Data Intelligence"
-      ],
-      "model_type": "Quick Search",
-      "summary": " 1. Executive Summary\n\nThe **BSE SENSEX** currently trades at 82,126 (as of October 7, 2025), up 0.41% from the previous session but still below its all-time high of 85,978 set in September 2024[1]. The market is exhibiting **range-bound behavior** with modest YoY gains (+0.60%), while **IPO activity remains robust** despite secondary market stagnation[3]. Key catalysts include resilient domestic demand and strong liquidity, but concerns persist around global volatility, sector-specific headwinds (notably in IT and exporters), and valuation fatigue.\n\n",
-      "key_findings": [
-        "Finding from analysis",
-        "Finding from analysis",
-        "Analyzed 2 videos with high engagement",
-        "Positive sentiment dominates community discussions",
-        "Expert opinions converge on key recommendations",
-        "Integrated 2 diverse academic sources",
-        "Cross-validation shows high inter-source agreement",
-        "Longitudinal trends demonstrate consistent patterns",
-        "Meta-analysis reveals robust effect sizes"
-      ],
-      "insights": [
-        "Strategic insight",
-        "Strategic insight",
-        "Video content demonstrates practical applications",
-        "Community identifies implementation challenges",
-        "Expert predictions align on adoption timeline",
-        "Research validates trends with statistical confidence",
-        "Multi-source triangulation increases reliability"
-      ],
-      "sources": [
-        {
-          "title": "Source 1",
-          "url": "https://tradingeconomics.com/india/stock-market",
-          "summary": "Referenced in analysis",
-          "agent": "Market Intelligence",
-          "source_type": "Web Search",
+          "source_type": "Web Research",
           "medium": "Perplexity API"
         },
         {
-          "title": "Source 2",
-          "url": "https://economictimes.com/markets/expert-view/market-correction-opens-opportunities-in-domestic-sectors-pankaj-pandey/articleshow/124206394.cms",
-          "summary": "Referenced in analysis",
+          "title": "Source #2 - Ola electric shares and its future projection",
+          "url": "https://scanx.trade/stock-market-news/stocks/ola-electric-shares-surge-7-amid-block-deal-and-future-projections/14804265",
+          "summary": "Research source for: Ola electric shares and its future projection",
           "agent": "Market Intelligence",
-          "source_type": "Web Search",
+          "source_type": "Web Research",
           "medium": "Perplexity API"
         },
         {
-          "title": "[MOCK] Video Analysis #1 - BSE Stocks in india whats the latest",
-          "url": "https://youtube.com/watch?v=mock1",
-          "summary": "Expert video commentary on BSE Stocks in india whats the latest",
-          "agent": "Sentiment Analytics",
-          "source_type": "Mock Video",
-          "medium": "Mock YouTube"
+          "name": "video_1",
+          "items": [
+            {
+              "published_date": "2025-09-07T10:31:38Z",
+              "title": "BUY or Avoid - Ola Share | Fundamental Analysis",
+              "authors": [
+                "INVESTOR'S MIND VOICE"
+              ],
+              "summary": "No transcript available (attr_error: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript' | ffmpeg_not_found).",
+              "content": null,
+              "source": "https://www.youtube.com/watch?v=18NBvlc9Vxw",
+              "pdf_url": null
+            }
+          ],
+          "metadata": {
+            "video_id": "18NBvlc9Vxw",
+            "duration": "2:54",
+            "views": "376",
+            "likes": "0",
+            "comments": "0",
+            "language": "unknown",
+            "transcript_path": null,
+            "transcript_source": null,
+            "transcript_error": "attr_error: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript' | ffmpeg_not_found",
+            "debug": [
+              "youtube_api: attr_error: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript'",
+              "whisper: ffmpeg_not_found"
+            ]
+          }
         },
         {
-          "title": "[MOCK] Video Analysis #2 - BSE Stocks in india whats the latest",
-          "url": "https://youtube.com/watch?v=mock2",
-          "summary": "Expert video commentary on BSE Stocks in india whats the latest",
-          "agent": "Sentiment Analytics",
-          "source_type": "Mock Video",
-          "medium": "Mock YouTube"
+          "name": "video_2",
+          "items": [
+            {
+              "published_date": "2025-09-07T10:30:45Z",
+              "title": "🛵OLA STOCK | Full Analysis | Fundamental Analysis | EV SECTOR |",
+              "authors": [
+                "INVESTOR'S MIND VOICE"
+              ],
+              "summary": "No transcript available (attr_error: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript' | ffmpeg_not_found).",
+              "content": null,
+              "source": "https://www.youtube.com/watch?v=m-4eBsxYgtI",
+              "pdf_url": null
+            }
+          ],
+          "metadata": {
+            "video_id": "m-4eBsxYgtI",
+            "duration": "9:55",
+            "views": "51",
+            "likes": "1",
+            "comments": "0",
+            "language": "unknown",
+            "transcript_path": null,
+            "transcript_source": null,
+            "transcript_error": "attr_error: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript' | ffmpeg_not_found",
+            "debug": [
+              "youtube_api: attr_error: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript'",
+              "whisper: ffmpeg_not_found"
+            ]
+          }
         },
         {
-          "title": "[MOCK] Academic Paper #1 - BSE Stocks in india whats the latest",
-          "url": "https://example.com/paper-1",
-          "summary": "Peer-reviewed research on BSE Stocks in india whats the latest",
+          "title": "Unbounded: Object-Boundary Interactions in Mixed Reality",
+          "url": "http://arxiv.org/abs/2509.10750v1",
+          "summary": "Boundaries such as walls, windows, and doors are ubiquitous in the physical\nworld, yet their potential in Mixed Reality (MR) remains underexplored. We\npresent Unbounded, a Research through Design inqu",
           "agent": "Data Intelligence",
-          "source_type": "Mock Academic",
-          "medium": "Mock arXiv+News"
+          "source_type": "Academic",
+          "medium": "arXiv API"
         },
         {
-          "title": "[MOCK] Academic Paper #2 - BSE Stocks in india whats the latest",
-          "url": "https://example.com/paper-2",
-          "summary": "Peer-reviewed research on BSE Stocks in india whats the latest",
+          "title": "An iterative OLA method for inversion of solar spectropolarimetric data:\n  I. Single and multiple variable inversions of thermodynamic quantities",
+          "url": "http://arxiv.org/abs/2209.13734v1",
+          "summary": "This paper describes an adaptation of the Optimal Localized Averaging (OLA)\ninversion technique, originally developed for geo- and helioseismological\napplications, to the interpretation of solar spect",
           "agent": "Data Intelligence",
-          "source_type": "Mock Academic",
-          "medium": "Mock arXiv+News"
+          "source_type": "Academic",
+          "medium": "arXiv API"
         }
       ],
-      "total_cost": 0.0030099999999999997,
-      "total_tokens": 1505,
-      "execution_time": 22.55207920074463,
+      "total_cost": 0.000987,
+      "total_tokens": 353,
+      "execution_time": 8.511179685592651,
       "confidence_score": 79,
       "mock_mode": false,
       "agent_data": [
         {
           "agent_name": "Market Intelligence",
           "source_count": 2,
-          "sources_retrieved": 13,
+          "sources_retrieved": 2,
           "findings_count": 2,
           "insights_count": 2,
-          "cost": 0.0030099999999999997,
-          "tokens": 1505,
-          "prompt_tokens": 481,
-          "completion_tokens": 1024,
-          "execution_time": 19.53275179862976,
+          "cost": 0.000987,
+          "tokens": 353,
+          "prompt_tokens": 36,
+          "completion_tokens": 317,
+          "execution_time": 6.599559307098389,
           "status": "✅ Success",
-          "model_used": "sonar-pro",
+          "model_used": "sonar",
           "model_type": "Quick Search",
           "medium": "Perplexity API",
-          "data_type": "Web Search Results"
+          "data_type": "Live Research"
         },
         {
           "agent_name": "Sentiment Analytics",
           "source_count": 2,
           "sources_retrieved": 2,
-          "findings_count": 3,
-          "insights_count": 3,
+          "findings_count": 0,
+          "insights_count": 0,
           "cost": 0.0,
           "tokens": 0,
           "prompt_tokens": 0,
           "completion_tokens": 0,
-          "execution_time": 1.505688190460205,
-          "status": "✅ Success (Mock)",
+          "execution_time": 1.0140037536621094,
+          "status": "✅ Success",
           "model_used": "N/A",
           "model_type": "N/A",
-          "medium": "Mock YouTube API",
+          "medium": "YouTube API",
           "data_type": "Video Analysis"
         },
         {
           "agent_name": "Data Intelligence",
           "source_count": 2,
           "sources_retrieved": 2,
-          "findings_count": 4,
-          "insights_count": 3,
+          "findings_count": 3,
+          "insights_count": 2,
           "cost": 0.0,
           "tokens": 0,
           "prompt_tokens": 0,
           "completion_tokens": 0,
-          "execution_time": 1.513639211654663,
-          "status": "✅ Success (Mock)",
+          "execution_time": 0.8976166248321533,
+          "status": "✅ Success",
           "model_used": "N/A",
           "model_type": "N/A",
-          "medium": "Mock APIs",
-          "data_type": "Academic Data"
+          "medium": "arXiv API",
+          "data_type": "Academic Research"
         }
       ],
       "agent_results": {
         "Market Intelligence": {
           "success": true,
           "agent_name": "Market Intelligence",
-          "model_used": "sonar-pro",
-          "model_type": "Quick Search",
-          "summary": " 1. Executive Summary\n\nThe **BSE SENSEX** currently trades at 82,126 (as of October 7, 2025), up 0.41% from the previous session but still below its all-time high of 85,978 set in September 2024[1]. The market is exhibiting **range-bound behavior** with modest YoY gains (+0.60%), while **IPO activity remains robust** despite secondary market stagnation[3]. Key catalysts include resilient domestic demand and strong liquidity, but concerns persist around global volatility, sector-specific headwinds (notably in IT and exporters), and valuation fatigue.\n\n",
+          "summary": "Here are two key findings and insights regarding Ola Electric shares and their future projections:\n\n## Key Findings and Insights\n\n### 1. **Recent Performance and Market Trends**\n- **Recent Surge**: Ola Electric shares have experienced significant fluctuations, with a notable surge of 55% in a month, driven by positive technical indicators and the approval of the PLI (Production Linked Incentive) scheme[1]. However, the stock has also faced declines, such as a recent drop of 2.13%[3].\n- **Block D",
           "findings": [
-            "Finding from analysis",
-            "Finding from analysis"
+            "Here are two key findings and insights regarding Ola Electric shares and their future projections:",
+            "## Key Findings and Insights"
           ],
           "insights": [
-            "Strategic insight",
-            "Strategic insight"
+            "### 1. **Recent Performance and Market Trends**",
+            "- **Recent Surge**: Ola Electric shares have experienced significant fluctuations, with a notable surge of 55% in a month, driven by positive technical indicators and the approval of the PLI (Production Linked Incentive) scheme[1]. However, the stock has also faced declines, such as a recent drop of 2.13%[3]."
           ],
           "sources": [
             {
-              "title": "Source 1",
-              "url": "https://tradingeconomics.com/india/stock-market",
-              "summary": "Referenced in analysis",
+              "title": "Source #1 - Ola electric shares and its future projection",
+              "url": "https://economictimes.com/markets/stocks/news/ola-electric-shares-skyrocket-55-in-a-month-analysts-see-further-rally-till-rs-90/articleshow/123672054.cms",
+              "summary": "Research source for: Ola electric shares and its future projection",
               "agent": "Market Intelligence",
-              "source_type": "Web Search",
+              "source_type": "Web Research",
               "medium": "Perplexity API"
             },
             {
-              "title": "Source 2",
-              "url": "https://economictimes.com/markets/expert-view/market-correction-opens-opportunities-in-domestic-sectors-pankaj-pandey/articleshow/124206394.cms",
-              "summary": "Referenced in analysis",
+              "title": "Source #2 - Ola electric shares and its future projection",
+              "url": "https://scanx.trade/stock-market-news/stocks/ola-electric-shares-surge-7-amid-block-deal-and-future-projections/14804265",
+              "summary": "Research source for: Ola electric shares and its future projection",
               "agent": "Market Intelligence",
-              "source_type": "Web Search",
+              "source_type": "Web Research",
               "medium": "Perplexity API"
             }
           ],
           "source_count": 2,
-          "sources_retrieved": 13,
-          "tokens": 1505,
-          "prompt_tokens": 481,
-          "completion_tokens": 1024,
-          "cost": 0.0030099999999999997,
-          "execution_time": 19.53275179862976,
+          "sources_retrieved": 2,
+          "tokens": 353,
+          "prompt_tokens": 36,
+          "completion_tokens": 317,
+          "cost": 0.000987,
           "status": "✅ Success",
+          "model_used": "sonar",
+          "model_type": "Quick Search",
           "medium": "Perplexity API",
-          "data_type": "Web Search Results"
+          "data_type": "Live Research",
+          "execution_time": 6.599559307098389
         },
         "Sentiment Analytics": {
           "success": true,
           "agent_name": "Sentiment Analytics",
-          "summary": "Sentiment analysis of 2 video sources reveals positive trends",
-          "findings": [
-            "Analyzed 2 videos with high engagement",
-            "Positive sentiment dominates community discussions",
-            "Expert opinions converge on key recommendations"
-          ],
-          "insights": [
-            "Video content demonstrates practical applications",
-            "Community identifies implementation challenges",
-            "Expert predictions align on adoption timeline"
-          ],
+          "summary": "YouTube analysis for: Ola electric shares and its future projection",
+          "findings": [],
+          "insights": [],
           "sources": [
             {
-              "title": "[MOCK] Video Analysis #1 - BSE Stocks in india whats the latest",
-              "url": "https://youtube.com/watch?v=mock1",
-              "summary": "Expert video commentary on BSE Stocks in india whats the latest",
-              "agent": "Sentiment Analytics",
-              "source_type": "Mock Video",
-              "medium": "Mock YouTube"
+              "name": "video_1",
+              "items": [
+                {
+                  "published_date": "2025-09-07T10:31:38Z",
+                  "title": "BUY or Avoid - Ola Share | Fundamental Analysis",
+                  "authors": [
+                    "INVESTOR'S MIND VOICE"
+                  ],
+                  "summary": "No transcript available (attr_error: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript' | ffmpeg_not_found).",
+                  "content": null,
+                  "source": "https://www.youtube.com/watch?v=18NBvlc9Vxw",
+                  "pdf_url": null
+                }
+              ],
+              "metadata": {
+                "video_id": "18NBvlc9Vxw",
+                "duration": "2:54",
+                "views": "376",
+                "likes": "0",
+                "comments": "0",
+                "language": "unknown",
+                "transcript_path": null,
+                "transcript_source": null,
+                "transcript_error": "attr_error: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript' | ffmpeg_not_found",
+                "debug": [
+                  "youtube_api: attr_error: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript'",
+                  "whisper: ffmpeg_not_found"
+                ]
+              }
             },
             {
-              "title": "[MOCK] Video Analysis #2 - BSE Stocks in india whats the latest",
-              "url": "https://youtube.com/watch?v=mock2",
-              "summary": "Expert video commentary on BSE Stocks in india whats the latest",
-              "agent": "Sentiment Analytics",
-              "source_type": "Mock Video",
-              "medium": "Mock YouTube"
+              "name": "video_2",
+              "items": [
+                {
+                  "published_date": "2025-09-07T10:30:45Z",
+                  "title": "🛵OLA STOCK | Full Analysis | Fundamental Analysis | EV SECTOR |",
+                  "authors": [
+                    "INVESTOR'S MIND VOICE"
+                  ],
+                  "summary": "No transcript available (attr_error: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript' | ffmpeg_not_found).",
+                  "content": null,
+                  "source": "https://www.youtube.com/watch?v=m-4eBsxYgtI",
+                  "pdf_url": null
+                }
+              ],
+              "metadata": {
+                "video_id": "m-4eBsxYgtI",
+                "duration": "9:55",
+                "views": "51",
+                "likes": "1",
+                "comments": "0",
+                "language": "unknown",
+                "transcript_path": null,
+                "transcript_source": null,
+                "transcript_error": "attr_error: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript' | ffmpeg_not_found",
+                "debug": [
+                  "youtube_api: attr_error: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript'",
+                  "whisper: ffmpeg_not_found"
+                ]
+              }
             }
           ],
           "source_count": 2,
           "sources_retrieved": 2,
           "tokens": 0,
           "cost": 0.0,
-          "execution_time": 1.505688190460205,
-          "status": "✅ Success (Mock)",
-          "medium": "Mock YouTube API",
+          "execution_time": 1.0140037536621094,
+          "status": "✅ Success",
+          "medium": "YouTube API",
           "data_type": "Video Analysis"
         },
         "Data Intelligence": {
           "success": true,
           "agent_name": "Data Intelligence",
-          "summary": "Data synthesis of 2 academic sources with statistical validation",
+          "summary": "Academic research analysis from 2 sources",
           "findings": [
-            "Integrated 2 diverse academic sources",
-            "Cross-validation shows high inter-source agreement",
-            "Longitudinal trends demonstrate consistent patterns",
-            "Meta-analysis reveals robust effect sizes"
+            "Found 2 academic sources",
+            "Research shows peer-reviewed insights",
+            "Academic consensus on key findings"
           ],
           "insights": [
-            "Research validates trends with statistical confidence",
-            "Multi-source triangulation increases reliability",
-            "Predictive analytics suggest sustained growth"
+            "Academic research validates topic",
+            "Multiple studies support conclusions"
           ],
           "sources": [
             {
-              "title": "[MOCK] Academic Paper #1 - BSE Stocks in india whats the latest",
-              "url": "https://example.com/paper-1",
-              "summary": "Peer-reviewed research on BSE Stocks in india whats the latest",
+              "title": "Unbounded: Object-Boundary Interactions in Mixed Reality",
+              "url": "http://arxiv.org/abs/2509.10750v1",
+              "summary": "Boundaries such as walls, windows, and doors are ubiquitous in the physical\nworld, yet their potential in Mixed Reality (MR) remains underexplored. We\npresent Unbounded, a Research through Design inqu",
               "agent": "Data Intelligence",
-              "source_type": "Mock Academic",
-              "medium": "Mock arXiv+News"
+              "source_type": "Academic",
+              "medium": "arXiv API"
             },
             {
-              "title": "[MOCK] Academic Paper #2 - BSE Stocks in india whats the latest",
-              "url": "https://example.com/paper-2",
-              "summary": "Peer-reviewed research on BSE Stocks in india whats the latest",
+              "title": "An iterative OLA method for inversion of solar spectropolarimetric data:\n  I. Single and multiple variable inversions of thermodynamic quantities",
+              "url": "http://arxiv.org/abs/2209.13734v1",
+              "summary": "This paper describes an adaptation of the Optimal Localized Averaging (OLA)\ninversion technique, originally developed for geo- and helioseismological\napplications, to the interpretation of solar spect",
               "agent": "Data Intelligence",
-              "source_type": "Mock Academic",
-              "medium": "Mock arXiv+News"
+              "source_type": "Academic",
+              "medium": "arXiv API"
             }
           ],
           "source_count": 2,
           "sources_retrieved": 2,
           "tokens": 0,
           "cost": 0.0,
-          "execution_time": 1.513639211654663,
-          "status": "✅ Success (Mock)",
-          "medium": "Mock APIs",
-          "data_type": "Academic Data"
+          "execution_time": 0.8976166248321533,
+          "status": "✅ Success",
+          "medium": "arXiv API",
+          "data_type": "Academic Research"
         }
       }
     }
   },
   {
-    "query": "Mosh chip shares what the projections ",
-    "domain": "Stock Market Analysis",
-    "timestamp": "2025-10-07 12:55:20",
-    "agents_state": {
-      "Market Intelligence": true,
-      "Sentiment Analytics": true,
-      "Data Intelligence": true
-    },
-    "model_type": "Quick Search",
-    "market_sources": 2,
-    "sentiment_sources": 2,
-    "data_sources": 2,
-    "results": {
-      "query": "Mosh chip shares what the projections ",
-      "domain": "Stock Market Analysis",
-      "timestamp": "2025-10-07 12:55:20",
-      "agents_used": [
-        "Market Intelligence",
-        "Sentiment Analytics",
-        "Data Intelligence"
-      ],
-      "model_type": "Quick Search",
-      "summary": " 1. Executive Summary\n\n**MosChip Technologies Ltd.** is a mid-cap Indian semiconductor and chip design company, currently trading near all-time highs with a market capitalization of approximately ₹5,084 crore as of October 6, 2025[5]. The company has demonstrated exceptional revenue growth—over 90% YoY in recent quarters—driven by robust demand in AI, IoT, and indigenous chip development[1][5]. While the growth trajectory is strong, valuation multiples are elevated, reflecting high investor expectations and sector momentum. The investment thesis centers on MosChip’s positioning in India’s semiconductor value chain and its ability to capitalize on structural industry tailwinds, balanced against premium valuation and execution risks.\n\n",
-      "key_findings": [
-        "Finding from analysis",
-        "Finding from analysis",
-        "Analyzed 2 videos with high engagement",
-        "Positive sentiment dominates community discussions",
-        "Expert opinions converge on key recommendations",
-        "Integrated 2 diverse academic sources",
-        "Cross-validation shows high inter-source agreement",
-        "Longitudinal trends demonstrate consistent patterns",
-        "Meta-analysis reveals robust effect sizes"
-      ],
-      "insights": [
-        "Strategic insight",
-        "Strategic insight",
-        "Video content demonstrates practical applications",
-        "Community identifies implementation challenges",
-        "Expert predictions align on adoption timeline",
-        "Research validates trends with statistical confidence",
-        "Multi-source triangulation increases reliability"
-      ],
-      "sources": [
-        {
-          "title": "Source 1",
-          "url": "https://www.moneycontrol.com/india/stockpricequote/computers-software-mediumsmall/moschiptechnologies/MST02",
-          "summary": "Referenced in analysis",
-          "agent": "Market Intelligence",
-          "source_type": "Web Search",
-          "medium": "Perplexity API"
-        },
-        {
-          "title": "Source 2",
-          "url": "https://www.cloudatg.com/insights",
-          "summary": "Referenced in analysis",
-          "agent": "Market Intelligence",
-          "source_type": "Web Search",
-          "medium": "Perplexity API"
-        },
-        {
-          "title": "[MOCK] Video Analysis #1 - Mosh chip shares what the projections ",
-          "url": "https://youtube.com/watch?v=mock1",
-          "summary": "Expert video commentary on Mosh chip shares what the projections ",
-          "agent": "Sentiment Analytics",
-          "source_type": "Mock Video",
-          "medium": "Mock YouTube"
-        },
-        {
-          "title": "[MOCK] Video Analysis #2 - Mosh chip shares what the projections ",
-          "url": "https://youtube.com/watch?v=mock2",
-          "summary": "Expert video commentary on Mosh chip shares what the projections ",
-          "agent": "Sentiment Analytics",
-          "source_type": "Mock Video",
-          "medium": "Mock YouTube"
-        },
-        {
-          "title": "[MOCK] Academic Paper #1 - Mosh chip shares what the projections ",
-          "url": "https://example.com/paper-1",
-          "summary": "Peer-reviewed research on Mosh chip shares what the projections ",
-          "agent": "Data Intelligence",
-          "source_type": "Mock Academic",
-          "medium": "Mock arXiv+News"
-        },
-        {
-          "title": "[MOCK] Academic Paper #2 - Mosh chip shares what the projections ",
-          "url": "https://example.com/paper-2",
-          "summary": "Peer-reviewed research on Mosh chip shares what the projections ",
-          "agent": "Data Intelligence",
-          "source_type": "Mock Academic",
-          "medium": "Mock arXiv+News"
-        }
-      ],
-      "total_cost": 0.003006,
-      "total_tokens": 1503,
-      "execution_time": 29.800814151763916,
-      "confidence_score": 79,
-      "mock_mode": false,
-      "agent_data": [
-        {
-          "agent_name": "Market Intelligence",
-          "source_count": 2,
-          "sources_retrieved": 12,
-          "findings_count": 2,
-          "insights_count": 2,
-          "cost": 0.003006,
-          "tokens": 1503,
-          "prompt_tokens": 479,
-          "completion_tokens": 1024,
-          "execution_time": 26.786445140838623,
-          "status": "✅ Success",
-          "model_used": "sonar-pro",
-          "model_type": "Quick Search",
-          "medium": "Perplexity API",
-          "data_type": "Web Search Results"
-        },
-        {
-          "agent_name": "Sentiment Analytics",
-          "source_count": 2,
-          "sources_retrieved": 2,
-          "findings_count": 3,
-          "insights_count": 3,
-          "cost": 0.0,
-          "tokens": 0,
-          "prompt_tokens": 0,
-          "completion_tokens": 0,
-          "execution_time": 1.512819528579712,
-          "status": "✅ Success (Mock)",
-          "model_used": "N/A",
-          "model_type": "N/A",
-          "medium": "Mock YouTube API",
-          "data_type": "Video Analysis"
-        },
-        {
-          "agent_name": "Data Intelligence",
-          "source_count": 2,
-          "sources_retrieved": 2,
-          "findings_count": 4,
-          "insights_count": 3,
-          "cost": 0.0,
-          "tokens": 0,
-          "prompt_tokens": 0,
-          "completion_tokens": 0,
-          "execution_time": 1.501549482345581,
-          "status": "✅ Success (Mock)",
-          "model_used": "N/A",
-          "model_type": "N/A",
-          "medium": "Mock APIs",
-          "data_type": "Academic Data"
-        }
-      ],
-      "agent_results": {
-        "Market Intelligence": {
-          "success": true,
-          "agent_name": "Market Intelligence",
-          "model_used": "sonar-pro",
-          "model_type": "Quick Search",
-          "summary": " 1. Executive Summary\n\n**MosChip Technologies Ltd.** is a mid-cap Indian semiconductor and chip design company, currently trading near all-time highs with a market capitalization of approximately ₹5,084 crore as of October 6, 2025[5]. The company has demonstrated exceptional revenue growth—over 90% YoY in recent quarters—driven by robust demand in AI, IoT, and indigenous chip development[1][5]. While the growth trajectory is strong, valuation multiples are elevated, reflecting high investor expectations and sector momentum. The investment thesis centers on MosChip’s positioning in India’s semiconductor value chain and its ability to capitalize on structural industry tailwinds, balanced against premium valuation and execution risks.\n\n",
-          "findings": [
-            "Finding from analysis",
-            "Finding from analysis"
-          ],
-          "insights": [
-            "Strategic insight",
-            "Strategic insight"
-          ],
-          "sources": [
-            {
-              "title": "Source 1",
-              "url": "https://www.moneycontrol.com/india/stockpricequote/computers-software-mediumsmall/moschiptechnologies/MST02",
-              "summary": "Referenced in analysis",
-              "agent": "Market Intelligence",
-              "source_type": "Web Search",
-              "medium": "Perplexity API"
-            },
-            {
-              "title": "Source 2",
-              "url": "https://www.cloudatg.com/insights",
-              "summary": "Referenced in analysis",
-              "agent": "Market Intelligence",
-              "source_type": "Web Search",
-              "medium": "Perplexity API"
-            }
-          ],
-          "source_count": 2,
-          "sources_retrieved": 12,
-          "tokens": 1503,
-          "prompt_tokens": 479,
-          "completion_tokens": 1024,
-          "cost": 0.003006,
-          "execution_time": 26.786445140838623,
-          "status": "✅ Success",
-          "medium": "Perplexity API",
-          "data_type": "Web Search Results"
-        },
-        "Sentiment Analytics": {
-          "success": true,
-          "agent_name": "Sentiment Analytics",
-          "summary": "Sentiment analysis of 2 video sources reveals positive trends",
-          "findings": [
-            "Analyzed 2 videos with high engagement",
-            "Positive sentiment dominates community discussions",
-            "Expert opinions converge on key recommendations"
-          ],
-          "insights": [
-            "Video content demonstrates practical applications",
-            "Community identifies implementation challenges",
-            "Expert predictions align on adoption timeline"
-          ],
-          "sources": [
-            {
-              "title": "[MOCK] Video Analysis #1 - Mosh chip shares what the projections ",
-              "url": "https://youtube.com/watch?v=mock1",
-              "summary": "Expert video commentary on Mosh chip shares what the projections ",
-              "agent": "Sentiment Analytics",
-              "source_type": "Mock Video",
-              "medium": "Mock YouTube"
-            },
-            {
-              "title": "[MOCK] Video Analysis #2 - Mosh chip shares what the projections ",
-              "url": "https://youtube.com/watch?v=mock2",
-              "summary": "Expert video commentary on Mosh chip shares what the projections ",
-              "agent": "Sentiment Analytics",
-              "source_type": "Mock Video",
-              "medium": "Mock YouTube"
-            }
-          ],
-          "source_count": 2,
-          "sources_retrieved": 2,
-          "tokens": 0,
-          "cost": 0.0,
-          "execution_time": 1.512819528579712,
-          "status": "✅ Success (Mock)",
-          "medium": "Mock YouTube API",
-          "data_type": "Video Analysis"
-        },
-        "Data Intelligence": {
-          "success": true,
-          "agent_name": "Data Intelligence",
-          "summary": "Data synthesis of 2 academic sources with statistical validation",
-          "findings": [
-            "Integrated 2 diverse academic sources",
-            "Cross-validation shows high inter-source agreement",
-            "Longitudinal trends demonstrate consistent patterns",
-            "Meta-analysis reveals robust effect sizes"
-          ],
-          "insights": [
-            "Research validates trends with statistical confidence",
-            "Multi-source triangulation increases reliability",
-            "Predictive analytics suggest sustained growth"
-          ],
-          "sources": [
-            {
-              "title": "[MOCK] Academic Paper #1 - Mosh chip shares what the projections ",
-              "url": "https://example.com/paper-1",
-              "summary": "Peer-reviewed research on Mosh chip shares what the projections ",
-              "agent": "Data Intelligence",
-              "source_type": "Mock Academic",
-              "medium": "Mock arXiv+News"
-            },
-            {
-              "title": "[MOCK] Academic Paper #2 - Mosh chip shares what the projections ",
-              "url": "https://example.com/paper-2",
-              "summary": "Peer-reviewed research on Mosh chip shares what the projections ",
-              "agent": "Data Intelligence",
-              "source_type": "Mock Academic",
-              "medium": "Mock arXiv+News"
-            }
-          ],
-          "source_count": 2,
-          "sources_retrieved": 2,
-          "tokens": 0,
-          "cost": 0.0,
-          "execution_time": 1.501549482345581,
-          "status": "✅ Success (Mock)",
-          "medium": "Mock APIs",
-          "data_type": "Academic Data"
-        }
-      }
-    }
-  },
-  {
-    "query": "Mosh chip semicondutor shares how it will be tomorrow ",
-    "domain": "Stock Market Analysis",
-    "timestamp": "2025-10-07 13:00:18",
-    "agents_state": {
-      "Market Intelligence": true,
-      "Sentiment Analytics": true,
-      "Data Intelligence": true
-    },
-    "model_type": "Quick Search",
-    "market_sources": 2,
-    "sentiment_sources": 2,
-    "data_sources": 2,
-    "results": {
-      "query": "Mosh chip semicondutor shares how it will be tomorrow ",
-      "domain": "Stock Market Analysis",
-      "timestamp": "2025-10-07 13:00:18",
-      "agents_used": [
-        "Market Intelligence",
-        "Sentiment Analytics",
-        "Data Intelligence"
-      ],
-      "model_type": "Quick Search",
-      "summary": " 1. Executive Summary\n\nMosChip Technologies Limited, a fabless semiconductor and embedded design services company, has been expanding its operations through strategic acquisitions and partnerships. The company's recent acquisition of Softnautics Inc. and its involvement in developing indigenous HPC SoCs position it well for growth in the semiconductor industry. However, the stock's performance tomorrow will depend on broader market conditions and sector-specific trends. The investment thesis hinges on MosChip's ability to leverage its technological advancements and partnerships to drive revenue growth.\n\n",
-      "key_findings": [
-        "Finding from analysis",
-        "Finding from analysis",
-        "Analyzed 2 videos with high engagement",
-        "Positive sentiment dominates community discussions",
-        "Expert opinions converge on key recommendations",
-        "Integrated 2 diverse academic sources",
-        "Cross-validation shows high inter-source agreement",
-        "Longitudinal trends demonstrate consistent patterns",
-        "Meta-analysis reveals robust effect sizes"
-      ],
-      "insights": [
-        "Strategic insight",
-        "Strategic insight",
-        "Video content demonstrates practical applications",
-        "Community identifies implementation challenges",
-        "Expert predictions align on adoption timeline",
-        "Research validates trends with statistical confidence",
-        "Multi-source triangulation increases reliability"
-      ],
-      "sources": [
-        {
-          "title": "Source 1",
-          "url": "https://www.icicidirect.com/stocks/moschip-technologies-ltd-share-price",
-          "summary": "Referenced in analysis",
-          "agent": "Market Intelligence",
-          "source_type": "Web Search",
-          "medium": "Perplexity API"
-        },
-        {
-          "title": "Source 2",
-          "url": "https://www.equitybulls.com/industry.php",
-          "summary": "Referenced in analysis",
-          "agent": "Market Intelligence",
-          "source_type": "Web Search",
-          "medium": "Perplexity API"
-        },
-        {
-          "title": "[MOCK] Video Analysis #1 - Mosh chip semicondutor shares how it will be tomorrow ",
-          "url": "https://youtube.com/watch?v=mock1",
-          "summary": "Expert video commentary on Mosh chip semicondutor shares how it will be tomorrow ",
-          "agent": "Sentiment Analytics",
-          "source_type": "Mock Video",
-          "medium": "Mock YouTube"
-        },
-        {
-          "title": "[MOCK] Video Analysis #2 - Mosh chip semicondutor shares how it will be tomorrow ",
-          "url": "https://youtube.com/watch?v=mock2",
-          "summary": "Expert video commentary on Mosh chip semicondutor shares how it will be tomorrow ",
-          "agent": "Sentiment Analytics",
-          "source_type": "Mock Video",
-          "medium": "Mock YouTube"
-        },
-        {
-          "title": "[MOCK] Academic Paper #1 - Mosh chip semicondutor shares how it will be tomorrow ",
-          "url": "https://example.com/paper-1",
-          "summary": "Peer-reviewed research on Mosh chip semicondutor shares how it will be tomorrow ",
-          "agent": "Data Intelligence",
-          "source_type": "Mock Academic",
-          "medium": "Mock arXiv+News"
-        },
-        {
-          "title": "[MOCK] Academic Paper #2 - Mosh chip semicondutor shares how it will be tomorrow ",
-          "url": "https://example.com/paper-2",
-          "summary": "Peer-reviewed research on Mosh chip semicondutor shares how it will be tomorrow ",
-          "agent": "Data Intelligence",
-          "source_type": "Mock Academic",
-          "medium": "Mock arXiv+News"
-        }
-      ],
-      "total_cost": 0.002604,
-      "total_tokens": 1302,
-      "execution_time": 10.912318706512451,
-      "confidence_score": 79,
-      "mock_mode": false,
-      "agent_data": [
-        {
-          "agent_name": "Market Intelligence",
-          "source_count": 2,
-          "sources_retrieved": 7,
-          "findings_count": 2,
-          "insights_count": 2,
-          "cost": 0.002604,
-          "tokens": 1302,
-          "prompt_tokens": 491,
-          "completion_tokens": 811,
-          "execution_time": 7.892806768417358,
-          "status": "✅ Success",
-          "model_used": "sonar-pro",
-          "model_type": "Quick Search",
-          "medium": "Perplexity API",
-          "data_type": "Web Search Results"
-        },
-        {
-          "agent_name": "Sentiment Analytics",
-          "source_count": 2,
-          "sources_retrieved": 2,
-          "findings_count": 3,
-          "insights_count": 3,
-          "cost": 0.0,
-          "tokens": 0,
-          "prompt_tokens": 0,
-          "completion_tokens": 0,
-          "execution_time": 1.516282081604004,
-          "status": "✅ Success (Mock)",
-          "model_used": "N/A",
-          "model_type": "N/A",
-          "medium": "Mock YouTube API",
-          "data_type": "Video Analysis"
-        },
-        {
-          "agent_name": "Data Intelligence",
-          "source_count": 2,
-          "sources_retrieved": 2,
-          "findings_count": 4,
-          "insights_count": 3,
-          "cost": 0.0,
-          "tokens": 0,
-          "prompt_tokens": 0,
-          "completion_tokens": 0,
-          "execution_time": 1.5032298564910889,
-          "status": "✅ Success (Mock)",
-          "model_used": "N/A",
-          "model_type": "N/A",
-          "medium": "Mock APIs",
-          "data_type": "Academic Data"
-        }
-      ],
-      "agent_results": {
-        "Market Intelligence": {
-          "success": true,
-          "agent_name": "Market Intelligence",
-          "model_used": "sonar-pro",
-          "model_type": "Quick Search",
-          "summary": " 1. Executive Summary\n\nMosChip Technologies Limited, a fabless semiconductor and embedded design services company, has been expanding its operations through strategic acquisitions and partnerships. The company's recent acquisition of Softnautics Inc. and its involvement in developing indigenous HPC SoCs position it well for growth in the semiconductor industry. However, the stock's performance tomorrow will depend on broader market conditions and sector-specific trends. The investment thesis hinges on MosChip's ability to leverage its technological advancements and partnerships to drive revenue growth.\n\n",
-          "findings": [
-            "Finding from analysis",
-            "Finding from analysis"
-          ],
-          "insights": [
-            "Strategic insight",
-            "Strategic insight"
-          ],
-          "sources": [
-            {
-              "title": "Source 1",
-              "url": "https://www.icicidirect.com/stocks/moschip-technologies-ltd-share-price",
-              "summary": "Referenced in analysis",
-              "agent": "Market Intelligence",
-              "source_type": "Web Search",
-              "medium": "Perplexity API"
-            },
-            {
-              "title": "Source 2",
-              "url": "https://www.equitybulls.com/industry.php",
-              "summary": "Referenced in analysis",
-              "agent": "Market Intelligence",
-              "source_type": "Web Search",
-              "medium": "Perplexity API"
-            }
-          ],
-          "source_count": 2,
-          "sources_retrieved": 7,
-          "tokens": 1302,
-          "prompt_tokens": 491,
-          "completion_tokens": 811,
-          "cost": 0.002604,
-          "execution_time": 7.892806768417358,
-          "status": "✅ Success",
-          "medium": "Perplexity API",
-          "data_type": "Web Search Results"
-        },
-        "Sentiment Analytics": {
-          "success": true,
-          "agent_name": "Sentiment Analytics",
-          "summary": "Sentiment analysis of 2 video sources reveals positive trends",
-          "findings": [
-            "Analyzed 2 videos with high engagement",
-            "Positive sentiment dominates community discussions",
-            "Expert opinions converge on key recommendations"
-          ],
-          "insights": [
-            "Video content demonstrates practical applications",
-            "Community identifies implementation challenges",
-            "Expert predictions align on adoption timeline"
-          ],
-          "sources": [
-            {
-              "title": "[MOCK] Video Analysis #1 - Mosh chip semicondutor shares how it will be tomorrow ",
-              "url": "https://youtube.com/watch?v=mock1",
-              "summary": "Expert video commentary on Mosh chip semicondutor shares how it will be tomorrow ",
-              "agent": "Sentiment Analytics",
-              "source_type": "Mock Video",
-              "medium": "Mock YouTube"
-            },
-            {
-              "title": "[MOCK] Video Analysis #2 - Mosh chip semicondutor shares how it will be tomorrow ",
-              "url": "https://youtube.com/watch?v=mock2",
-              "summary": "Expert video commentary on Mosh chip semicondutor shares how it will be tomorrow ",
-              "agent": "Sentiment Analytics",
-              "source_type": "Mock Video",
-              "medium": "Mock YouTube"
-            }
-          ],
-          "source_count": 2,
-          "sources_retrieved": 2,
-          "tokens": 0,
-          "cost": 0.0,
-          "execution_time": 1.516282081604004,
-          "status": "✅ Success (Mock)",
-          "medium": "Mock YouTube API",
-          "data_type": "Video Analysis"
-        },
-        "Data Intelligence": {
-          "success": true,
-          "agent_name": "Data Intelligence",
-          "summary": "Data synthesis of 2 academic sources with statistical validation",
-          "findings": [
-            "Integrated 2 diverse academic sources",
-            "Cross-validation shows high inter-source agreement",
-            "Longitudinal trends demonstrate consistent patterns",
-            "Meta-analysis reveals robust effect sizes"
-          ],
-          "insights": [
-            "Research validates trends with statistical confidence",
-            "Multi-source triangulation increases reliability",
-            "Predictive analytics suggest sustained growth"
-          ],
-          "sources": [
-            {
-              "title": "[MOCK] Academic Paper #1 - Mosh chip semicondutor shares how it will be tomorrow ",
-              "url": "https://example.com/paper-1",
-              "summary": "Peer-reviewed research on Mosh chip semicondutor shares how it will be tomorrow ",
-              "agent": "Data Intelligence",
-              "source_type": "Mock Academic",
-              "medium": "Mock arXiv+News"
-            },
-            {
-              "title": "[MOCK] Academic Paper #2 - Mosh chip semicondutor shares how it will be tomorrow ",
-              "url": "https://example.com/paper-2",
-              "summary": "Peer-reviewed research on Mosh chip semicondutor shares how it will be tomorrow ",
-              "agent": "Data Intelligence",
-              "source_type": "Mock Academic",
-              "medium": "Mock arXiv+News"
-            }
-          ],
-          "source_count": 2,
-          "sources_retrieved": 2,
-          "tokens": 0,
-          "cost": 0.0,
-          "execution_time": 1.5032298564910889,
-          "status": "✅ Success (Mock)",
-          "medium": "Mock APIs",
-          "data_type": "Academic Data"
-        }
-      }
-    }
-  },
-  {
-    "query": "SOHO CRM need to compare with other CRM's is that good to go with this?",
-    "domain": "Academic Research",
-    "timestamp": "2025-10-07 13:08:33",
-    "agents_state": {
-      "Market Intelligence": true,
-      "Sentiment Analytics": true,
-      "Data Intelligence": true
-    },
-    "model_type": "Quick Search",
-    "market_sources": 2,
-    "sentiment_sources": 2,
-    "data_sources": 2,
-    "results": {
-      "query": "SOHO CRM need to compare with other CRM's is that good to go with this?",
-      "domain": "Academic Research",
-      "timestamp": "2025-10-07 13:08:33",
-      "agents_used": [
-        "Market Intelligence",
-        "Sentiment Analytics",
-        "Data Intelligence"
-      ],
-      "model_type": "Quick Search",
-      "summary": " 1. Research Overview\n\nThe comparative analysis of SOHO (Small Office/Home Office) CRM solutions represents a critical area of business technology research, particularly as small and medium enterprises increasingly rely on customer relationship management systems for competitive advantage. The research question addresses the strategic decision-making process for SOHO businesses evaluating CRM platforms against established market leaders. Current scholarly understanding emphasizes the importance of feature alignment, scalability, and cost-effectiveness in CRM selection for resource-constrained organizations.\n\n",
-      "key_findings": [
-        "Finding from analysis",
-        "Finding from analysis",
-        "Analyzed 2 videos with high engagement",
-        "Positive sentiment dominates community discussions",
-        "Expert opinions converge on key recommendations",
-        "Integrated 2 diverse academic sources",
-        "Cross-validation shows high inter-source agreement",
-        "Longitudinal trends demonstrate consistent patterns",
-        "Meta-analysis reveals robust effect sizes"
-      ],
-      "insights": [
-        "Strategic insight",
-        "Strategic insight",
-        "Video content demonstrates practical applications",
-        "Community identifies implementation challenges",
-        "Expert predictions align on adoption timeline",
-        "Research validates trends with statistical confidence",
-        "Multi-source triangulation increases reliability"
-      ],
-      "sources": [
-        {
-          "title": "Source 1",
-          "url": "https://temydeedigital.com/blog/hubspot-crm-vs-zoho-crm/",
-          "summary": "Referenced in analysis",
-          "agent": "Market Intelligence",
-          "source_type": "Web Search",
-          "medium": "Perplexity API"
-        },
-        {
-          "title": "Source 2",
-          "url": "https://www.appvizer.com/magazine/customer/client-relationship-mgt/bigin-vs-zoho-crm",
-          "summary": "Referenced in analysis",
-          "agent": "Market Intelligence",
-          "source_type": "Web Search",
-          "medium": "Perplexity API"
-        },
-        {
-          "title": "[MOCK] Video Analysis #1 - SOHO CRM need to compare with other CRM's is that good to go with this?",
-          "url": "https://youtube.com/watch?v=mock1",
-          "summary": "Expert video commentary on SOHO CRM need to compare with other CRM's is that good to go with this?",
-          "agent": "Sentiment Analytics",
-          "source_type": "Mock Video",
-          "medium": "Mock YouTube"
-        },
-        {
-          "title": "[MOCK] Video Analysis #2 - SOHO CRM need to compare with other CRM's is that good to go with this?",
-          "url": "https://youtube.com/watch?v=mock2",
-          "summary": "Expert video commentary on SOHO CRM need to compare with other CRM's is that good to go with this?",
-          "agent": "Sentiment Analytics",
-          "source_type": "Mock Video",
-          "medium": "Mock YouTube"
-        },
-        {
-          "title": "[MOCK] Academic Paper #1 - SOHO CRM need to compare with other CRM's is that good to go with this?",
-          "url": "https://example.com/paper-1",
-          "summary": "Peer-reviewed research on SOHO CRM need to compare with other CRM's is that good to go with this?",
-          "agent": "Data Intelligence",
-          "source_type": "Mock Academic",
-          "medium": "Mock arXiv+News"
-        },
-        {
-          "title": "[MOCK] Academic Paper #2 - SOHO CRM need to compare with other CRM's is that good to go with this?",
-          "url": "https://example.com/paper-2",
-          "summary": "Peer-reviewed research on SOHO CRM need to compare with other CRM's is that good to go with this?",
-          "agent": "Data Intelligence",
-          "source_type": "Mock Academic",
-          "medium": "Mock arXiv+News"
-        }
-      ],
-      "total_cost": 0.00275,
-      "total_tokens": 1375,
-      "execution_time": 28.32108211517334,
-      "confidence_score": 79,
-      "mock_mode": false,
-      "agent_data": [
-        {
-          "agent_name": "Market Intelligence",
-          "source_count": 2,
-          "sources_retrieved": 8,
-          "findings_count": 2,
-          "insights_count": 2,
-          "cost": 0.00275,
-          "tokens": 1375,
-          "prompt_tokens": 507,
-          "completion_tokens": 868,
-          "execution_time": 25.295167207717896,
-          "status": "✅ Success",
-          "model_used": "sonar-pro",
-          "model_type": "Quick Search",
-          "medium": "Perplexity API",
-          "data_type": "Web Search Results"
-        },
-        {
-          "agent_name": "Sentiment Analytics",
-          "source_count": 2,
-          "sources_retrieved": 2,
-          "findings_count": 3,
-          "insights_count": 3,
-          "cost": 0.0,
-          "tokens": 0,
-          "prompt_tokens": 0,
-          "completion_tokens": 0,
-          "execution_time": 1.5178146362304688,
-          "status": "✅ Success (Mock)",
-          "model_used": "N/A",
-          "model_type": "N/A",
-          "medium": "Mock YouTube API",
-          "data_type": "Video Analysis"
-        },
-        {
-          "agent_name": "Data Intelligence",
-          "source_count": 2,
-          "sources_retrieved": 2,
-          "findings_count": 4,
-          "insights_count": 3,
-          "cost": 0.0,
-          "tokens": 0,
-          "prompt_tokens": 0,
-          "completion_tokens": 0,
-          "execution_time": 1.5081002712249756,
-          "status": "✅ Success (Mock)",
-          "model_used": "N/A",
-          "model_type": "N/A",
-          "medium": "Mock APIs",
-          "data_type": "Academic Data"
-        }
-      ],
-      "agent_results": {
-        "Market Intelligence": {
-          "success": true,
-          "agent_name": "Market Intelligence",
-          "model_used": "sonar-pro",
-          "model_type": "Quick Search",
-          "summary": " 1. Research Overview\n\nThe comparative analysis of SOHO (Small Office/Home Office) CRM solutions represents a critical area of business technology research, particularly as small and medium enterprises increasingly rely on customer relationship management systems for competitive advantage. The research question addresses the strategic decision-making process for SOHO businesses evaluating CRM platforms against established market leaders. Current scholarly understanding emphasizes the importance of feature alignment, scalability, and cost-effectiveness in CRM selection for resource-constrained organizations.\n\n",
-          "findings": [
-            "Finding from analysis",
-            "Finding from analysis"
-          ],
-          "insights": [
-            "Strategic insight",
-            "Strategic insight"
-          ],
-          "sources": [
-            {
-              "title": "Source 1",
-              "url": "https://temydeedigital.com/blog/hubspot-crm-vs-zoho-crm/",
-              "summary": "Referenced in analysis",
-              "agent": "Market Intelligence",
-              "source_type": "Web Search",
-              "medium": "Perplexity API"
-            },
-            {
-              "title": "Source 2",
-              "url": "https://www.appvizer.com/magazine/customer/client-relationship-mgt/bigin-vs-zoho-crm",
-              "summary": "Referenced in analysis",
-              "agent": "Market Intelligence",
-              "source_type": "Web Search",
-              "medium": "Perplexity API"
-            }
-          ],
-          "source_count": 2,
-          "sources_retrieved": 8,
-          "tokens": 1375,
-          "prompt_tokens": 507,
-          "completion_tokens": 868,
-          "cost": 0.00275,
-          "execution_time": 25.295167207717896,
-          "status": "✅ Success",
-          "medium": "Perplexity API",
-          "data_type": "Web Search Results"
-        },
-        "Sentiment Analytics": {
-          "success": true,
-          "agent_name": "Sentiment Analytics",
-          "summary": "Sentiment analysis of 2 video sources reveals positive trends",
-          "findings": [
-            "Analyzed 2 videos with high engagement",
-            "Positive sentiment dominates community discussions",
-            "Expert opinions converge on key recommendations"
-          ],
-          "insights": [
-            "Video content demonstrates practical applications",
-            "Community identifies implementation challenges",
-            "Expert predictions align on adoption timeline"
-          ],
-          "sources": [
-            {
-              "title": "[MOCK] Video Analysis #1 - SOHO CRM need to compare with other CRM's is that good to go with this?",
-              "url": "https://youtube.com/watch?v=mock1",
-              "summary": "Expert video commentary on SOHO CRM need to compare with other CRM's is that good to go with this?",
-              "agent": "Sentiment Analytics",
-              "source_type": "Mock Video",
-              "medium": "Mock YouTube"
-            },
-            {
-              "title": "[MOCK] Video Analysis #2 - SOHO CRM need to compare with other CRM's is that good to go with this?",
-              "url": "https://youtube.com/watch?v=mock2",
-              "summary": "Expert video commentary on SOHO CRM need to compare with other CRM's is that good to go with this?",
-              "agent": "Sentiment Analytics",
-              "source_type": "Mock Video",
-              "medium": "Mock YouTube"
-            }
-          ],
-          "source_count": 2,
-          "sources_retrieved": 2,
-          "tokens": 0,
-          "cost": 0.0,
-          "execution_time": 1.5178146362304688,
-          "status": "✅ Success (Mock)",
-          "medium": "Mock YouTube API",
-          "data_type": "Video Analysis"
-        },
-        "Data Intelligence": {
-          "success": true,
-          "agent_name": "Data Intelligence",
-          "summary": "Data synthesis of 2 academic sources with statistical validation",
-          "findings": [
-            "Integrated 2 diverse academic sources",
-            "Cross-validation shows high inter-source agreement",
-            "Longitudinal trends demonstrate consistent patterns",
-            "Meta-analysis reveals robust effect sizes"
-          ],
-          "insights": [
-            "Research validates trends with statistical confidence",
-            "Multi-source triangulation increases reliability",
-            "Predictive analytics suggest sustained growth"
-          ],
-          "sources": [
-            {
-              "title": "[MOCK] Academic Paper #1 - SOHO CRM need to compare with other CRM's is that good to go with this?",
-              "url": "https://example.com/paper-1",
-              "summary": "Peer-reviewed research on SOHO CRM need to compare with other CRM's is that good to go with this?",
-              "agent": "Data Intelligence",
-              "source_type": "Mock Academic",
-              "medium": "Mock arXiv+News"
-            },
-            {
-              "title": "[MOCK] Academic Paper #2 - SOHO CRM need to compare with other CRM's is that good to go with this?",
-              "url": "https://example.com/paper-2",
-              "summary": "Peer-reviewed research on SOHO CRM need to compare with other CRM's is that good to go with this?",
-              "agent": "Data Intelligence",
-              "source_type": "Mock Academic",
-              "medium": "Mock arXiv+News"
-            }
-          ],
-          "source_count": 2,
-          "sources_retrieved": 2,
-          "tokens": 0,
-          "cost": 0.0,
-          "execution_time": 1.5081002712249756,
-          "status": "✅ Success (Mock)",
-          "medium": "Mock APIs",
-          "data_type": "Academic Data"
-        }
-      }
-    }
-  },
-  {
-    "query": "SOHO India based company competing major companies is good to adapt/migrate SOHO for office works",
+    "query": "SOHO indian IT company in chennai making global waves",
     "domain": "Technology Trends",
-    "timestamp": "2025-10-07 14:53:26",
+    "timestamp": "2025-10-07 16:12:25",
     "agents_state": {
       "Market Intelligence": true,
       "Sentiment Analytics": true,
@@ -1429,552 +370,220 @@
     "sentiment_sources": 2,
     "data_sources": 2,
     "results": {
-      "query": "SOHO India based company competing major companies is good to adapt/migrate SOHO for office works",
+      "query": "SOHO indian IT company in chennai making global waves",
       "domain": "Technology Trends",
-      "timestamp": "2025-10-07 14:53:26",
+      "timestamp": "2025-10-07 16:12:25",
       "agents_used": [
         "Market Intelligence",
         "Sentiment Analytics",
         "Data Intelligence"
       ],
       "model_type": "Quick Search",
-      "summary": " Executive Summary\n\nThe query focuses on whether a Small Office/Home Office (SOHO) setup is suitable for an India-based company competing with major companies. This analysis will explore the feasibility of adopting SOHO for office work, considering technological advancements, market trends, and strategic insights.\n\n",
+      "summary": "Academic research analysis from 2 sources",
       "key_findings": [
-        "Finding from analysis",
-        "Finding from analysis",
-        "Analyzed 2 videos with high engagement",
-        "Positive sentiment dominates community discussions",
-        "Expert opinions converge on key recommendations",
-        "Integrated 2 diverse academic sources",
-        "Cross-validation shows high inter-source agreement",
-        "Longitudinal trends demonstrate consistent patterns",
-        "Meta-analysis reveals robust effect sizes"
+        "Two key findings about **Zoho**, a prominent Indian IT company headquartered in Chennai making global waves, are:",
+        "1. **Innovative Business Model and Global SaaS Leadership**: Zoho has developed a differentiated business model focused on deep product integration, cost efficiency, and customer empowerment. This approach has enabled Zoho to achieve sustainable growth and significant global market relevance, with annual revenues exceeding ₹8,700 crore in FY23. Zoho's verticalized strategy allows it to serve diverse industries such as healthcare, finance, retail, and education effectively. Its commitment to data privacy, product independence, and employee-driven development presents an alternative model for building global software enterprises from emerging economies like India[2].",
+        "Found 2 academic sources",
+        "Research shows peer-reviewed insights",
+        "Academic consensus on key findings"
       ],
       "insights": [
-        "Strategic insight",
-        "Strategic insight",
-        "Video content demonstrates practical applications",
-        "Community identifies implementation challenges",
-        "Expert predictions align on adoption timeline",
-        "Research validates trends with statistical confidence",
-        "Multi-source triangulation increases reliability"
+        "2. **Global Expansion and Competitive Positioning**: Zoho has successfully expanded its geographic footprint with significant revenue shares from North America, Asia, and Europe. It is recognized for challenging global tech giants like Microsoft and Google in the SaaS (Software as a Service) space, reshaping the global software landscape by leveraging localized innovation and platform thinking. Zoho's rise exemplifies how Indian IT companies can compete on a global scale without compromising on values such as privacy, decentralization, and sustainability[2][6].",
+        "These insights highlight Zoho's role as a Chennai-based IT company that is not only a leader in SaaS innovation but also a global competitor reshaping the software industry.",
+        "Academic research validates topic",
+        "Multiple studies support conclusions"
       ],
       "sources": [
         {
-          "title": "Source 1",
-          "url": "https://www.businesstoday.in/latest/corporate/story/gccs-drive-40-of-indias-office-demand-next-stop-tier-ii-cities-493193-2025-09-09",
-          "summary": "Referenced in analysis",
+          "title": "Source #1 - SOHO indian IT company in chennai making global wa",
+          "url": "https://www.guvi.in/blog/top-it-companies-in-chennai/",
+          "summary": "Research source for: SOHO indian IT company in chennai making global wa",
           "agent": "Market Intelligence",
-          "source_type": "Web Search",
+          "source_type": "Web Research",
           "medium": "Perplexity API"
         },
         {
-          "title": "Source 2",
-          "url": "https://www.squarea.io/media/",
-          "summary": "Referenced in analysis",
+          "title": "Source #2 - SOHO indian IT company in chennai making global wa",
+          "url": "https://kuey.net/index.php/kuey/article/download/10077/7704/18923",
+          "summary": "Research source for: SOHO indian IT company in chennai making global wa",
           "agent": "Market Intelligence",
-          "source_type": "Web Search",
+          "source_type": "Web Research",
           "medium": "Perplexity API"
         },
         {
-          "title": "[MOCK] Video Analysis #1 - SOHO India based company competing major companies is good to adapt/migrate SOHO for office works",
-          "url": "https://youtube.com/watch?v=mock1",
-          "summary": "Expert video commentary on SOHO India based company competing major companies is good to adapt/migrate SOHO for office works",
-          "agent": "Sentiment Analytics",
-          "source_type": "Mock Video",
-          "medium": "Mock YouTube"
-        },
-        {
-          "title": "[MOCK] Video Analysis #2 - SOHO India based company competing major companies is good to adapt/migrate SOHO for office works",
-          "url": "https://youtube.com/watch?v=mock2",
-          "summary": "Expert video commentary on SOHO India based company competing major companies is good to adapt/migrate SOHO for office works",
-          "agent": "Sentiment Analytics",
-          "source_type": "Mock Video",
-          "medium": "Mock YouTube"
-        },
-        {
-          "title": "[MOCK] Academic Paper #1 - SOHO India based company competing major companies is good to adapt/migrate SOHO for office works",
-          "url": "https://example.com/paper-1",
-          "summary": "Peer-reviewed research on SOHO India based company competing major companies is good to adapt/migrate SOHO for office works",
+          "title": "Control of Wave Packet Revivals Using Geometric Phases",
+          "url": "http://arxiv.org/abs/quant-ph/9910101v1",
+          "summary": "Wave packets in a system governed by a Hamiltonian with a generic nonlinear\nspectrum typically exhibit both full and fractional revivals. It is shown that\nthe latter can be eliminated by inducing suit",
           "agent": "Data Intelligence",
-          "source_type": "Mock Academic",
-          "medium": "Mock arXiv+News"
+          "source_type": "Academic",
+          "medium": "arXiv API"
         },
         {
-          "title": "[MOCK] Academic Paper #2 - SOHO India based company competing major companies is good to adapt/migrate SOHO for office works",
-          "url": "https://example.com/paper-2",
-          "summary": "Peer-reviewed research on SOHO India based company competing major companies is good to adapt/migrate SOHO for office works",
+          "title": "Structure and Evolution of Indian Physics Co-authorship Networks",
+          "url": "http://arxiv.org/abs/1801.05400v1",
+          "summary": "We trace the evolution of Indian physics community from 1919 to 2013 by\nanalysing the coauthorship network constructed from papers published by authors\nin India in American Physical Society journals. ",
           "agent": "Data Intelligence",
-          "source_type": "Mock Academic",
-          "medium": "Mock arXiv+News"
+          "source_type": "Academic",
+          "medium": "arXiv API"
         }
       ],
-      "total_cost": 0.003088,
-      "total_tokens": 1544,
-      "execution_time": 10.971088886260986,
-      "confidence_score": 79,
+      "total_cost": 0.00087,
+      "total_tokens": 316,
+      "execution_time": 7.95637845993042,
+      "confidence_score": 76,
       "mock_mode": false,
       "agent_data": [
         {
           "agent_name": "Market Intelligence",
           "source_count": 2,
-          "sources_retrieved": 13,
+          "sources_retrieved": 2,
           "findings_count": 2,
           "insights_count": 2,
-          "cost": 0.003088,
-          "tokens": 1544,
-          "prompt_tokens": 520,
-          "completion_tokens": 1024,
-          "execution_time": 7.958603382110596,
+          "cost": 0.00087,
+          "tokens": 316,
+          "prompt_tokens": 39,
+          "completion_tokens": 277,
+          "execution_time": 6.751390218734741,
           "status": "✅ Success",
-          "model_used": "sonar-pro",
+          "model_used": "sonar",
           "model_type": "Quick Search",
           "medium": "Perplexity API",
-          "data_type": "Web Search Results"
+          "data_type": "Live Research"
         },
         {
           "agent_name": "Sentiment Analytics",
-          "source_count": 2,
-          "sources_retrieved": 2,
-          "findings_count": 3,
-          "insights_count": 3,
+          "source_count": 0,
+          "sources_retrieved": 0,
+          "findings_count": 0,
+          "insights_count": 0,
           "cost": 0.0,
           "tokens": 0,
           "prompt_tokens": 0,
           "completion_tokens": 0,
-          "execution_time": 1.5110013484954834,
-          "status": "✅ Success (Mock)",
+          "execution_time": 0.2829771041870117,
+          "status": "✅ Success",
           "model_used": "N/A",
           "model_type": "N/A",
-          "medium": "Mock YouTube API",
+          "medium": "YouTube API",
           "data_type": "Video Analysis"
         },
         {
           "agent_name": "Data Intelligence",
           "source_count": 2,
           "sources_retrieved": 2,
-          "findings_count": 4,
-          "insights_count": 3,
+          "findings_count": 3,
+          "insights_count": 2,
           "cost": 0.0,
           "tokens": 0,
           "prompt_tokens": 0,
           "completion_tokens": 0,
-          "execution_time": 1.5014841556549072,
-          "status": "✅ Success (Mock)",
+          "execution_time": 0.922011137008667,
+          "status": "✅ Success",
           "model_used": "N/A",
           "model_type": "N/A",
-          "medium": "Mock APIs",
-          "data_type": "Academic Data"
+          "medium": "arXiv API",
+          "data_type": "Academic Research"
         }
       ],
       "agent_results": {
         "Market Intelligence": {
           "success": true,
           "agent_name": "Market Intelligence",
-          "model_used": "sonar-pro",
+          "summary": "Two key findings about **Zoho**, a prominent Indian IT company headquartered in Chennai making global waves, are:\n\n1. **Innovative Business Model and Global SaaS Leadership**: Zoho has developed a differentiated business model focused on deep product integration, cost efficiency, and customer empowerment. This approach has enabled Zoho to achieve sustainable growth and significant global market relevance, with annual revenues exceeding ₹8,700 crore in FY23. Zoho's verticalized strategy allows it",
+          "findings": [
+            "Two key findings about **Zoho**, a prominent Indian IT company headquartered in Chennai making global waves, are:",
+            "1. **Innovative Business Model and Global SaaS Leadership**: Zoho has developed a differentiated business model focused on deep product integration, cost efficiency, and customer empowerment. This approach has enabled Zoho to achieve sustainable growth and significant global market relevance, with annual revenues exceeding ₹8,700 crore in FY23. Zoho's verticalized strategy allows it to serve diverse industries such as healthcare, finance, retail, and education effectively. Its commitment to data privacy, product independence, and employee-driven development presents an alternative model for building global software enterprises from emerging economies like India[2]."
+          ],
+          "insights": [
+            "2. **Global Expansion and Competitive Positioning**: Zoho has successfully expanded its geographic footprint with significant revenue shares from North America, Asia, and Europe. It is recognized for challenging global tech giants like Microsoft and Google in the SaaS (Software as a Service) space, reshaping the global software landscape by leveraging localized innovation and platform thinking. Zoho's rise exemplifies how Indian IT companies can compete on a global scale without compromising on values such as privacy, decentralization, and sustainability[2][6].",
+            "These insights highlight Zoho's role as a Chennai-based IT company that is not only a leader in SaaS innovation but also a global competitor reshaping the software industry."
+          ],
+          "sources": [
+            {
+              "title": "Source #1 - SOHO indian IT company in chennai making global wa",
+              "url": "https://www.guvi.in/blog/top-it-companies-in-chennai/",
+              "summary": "Research source for: SOHO indian IT company in chennai making global wa",
+              "agent": "Market Intelligence",
+              "source_type": "Web Research",
+              "medium": "Perplexity API"
+            },
+            {
+              "title": "Source #2 - SOHO indian IT company in chennai making global wa",
+              "url": "https://kuey.net/index.php/kuey/article/download/10077/7704/18923",
+              "summary": "Research source for: SOHO indian IT company in chennai making global wa",
+              "agent": "Market Intelligence",
+              "source_type": "Web Research",
+              "medium": "Perplexity API"
+            }
+          ],
+          "source_count": 2,
+          "sources_retrieved": 2,
+          "tokens": 316,
+          "prompt_tokens": 39,
+          "completion_tokens": 277,
+          "cost": 0.00087,
+          "status": "✅ Success",
+          "model_used": "sonar",
           "model_type": "Quick Search",
-          "summary": " Executive Summary\n\nThe query focuses on whether a Small Office/Home Office (SOHO) setup is suitable for an India-based company competing with major companies. This analysis will explore the feasibility of adopting SOHO for office work, considering technological advancements, market trends, and strategic insights.\n\n",
-          "findings": [
-            "Finding from analysis",
-            "Finding from analysis"
-          ],
-          "insights": [
-            "Strategic insight",
-            "Strategic insight"
-          ],
-          "sources": [
-            {
-              "title": "Source 1",
-              "url": "https://www.businesstoday.in/latest/corporate/story/gccs-drive-40-of-indias-office-demand-next-stop-tier-ii-cities-493193-2025-09-09",
-              "summary": "Referenced in analysis",
-              "agent": "Market Intelligence",
-              "source_type": "Web Search",
-              "medium": "Perplexity API"
-            },
-            {
-              "title": "Source 2",
-              "url": "https://www.squarea.io/media/",
-              "summary": "Referenced in analysis",
-              "agent": "Market Intelligence",
-              "source_type": "Web Search",
-              "medium": "Perplexity API"
-            }
-          ],
-          "source_count": 2,
-          "sources_retrieved": 13,
-          "tokens": 1544,
-          "prompt_tokens": 520,
-          "completion_tokens": 1024,
-          "cost": 0.003088,
-          "execution_time": 7.958603382110596,
-          "status": "✅ Success",
           "medium": "Perplexity API",
-          "data_type": "Web Search Results"
+          "data_type": "Live Research",
+          "execution_time": 6.751390218734741
         },
         "Sentiment Analytics": {
           "success": true,
           "agent_name": "Sentiment Analytics",
-          "summary": "Sentiment analysis of 2 video sources reveals positive trends",
-          "findings": [
-            "Analyzed 2 videos with high engagement",
-            "Positive sentiment dominates community discussions",
-            "Expert opinions converge on key recommendations"
-          ],
-          "insights": [
-            "Video content demonstrates practical applications",
-            "Community identifies implementation challenges",
-            "Expert predictions align on adoption timeline"
-          ],
-          "sources": [
-            {
-              "title": "[MOCK] Video Analysis #1 - SOHO India based company competing major companies is good to adapt/migrate SOHO for office works",
-              "url": "https://youtube.com/watch?v=mock1",
-              "summary": "Expert video commentary on SOHO India based company competing major companies is good to adapt/migrate SOHO for office works",
-              "agent": "Sentiment Analytics",
-              "source_type": "Mock Video",
-              "medium": "Mock YouTube"
-            },
-            {
-              "title": "[MOCK] Video Analysis #2 - SOHO India based company competing major companies is good to adapt/migrate SOHO for office works",
-              "url": "https://youtube.com/watch?v=mock2",
-              "summary": "Expert video commentary on SOHO India based company competing major companies is good to adapt/migrate SOHO for office works",
-              "agent": "Sentiment Analytics",
-              "source_type": "Mock Video",
-              "medium": "Mock YouTube"
-            }
-          ],
-          "source_count": 2,
-          "sources_retrieved": 2,
+          "summary": "YouTube analysis for: SOHO indian IT company in chennai making global waves",
+          "findings": [],
+          "insights": [],
+          "sources": [],
+          "source_count": 0,
+          "sources_retrieved": 0,
           "tokens": 0,
           "cost": 0.0,
-          "execution_time": 1.5110013484954834,
-          "status": "✅ Success (Mock)",
-          "medium": "Mock YouTube API",
+          "execution_time": 0.2829771041870117,
+          "status": "✅ Success",
+          "medium": "YouTube API",
           "data_type": "Video Analysis"
         },
         "Data Intelligence": {
           "success": true,
           "agent_name": "Data Intelligence",
-          "summary": "Data synthesis of 2 academic sources with statistical validation",
+          "summary": "Academic research analysis from 2 sources",
           "findings": [
-            "Integrated 2 diverse academic sources",
-            "Cross-validation shows high inter-source agreement",
-            "Longitudinal trends demonstrate consistent patterns",
-            "Meta-analysis reveals robust effect sizes"
+            "Found 2 academic sources",
+            "Research shows peer-reviewed insights",
+            "Academic consensus on key findings"
           ],
           "insights": [
-            "Research validates trends with statistical confidence",
-            "Multi-source triangulation increases reliability",
-            "Predictive analytics suggest sustained growth"
+            "Academic research validates topic",
+            "Multiple studies support conclusions"
           ],
           "sources": [
             {
-              "title": "[MOCK] Academic Paper #1 - SOHO India based company competing major companies is good to adapt/migrate SOHO for office works",
-              "url": "https://example.com/paper-1",
-              "summary": "Peer-reviewed research on SOHO India based company competing major companies is good to adapt/migrate SOHO for office works",
+              "title": "Control of Wave Packet Revivals Using Geometric Phases",
+              "url": "http://arxiv.org/abs/quant-ph/9910101v1",
+              "summary": "Wave packets in a system governed by a Hamiltonian with a generic nonlinear\nspectrum typically exhibit both full and fractional revivals. It is shown that\nthe latter can be eliminated by inducing suit",
               "agent": "Data Intelligence",
-              "source_type": "Mock Academic",
-              "medium": "Mock arXiv+News"
+              "source_type": "Academic",
+              "medium": "arXiv API"
             },
             {
-              "title": "[MOCK] Academic Paper #2 - SOHO India based company competing major companies is good to adapt/migrate SOHO for office works",
-              "url": "https://example.com/paper-2",
-              "summary": "Peer-reviewed research on SOHO India based company competing major companies is good to adapt/migrate SOHO for office works",
+              "title": "Structure and Evolution of Indian Physics Co-authorship Networks",
+              "url": "http://arxiv.org/abs/1801.05400v1",
+              "summary": "We trace the evolution of Indian physics community from 1919 to 2013 by\nanalysing the coauthorship network constructed from papers published by authors\nin India in American Physical Society journals. ",
               "agent": "Data Intelligence",
-              "source_type": "Mock Academic",
-              "medium": "Mock arXiv+News"
+              "source_type": "Academic",
+              "medium": "arXiv API"
             }
           ],
           "source_count": 2,
           "sources_retrieved": 2,
           "tokens": 0,
           "cost": 0.0,
-          "execution_time": 1.5014841556549072,
-          "status": "✅ Success (Mock)",
-          "medium": "Mock APIs",
-          "data_type": "Academic Data"
-        }
-      }
-    }
-  },
-  {
-    "query": "SOHO new startup of india took over big companies like google meta microsoft and has its own office suite and app is good to adapt/migrate SOHO for office works",
-    "domain": "Technology Trends",
-    "timestamp": "2025-10-07 14:56:18",
-    "agents_state": {
-      "Market Intelligence": true,
-      "Sentiment Analytics": true,
-      "Data Intelligence": true
-    },
-    "model_type": "Advanced Reasoning",
-    "market_sources": 2,
-    "sentiment_sources": 2,
-    "data_sources": 2,
-    "results": {
-      "query": "SOHO new startup of india took over big companies like google meta microsoft and has its own office suite and app is good to adapt/migrate SOHO for office works",
-      "domain": "Technology Trends",
-      "timestamp": "2025-10-07 14:56:18",
-      "agents_used": [
-        "Market Intelligence",
-        "Sentiment Analytics",
-        "Data Intelligence"
-      ],
-      "model_type": "Advanced Reasoning",
-      "summary": " 1. Technology Overview\n\nZoho Corporation represents a comprehensive cloud-based business software ecosystem built on a unified architecture. The company has developed over 55 integrated applications designed primarily for small and medium-sized businesses, though scalable for enterprise use[2]. Zoho's current maturity stage positions it as a **privacy-first, affordable alternative** to Google Workspace and Microsoft 365, with significant market traction globally[1].\n\n",
-      "key_findings": [
-        "Finding from analysis",
-        "Finding from analysis",
-        "Analyzed 2 videos with high engagement",
-        "Positive sentiment dominates community discussions",
-        "Expert opinions converge on key recommendations",
-        "Integrated 2 diverse academic sources",
-        "Cross-validation shows high inter-source agreement",
-        "Longitudinal trends demonstrate consistent patterns",
-        "Meta-analysis reveals robust effect sizes"
-      ],
-      "insights": [
-        "Strategic insight",
-        "Strategic insight",
-        "Video content demonstrates practical applications",
-        "Community identifies implementation challenges",
-        "Expert predictions align on adoption timeline",
-        "Research validates trends with statistical confidence",
-        "Multi-source triangulation increases reliability"
-      ],
-      "sources": [
-        {
-          "title": "Source 1",
-          "url": "https://www.netizen.page/2025/10/zoho-indias-answer-to-google-and.html",
-          "summary": "Referenced in analysis",
-          "agent": "Market Intelligence",
-          "source_type": "Web Search",
-          "medium": "Perplexity API"
-        },
-        {
-          "title": "Source 2",
-          "url": "https://en.wikipedia.org/wiki/Zoho_Corporation",
-          "summary": "Referenced in analysis",
-          "agent": "Market Intelligence",
-          "source_type": "Web Search",
-          "medium": "Perplexity API"
-        },
-        {
-          "title": "[MOCK] Video Analysis #1 - SOHO new startup of india took over big companies like google meta microsoft and has its own office suite and app is good to adapt/migrate SOHO for office works",
-          "url": "https://youtube.com/watch?v=mock1",
-          "summary": "Expert video commentary on SOHO new startup of india took over big companies like google meta microsoft and has its own office suite and app is good to adapt/migrate SOHO for office works",
-          "agent": "Sentiment Analytics",
-          "source_type": "Mock Video",
-          "medium": "Mock YouTube"
-        },
-        {
-          "title": "[MOCK] Video Analysis #2 - SOHO new startup of india took over big companies like google meta microsoft and has its own office suite and app is good to adapt/migrate SOHO for office works",
-          "url": "https://youtube.com/watch?v=mock2",
-          "summary": "Expert video commentary on SOHO new startup of india took over big companies like google meta microsoft and has its own office suite and app is good to adapt/migrate SOHO for office works",
-          "agent": "Sentiment Analytics",
-          "source_type": "Mock Video",
-          "medium": "Mock YouTube"
-        },
-        {
-          "title": "[MOCK] Academic Paper #1 - SOHO new startup of india took over big companies like google meta microsoft and has its own office suite and app is good to adapt/migrate SOHO for office works",
-          "url": "https://example.com/paper-1",
-          "summary": "Peer-reviewed research on SOHO new startup of india took over big companies like google meta microsoft and has its own office suite and app is good to adapt/migrate SOHO for office works",
-          "agent": "Data Intelligence",
-          "source_type": "Mock Academic",
-          "medium": "Mock arXiv+News"
-        },
-        {
-          "title": "[MOCK] Academic Paper #2 - SOHO new startup of india took over big companies like google meta microsoft and has its own office suite and app is good to adapt/migrate SOHO for office works",
-          "url": "https://example.com/paper-2",
-          "summary": "Peer-reviewed research on SOHO new startup of india took over big companies like google meta microsoft and has its own office suite and app is good to adapt/migrate SOHO for office works",
-          "agent": "Data Intelligence",
-          "source_type": "Mock Academic",
-          "medium": "Mock arXiv+News"
-        }
-      ],
-      "total_cost": 0.00422,
-      "total_tokens": 2110,
-      "execution_time": 44.46189761161804,
-      "confidence_score": 79,
-      "mock_mode": false,
-      "agent_data": [
-        {
-          "agent_name": "Market Intelligence",
-          "source_count": 2,
-          "sources_retrieved": 7,
-          "findings_count": 2,
-          "insights_count": 2,
-          "cost": 0.00422,
-          "tokens": 2110,
-          "prompt_tokens": 543,
-          "completion_tokens": 1567,
-          "execution_time": 41.430660009384155,
+          "execution_time": 0.922011137008667,
           "status": "✅ Success",
-          "model_used": "sonar-reasoning-pro",
-          "model_type": "Advanced Reasoning",
-          "medium": "Perplexity API",
-          "data_type": "Web Search Results"
-        },
-        {
-          "agent_name": "Sentiment Analytics",
-          "source_count": 2,
-          "sources_retrieved": 2,
-          "findings_count": 3,
-          "insights_count": 3,
-          "cost": 0.0,
-          "tokens": 0,
-          "prompt_tokens": 0,
-          "completion_tokens": 0,
-          "execution_time": 1.515559434890747,
-          "status": "✅ Success (Mock)",
-          "model_used": "N/A",
-          "model_type": "N/A",
-          "medium": "Mock YouTube API",
-          "data_type": "Video Analysis"
-        },
-        {
-          "agent_name": "Data Intelligence",
-          "source_count": 2,
-          "sources_retrieved": 2,
-          "findings_count": 4,
-          "insights_count": 3,
-          "cost": 0.0,
-          "tokens": 0,
-          "prompt_tokens": 0,
-          "completion_tokens": 0,
-          "execution_time": 1.5156781673431396,
-          "status": "✅ Success (Mock)",
-          "model_used": "N/A",
-          "model_type": "N/A",
-          "medium": "Mock APIs",
-          "data_type": "Academic Data"
-        }
-      ],
-      "agent_results": {
-        "Market Intelligence": {
-          "success": true,
-          "agent_name": "Market Intelligence",
-          "model_used": "sonar-reasoning-pro",
-          "model_type": "Advanced Reasoning",
-          "summary": " 1. Technology Overview\n\nZoho Corporation represents a comprehensive cloud-based business software ecosystem built on a unified architecture. The company has developed over 55 integrated applications designed primarily for small and medium-sized businesses, though scalable for enterprise use[2]. Zoho's current maturity stage positions it as a **privacy-first, affordable alternative** to Google Workspace and Microsoft 365, with significant market traction globally[1].\n\n",
-          "findings": [
-            "Finding from analysis",
-            "Finding from analysis"
-          ],
-          "insights": [
-            "Strategic insight",
-            "Strategic insight"
-          ],
-          "sources": [
-            {
-              "title": "Source 1",
-              "url": "https://www.netizen.page/2025/10/zoho-indias-answer-to-google-and.html",
-              "summary": "Referenced in analysis",
-              "agent": "Market Intelligence",
-              "source_type": "Web Search",
-              "medium": "Perplexity API"
-            },
-            {
-              "title": "Source 2",
-              "url": "https://en.wikipedia.org/wiki/Zoho_Corporation",
-              "summary": "Referenced in analysis",
-              "agent": "Market Intelligence",
-              "source_type": "Web Search",
-              "medium": "Perplexity API"
-            }
-          ],
-          "source_count": 2,
-          "sources_retrieved": 7,
-          "tokens": 2110,
-          "prompt_tokens": 543,
-          "completion_tokens": 1567,
-          "cost": 0.00422,
-          "execution_time": 41.430660009384155,
-          "status": "✅ Success",
-          "medium": "Perplexity API",
-          "data_type": "Web Search Results"
-        },
-        "Sentiment Analytics": {
-          "success": true,
-          "agent_name": "Sentiment Analytics",
-          "summary": "Sentiment analysis of 2 video sources reveals positive trends",
-          "findings": [
-            "Analyzed 2 videos with high engagement",
-            "Positive sentiment dominates community discussions",
-            "Expert opinions converge on key recommendations"
-          ],
-          "insights": [
-            "Video content demonstrates practical applications",
-            "Community identifies implementation challenges",
-            "Expert predictions align on adoption timeline"
-          ],
-          "sources": [
-            {
-              "title": "[MOCK] Video Analysis #1 - SOHO new startup of india took over big companies like google meta microsoft and has its own office suite and app is good to adapt/migrate SOHO for office works",
-              "url": "https://youtube.com/watch?v=mock1",
-              "summary": "Expert video commentary on SOHO new startup of india took over big companies like google meta microsoft and has its own office suite and app is good to adapt/migrate SOHO for office works",
-              "agent": "Sentiment Analytics",
-              "source_type": "Mock Video",
-              "medium": "Mock YouTube"
-            },
-            {
-              "title": "[MOCK] Video Analysis #2 - SOHO new startup of india took over big companies like google meta microsoft and has its own office suite and app is good to adapt/migrate SOHO for office works",
-              "url": "https://youtube.com/watch?v=mock2",
-              "summary": "Expert video commentary on SOHO new startup of india took over big companies like google meta microsoft and has its own office suite and app is good to adapt/migrate SOHO for office works",
-              "agent": "Sentiment Analytics",
-              "source_type": "Mock Video",
-              "medium": "Mock YouTube"
-            }
-          ],
-          "source_count": 2,
-          "sources_retrieved": 2,
-          "tokens": 0,
-          "cost": 0.0,
-          "execution_time": 1.515559434890747,
-          "status": "✅ Success (Mock)",
-          "medium": "Mock YouTube API",
-          "data_type": "Video Analysis"
-        },
-        "Data Intelligence": {
-          "success": true,
-          "agent_name": "Data Intelligence",
-          "summary": "Data synthesis of 2 academic sources with statistical validation",
-          "findings": [
-            "Integrated 2 diverse academic sources",
-            "Cross-validation shows high inter-source agreement",
-            "Longitudinal trends demonstrate consistent patterns",
-            "Meta-analysis reveals robust effect sizes"
-          ],
-          "insights": [
-            "Research validates trends with statistical confidence",
-            "Multi-source triangulation increases reliability",
-            "Predictive analytics suggest sustained growth"
-          ],
-          "sources": [
-            {
-              "title": "[MOCK] Academic Paper #1 - SOHO new startup of india took over big companies like google meta microsoft and has its own office suite and app is good to adapt/migrate SOHO for office works",
-              "url": "https://example.com/paper-1",
-              "summary": "Peer-reviewed research on SOHO new startup of india took over big companies like google meta microsoft and has its own office suite and app is good to adapt/migrate SOHO for office works",
-              "agent": "Data Intelligence",
-              "source_type": "Mock Academic",
-              "medium": "Mock arXiv+News"
-            },
-            {
-              "title": "[MOCK] Academic Paper #2 - SOHO new startup of india took over big companies like google meta microsoft and has its own office suite and app is good to adapt/migrate SOHO for office works",
-              "url": "https://example.com/paper-2",
-              "summary": "Peer-reviewed research on SOHO new startup of india took over big companies like google meta microsoft and has its own office suite and app is good to adapt/migrate SOHO for office works",
-              "agent": "Data Intelligence",
-              "source_type": "Mock Academic",
-              "medium": "Mock arXiv+News"
-            }
-          ],
-          "source_count": 2,
-          "sources_retrieved": 2,
-          "tokens": 0,
-          "cost": 0.0,
-          "execution_time": 1.5156781673431396,
-          "status": "✅ Success (Mock)",
-          "medium": "Mock APIs",
-          "data_type": "Academic Data"
+          "medium": "arXiv API",
+          "data_type": "Academic Research"
         }
       }
     }

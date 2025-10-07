@@ -1,6 +1,6 @@
 """
 Luminar Deep Researcher v2.1.0 - Main Application
-Multi-Agent AI Research Platform
+Multi-Agent AI Research Platform - FIXED VERSION
 """
 
 import streamlit as st
@@ -33,6 +33,10 @@ st.set_page_config(
 # ============================================================================
 # SESSION STATE INITIALIZATION
 # ============================================================================
+
+# History Configuration
+if 'max_history_items' not in st.session_state:
+    st.session_state.max_history_items = 5  # Default limit, configurable
 
 # History Management
 if 'research_history' not in st.session_state:
@@ -83,86 +87,36 @@ if 'total_cost' not in st.session_state:
 if 'market_model_type' not in st.session_state:
     st.session_state.market_model_type = "Quick Search"
 
-if 'session_active' not in st.session_state:
-    st.session_state.session_active = True
-
 # ============================================================================
-# CSS STYLING
+# CUSTOM CSS WITH TEXT OVERFLOW FIXES
 # ============================================================================
 
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-    * { font-family: 'Inter', sans-serif; }
-    
-    #MainMenu {visibility: hidden;}
-    footer {visibility: hidden;}
-    header {visibility: hidden;}
-    
-    .main {
-        background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #fff7ed 100%);
-    }
-    
-    [data-testid="stSidebar"] {
-        background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
-        border-right: 1px solid #e2e8f0;
-    }
-    
     .luminar-header {
-        background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 70%, #f97316 100%);
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         padding: 2rem;
-        border-radius: 16px;
+        border-radius: 12px;
         margin-bottom: 2rem;
-        box-shadow: 0 4px 20px rgba(14, 165, 233, 0.2);
         text-align: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
     
     .luminar-title {
-        font-size: 2.5rem;
-        font-weight: 700;
         color: white;
+        font-size: 2.5rem;
+        font-weight: 800;
         margin: 0;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
     }
     
     .luminar-subtitle {
+        color: rgba(255, 255, 255, 0.9);
         font-size: 1.1rem;
-        color: rgba(255,255,255,0.95);
-        margin-top: 0.5rem;
+        margin: 0.5rem 0 0 0;
     }
     
-    .metric-card {
-        background: white;
-        border-radius: 16px;
-        padding: 1.5rem;
-        border: 1px solid #e2e8f0;
-        transition: all 0.3s ease;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    }
-    
-    .metric-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 8px 24px rgba(14, 165, 233, 0.15);
-        border-color: #0ea5e9;
-    }
-    
-    .metric-label {
-        font-size: 0.875rem;
-        color: #64748b;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        font-weight: 600;
-        margin-bottom: 0.5rem;
-    }
-    
-    .metric-value {
-        font-size: 2rem;
-        font-weight: 700;
-        background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        margin: 0.5rem 0;
-    }
-    
+    /* FIXED: History item text overflow */
     .history-item {
         background: white;
         border-radius: 8px;
@@ -171,12 +125,40 @@ st.markdown("""
         border: 1px solid #e2e8f0;
         cursor: pointer;
         transition: all 0.3s ease;
+        word-wrap: break-word;
+        overflow: hidden;
     }
     
     .history-item:hover {
         border-color: #0ea5e9;
         transform: translateX(4px);
         box-shadow: 0 2px 8px rgba(14, 165, 233, 0.15);
+    }
+    
+    /* FIXED: Text wrapping for long content */
+    .history-item button {
+        white-space: normal !important;
+        text-align: left !important;
+        line-height: 1.4 !important;
+    }
+    
+    /* FIXED: Ensure values don't overflow */
+    .stMetric label, .stMetric > div {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    /* FIXED: Agent card text overflow */
+    .agent-card {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+    
+    /* FIXED: Caption text wrapping */
+    .stCaption {
+        white-space: normal !important;
+        word-wrap: break-word !important;
     }
     
     .content-section {
@@ -205,6 +187,7 @@ st.markdown("""
         border-left: 4px solid #f97316;
         transition: all 0.3s ease;
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        word-wrap: break-word;
     }
     
     .finding-card:hover {
@@ -221,6 +204,8 @@ st.markdown("""
         padding: 0.75rem 2rem;
         font-weight: 600;
         transition: all 0.3s ease;
+        white-space: normal;
+        word-wrap: break-word;
     }
     
     .stButton > button:hover {
@@ -238,23 +223,27 @@ if not st.session_state.research_history:
     load_history_from_json()
 
 # ============================================================================
-# SIDEBAR
+# SIDEBAR WITH FIXED HISTORY DISPLAY
 # ============================================================================
 
 with st.sidebar:
     st.markdown("### 📚 Research History")
     
-    if st.session_state.research_history:
-        # Show last 15 items
-        for idx, item in enumerate(reversed(st.session_state.research_history[-15:])):
+    # FIXED: Show history only if it exists
+    if st.session_state.research_history and len(st.session_state.research_history) > 0:
+        # Show last items based on max_history_items
+        display_count = min(len(st.session_state.research_history), 15)
+        for idx, item in enumerate(reversed(st.session_state.research_history[-display_count:])):
             history_key = f"hist_{item['timestamp']}_{idx}"
             
-            button_label = f"""📄 {item['query'][:30]}...
-🕒 {item['timestamp'][:16]}
-🔬 {item.get('model_type', 'N/A')}
-📊 {item.get('domain', 'N/A')[:20]}"""
+            # FIXED: Truncate query text properly
+            query_display = item['query'][:40] + "..." if len(item['query']) > 40 else item['query']
+            domain_display = item.get('domain', 'N/A')[:25]
             
-            if st.button(button_label, key=history_key, width='stretch'):
+            # FIXED: Create multiline button label with proper formatting
+            button_label = f"📄 {query_display}\n🕒 {item['timestamp'][:16]}\n🔬 {item.get('model_type', 'N/A')[:20]}\n📊 {domain_display}"
+            
+            if st.button(button_label, key=history_key, use_container_width=True):
                 # Restore complete state from history
                 st.session_state.current_results = item['results']
                 st.session_state.current_query = item['query']
@@ -276,74 +265,81 @@ with st.sidebar:
             history_json,
             f"luminar_history_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json",
             "application/json",
-            width='stretch',
+            use_container_width=True,
             key="download_history_json"
         )
-        
-    if st.button("🗑️ Clear History", width='stretch', key="clear_history_btn"):
-            if st.session_state.research_history:
-                save_history_to_json()
-                st.session_state.research_history = []
-                st.session_state.current_results = None
-                st.success("✅ History cleared!")
-                time.sleep(1)
-                st.rerun()
     else:
+        # FIXED: This should only show when there's actually no history
         st.info("No history yet. Start a research query!")
     
+    if st.button("🗑️ Clear History", use_container_width=True, key="clear_history_btn"):
+        if st.session_state.research_history:
+            save_history_to_json()
+            st.session_state.research_history = []
+            st.session_state.current_results = None
+            st.success("✅ History cleared!")
+            time.sleep(1)
+            st.rerun()
+    
     st.markdown("---")
-    st.markdown("### ⚙️ Configuration")
     
-    # MODEL SELECTION
-    with st.expander("🤖 Market Intelligence Model", expanded=True):
-        st.markdown("**Select Research Mode**")
-        
-        for model_name, config in PERPLEXITY_MODELS.items():
-            col1, col2 = st.columns([1, 3])
-            with col1:
-                if st.button(
-                    config["icon"],
-                    key=f"model_{model_name}",
-                    width='stretch'
-                ):
-                    st.session_state.market_model_type = model_name
-            
-            with col2:
-                selected = " ✓" if st.session_state.market_model_type == model_name else ""
-                st.markdown(f"**{model_name}{selected}**")
-                st.caption(f"{config['description']} • {config['estimated_cost']}")
-        
-        st.markdown("---")
-        st.markdown(f"**Selected:** {st.session_state.market_model_type}")
-        st.markdown(f"**Model:** `{PERPLEXITY_MODELS[st.session_state.market_model_type]['model']}`")
+    # History Configuration
+    st.markdown("### ⚙️ History Settings")
+    max_history = st.number_input(
+        "Max history items to store",
+        min_value=1,
+        max_value=50,
+        value=st.session_state.max_history_items,
+        step=1,
+        help="Number of research queries to keep in history before overriding old ones"
+    )
     
-    with st.expander("📊 Agent Settings", expanded=False):
-        st.markdown("**Market Intelligence Sources**")
-        market_sources = st.slider(
+    if max_history != st.session_state.max_history_items:
+        st.session_state.max_history_items = max_history
+        st.success(f"✅ History limit set to {max_history} items")
+    
+    st.markdown("---")
+    
+    # Agent Configuration
+    with st.expander("🤖 Agent Settings", expanded=False):
+        st.markdown("**Market Intelligence**")
+        model_type = st.selectbox(
+            "Model type",
+            list(PERPLEXITY_MODELS.keys()),
+            index=list(PERPLEXITY_MODELS.keys()).index(st.session_state.market_model_type),
+            label_visibility="collapsed",
+            key="model_type_select"
+        )
+        st.session_state.market_model_type = model_type
+        
+        market_sources = st.number_input(
             "Market sources",
-            1, 30, 
-            st.session_state.market_sources, 
-            key="market_slider",
+            value=st.session_state.market_sources,
+            min_value=1,
+            max_value=20,
+            step=1,
             label_visibility="collapsed"
         )
         st.session_state.market_sources = market_sources
         
-        st.markdown("**Sentiment Analytics Sources**")
-        sentiment_sources = st.slider(
+        st.markdown("**Sentiment Analytics**")
+        sentiment_sources = st.number_input(
             "Sentiment sources",
-            1, 20, 
-            st.session_state.sentiment_sources, 
-            key="sentiment_slider",
+            value=st.session_state.sentiment_sources,
+            min_value=1,
+            max_value=10,
+            step=1,
             label_visibility="collapsed"
         )
         st.session_state.sentiment_sources = sentiment_sources
         
-        st.markdown("**Data Intelligence Sources**")
-        data_sources = st.slider(
+        st.markdown("**Data Intelligence**")
+        data_sources = st.number_input(
             "Data sources",
-            1, 20, 
-            st.session_state.data_sources, 
-            key="data_slider",
+            value=st.session_state.data_sources,
+            min_value=1,
+            max_value=20,
+            step=1,
             label_visibility="collapsed"
         )
         st.session_state.data_sources = data_sources
@@ -352,9 +348,9 @@ with st.sidebar:
         st.markdown("**Max Cost per Query ($)**")
         max_cost = st.number_input(
             "Max cost",
-            value=st.session_state.max_cost, 
-            min_value=0.1, 
-            max_value=10.0, 
+            value=st.session_state.max_cost,
+            min_value=0.1,
+            max_value=10.0,
             step=0.1,
             label_visibility="collapsed"
         )
@@ -369,6 +365,7 @@ with st.sidebar:
         st.metric("Cost", f"${st.session_state.total_cost:.4f}")
     
     st.markdown("---")
+    # FIXED: Mock mode toggle with proper state management
     mock_mode = st.toggle("🎭 Mock Mode", value=st.session_state.mock_mode, key="mock_toggle")
     st.session_state.mock_mode = mock_mode
     
@@ -404,9 +401,9 @@ with col2:
     st.metric("Research History", len(st.session_state.research_history))
 
 query = st.text_area(
-    "🔍 Research Question", 
-    value=st.session_state.current_query, 
-    height=120, 
+    "🔍 Research Question",
+    value=st.session_state.current_query,
+    height=120,
     placeholder="Enter your research question here...",
     key="query_input"
 )
@@ -418,28 +415,32 @@ col1, col2, col3 = st.columns(3)
 
 with col1:
     agent_market = st.checkbox(
-        "🌐 Market Intelligence", 
+        "🌐 Market Intelligence",
         value=st.session_state.current_agents.get("Market Intelligence", True),
         key="agent_market_check"
     )
     model_icon = PERPLEXITY_MODELS[st.session_state.market_model_type]["icon"]
-    st.caption(f"{model_icon} {st.session_state.market_model_type} • {st.session_state.market_sources} sources")
+    # FIXED: Proper text wrapping for captions
+    st.caption(f"{model_icon} {st.session_state.market_model_type}")
+    st.caption(f"Sources: {st.session_state.market_sources}")
 
 with col2:
     agent_sentiment = st.checkbox(
-        "📊 Sentiment Analytics", 
+        "📊 Sentiment Analytics",
         value=st.session_state.current_agents.get("Sentiment Analytics", False),
         key="agent_sentiment_check"
     )
-    st.caption(f"🎥 YouTube API • {st.session_state.sentiment_sources} sources")
+    st.caption("🎥 YouTube API")
+    st.caption(f"Sources: {st.session_state.sentiment_sources}")
 
 with col3:
     agent_data = st.checkbox(
-        "📈 Data Intelligence", 
+        "📈 Data Intelligence",
         value=st.session_state.current_agents.get("Data Intelligence", False),
         key="agent_data_check"
     )
-    st.caption(f"📚 arXiv + News • {st.session_state.data_sources} sources")
+    st.caption("📚 arXiv + News")
+    st.caption(f"Sources: {st.session_state.data_sources}")
 
 st.session_state.current_agents = {
     "Market Intelligence": agent_market,
@@ -453,62 +454,50 @@ st.markdown("---")
 # RESEARCH EXECUTION
 # ============================================================================
 
-if st.button("🚀 Start Deep Research", width='stretch', type="primary", key="start_research_btn"):
+if st.button("🚀 Start Deep Research", use_container_width=True, type="primary", key="start_research_btn"):
     if not query:
         st.error("⚠️ Please enter a research question")
     elif not any(st.session_state.current_agents.values()):
-        st.error("⚠️ Please select at least one intelligence agent")
+        st.error("⚠️ Please select at least one agent")
     else:
-        with st.spinner("🔬 Conducting deep research analysis..."):
+        with st.spinner("🔬 Research in progress..."):
             progress_bar = st.progress(0)
             status_text = st.empty()
             
-            status_text.text("Initializing research agents...")
-            progress_bar.progress(0.1)
-            
-            loop = asyncio.new_event_loop()
-            asyncio.set_event_loop(loop)
-            
-            status_text.text("Executing parallel research...")
-            progress_bar.progress(0.3)
-            
-            agent_results = loop.run_until_complete(
-                execute_research(
-                    query, 
-                    domain, 
-                    st.session_state.current_agents, 
-                    st.session_state.market_model_type,
-                    st.session_state.mock_mode,
-                    st.session_state.market_sources,
-                    st.session_state.sentiment_sources,
-                    st.session_state.data_sources
-                )
+            # CRITICAL FIX: Pass mock_mode to execute_research
+            agent_results = execute_research(
+                query=query,
+                domain=domain,
+                agents=st.session_state.current_agents,
+                model_type=st.session_state.market_model_type,
+                market_sources=st.session_state.market_sources,
+                sentiment_sources=st.session_state.sentiment_sources,
+                data_sources=st.session_state.data_sources,
+                progress_callback=lambda p, msg: (progress_bar.progress(p), status_text.text(msg)),
+                mock_mode=st.session_state.mock_mode  # FIXED: Pass the actual mock_mode state
             )
-            loop.close()
             
-            status_text.text("Synthesizing results...")
-            progress_bar.progress(0.8)
-            
-            # Consolidate results
+            # Process results
             all_findings = []
             all_insights = []
             all_sources = []
-            total_tokens = 0
             total_cost = 0.0
+            total_tokens = 0
             total_execution_time = 0.0
-            primary_summary = ""
             agent_data = []
+            
+            primary_summary = "Comprehensive research analysis completed."
             
             for agent_name, result in agent_results.items():
                 if result.get('success'):
-                    if not primary_summary:
-                        primary_summary = result.get('summary', '')
+                    if 'summary' in result and result['summary']:
+                        primary_summary = result['summary']
                     
                     all_findings.extend(result.get('findings', []))
                     all_insights.extend(result.get('insights', []))
                     all_sources.extend(result.get('sources', []))
-                    total_tokens += result.get('tokens', 0)
                     total_cost += result.get('cost', 0.0)
+                    total_tokens += result.get('tokens', 0)
                     total_execution_time += result.get('execution_time', 0.0)
                     
                     agent_data.append({
@@ -573,6 +562,7 @@ if st.button("🚀 Start Deep Research", width='stretch', type="primary", key="s
             st.session_state.total_queries += 1
             st.session_state.total_cost += total_cost
             
+            # FIXED: Implement history limit with override
             if st.session_state.save_history:
                 history_item = {
                     "query": query,
@@ -585,7 +575,15 @@ if st.button("🚀 Start Deep Research", width='stretch', type="primary", key="s
                     "data_sources": st.session_state.data_sources,
                     "results": results
                 }
+                
                 st.session_state.research_history.append(history_item)
+                
+                # FIXED: Implement history limit - remove oldest items if exceeded
+                if len(st.session_state.research_history) > st.session_state.max_history_items:
+                    # Keep only the most recent items
+                    st.session_state.research_history = st.session_state.research_history[-st.session_state.max_history_items:]
+                    console_log(f"History limited to {st.session_state.max_history_items} items (oldest removed)")
+                
                 save_history_to_json()
             
             progress_bar.progress(1.0)
