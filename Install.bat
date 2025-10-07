@@ -19,7 +19,10 @@ python -m pip install streamlit
 python -m pip install python-dotenv
 python -m pip install reportlab
 python -m pip install requests
+python -m pip install matplotlib
+python -m pip install pandas
+python -m pip install dotenv
 echo.
 echo Installation complete!
-echo Run: python run_streamlit.py
+echo Run: start.bat
 pause

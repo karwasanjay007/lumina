@@ -54,6 +54,7 @@ numpy
 
 # Environment & Config
 python-dotenv
+dotenv
 anyio
 typing-extensions
 pydantic
@@ -66,3 +67,6 @@ jsonschema
 # Development & Testing
 pytest
 pytest-asyncio
+
+matplotlib
+pandas

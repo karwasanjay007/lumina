@@ -1,0 +1,95 @@
+{
+  "version": "2.1.0",
+  "description": "Mock research data for Luminar Deep Researcher",
+  "domains": {
+    "Stock Market Analysis": {
+      "summary": "Comprehensive quantitative analysis of '{query}' reveals exceptional market positioning with institutional support reaching 78% of float (up from 62% YoY). Current market capitalization demonstrates 25% YoY growth trajectory, significantly outperforming S&P 500 benchmark by 18 percentage points. Financial performance shows revenue growth of $2.4B (42% YoY increase), operating margin expansion to 28.5% (up 3.2 percentage points), and free cash flow surge of 65% to $850M quarterly.",
+      "findings": [
+        "Market Leadership Position: Commands 32% market share in high-growth sector, outperforming S&P 500 by 18 percentage points over trailing 12 months with consistent alpha generation",
+        "Financial Performance Metrics: Q3 revenue $2.4B (+42% YoY), operating margin expansion to 28.5% (+3.2pp), FCF surge 65% to $850M quarterly, demonstrating operational leverage",
+        "Institutional Validation: Ownership increased to 78% of float from 62% YoY, major additions from Vanguard (+$420M), BlackRock (+$380M), Fidelity (+$290M)",
+        "Analyst Consensus Bullish: 89% Buy rating from 28 of 32 covering analysts, average price target $285 (+34% upside), recent upgrades from JPMorgan and Goldman Sachs",
+        "Technical Momentum Confirmed: RSI 65 (healthy), MACD golden cross formation, 50-day MA crossing 200-day MA, volume trends support continued trajectory",
+        "Valuation Metrics Attractive: Forward P/E 24.5x (vs sector average 32.1x), PEG ratio 1.4, EV/EBITDA 15.2x suggesting room for multiple expansion"
+      ],
+      "insights": [
+        "Investment Thesis: Strong buy opportunity based on fundamental strength (42% revenue growth, 28.5% margins), technical momentum (golden cross, RSI 65), and institutional validation (78% ownership)",
+        "Risk Assessment: Key risks include sector rotation (30% probability), regulatory headwinds (15% probability), macro deceleration (25% probability)",
+        "Portfolio Strategy: Recommend 7-12% allocation for growth investors, 18-24 month horizon, $285 price target, stop-loss at $205"
+      ]
+    },
+    "Medical Research": {
+      "summary": "Evidence-based clinical analysis of '{query}' demonstrates statistically significant efficacy across 15 peer-reviewed randomized controlled trials (total n=12,450 patients). Primary endpoint showed 68% reduction vs placebo (95% CI: 54-79%, p<0.0001) with Number Needed to Treat (NNT) of 4.2 patients. Safety profile remains acceptable with adverse event rate of 12.3% vs 8.7% placebo. FDA Fast Track designation granted Q2 2024 with PDUFA date set for March 2025.",
+      "findings": [
+        "Clinical Efficacy Validated: Phase III trials demonstrate 68% reduction in primary endpoint vs placebo (95% CI: 54-79%, p<0.0001), NNT 4.2",
+        "Safety Profile Acceptable: Adverse event rate 12.3% vs 8.7% placebo, no serious adverse events in pivotal studies (n=3,450)",
+        "Regulatory Pathway Clear: FDA Fast Track designation Q2 2024, PDUFA date March 2025, EMA parallel review with positive CHMP feedback",
+        "Real-World Evidence Strong: Post-marketing surveillance (n=12,000+) shows 64% response rate matching clinical trials",
+        "Cost-Effectiveness Favorable: ICER analysis $45,000/QALY gained (below $50K threshold), supporting broad formulary inclusion",
+        "Market Opportunity Substantial: Addressable population 8.5M US / 24M global, peak sales $4.2-5.8B annually"
+      ],
+      "insights": [
+        "Clinical Significance: Represents meaningful advancement over standard of care with superior efficacy and acceptable safety profile",
+        "Commercial Opportunity: Addressable market 8.5M US / 24M global supporting $4.2-5.8B peak sales, first-line therapy potential",
+        "Healthcare Economics: ICER analysis $45,000/QALY supports broad reimbursement, favorable formulary positioning across major payers"
+      ]
+    },
+    "Technology Trends": {
+      "summary": "Technology ecosystem analysis of '{query}' indicates explosive market adoption with current user base of 2.8M organizations, growing at 85% CAGR. Enterprise penetration reaches 43% of Fortune 500 companies. Technical capabilities demonstrate 4.2x performance improvement over previous generation, with latency reduced to <50ms and accuracy reaching 97.8% on standardized benchmarks. Investment landscape shows $4.2B venture funding across 180+ startups in ecosystem over past 18 months.",
+      "findings": [
+        "Rapid Market Adoption: User base 2.8M organizations growing 85% CAGR, Fortune 500 penetration 43%",
+        "Technical Performance Superior: 4.2x speed improvement vs previous generation, <50ms latency, 97.8% accuracy on benchmarks",
+        "Investment Momentum Strong: $4.2B VC funding across 180+ startups in 18 months, major rounds from Sequoia ($380M), a16z ($290M)",
+        "Open Source Ecosystem Robust: 89K GitHub stars, 15K contributors, 420K dependent repositories creating network effects",
+        "Standards Adoption Progressing: IEEE/ISO frameworks 67% adopted, Linux Foundation providing governance",
+        "Corporate R&D Investment: Combined $8.5B annual allocation from major tech companies signaling long-term commitment"
+      ],
+      "insights": [
+        "Strategic Positioning: Early adoption provides 18-24 month competitive advantage through learning curve effects and ecosystem lock-in",
+        "Implementation Roadmap: Phased approach recommended - pilot (3 months), expansion (6 months), production (12 months)",
+        "Ecosystem Dynamics: Strong network effects and developer community create sustainable moat with high switching costs"
+      ]
+    },
+    "Academic Research": {
+      "summary": "Scholarly meta-analysis of '{query}' synthesizes findings from 28 peer-reviewed publications across top-tier journals including Nature (IF: 49.9), Science (IF: 47.7), and Cell (IF: 41.6). Research demonstrates exceptionally strong methodological rigor with 73% employing randomized controlled design and 84% using double-blind protocols. Meta-analysis of 15 systematic reviews shows consistent effect sizes (Cohen's d = 0.78, 95% CI: 0.65-0.91) with low heterogeneity (I² = 18%).",
+      "findings": [
+        "High-Impact Publications: 28 papers in Nature, Science, Cell with total citations 12,400+, h-index 45",
+        "Methodological Rigor: 73% RCT design, 84% double-blind protocols, median sample size n=1,850, statistical power >0.95",
+        "Replication Success Rate: 19 of 23 key studies replicated independently (83% vs 42% field average)",
+        "Meta-Analysis Consensus: Pooled analysis shows consistent Cohen's d = 0.78 (95% CI: 0.65-0.91), low heterogeneity I² = 18%",
+        "Research Funding Substantial: $124M NIH/NSF grants across 15 institutions, additional $78M private funding",
+        "Publication Momentum: 340% increase in papers over 5 years, inflection point Q2 2023"
+      ],
+      "insights": [
+        "Scientific Significance: Findings represent paradigm shift with 83% replication rate (vs 42% average)",
+        "Research Priorities: Future investigation should focus on long-term outcomes, mechanism validation, clinical translation",
+        "Policy Implications: Evidence base sufficient to inform policy decisions and practice guidelines"
+      ]
+    },
+    "General Research": {
+      "summary": "Multi-dimensional synthesis of '{query}' incorporates 45+ authoritative sources across academic databases (PubMed, JSTOR), industry research (Gartner, Forrester), and news archives (Bloomberg, Reuters). Cross-validation analysis reveals 89% agreement across independent sources using different methodologies. Longitudinal analysis demonstrates 340% increase in research activity over past 5 years with clear inflection point in Q2 2023.",
+      "findings": [
+        "Multi-Source Validation: 45+ authoritative sources with 89% cross-validation agreement across methodologies",
+        "Longitudinal Growth Pattern: 340% increase in activity over 5 years, inflection point Q2 2023",
+        "Geographic Distribution: Research spans 28 countries - US (42%), EU (31%), APAC (19%), RoW (8%)",
+        "Quantitative Validation: Triangulation methodology shows correlation >0.85 across sources, I² = 15%",
+        "Industry Adoption Metrics: 156% YoY increase in enterprise implementations"
+      ],
+      "insights": [
+        "Evidence Quality: Multi-source triangulation provides high-confidence foundation for strategic decision-making",
+        "Growth Trajectory: Current momentum (28% projected CAGR) and leading indicators support measured adoption",
+        "Knowledge Gaps: Additional investigation needed on long-term impacts, demographic variations, implementation barriers"
+      ]
+    }
+  },
+  "source_templates": {
+    "market_intelligence": ["Bloomberg", "Reuters", "Financial Times", "WSJ", "CNBC"],
+    "sentiment_analytics": ["Expert Analysis", "Industry Commentary", "Technical Deep Dive", "Case Study", "Future Trends"],
+    "data_intelligence": ["arXiv", "PubMed", "Nature", "Science", "IEEE"]
+  },
+  "metadata": {
+    "created": "2025-01-07",
+    "author": "Luminar AI Team",
+    "purpose": "Provide realistic mock data for testing and demonstration"
+  }
+}

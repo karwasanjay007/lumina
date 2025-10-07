@@ -253,6 +253,11 @@ def store_in_vector_db(state: ResearchState) -> Dict[str, Dict[str, Any]]:
     total_tokens = sum(chunk["token_count"] for chunk in chunks)
 
     if not df.empty:
+        # Clean currency columns for Arrow compatibility
+        for col in df.columns:
+            if df[col].dtype == object and df[col].astype(str).str.startswith('$').any():
+                df[col] = df[col].astype(str).str.replace(r'[$,]', '', regex=True)
+                df[col] = pd.to_numeric(df[col], errors='coerce')
         table.delete("true")
         table.add(df)
 

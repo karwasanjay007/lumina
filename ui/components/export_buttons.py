@@ -19,7 +19,7 @@ def render_export_buttons(results: dict):
     
     with col1:
         # PDF Export
-        if st.button("📄 Export PDF", use_container_width=True):
+    if st.button("📄 Export PDF", width='stretch'):
             try:
                 pdf_content = export_to_pdf(results)
                 st.download_button(
@@ -34,7 +34,7 @@ def render_export_buttons(results: dict):
     
     with col2:
         # Markdown Export
-        if st.button("📝 Export Markdown", use_container_width=True):
+    if st.button("📝 Export Markdown", width='stretch'):
             try:
                 md_content = export_to_markdown(results)
                 st.download_button(
@@ -55,7 +55,7 @@ def render_export_buttons(results: dict):
             data=json_content,
             file_name=f"{filename_base}.json",
             mime="application/json",
-            use_container_width=True
+            width='stretch'
         )
     
     # Save to history option

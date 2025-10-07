@@ -315,7 +315,7 @@ def render_enhanced_results(results: Dict):
         
         # Add quick stats
         col1, col2, col3, col4 = st.columns(4)
-        with col1:
+    with col1:
             st.metric("📚 Total Sources", results.get('total_sources', 0))
         with col2:
             st.metric("🤖 Agents Used", len(agent_results))
@@ -468,12 +468,12 @@ def render_enhanced_results(results: Dict):
         
         import pandas as pd
         df = pd.DataFrame(agent_data)
-        st.dataframe(df, use_container_width=True, hide_index=True)
+    st.dataframe(df, width='stretch', hide_index=True)
         
         # Domain-specific metrics
-        st.markdown("#### 📊 Research Metrics")
+    st.markdown("#### 📊 Research Metrics")
         
-        col1, col2 = st.columns(2)
+    col1, col2 = st.columns(2)
         
         with col1:
             st.markdown("**Coverage Analysis**")
