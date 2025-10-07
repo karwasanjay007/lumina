@@ -1,7 +1,7 @@
 """
 YouTube Research Agent - Using YouTube Data API v3 Only
 NO FFmpeg, NO yt_dlp, NO whisper dependencies
-FIXED VERSION - API-only approach
+FIXED VERSION - Corrected build_structured_record calls
 """
 from __future__ import annotations
 
@@ -64,57 +64,35 @@ def _get_session() -> Session:
 
 
 def _search_videos(
-    api_key: str,
-    query: str,
-    max_results: int = 5,
-    extra_factor: int = 2,
+    api_key: str, 
+    query: str, 
+    max_results: int,
+    extra_factor: int = 3
 ) -> List[Dict[str, Any]]:
-    """
-    Search YouTube videos using YouTube Data API v3
-    
-    Args:
-        api_key: YouTube Data API v3 key
-        query: Search query
-        max_results: Maximum number of results to return
-        extra_factor: Multiplier for initial search (for filtering)
-    
-    Returns:
-        List of video metadata dictionaries
-    """
+    """Search YouTube videos using Data API v3."""
     session = _get_session()
     published_after = (datetime.utcnow() - timedelta(days=_PUBLISHED_AFTER_DAYS)).isoformat("T") + "Z"
     
+    url = "https://www.googleapis.com/youtube/v3/search"
     params = {
         "part": "snippet",
         "q": query,
         "type": "video",
-        "maxResults": min(max_results * extra_factor, 50),
-        "order": "relevance",
         "publishedAfter": published_after,
+        "maxResults": max_results * extra_factor,
+        "order": "relevance",
         "key": api_key,
-        "relevanceLanguage": "en",
-        "videoCaption": "any",
     }
     
-    url = "https://www.googleapis.com/youtube/v3/search"
-    
-    try:
-        resp = session.get(url, params=params, timeout=15)
-        resp.raise_for_status()
-        data = resp.json()
-    except Exception as exc:
-        logger.exception("YouTube search failed for query '%s'", query)
-        raise RuntimeError(f"YouTube search API error: {exc}") from exc
+    response = session.get(url, params=params, timeout=15)
+    response.raise_for_status()
+    data = response.json()
     
     results = []
     for item in data.get("items", []):
-        video_id = item.get("id", {}).get("videoId")
-        if not video_id:
-            continue
-        
         snippet = item.get("snippet", {})
         results.append({
-            "video_id": video_id,
+            "video_id": item["id"]["videoId"],
             "title": snippet.get("title", ""),
             "channel": snippet.get("channelTitle", ""),
             "channel_id": snippet.get("channelId", ""),
@@ -123,103 +101,70 @@ def _search_videos(
             "thumbnail": snippet.get("thumbnails", {}).get("high", {}).get("url", ""),
         })
     
-    logger.info("Found %d videos for query '%s'", len(results), query)
     return results
 
 
 def _fetch_video_details(api_key: str, video_ids: List[str]) -> Dict[str, Dict[str, Any]]:
-    """
-    Fetch detailed metadata for videos using YouTube Data API v3
-    
-    Args:
-        api_key: YouTube Data API v3 key
-        video_ids: List of video IDs
-    
-    Returns:
-        Dictionary mapping video_id to detailed metadata
-    """
+    """Fetch detailed video information using Data API v3."""
     if not video_ids:
         return {}
     
     session = _get_session()
+    url = "https://www.googleapis.com/youtube/v3/videos"
     params = {
-        "part": "snippet,statistics,contentDetails",
-        "id": ",".join(video_ids[:50]),  # API limit is 50
+        "part": "contentDetails,statistics,snippet",
+        "id": ",".join(video_ids),
         "key": api_key,
     }
     
-    url = "https://www.googleapis.com/youtube/v3/videos"
-    
-    try:
-        resp = session.get(url, params=params, timeout=15)
-        resp.raise_for_status()
-        data = resp.json()
-    except Exception as exc:
-        logger.warning("Video details fetch failed: %s", exc)
-        return {}
+    response = session.get(url, params=params, timeout=15)
+    response.raise_for_status()
+    data = response.json()
     
     details = {}
     for item in data.get("items", []):
-        video_id = item.get("id")
-        if not video_id:
-            continue
-        
+        video_id = item["id"]
+        content = item.get("contentDetails", {})
+        stats = item.get("statistics", {})
         snippet = item.get("snippet", {})
-        statistics = item.get("statistics", {})
-        content_details = item.get("contentDetails", {})
         
         details[video_id] = {
-            "duration": content_details.get("duration", ""),
-            "views": statistics.get("viewCount", "0"),
-            "likes": statistics.get("likeCount", "0"),
-            "comments": statistics.get("commentCount", "0"),
+            "duration": content.get("duration", ""),
+            "views": stats.get("viewCount", "0"),
+            "likes": stats.get("likeCount", "0"),
+            "comments": stats.get("commentCount", "0"),
             "description": snippet.get("description", ""),
             "tags": snippet.get("tags", []),
             "category_id": snippet.get("categoryId", ""),
             "default_language": snippet.get("defaultLanguage", ""),
         }
     
-    logger.info("Fetched details for %d videos", len(details))
     return details
 
 
-def _parse_duration(duration_str: str) -> str:
-    """
-    Convert ISO 8601 duration (PT1H2M10S) to readable format (1:02:10)
-    
-    Args:
-        duration_str: ISO 8601 duration string
-    
-    Returns:
-        Human-readable duration string
-    """
-    if not duration_str or not duration_str.startswith("PT"):
+def _parse_duration(iso_duration: str) -> str:
+    """Convert ISO 8601 duration to human-readable format."""
+    if not iso_duration or not iso_duration.startswith("PT"):
         return "N/A"
     
-    try:
-        duration_str = duration_str[2:]  # Remove PT prefix
-        hours = 0
-        minutes = 0
-        seconds = 0
-        
-        if "H" in duration_str:
-            hours, duration_str = duration_str.split("H")
-            hours = int(hours)
-        
-        if "M" in duration_str:
-            minutes, duration_str = duration_str.split("M")
-            minutes = int(minutes)
-        
-        if "S" in duration_str:
-            seconds = int(duration_str.replace("S", ""))
-        
-        if hours > 0:
-            return f"{hours}:{minutes:02d}:{seconds:02d}"
-        else:
-            return f"{minutes}:{seconds:02d}"
-    except Exception as exc:
-        logger.warning("Failed to parse duration '%s': %s", duration_str, exc)
+    import re
+    pattern = r'PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?'
+    match = re.match(pattern, iso_duration)
+    
+    if not match:
         return "N/A"
+    
+    hours, minutes, seconds = match.groups()
+    parts = []
+    
+    if hours:
+        parts.append(f"{hours}h")
+    if minutes:
+        parts.append(f"{minutes}m")
+    if seconds:
+        parts.append(f"{seconds}s")
+    
+    return " ".join(parts) if parts else "N/A"
 
 
 def _summarize_video(
@@ -230,30 +175,18 @@ def _summarize_video(
     tags: List[str],
     views: str,
     duration: str
-) -> Tuple[str, Any]:
-    """
-    Summarize video based on metadata (no transcript needed)
-    
-    Uses title, description, tags, and stats to generate insights
-    
-    Args:
-        title: Video title
-        channel: Channel name
-        description: Video description
-        url: Video URL
-        tags: List of video tags
-        views: View count
-        duration: Video duration
-    
-    Returns:
-        Tuple of (summary text, metrics dict)
-    """
-    if not description:
-        return "No description available for analysis.", zero_metrics("youtube_summarizer")
+) -> Tuple[str, Dict[str, Any]]:
+    """Generate AI summary from video metadata."""
+    if not title and not description:
+        return "No content available for summary.", {
+            "total_tokens": 0,
+            "cost": 0.0,
+            "prompt_tokens": 0,
+            "completion_tokens": 0
+        }
     
     prompt_template = _load_summary_prompt()
     
-    # Truncate description if too long
     description_excerpt = description[:_SUMMARY_MAX_CHARS]
     if len(description) > _SUMMARY_MAX_CHARS:
         description_excerpt += "..."
@@ -265,7 +198,6 @@ def _summarize_video(
         description=description_excerpt,
     )
     
-    # Add additional context
     context_parts = []
     if tags:
         context_parts.append(f"Tags: {', '.join(tags[:10])}")
@@ -278,7 +210,15 @@ def _summarize_video(
         prompt += "\n\nAdditional Context:\n" + "\n".join(context_parts)
     
     response, metrics = invoke_llm("youtube_summarizer", prompt)
-    return response.content.strip(), metrics
+    
+    metrics_dict = {
+        "total_tokens": getattr(metrics, 'total_tokens', 0),
+        "cost": getattr(metrics, 'cost', 0.0),
+        "prompt_tokens": getattr(metrics, 'prompt_tokens', 0),
+        "completion_tokens": getattr(metrics, 'completion_tokens', 0)
+    }
+    
+    return response.content.strip(), metrics_dict
 
 
 def analyze_youtube(state: ResearchState) -> Dict[str, Dict]:
@@ -286,12 +226,6 @@ def analyze_youtube(state: ResearchState) -> Dict[str, Dict]:
     Collect and summarize YouTube videos using only YouTube Data API v3
     
     NO transcripts, NO FFmpeg, NO whisper - pure API-based analysis
-    
-    Args:
-        state: Research state containing topic and mode
-    
-    Returns:
-        Dictionary with youtube_results containing sources and metadata
     """
     start = time.time()
     api_key = get_youtube_api_key()
@@ -378,16 +312,16 @@ def analyze_youtube(state: ResearchState) -> Dict[str, Dict]:
         total_tokens += metrics.get("total_tokens", 0)
         total_cost += metrics.get("cost", 0.0)
         
-        # Build summary item
-        item = {
-            "published_date": video.get("published_at", ""),
-            "title": video.get("title", ""),
-            "authors": [video.get("channel", "")],
-            "summary": summary_text,
-            "content": None,  # No transcript content
-            "source": url,
-            "pdf_url": None,
-        }
+        # Build summary item with correct parameters
+        item = build_structured_record(
+            published_date=video.get("published_at", ""),
+            title=video.get("title", ""),
+            authors=[video.get("channel", "")] if video.get("channel") else None,
+            summary=summary_text,
+            content=None,  # No transcript content
+            source=url,
+            pdf_url=None,
+        )
         summaries.append(item)
         
         # Build metadata record
@@ -398,8 +332,8 @@ def analyze_youtube(state: ResearchState) -> Dict[str, Dict]:
             "views": views,
             "likes": metadata.get("likes", "0"),
             "comments": metadata.get("comments", "0"),
-            "description": full_description[:500],  # Store excerpt
-            "tags": tags[:10],  # First 10 tags
+            "description": full_description[:500],
+            "tags": tags[:10],
             "thumbnail": video.get("thumbnail", ""),
             "category_id": metadata.get("category_id", ""),
             "language": metadata.get("default_language", "unknown"),
@@ -422,21 +356,11 @@ def analyze_youtube(state: ResearchState) -> Dict[str, Dict]:
         total_cost
     )
     
-    # Build structured output
-    structured_sources = []
-    for idx, (item, meta_rec) in enumerate(zip(summaries, metadata_records), start=1):
-        structured_sources.append(
-            build_structured_record(
-                agent_name="YouTube",
-                source_name=f"video_{idx}",
-                items=[item],
-                metadata=meta_rec
-            )
-        )
-    
+    # FIXED: Return structured sources directly without wrapping
+    # The summaries list already contains properly structured records
     return {
         "youtube_results": {
-            "sources": structured_sources,
+            "sources": summaries,  # FIXED: Direct list of structured records
             "elapsed": elapsed,
             "tokens": total_tokens,
             "cost": total_cost,
@@ -447,6 +371,7 @@ def analyze_youtube(state: ResearchState) -> Dict[str, Dict]:
                 "mode": "api_only",
                 "api_version": "v3",
                 "no_transcripts": True,
+                "metadata_file": str(metadata_file),
             },
         }
     }
