@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luminar Deep Researcher: YouTube Video Analysis</title>
+    <title>Luminar Deep Researcher: Multi-Source Analysis</title>
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -69,8 +69,8 @@
             padding-left: 0.5rem;
             color: #4b5563;
         }
-        /* Styling for the generated table */
-        .summary-table table {
+        /* Styling for all generated tables */
+        .summary-table table, #researchAnalysis table, #queriesTable {
             width: 100%;
             border-collapse: collapse;
             margin: 1.5rem 0;
@@ -79,12 +79,12 @@
             border-radius: 0.5rem;
             overflow: hidden;
         }
-        .summary-table th, .summary-table td {
+        .summary-table th, .summary-table td, #researchAnalysis th, #researchAnalysis td, #queriesTable th, #queriesTable td {
             border: 1px solid #e5e7eb; 
             padding: 12px;
             text-align: left;
         }
-        .summary-table th {
+        .summary-table th, #researchAnalysis th, #queriesTable th {
             background-color: #eef2ff; /* indigo-50 */
             font-weight: 700;
             color: #4338ca; /* indigo-700 */
@@ -147,6 +147,16 @@
             font-weight: 700;
             color: #1f2937; /* Dark gray for emphasis */
         }
+        /* Styling for the selection table (Stage 2) */
+        #selectionTable th, #selectionTable td {
+            padding: 10px;
+            border-bottom: 1px solid #e5e7eb;
+            vertical-align: top;
+        }
+        #selectionTable th {
+            background-color: #f3f4f6;
+            font-weight: 600;
+        }
     </style>
 </head>
 <body class="bg-gray-100 min-h-screen p-4 sm:p-8">
@@ -163,38 +173,91 @@
         </header>
 
         <div class="p-6 md:p-10">
-            <!-- UPDATED INTRO MESSAGE -->
+            <!-- INTRO MESSAGE -->
             <p class="text-gray-600 mb-6 border-b pb-4 text-lg">
                 As your <span class="intro-text-bold">Content Intelligence Partner</span>, I'm positioned to execute a <span class="intro-text-bold">Full-Spectrum Analysis</span>. Submit the video credentials below to generate strategic insights, technical documentation, and sentiment intelligence for your leadership team.
             </p>
             
-            <!-- Input Form -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-end mb-8 bg-indigo-50 p-4 rounded-xl shadow-inner border border-indigo-200">
-                <div class="md:col-span-1">
-                    <label for="apiKey" class="block text-sm font-medium text-gray-700">Google API Key</label>
-                    <input type="password" id="apiKey" placeholder="AIzaSy..."
-                           class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-2 border focus:ring-indigo-500 focus:border-indigo-500 transition duration-150">
+            <!-- STAGE 1: Research Query and Domains -->
+            <div id="stage1" class="space-y-4">
+                <h3 class="text-xl font-bold text-gray-800">1. Define Research Scope</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-end bg-indigo-50 p-4 rounded-xl shadow-inner border border-indigo-200">
+                    <div class="md:col-span-3">
+                        <label for="researchQuery" class="block text-sm font-medium text-gray-700">Research Topic / Query</label>
+                        <input type="text" id="researchQuery" placeholder="e.g., 'Best AI Agent Frameworks 2024'"
+                               class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-2 border focus:ring-indigo-500 focus:border-indigo-500 transition duration-150">
+                    </div>
+                    <div class="md:col-span-1">
+                        <label for="apiKey" class="block text-sm font-medium text-gray-700">Google API Key</label>
+                        <input type="password" id="apiKey" placeholder="AIzaSy..."
+                               class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-2 border focus:ring-indigo-500 focus:border-indigo-500 transition duration-150">
+                    </div>
+                    <div class="md:col-span-1">
+                        <label for="maxVideos" class="block text-sm font-medium text-gray-700">Max Videos to Analyze (1-5)</label>
+                        <input type="number" id="maxVideos" value="2" min="1" max="5"
+                               class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-2 border focus:ring-indigo-500 focus:border-indigo-500 transition duration-150">
+                    </div>
+                    <div class="md:col-span-1">
+                        <label class="block text-sm font-medium text-gray-700">Content Domains</label>
+                        <select id="contentDomains" multiple
+                            class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-2 border focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 h-20">
+                            <!-- UPDATED: Setting defaults based on your query's context -->
+                            <option value="Technology" selected>Technology</option>
+                            <option value="Finance">Finance</option>
+                            <option value="News">News & Politics</option>
+                            <option value="Education">Education</option>
+                            <option value="Entertainment">Entertainment</option>
+                            <option value="Gaming">Gaming</option>
+                            <option value="Health">Health & Wellness</option>
+                            <option value="Science" selected>Science & Discovery</option>
+                            <option value="Travel">Travel</option>
+                            <option value="Lifestyle">Lifestyle</option>
+                        </select>
+                    </div>
+                    <div class="md:col-span-3">
+                        <button id="searchBtn"
+                                class="w-full px-6 py-2 bg-indigo-600 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 transition duration-200 focus:outline-none focus:ring-4 focus:ring-indigo-500 focus:ring-opacity-50 flex items-center justify-center disabled:opacity-50"
+                                onclick="startSearch()">
+                            <span id="searchButtonText">Search Top 5 Videos</span>
+                            <span id="searchLoadingIndicator" class="loading-ring ml-3 hidden"></span>
+                        </button>
+                    </div>
                 </div>
-                <div class="md:col-span-1">
-                    <label for="videoId" class="block text-sm font-medium text-gray-700">YouTube Video ID / URL</label>
-                    <input type="text" id="videoId" placeholder="dQw4w9WgXcQ"
-                           class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-2 border focus:ring-indigo-500 focus:border-indigo-500 transition duration-150">
+            </div>
+
+            <!-- STAGE 2: Video Selection -->
+            <div id="stage2" class="space-y-4 hidden mt-8">
+                <h3 class="text-xl font-bold text-gray-800">2. Select Videos for Deep Analysis (Configured Max: <span id="configuredMax">2</span>) </h3>
+                <div id="videoSelectionList" class="bg-gray-50 p-4 rounded-xl shadow-inner border border-gray-200 overflow-x-auto">
+                    <table id="selectionTable" class="min-w-full divide-y divide-gray-200 text-sm">
+                        <thead>
+                            <tr>
+                                <th class="w-1/12 text-center">Select</th>
+                                <th class="w-4/12 text-left">Video Source</th>
+                                <th class="w-7/12 text-left">Relevance Summary</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <tr><td colspan="3" class="text-center text-gray-500 italic py-4">Top 5 search results will appear here...</td></tr>
+                        </tbody>
+                    </table>
                 </div>
-                <div class="md:col-span-1">
+                <div id="analysisControls">
                     <button id="analyzeBtn"
-                            class="w-full px-6 py-2 bg-indigo-600 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 transition duration-200 focus:outline-none focus:ring-4 focus:ring-indigo-500 focus:ring-opacity-50 flex items-center justify-center disabled:opacity-50"
-                            onclick="startAnalysis()">
-                        <span id="buttonText">Initiate Research Protocol</span>
-                        <span id="loadingIndicator" class="loading-ring ml-3 hidden"></span>
+                                class="w-full px-6 py-2 bg-green-600 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 transition duration-200 focus:outline-none focus:ring-4 focus:ring-green-500 focus:ring-opacity-50 flex items-center justify-center disabled:opacity-50"
+                                onclick="startAnalysis()">
+                        <span id="analyzeButtonText">Analyze Selected Videos (0)</span>
+                        <span id="analysisLoadingIndicator" class="loading-ring ml-3 hidden"></span>
                     </button>
                 </div>
             </div>
 
-            <!-- Message Box for Errors/Status -->
-            <div id="messageBox" class="hidden p-4 rounded-lg text-sm mb-6 transition-all duration-300 font-medium" role="alert"></div>
 
-            <!-- Results Area -->
-            <div id="resultsArea" class="space-y-6 hidden">
+            <!-- Message Box for Errors/Status -->
+            <div id="messageBox" class="hidden p-4 rounded-lg text-sm mb-6 mt-6 transition-all duration-300 font-medium" role="alert"></div>
+
+            <!-- STAGE 3: Results Area -->
+            <div id="resultsArea" class="space-y-6 hidden mt-8">
 
                 <!-- Download Buttons -->
                 <div class="flex space-x-4 justify-end">
@@ -210,9 +273,9 @@
                     </button>
                 </div>
                 
-                <h2 class="text-2xl font-bold text-gray-800 pt-2">Source Material Data</h2>
-                <div id="videoDetails" class="bg-white p-4 rounded-lg shadow-md border border-gray-200">
-                    <!-- Video details will be inserted here -->
+                <h2 class="text-2xl font-bold text-gray-800 pt-2">Source Material Data (<span id="sourceCount">0</span> Videos)</h2>
+                <div id="videoDetails" class="bg-white p-4 rounded-lg shadow-md border border-gray-200 space-y-4">
+                    <!-- Selected video details will be inserted here -->
                 </div>
 
                 <!-- TABBED NAVIGATION -->
@@ -227,17 +290,26 @@
 
                     <!-- Tab Content Containers -->
                     <div id="tab-overview" class="tab-content" data-tab="overview">
-                        <h3 class="text-xl font-bold text-gray-800 mb-4">Overall Sentiment Metrics</h3>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Overall Sentiment Metrics (Aggregated)</h3>
                         <div id="sentimentAnalysisResults">
-                            <p class="text-center text-gray-500 italic">Sentiment results will appear here after comments are analyzed.</p>
+                            <p class="text-center text-gray-500 italic">Sentiment results will appear here after analysis.</p>
                         </div>
                     </div>
 
                     <div id="tab-research" class="tab-content hidden" data-tab="research">
-                        <h3 class="text-xl font-bold text-gray-800 mb-4">Scholarly Report (LLM Generated & Grounded)</h3>
+                        <!-- NEW STYLED QUERY TITLE DISPLAY -->
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Scholarly Report on: <span id="styledQueryTitle" class="text-purple-700 font-extrabold text-2xl"></span></h3> 
                         <div id="researchAnalysisContainer" class="bg-white p-4 rounded-xl shadow-inner border border-gray-200">
                             <div id="researchAnalysis" class="text-gray-700 leading-relaxed">
                                 <p class="text-center text-gray-500 italic">Analysis will load here...</p>
+                            </div>
+                            <!-- Unaddressed Queries Section -->
+                            <div id="unaddressedQueries" class="mt-8">
+                                <!-- Confirmed: This is the section for "Top 5 Unaddressed or Important Queries (Synthesized)" -->
+                                <p class="text-lg font-bold text-red-600 border-t pt-4 mb-4">Top 5 Unaddressed or Important Queries (Synthesized)</p>
+                                <div id="queriesTableContainer" class="summary-table">
+                                    <p class="italic text-gray-500 text-center">Queries will appear here...</p>
+                                </div>
                             </div>
                             <div id="analysisSources">
                                 <!-- Grounding sources will be inserted here -->
@@ -246,14 +318,14 @@
                     </div>
 
                     <div id="tab-technical" class="tab-content hidden" data-tab="technical">
-                        <h3 class="text-xl font-bold text-gray-800 mb-4">Technical Summary & Evaluation Table</h3>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Technical Summary & Evaluation Table (Synthesized)</h3>
                         <div id="technicalSummaryBlock" class="bg-white p-6 rounded-xl shadow border border-gray-200 summary-table">
                             <p class="text-center text-gray-500 italic">Technical metrics will appear here after the research analysis is complete.</p>
                         </div>
                     </div>
 
                     <div id="tab-comments" class="tab-content hidden" data-tab="comments">
-                        <h3 class="text-xl font-bold text-gray-800 mb-4">Top 12 Sample Comments (<span id="commentCount">0</span> Total Analyzed)</h3>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Top 12 Sample Comments (Aggregated - <span id="commentCount">0</span> Total Analyzed)</h3>
                         <div id="commentsList" class="space-y-4">
                             <p class="text-center text-gray-500 italic">Comment samples will appear here after analysis.</p>
                         </div>
@@ -275,48 +347,77 @@
     </div>
 
     <script>
-        // Global variables for elements
+        // Global element references
         const apiKeyInput = document.getElementById('apiKey');
-        const videoIdInput = document.getElementById('videoId');
+        const researchQueryInput = document.getElementById('researchQuery');
+        const contentDomainsSelect = document.getElementById('contentDomains');
+        const maxVideosInput = document.getElementById('maxVideos');
+        const configuredMaxSpan = document.getElementById('configuredMax');
+        const searchBtn = document.getElementById('searchBtn');
+        const searchLoadingIndicator = document.getElementById('searchLoadingIndicator');
+        const searchButtonText = document.getElementById('searchButtonText');
         const analyzeBtn = document.getElementById('analyzeBtn');
-        const loadingIndicator = document.getElementById('loadingIndicator');
-        const messageBox = document.getElementById('messageBox');
+        const analysisLoadingIndicator = document.getElementById('analysisLoadingIndicator');
+        const analyzeButtonText = document.getElementById('analyzeButtonText');
+        
+        const stage1 = document.getElementById('stage1');
+        const stage2 = document.getElementById('stage2');
+        const videoSelectionList = document.getElementById('videoSelectionList');
         const resultsArea = document.getElementById('resultsArea');
         const videoDetailsDiv = document.getElementById('videoDetails');
+        const sourceCountSpan = document.getElementById('sourceCount');
+
+        // NEW: Reference for the styled query title
+        const styledQueryTitle = document.getElementById('styledQueryTitle');
+        
+        // Output areas
+        const messageBox = document.getElementById('messageBox');
         const researchAnalysisDiv = document.getElementById('researchAnalysis');
         const analysisSourcesDiv = document.getElementById('analysisSources');
         const tokenManagementArea = document.getElementById('tokenManagementArea');
         const commentsListDiv = document.getElementById('commentsList');
         const commentCountSpan = document.getElementById('commentCount');
-        const buttonText = document.getElementById('buttonText');
         const sentimentResultsDiv = document.getElementById('sentimentAnalysisResults');
         const technicalSummaryBlock = document.getElementById('technicalSummaryBlock');
+        const queriesTableContainer = document.getElementById('queriesTableContainer');
         
-        // Data storage for export
+        // Global Data Storage
         let analysisData = {};
+        let searchResults = [];
+        let selectedVideos = [];
 
-        // Simplified Lexicons for demonstration
+        // --- Comment Analysis Keywords and Exclusions ---
         const positiveWords = ['great', 'excellent', 'amazing', 'fantastic', 'love', 'helpful', 'useful', 'good', 'best', 'brilliant', 'awesome', 'superb', 'effective', 'thank', 'wow'];
         const negativeWords = ['bad', 'poor', 'terrible', 'awful', 'hate', 'confusing', 'problem', 'issue', 'not good', 'disappointed', 'unclear', 'bug', 'fail', 'wrong'];
-        const technicalKeywords = ['api', 'token', 'framework', 'architecture', 'graph', 'node', 'code', 'deployment', 'latency', 'model', 'llm', 'sdk', 'server', 'install', 'version', 'github'];
-
+        const technicalKeywords = ['api', 'token', 'framework', 'architecture', 'graph', 'node', 'code', 'deployment', 'latency', 'model', 'llm', 'sdk', 'server', 'install', 'version', 'github', 'python', 'javascript', 'react', 'data', 'algorithm'];
+        
+        // Low-value comments to ignore when sampling (low relevance)
+        const lowValuePhrases = [
+            'great video', 'good video', 'nice video', 'excellent video', 'awesome video', 
+            'thanks for sharing', 'thanks for the info', 'keep up the good work', 
+            'first!', 'second!', 'subscribe', 'check out my channel', 'i love this', 'i hate this',
+            'haha', 'lol', 'funny', 'subscribed', 'subbed'
+        ];
 
         // --- Utility Functions ---
 
         /**
-         * Extracts the video ID from a YouTube URL or returns the ID if it's already an ID.
-         * @param {string} input - The URL or ID provided by the user.
-         * @returns {string} The extracted video ID.
+         * Updates the configured max videos in the UI.
          */
-        function extractVideoId(input) {
-            // Regex to handle various URL formats and plain IDs
-            const urlMatch = input.match(/(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
-            if (urlMatch && urlMatch[1]) {
-                return urlMatch[1];
+        maxVideosInput.addEventListener('change', () => {
+            const val = parseInt(maxVideosInput.value);
+            if (val < 1 || val > 5) {
+                maxVideosInput.value = 2;
+                showMessage("Maximum videos must be between 1 and 5.", 'error');
             }
-            // Assume it's a raw ID if no match and it looks like a valid ID length
-            return input.length === 11 ? input : input.split(' ')[0];
-        }
+            configuredMaxSpan.textContent = maxVideosInput.value;
+            // Also reset selection if current selection exceeds new max
+            if (selectedVideos.length > val) {
+                selectedVideos.length = val;
+                renderSearchResults(); // Re-render to update checkboxes
+            }
+            updateSelectedCount();
+        });
 
         /**
          * Displays a status/error message.
@@ -338,19 +439,19 @@
         }
 
         /**
-         * Sets the loading state on the button.
-         * @param {boolean} isLoading - Whether to show the loading state.
-         * @param {string} text - The text to display when loading is false.
+         * Sets the loading state on the specified button.
          */
-        function setLoading(isLoading, text = 'Initiate Research Protocol') {
-            analyzeBtn.disabled = isLoading;
-            buttonText.textContent = isLoading ? 'Analyzing...' : text;
-            loadingIndicator.classList.toggle('hidden', !isLoading);
+        function setLoading(button, isLoading, text) {
+            button.disabled = isLoading;
+            const textSpan = button.querySelector('span:first-child');
+            const indicator = button.querySelector('.loading-ring');
+            
+            if (textSpan) textSpan.textContent = isLoading ? 'Loading...' : text;
+            if (indicator) indicator.classList.toggle('hidden', !isLoading);
         }
         
         /**
          * Toggles the active tab display.
-         * @param {string} tabName - The data-tab attribute value (e.g., 'overview').
          */
         function switchTab(tabName) {
             document.querySelectorAll('.tab-content').forEach(content => {
@@ -398,25 +499,318 @@
             }
         }
 
-        // --- Gemini API Functions for Research ---
+        // Helper to clean up residual markdown artifacts
+        const cleanText = (text) => {
+            // Remove all bolding/italic markdown (**, *, __)
+            return text.replace(/\*\*/g, '').replace(/\*/g, '').replace(/__/g, '').trim();
+        };
+
+        // --- STAGE 1: Search Logic (YouTube Data API) ---
         
+        function updateSelectedCount() {
+            analyzeButtonText.textContent = `Analyze Selected Videos (${selectedVideos.length})`;
+            analyzeBtn.disabled = selectedVideos.length === 0;
+        }
+
+        function handleVideoSelection(videoId) {
+            const maxVideos = parseInt(maxVideosInput.value);
+            const index = selectedVideos.indexOf(videoId);
+            
+            if (index > -1) {
+                selectedVideos.splice(index, 1);
+            } else if (selectedVideos.length < maxVideos) {
+                selectedVideos.push(videoId);
+            } else {
+                showMessage(`Maximum ${maxVideos} videos can be selected for analysis (configured max).`, 'info');
+            }
+            
+            // Update UI checkboxes
+            document.querySelectorAll('.video-checkbox').forEach(checkbox => {
+                const checkedId = checkbox.value;
+                checkbox.checked = selectedVideos.includes(checkedId);
+            });
+
+            updateSelectedCount();
+        }
+
+        async function startSearch() {
+            const apiKey = apiKeyInput.value.trim();
+            const query = researchQueryInput.value.trim();
+            const maxVideos = parseInt(maxVideosInput.value);
+
+            if (!apiKey) {
+                return showMessage("Please enter your Google API Key.", 'error');
+            }
+            if (!query) {
+                return showMessage("Please enter a Research Topic / Query.", 'error');
+            }
+            
+            setLoading(searchBtn, true, 'Searching...');
+            stage2.classList.add('hidden');
+            resultsArea.classList.add('hidden');
+            showMessage("Searching YouTube for relevant content...", 'info');
+
+            try {
+                // --- MODIFIED SEARCH QUERY FOR HIGHER RELEVANCE (RELAXED FILTERS) ---
+                const selectedDomains = Array.from(contentDomainsSelect.selectedOptions).map(option => option.value);
+                
+                // Use selected domains as an OR filter if present, otherwise ignore
+                const domainFilter = selectedDomains.length > 0 ? `(${selectedDomains.join(' OR ')})` : '';
+                
+                // Exclusion filter to remove non-substantive content
+                const exclusionFilter = `-reaction -review -trailer -unboxing -vlog -live -promo -ad -short`;
+
+                // Construct the final, specific query (removing strict quotes and intent keywords)
+                const finalQuery = `${query} ${domainFilter} ${exclusionFilter}`;
+                
+                const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(finalQuery)}&type=video&maxResults=5&order=relevance&key=${apiKey}`;
+                // --- END MODIFIED SEARCH QUERY ---
+                
+                const data = await fetchWithBackoff(url);
+
+                if (data.items && data.items.length > 0) {
+                    // Filter again to remove possible duplicates or non-video items
+                    searchResults = data.items
+                        .filter(item => item.id.videoId) 
+                        .map(item => ({
+                            id: item.id.videoId,
+                            title: item.snippet.title,
+                            channel: item.snippet.channelTitle,
+                            description: item.snippet.description,
+                            thumbnail: item.snippet.thumbnails.medium.url,
+                            link: `https://www.youtube.com/watch?v=${item.id.videoId}`
+                        }));
+                    
+                    if (searchResults.length > 0) {
+                        renderSearchResults();
+                        stage2.classList.remove('hidden');
+                        showMessage(`Found ${searchResults.length} relevant videos. Select up to ${maxVideosInput.value} for deep analysis.`, 'success');
+                    } else {
+                        showMessage("Search successful, but no *highly relevant* videos were found for your specific query and domains. Try broadening your query or selecting fewer domains.", 'error');
+                    }
+                } else {
+                    showMessage("No relevant YouTube videos found for this query and selected domains.", 'error');
+                }
+
+            } catch (error) {
+                console.error("Search Error:", error);
+                showMessage(`Search Error: ${error.message}. Check your API key and query.`, 'error');
+            } finally {
+                setLoading(searchBtn, false, 'Search Top 5 Videos');
+            }
+        }
+
+        function renderSearchResults() {
+            const tbody = videoSelectionList.querySelector('tbody');
+            tbody.innerHTML = '';
+            selectedVideos = [];
+            updateSelectedCount();
+            
+            if (searchResults.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="3" class="text-center text-gray-500 italic py-4">No relevant videos found.</td></tr>';
+                return;
+            }
+
+            searchResults.forEach(video => {
+                const isSelected = selectedVideos.includes(video.id);
+                const row = document.createElement('tr');
+                row.className = 'hover:bg-gray-50';
+                
+                row.innerHTML = `
+                    <td class="text-center">
+                        <input type="checkbox" id="checkbox-${video.id}" value="${video.id}" class="video-checkbox h-4 w-4 text-indigo-600 border-gray-300 rounded cursor-pointer" 
+                            ${isSelected ? 'checked' : ''} onchange="handleVideoSelection('${video.id}')">
+                    </td>
+                    <td>
+                        <div class="flex items-start space-x-2">
+                            <img src="${video.thumbnail}" alt="Thumbnail" class="w-20 h-11 rounded object-cover flex-shrink-0">
+                            <div class="min-w-0">
+                                <p class="text-sm font-semibold text-gray-800 line-clamp-2" title="${video.title}">${video.title}</p>
+                                <p class="text-xs text-indigo-600">${video.channel}</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="text-xs text-gray-600">
+                        ${video.description.substring(0, 120)}${video.description.length > 120 ? '...' : ''}
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // --- STAGE 2 & 3: Analysis Logic ---
+        
+        async function fetchDetailsAndComments(videoIds, apiKey) {
+            const allComments = [];
+            const videoDetails = [];
+            
+            for (const videoId of videoIds) {
+                try {
+                    showMessage(`Fetching details for video ${videoId}...`, 'info');
+                    const videoDetailsResponse = await fetchDetails(videoId, apiKey);
+                    
+                    showMessage(`Fetching comments for video ${videoId}...`, 'info');
+                    const videoComments = await fetchVideoComments(videoId, apiKey);
+                    
+                    videoDetails.push({ ...videoDetailsResponse, comments: videoComments });
+                    allComments.push(...videoComments);
+
+                } catch (error) {
+                    console.error(`Error processing video ${videoId}:`, error);
+                    showMessage(`Could not analyze video ${videoId}: ${error.message}`, 'error');
+                }
+            }
+            return { allComments, videoDetails };
+        }
+
+        async function fetchDetails(videoId, apiKey) {
+            const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${apiKey}`;
+            const data = await fetchWithBackoff(url);
+
+            if (data.items && data.items.length > 0) {
+                const item = data.items[0].snippet;
+                return {
+                    id: videoId,
+                    title: item.title,
+                    channel: item.channelTitle,
+                    description: item.description,
+                    thumbnail: item.thumbnails.medium.url,
+                    link: `https://www.youtube.com/watch?v=${videoId}`
+                };
+            }
+            throw new Error("Video details not found.");
+        }
+
+        async function fetchVideoComments(videoId, apiKey, pageToken = null, comments = []) {
+            let url = `https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&videoId=${videoId}&maxResults=100&key=${apiKey}`;
+            if (pageToken) {
+                url += `&pageToken=${pageToken}`;
+            }
+
+            const data = await fetchWithBackoff(url);
+
+            if (data.items) {
+                const newComments = data.items.map(item => item.snippet.topLevelComment.snippet.textOriginal);
+                comments.push(...newComments);
+            }
+            
+            const nextToken = data.nextPageToken;
+            
+            if (nextToken) {
+                // Limit to prevent excessive API usage in this demo.
+                if (comments.length < 500) { 
+                    return await fetchVideoComments(videoId, apiKey, nextToken, comments);
+                }
+            }
+            return comments;
+        }
+
+
+        async function startAnalysis() {
+            // Default selection logic: If none are selected, take the top N.
+            const maxVideos = parseInt(maxVideosInput.value);
+            if (selectedVideos.length === 0 && searchResults.length > 0) {
+                selectedVideos = searchResults.slice(0, maxVideos).map(v => v.id);
+                // Re-render UI to show new selected state
+                renderSearchResults(); 
+            }
+
+            if (selectedVideos.length === 0) {
+                return showMessage("Please search and select videos, or run the search to enable default selection.", 'error');
+            }
+            
+            const apiKey = apiKeyInput.value.trim();
+            const researchQuery = researchQueryInput.value.trim(); // Capture the query here
+
+            setLoading(analyzeBtn, true, 'Aggregating Data...');
+            resultsArea.classList.remove('hidden');
+            switchTab('overview'); 
+
+            try {
+                // 1. Fetch All Data
+                showMessage(`Step 1 of 3: Fetching data for ${selectedVideos.length} selected videos...`, 'info');
+                const { allComments, videoDetails: sources } = await fetchDetailsAndComments(selectedVideos, apiKey);
+                analysisData.sources = sources; // Store all details
+
+                // 2. Aggregate Research
+                showMessage("Step 2 of 3: Generating deep consolidated research and technical summary...", 'info');
+                
+                const combinedTitle = `${researchQuery} - Analysis of ${sources.map(s => s.title).join(' / ')}`;
+                const combinedDescription = sources.map((s, i) => `Source ${i + 1}: ${s.title}. Channel: ${s.channel}. Desc: ${s.description.substring(0, 200)}...`).join(' | ');
+
+                const { text: analysisText, sources: analysisSources, tokens, duration } = await generateResearchAnalysis(researchQuery, combinedTitle, combinedDescription, apiKey);
+                
+                // 3. Analyze Comments
+                showMessage(`Step 3 of 3: Analyzing ${allComments.length} aggregated comments...`, 'info');
+                const sentimentResults = analyzeComments(allComments);
+                
+                // 4. Render Results
+                renderSourceDetails(sources);
+                displayTokenData(tokens, duration);
+                // PASS researchQuery here to render the styled title
+                renderAnalysisAndTable(analysisText, analysisSources, researchQuery); 
+                renderSentimentResults(sentimentResults);
+                // Pass video titles to renderSampleComments for source linking
+                const videoTitles = sources.reduce((acc, source) => {
+                    acc[source.id] = source.title;
+                    return acc;
+                }, {});
+                renderSampleComments(sentimentResults.decoratedComments, videoTitles);
+
+                commentCountSpan.textContent = allComments.length;
+
+                showMessage(`Full Spectrum Analysis Complete! Data aggregated from ${sources.length} sources and ${allComments.length} comments.`, 'success');
+
+            } catch (error) {
+                console.error("Analysis Error:", error);
+                showMessage(`Critical Analysis Error: ${error.message}`, 'error');
+                resultsArea.classList.add('hidden');
+            } finally {
+                setLoading(analyzeBtn, false, `Analyze Selected Videos (${selectedVideos.length})`);
+            }
+        }
+        
+        // --- Rendering Functions for Multi-Source Output ---
+
+        function renderSourceDetails(sources) {
+            videoDetailsDiv.innerHTML = '';
+            sourceCountSpan.textContent = sources.length;
+
+            sources.forEach((item, index) => {
+                const videoLink = item.link;
+                const detailHtml = `
+                    <div class="flex items-start space-x-4 p-3 bg-white rounded-lg shadow-sm border border-indigo-100 transition hover:shadow-md" title="${item.title}">
+                        <a href="${videoLink}" target="_blank" title="View on YouTube" class="video-thumbnail-wrapper">
+                            <img src="${item.thumbnail}" alt="Video Thumbnail" class="rounded-lg shadow-md w-full h-full object-cover">
+                        </a>
+                        <div class="flex-grow min-w-0">
+                            <p class="text-lg font-bold text-gray-900 truncate">${index + 1}. ${item.title}</p>
+                            <p class="text-xs text-indigo-600 mb-1 hover:text-indigo-800 transition duration-150 cursor-pointer">${item.channel}</p>
+                            <p class="text-sm text-gray-500 line-clamp-3">${item.description}</p>
+                        </div>
+                    </div>
+                `;
+                videoDetailsDiv.innerHTML += detailHtml;
+            });
+        }
+
         /**
          * Generates a deep research analysis using the Gemini API with Google Search grounding.
          */
-        async function generateResearchAnalysis(videoTitle, videoDescription, apiKey) {
+        async function generateResearchAnalysis(userQueryTopic, videoTitle, videoDescription, apiKey) {
             const startTime = performance.now();
             
             const truncatedDescription = videoDescription.substring(0, 500) + (videoDescription.length > 500 ? '...' : '');
             
-            const userQuery = `Generate a comprehensive research analysis on the topic of the following YouTube video. The report MUST be presented in two distinct sections separated by the delimiter '---TABLE_DELIMITER---': 
-1. The formal, scholarly analysis structured with main headings and subheadings.
+            const userQuery = `Generate a comprehensive, consolidated research analysis on the user's query: "${userQueryTopic}". The final report MUST be presented in two distinct sections separated by the delimiter '---TABLE_DELIMITER---': 
+1. The formal, scholarly analysis structured with main headings (use # and ##). If any comparative data is presented, use a Markdown table format within the main content body. At the end of this analysis section, include a new sub-section heading 'Unaddressed Critical Queries' and immediately follow it with a **pipe-delimited Markdown table**. This table MUST contain three columns: 'Query/Point', 'Importance Rating (1-10)', and 'Unaddressed Source Reference'. The content of this table must list the top 5 (or fewer) most important questions/points related to the user's query that are likely NOT fully addressed by the source videos, rated by importance, and specifying which video (by title or "All") missed the point.
 2. A detailed 'Technical Summary & Evaluation' table (Markdown pipe format), which must include columns for 'Key Technologies/Concepts', 'Estimated Subject Coverage Percentage', and a 'Qualitative Impact Rating'.
 
-DO NOT use bolding or italic formatting (like ** or *) for any text, including within paragraphs, lists, or the table.
+The analysis must synthesize information from ALL video sources and search results. DO NOT use bolding or italic formatting (like ** or *) for any text, including within paragraphs, lists, or the table.
 
-Video Title: "${videoTitle}". Key context from description: "${truncatedDescription}"`;
+Consolidated Title: "${videoTitle}". Combined context: "${truncatedDescription}"`;
 
-            const systemPrompt = "You are a world-class academic researcher and analyst. Synthesize information from the web to create a detailed, objective report. The report MUST be formatted using Markdown headings (e.g., #, ##) for the analysis and a pipe-delimited table for the metrics section, ensuring a highly professional and technical presentation. The analysis must cover the topic deeply and include relevant technical data. DO NOT use Markdown bolding/italics (** or *) anywhere in the text.";
+            const systemPrompt = "You are a world-class academic researcher and analyst. Synthesize information from the web to create a detailed, objective report. The report MUST be formatted using Markdown headings (e.g., #, ##) for the analysis and pipe-delimited tables for all metrics sections, ensuring a highly professional and technical presentation. The analysis must cover the topic deeply and include relevant technical data. DO NOT use Markdown bolding/italics (** or *) anywhere in the text.";
 
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
 
@@ -462,29 +856,107 @@ Video Title: "${videoTitle}". Key context from description: "${truncatedDescript
             }
             throw new Error("Gemini API response was missing generated text or was structured incorrectly.");
         }
-        
-        // Helper to clean up residual markdown artifacts (like double asterisks)
-        const cleanText = (text) => {
-            // Remove all bolding/italic markdown (**, *, __)
-            return text.replace(/\*\*/g, '').replace(/\*/g, '').replace(/__/g, '').trim();
-        };
+
+        /**
+         * Parses and renders a Markdown pipe-delimited table into HTML.
+         */
+        function parseAndRenderMarkdownTable(markdownTableText, targetElement) {
+            let tableHtml = [];
+            let tableJson = [];
+            const tableLines = markdownTableText.split('\n').filter(l => l.trim().startsWith('|'));
+            let isHeaderRow = true;
+            let headers = [];
+
+            if (tableLines.length > 0) {
+                tableHtml.push('<table>');
+                
+                tableLines.forEach(line => {
+                    const cells = line.split('|').map(c => cleanText(c)).filter(c => c);
+
+                    if (cells.length === 0) return;
+
+                    if (line.includes('---')) {
+                        isHeaderRow = false; 
+                    } else if (isHeaderRow) {
+                        // Header row
+                        headers = cells;
+                        tableHtml.push('<thead><tr>');
+                        cells.forEach(cell => tableHtml.push(`<th>${cell}</th>`));
+                        tableHtml.push('</tr></thead><tbody>');
+                        isHeaderRow = false; // Next non-separator line is body
+                    } else {
+                        // Data row
+                        tableHtml.push('<tr>');
+                        let rowData = {};
+                        cells.forEach((cell, index) => {
+                            tableHtml.push(`<td>${cell}</td>`);
+                            if (headers[index]) {
+                                rowData[headers[index].replace(/\s/g, '')] = cell;
+                            }
+                        });
+                        if (Object.keys(rowData).length > 0) {
+                            tableJson.push(rowData);
+                        }
+                        tableHtml.push('</tr>');
+                    }
+                });
+                
+                tableHtml.push('</tbody></table>');
+                targetElement.innerHTML = tableHtml.join('');
+            } else {
+                targetElement.innerHTML = '<p class="text-center text-red-500 italic">No structured table data found in the expected format.</p>';
+            }
+            return tableJson;
+        }
 
         /**
          * Renders the research analysis (excluding the technical table) and the technical table separately.
+         * @param {string} researchQuery - The original user research query.
          */
-        function renderAnalysisAndTable(analysisText, sources) {
+        function renderAnalysisAndTable(analysisText, sources, researchQuery) {
+            // NEW: Set the styled query title
+            styledQueryTitle.textContent = researchQuery;
+
             const parts = analysisText.split('---TABLE_DELIMITER---');
             const formalAnalysis = parts[0] || '';
             const technicalTable = parts[1] || '';
-
-            // --- Render Formal Analysis ---
             
-            const formalLines = formalAnalysis.split('\n');
+            // Separate formal analysis into main content and queries
+            const querySplit = formalAnalysis.split('Unaddressed Critical Queries');
+            const mainContent = querySplit[0];
+            const rawQueriesTable = querySplit.length > 1 ? querySplit[1] : '';
+
+            // --- Render Formal Analysis with Markdown Table Conversion ---
+            
+            const formalLines = mainContent.split('\n');
             let formattedHtml = [];
             let inList = false;
+            let inTable = false;
+            let tableBuffer = []; // Buffer for collecting table lines
             
             formalLines.forEach(line => {
                 line = line.trim();
+                
+                // 1. Handle Markdown Table parsing (start/continue/end)
+                if (line.startsWith('|')) {
+                    if (!inTable) {
+                        inTable = true;
+                        if (inList) {
+                            formattedHtml.push('</ul>');
+                            inList = false;
+                        }
+                    }
+                    tableBuffer.push(line);
+                    return;
+                } else if (inTable) {
+                    // End of table block found
+                    inTable = false;
+                    const tableContainer = document.createElement('div');
+                    parseAndRenderMarkdownTable(tableBuffer.join('\n'), tableContainer);
+                    formattedHtml.push(tableContainer.innerHTML);
+                    tableBuffer = [];
+                }
+                
                 if (!line) {
                     if (inList) {
                         formattedHtml.push('</ul>');
@@ -493,6 +965,7 @@ Video Title: "${videoTitle}". Key context from description: "${truncatedDescript
                     return;
                 }
 
+                // 2. Handle Headings and Lists
                 if (line.startsWith('# ')) {
                     formattedHtml.push(`<h2 class="text-2xl font-bold mt-6 mb-3 text-indigo-700">${cleanText(line.substring(2))}</h2>`);
                 } else if (line.startsWith('## ')) {
@@ -517,59 +990,24 @@ Video Title: "${videoTitle}". Key context from description: "${truncatedDescript
                     formattedHtml.push(`<p>${cleanText(line)}</p>`);
                 }
             });
-
+            
+            // Finalize content
             if (inList) formattedHtml.push('</ul>');
+            if (inTable) {
+                const tableContainer = document.createElement('div');
+                parseAndRenderMarkdownTable(tableBuffer.join('\n'), tableContainer);
+                formattedHtml.push(tableContainer.innerHTML);
+            }
             researchAnalysisDiv.innerHTML = formattedHtml.join('');
             analysisData.researchAnalysis = formalAnalysis; // Store formal analysis
 
-            // --- Render Technical Table (Separate Block) ---
-            let tableJson = [];
-            let tableHtml = [];
-            const tableLines = technicalTable.split('\n').filter(l => l.trim().startsWith('|'));
-            let isFirstRow = true;
-            let headers = [];
-
-            if (tableLines.length > 0) {
-                tableHtml.push('<table>');
-                
-                tableLines.forEach(line => {
-                    const cells = line.split('|').map(c => cleanText(c)).filter(c => c);
-
-                    if (cells.length === 0) return;
-
-                    if (line.includes('---')) {
-                        isFirstRow = false; 
-                    } else if (isFirstRow) {
-                        // Header row
-                        headers = cells;
-                        tableHtml.push('<thead><tr>');
-                        cells.forEach(cell => tableHtml.push(`<th>${cell}</th>`));
-                        tableHtml.push('</tr></thead><tbody>');
-                        isFirstRow = false; 
-                    } else {
-                        // Data row
-                        tableHtml.push('<tr>');
-                        let rowData = {};
-                        cells.forEach((cell, index) => {
-                            tableHtml.push(`<td>${cell}</td>`);
-                            if (headers[index]) {
-                                rowData[headers[index].replace(/\s/g, '')] = cell;
-                            }
-                        });
-                        if (Object.keys(rowData).length > 0) {
-                            tableJson.push(rowData);
-                        }
-                        tableHtml.push('</tr>');
-                    }
-                });
-                
-                tableHtml.push('</tbody></table>');
-                technicalSummaryBlock.innerHTML = tableHtml.join('');
-                analysisData.technicalSummary = tableJson; // Store technical table data
-            } else {
-                technicalSummaryBlock.innerHTML = '<p class="text-center text-red-500 italic">Technical Summary table was not found in the expected format. Please try again.</p>';
-                analysisData.technicalSummary = [];
-            }
+            // --- Render Unaddressed Queries Table ---
+            const queriesJson = parseAndRenderMarkdownTable(rawQueriesTable, queriesTableContainer);
+            analysisData.unaddressedQueries = queriesJson;
+            
+            // --- Render Technical Summary Table (Separate Block) ---
+            const techJson = parseAndRenderMarkdownTable(technicalTable, technicalSummaryBlock);
+            analysisData.technicalSummary = techJson; // Store technical table data
             
             // --- Render Sources ---
             
@@ -584,18 +1022,15 @@ Video Title: "${videoTitle}". Key context from description: "${truncatedDescript
                         `).join('')}
                     </ul>
                 `;
-                analysisData.sources = sources; // Store sources
+                analysisData.groundingSources = sources; // Store sources
             } else {
                 analysisSourcesDiv.innerHTML = '<p class="text-sm text-gray-500 mt-4 border-t pt-3">No specific web sources were cited for this general knowledge synthesis.</p>';
-                analysisData.sources = [];
+                analysisData.groundingSources = [];
             }
         }
-        
+
         /**
-         * Performs a basic lexicon-based sentiment analysis and categorization.
-         * Also decorates the comments with analysis results.
-         * @param {string[]} comments - Array of raw comment strings.
-         * @returns {object} Analysis results with decorated comments.
+         * Performs a basic lexicon-based sentiment analysis and categorization on ALL comments.
          */
         function analyzeComments(comments) {
             if (comments.length === 0) {
@@ -616,6 +1051,15 @@ Video Title: "${videoTitle}". Key context from description: "${truncatedDescript
                 categories: { general: 0, technical: 0 },
                 decoratedComments: []
             };
+
+            // Map comment text to its source video title
+            const videoMap = analysisData.sources.reduce((map, source) => {
+                source.comments.forEach(commentText => {
+                    map[commentText] = source.title;
+                });
+                return map;
+            }, {});
+
 
             comments.forEach(comment => {
                 const lowerCaseComment = comment.toLowerCase();
@@ -663,7 +1107,9 @@ Video Title: "${videoTitle}". Key context from description: "${truncatedDescript
                     sentiment: sentiment,
                     category: category,
                     tags: sentimentTag + categoryTag,
-                    score: posScore - negScore // For sorting
+                    score: posScore - negScore, // For sorting
+                    sourceTitle: videoMap[comment] || 'Unknown Source',
+                    isRelevant: isTechnical || (Math.abs(posScore - negScore) > 1) // High score difference or technical keyword suggests relevance
                 });
             });
 
@@ -698,7 +1144,6 @@ Video Title: "${videoTitle}". Key context from description: "${truncatedDescript
 
         /**
          * Renders the sentiment analysis results.
-         * @param {object} results - The results from analyzeComments.
          */
         function renderSentimentResults(results) {
             analysisData.sentimentMetrics = results; // Store sentiment metrics
@@ -750,10 +1195,9 @@ Video Title: "${videoTitle}". Key context from description: "${truncatedDescript
         }
 
         /**
-         * Renders the top 12 comments, ensuring a balanced representation.
-         * @param {Array} decoratedComments - Comments enriched with sentiment/category tags.
+         * Renders the top 12 comments, ensuring a balanced representation and prioritizing relevant comments.
          */
-        function renderSampleComments(decoratedComments) {
+        function renderSampleComments(decoratedComments, videoTitles) {
             commentsListDiv.innerHTML = ''; // Clear previous comments
             
             if (decoratedComments.length === 0) {
@@ -764,41 +1208,42 @@ Video Title: "${videoTitle}". Key context from description: "${truncatedDescript
             const maxComments = 12;
             const sample = [];
             
-            const selectedComments = new Set();
-            
-            // Sort comments by score (most polar first)
-            decoratedComments.sort((a, b) => b.score - a.score);
-            
-            const findAndSelectComment = (filterFn) => {
-                const comment = decoratedComments.find(c => 
-                    filterFn(c) && 
-                    !selectedComments.has(c)
-                );
-                if (comment && sample.length < maxComments) {
-                    sample.push(comment);
-                    selectedComments.add(comment);
-                    return true;
-                }
-                return false;
+            // Helper to check if a comment is low value (simple praise/spam)
+            const isLowValue = (comment) => {
+                const lowerText = comment.text.toLowerCase();
+                if (comment.score === 0 && comment.category === 'General') return true; // Low score and non-technical
+                return lowValuePhrases.some(phrase => lowerText.includes(phrase));
             };
 
-            // 1. Prioritize: Ensure minimum 2 comments for each sentiment (Positive, Negative, Neutral)
-            ['Positive', 'Negative', 'Neutral'].forEach(sentiment => {
-                for (let i = 0; i < 2; i++) {
-                    findAndSelectComment(c => c.sentiment === sentiment);
-                }
-            });
+            // Filter out low-value comments before sampling, unless they are the only ones available
+            const relevantComments = decoratedComments.filter(c => c.isRelevant && !isLowValue(c));
+            const otherComments = decoratedComments.filter(c => !c.isRelevant || isLowValue(c));
+            
+            const selectionPool = [...relevantComments, ...otherComments];
+            const selectedComments = new Set();
+            
+            // Re-sort the combined pool based on score (most polar/technical first)
+            selectionPool.sort((a, b) => b.score - a.score || (b.category === 'Technical' ? 1 : -1));
 
-            // 2. Prioritize: Ensure minimum 2 comments for each type (Technical, General)
-            ['Technical', 'General'].forEach(category => {
-                for (let i = 0; i < 2; i++) {
-                    // Try to pick one non-neutral technical/general comment if possible
-                    findAndSelectComment(c => c.category === category && c.sentiment !== 'Neutral'); 
+
+            const findAndSelectComment = (filterFn, maxCount = 1) => {
+                let count = 0;
+                for (const comment of selectionPool) {
+                    if (filterFn(comment) && !selectedComments.has(comment) && count < maxCount && sample.length < maxComments) {
+                        sample.push(comment);
+                        selectedComments.add(comment);
+                        count++;
+                    }
                 }
+            };
+
+            // 1. Prioritize: Ensure minimum 2 relevant comments for each main sentiment
+            ['Positive', 'Negative', 'Neutral'].forEach(sentiment => {
+                findAndSelectComment(c => c.sentiment === sentiment && c.isRelevant, 2);
             });
             
-            // 3. Fill the remaining slots (up to maxComments) with the most polar comments
-            for (const comment of decoratedComments) {
+            // 2. Fill the remaining slots (up to maxComments) with the next best polar/technical comments
+            for (const comment of selectionPool) {
                 if (!selectedComments.has(comment) && sample.length < maxComments) {
                     sample.push(comment);
                     selectedComments.add(comment);
@@ -806,17 +1251,22 @@ Video Title: "${videoTitle}". Key context from description: "${truncatedDescript
             }
             
             const finalSample = Array.from(new Set(sample));
-            analysisData.commentSample = finalSample.map(({ text, sentiment, category }) => ({ text, sentiment, category })); // Store sample
+            analysisData.commentSample = finalSample.map(({ text, sentiment, category, sourceTitle }) => ({ text, sentiment, category, sourceTitle })); // Store sample
 
             finalSample.slice(0, maxComments).forEach((comment, index) => {
+                const sourceTitleShort = comment.sourceTitle.length > 30 ? comment.sourceTitle.substring(0, 30) + '...' : comment.sourceTitle;
+                
                 const commentDiv = document.createElement('div');
-                commentDiv.className = 'p-3 bg-white rounded-lg shadow-sm border border-gray-100 flex justify-between items-start transition hover:shadow-md';
+                commentDiv.className = 'p-3 bg-white rounded-lg shadow-sm border border-gray-100 flex flex-col transition hover:shadow-md';
                 commentDiv.innerHTML = `
-                    <div class="flex-grow">
-                        <p class="text-gray-800">${comment.text}</p>
-                    </div>
-                    <div class="flex-shrink-0 flex items-center ml-4 space-x-2">
-                        ${comment.tags}
+                    <div class="text-gray-800 mb-2">${comment.text}</div>
+                    <div class="flex justify-between items-center text-xs text-gray-500">
+                        <span class="truncate pr-4" title="Source Video: ${comment.sourceTitle}">
+                            Source: <span class="font-semibold text-indigo-500">${sourceTitleShort}</span>
+                        </span>
+                        <div class="flex-shrink-0 flex items-center space-x-2">
+                            ${comment.tags}
+                        </div>
                     </div>
                 `;
                 commentsListDiv.appendChild(commentDiv);
@@ -892,89 +1342,11 @@ Video Title: "${videoTitle}". Key context from description: "${truncatedDescript
             tokenManagementArea.innerHTML = dataHtml;
         }
 
-        // --- YouTube Data API Functions ---
-
-        /**
-         * Fetches basic video details (title, description, thumbnail) from the videos endpoint.
-         * Returns the full snippet object.
-         */
-        async function fetchVideoDetails(videoId, apiKey) {
-            const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${apiKey}`;
-            const data = await fetchWithBackoff(url);
-
-            if (data.items && data.items.length > 0) {
-                const item = data.items[0].snippet;
-                const videoLink = `https://www.youtube.com/watch?v=${videoId}`;
-                
-                analysisData.videoDetails = { // Store video details
-                    id: videoId,
-                    title: item.title,
-                    channel: item.channelTitle,
-                    description: item.description,
-                    thumbnail: item.thumbnails.medium.url,
-                    link: videoLink
-                };
-
-                videoDetailsDiv.innerHTML = `
-                    <div class="flex items-start space-x-4">
-                        <a href="${videoLink}" target="_blank" title="View on YouTube" class="video-thumbnail-wrapper">
-                            <img src="${item.thumbnails.medium.url}" alt="Video Thumbnail" class="rounded-lg shadow-md w-full h-full object-cover">
-                        </a>
-                        <div class="flex-grow min-w-0">
-                            <p class="text-xl font-bold text-gray-900 truncate">${item.title}</p>
-                            <p class="text-sm text-indigo-600 mb-2 hover:text-indigo-800 transition duration-150 cursor-pointer">${item.channelTitle}</p>
-                            <p class="text-sm text-gray-500 line-clamp-3">${item.description}</p>
-                        </div>
-                    </div>
-                `;
-                return item; // Return the snippet for the research function
-            } else {
-                videoDetailsDiv.innerHTML = '<p class="text-red-500">Video not found or invalid ID.</p>';
-                throw new Error("Video not found or the video has no snippet data.");
-            }
-        }
-
-        /**
-         * Recursively fetches all available comments for the video using pagination.
-         */
-        async function fetchComments(videoId, apiKey, pageToken = null, comments = []) {
-            let url = `https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&videoId=${videoId}&maxResults=100&key=${apiKey}`;
-            if (pageToken) {
-                url += `&pageToken=${pageToken}`;
-            }
-
-            const data = await fetchWithBackoff(url);
-
-            if (data.items) {
-                const newComments = data.items.map(item => item.snippet.topLevelComment.snippet.textOriginal);
-                comments.push(...newComments);
-            }
-            
-            const nextToken = data.nextPageToken;
-            
-            if (nextToken) {
-                showMessage(`Fetching comments... Total fetched: ${comments.length}. Continuing to next page.`, 'info');
-                // Limit to prevent excessive API usage in this demo.
-                if (comments.length < 500) { 
-                    return await fetchComments(videoId, apiKey, nextToken, comments);
-                } else {
-                    showMessage(`Comment fetching stopped at 500 to conserve quota.`, 'info');
-                }
-            }
-            
-            analysisData.rawComments = comments; // Store all raw comments
-
-            return comments;
-        }
-        
-        // --- Export Functions ---
-        
         /**
          * Initiates the download of analysis data as JSON or a mock PDF.
-         * @param {string} type - 'json' or 'pdf'.
          */
         function downloadResults(type) {
-            if (analysisData.videoDetails === undefined) {
+            if (analysisData.sources === undefined || analysisData.sources.length === 0) {
                 showMessage("Please run the analysis first before downloading.", 'error');
                 return;
             }
@@ -985,93 +1357,14 @@ Video Title: "${videoTitle}". Key context from description: "${truncatedDescript
                 const url = URL.createObjectURL(blob);
                 const a = document.createElement('a');
                 a.href = url;
-                a.download = `YouTube_Analysis_${analysisData.videoDetails.id}_${Date.now()}.json`;
+                a.download = `YouTube_Analysis_${researchQueryInput.value.replace(/\s/g, '_')}_${Date.now()}.json`;
                 document.body.appendChild(a);
                 a.click();
                 document.body.removeChild(a);
                 showMessage("Analysis results downloaded as JSON.", 'success');
                 
             } else if (type === 'pdf') {
-                // *** FIX: Providing clear feedback instead of a broken download. ***
                 showMessage("PDF generation failed: Cannot generate a true PDF in a single-file app without a third-party library or server. Use the JSON export for structured data.", 'error');
-            }
-        }
-
-
-        // --- Main Logic ---
-
-        async function startAnalysis() {
-            const apiKey = apiKeyInput.value.trim();
-            let videoIdOrUrl = videoIdInput.value.trim();
-            
-            // Reset UI and Global Data
-            analysisData = {};
-            messageBox.classList.add('hidden');
-            resultsArea.classList.add('hidden');
-            videoDetailsDiv.innerHTML = '';
-            researchAnalysisDiv.innerHTML = '<p class="text-center text-gray-500 italic">Analysis will load here...</p>';
-            analysisSourcesDiv.innerHTML = '';
-            tokenManagementArea.innerHTML = '<p class="text-center text-gray-500 italic">Token data will appear here after the research analysis is complete.</p>';
-            commentsListDiv.innerHTML = '<p class="text-center text-gray-500 italic">Comment samples will appear here after analysis.</p>';
-            commentCountSpan.textContent = '0';
-            sentimentResultsDiv.innerHTML = '<p class="text-center text-gray-500 italic">Sentiment results will appear here after comments are analyzed.</p>';
-            technicalSummaryBlock.innerHTML = '<p class="text-center text-gray-500 italic">Technical metrics will appear here after the research analysis is complete.</p>';
-
-
-            if (!apiKey) {
-                return showMessage("Please enter your Google API Key.", 'error');
-            }
-            if (!videoIdOrUrl) {
-                return showMessage("Please enter a YouTube Video ID or URL.", 'error');
-            }
-            
-            const videoId = extractVideoId(videoIdOrUrl);
-
-            setLoading(true);
-            resultsArea.classList.remove('hidden');
-            switchTab('overview'); // Start on the overview tab
-
-            try {
-                showMessage("Step 1 of 4: Fetching video details...", 'info');
-                
-                // 1. Fetch Video Details
-                const videoSnippet = await fetchVideoDetails(videoId, apiKey);
-                
-                // 2. Generate Deep Research Analysis (Gemini API with Search)
-                showMessage("Step 2 of 4: Generating deep research analysis and technical summary...", 'info');
-                const { text: analysisText, sources: analysisSources, tokens, duration } = await generateResearchAnalysis(videoSnippet.title, videoSnippet.description, apiKey);
-                
-                // Display Token Data (stored in analysisData)
-                displayTokenData(tokens, duration);
-
-                // Render Analysis and extract the table content (stored in analysisData)
-                renderAnalysisAndTable(analysisText, analysisSources);
-
-                // 3. Fetch Comments (YouTube Data API)
-                showMessage("Step 3 of 4: Fetching comments for sentiment analysis...", 'info');
-                const allComments = await fetchComments(videoId, apiKey);
-
-                // 4. Analyze Comments (stored in analysisData)
-                showMessage("Step 4 of 4: Analyzing sentiment, categorizing, and sampling comments...", 'info');
-                const sentimentResults = analyzeComments(allComments);
-                renderSentimentResults(sentimentResults);
-                
-                // 5. Render sample comments
-                if (allComments.length > 0) {
-                    renderSampleComments(sentimentResults.decoratedComments);
-                    commentCountSpan.textContent = allComments.length;
-                    showMessage(`Analysis complete! Fetched ${allComments.length} comments, analyzed sentiment, and generated research summary.`, 'success');
-                } else {
-                     showMessage("Analysis complete. No comments found, or comments are disabled. Research analysis generated.", 'info');
-                }
-                
-            } catch (error) {
-                console.error("Analysis Error:", error);
-                showMessage(`Critical Error: ${error.message}. Please check your API Key, Video ID, and ensure the video exists.`, 'error');
-                // Hide results area on critical failure
-                resultsArea.classList.add('hidden');
-            } finally {
-                setLoading(false);
             }
         }
     </script>
