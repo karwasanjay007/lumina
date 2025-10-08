@@ -289,5 +289,296 @@
         }
       }
     }
+  },
+  {
+    "query": "Bioinformatics whats the latest trends",
+    "domain": "Medical Research",
+    "timestamp": "2025-10-08 08:29:15",
+    "agents_state": {
+      "Market Intelligence": true,
+      "Sentiment Analytics": true,
+      "Data Intelligence": true
+    },
+    "model_type": "Deep Research",
+    "market_sources": 2,
+    "sentiment_sources": 2,
+    "data_sources": 2,
+    "results": {
+      "query": "Bioinformatics whats the latest trends",
+      "domain": "Medical Research",
+      "timestamp": "2025-10-08 08:29:15",
+      "agents_used": [
+        "Market Intelligence",
+        "Sentiment Analytics",
+        "Data Intelligence"
+      ],
+      "model_type": "Deep Research",
+      "summary": "Academic analysis from 2 papers",
+      "key_findings": [
+        "**AI and Machine Learning Integration**",
+        "AI is now central to bioinformatics, powering everything from protein structure prediction and drug discovery to the interpretation of complex omics datasets[1][2][5][7].",
+        "AI-driven tools are enabling the analysis of massive biological datasets, such as those from next-generation sequencing (NGS), proteomics, and spatial omics, with greater speed and accuracy[2][5].",
+        "Machine learning (ML), especially deep learning and graph neural networks, is accelerating multi-target drug discovery and systems pharmacology, allowing for more effective treatments of complex diseases[4][8].",
+        "Generative AI and protein language models are being used to design novel enzymes and predict the effects of genetic mutations[8][9].",
+        "Analyzed 3 video sources",
+        "A timeline is presented which shows the stages involved in converting a\nbioinformatics software application from a set of standalone algorithms throug",
+        "Since the advent of next-generation sequencing in the early 2000s, the volume\nof bioinformatics software tools and databases has exploded and continue"
+      ],
+      "insights": [
+        "**Bioinformatics-as-a-Service (BaaS) and Cloud Computing**",
+        "The BaaS market is expanding rapidly, offering cloud-based, scalable, and subscription-driven platforms for data analysis, storage, and workflow automation[3][5].",
+        "These services democratize access to high-performance computing, reduce infrastructure costs, and support secure, federated analytics for multi-cohort studies[3].",
+        "Video content provides sentiment perspective",
+        "Expert commentary supports analysis",
+        "Academic research provides evidence-based insights",
+        "Peer-reviewed sources validate findings"
+      ],
+      "sources": [
+        {
+          "title": "https://blog.igem.org/blog/2025/9/11/inside-the-2025-igem-startups-cohort-sector-distribution-key-trends-and-highlights",
+          "url": "https://blog.igem.org/blog/2025/9/11/inside-the-2025-igem-startups-cohort-sector-distribution-key-trends-and-highlights",
+          "summary": "Citation #1 from Perplexity research",
+          "agent": "Market Intelligence",
+          "source_type": "Web Research",
+          "medium": "Perplexity API"
+        },
+        {
+          "title": "https://www.nature.com/subjects/computational-biology-and-bioinformatics/nmeth",
+          "url": "https://www.nature.com/subjects/computational-biology-and-bioinformatics/nmeth",
+          "summary": "Citation #2 from Perplexity research",
+          "agent": "Market Intelligence",
+          "source_type": "Web Research",
+          "medium": "Perplexity API"
+        },
+        {
+          "published_date": "2025-08-20T14:01:32Z",
+          "title": "2025’s Biggest Fall Fashion Trends You Can’t Ignore!",
+          "authors": [
+            "The Essence Of Elegance"
+          ],
+          "summary": "**Summary:**\nThe video \"2025’s Biggest Fall Fashion Trends You Can’t Ignore!\" from The Essence Of Elegance explores the upcoming fashion trends for the fall season of 2025. It highlights key styles, colors, and accessories that are set to dominate the fashion scene, encouraging viewers to embrace these trends to stay stylish and relevant.\n\n**Bullet Highlights:**\n- **Bold Colors and Patterns:** Expect to see vibrant hues and eye-catching patterns, moving away from muted tones to make a statement this fall.\n- **Layering Techniques:** The video emphasizes the art of layering, showcasing how to mix textures and lengths for a chic, put-together look.\n- **Sustainable Fashion:** A strong focus on eco-friendly materials and sustainable practices is highlighted, encouraging consumers to make conscious fashion choices.\n\n**Recommended Actions:**\n- Update your wardrobe by incorporating bold colors and patterns to stay on-trend.\n- Experiment with layering different pieces to create unique outfits.\n- Consider investing in sustainable fashion brands to align with the eco-conscious movement in the industry.",
+          "content": "**Summary:**\nThe video \"2025’s Biggest Fall Fashion Trends You Can’t Ignore!\" from The Essence Of Elegance explores the upcoming fashion trends for the fall season of 2025. It highlights key styles, colors, and accessories that are set to dominate the fashion scene, encouraging viewers to embrace these trends to stay stylish and relevant.\n\n**Bullet Highlights:**\n- **Bold Colors and Patterns:** Expect to see vibrant hues and eye-catching patterns, moving away from muted tones to make a statement this fall.\n- **Layering Techniques:** The video emphasizes the art of layering, showcasing how to mix textures and lengths for a chic, put-together look.\n- **Sustainable Fashion:** A strong focus on eco-friendly materials and sustainable practices is highlighted, encouraging consumers to make conscious fashion choices.\n\n**Recommended Actions:**\n- Update your wardrobe by incorporating bold colors and patterns to stay on-trend.\n- Experiment with layering different pieces to create unique outfits.\n- Consider investing in sustainable fashion brands to align with the eco-conscious movement in the industry.",
+          "source": "https://www.youtube.com/watch?v=ug3TEjXFZ-Y",
+          "pdf_url": null
+        },
+        {
+          "published_date": "2025-07-26T13:59:13Z",
+          "title": "What New Features Are Available in the Latest Bioinformatics Software? - Biology For Everyone",
+          "authors": [
+            "Biology for Everyone"
+          ],
+          "summary": "**Summary:**\nThe video discusses the latest advancements in bioinformatics software, highlighting new features that enhance data analysis, visualization, and user experience. It emphasizes the importance of these tools in modern biological research and how they can streamline workflows for researchers.\n\n**Bullet Highlights:**\n- **Enhanced Data Visualization:** New tools allow for more intuitive graphical representations of complex biological data, making it easier for researchers to interpret results.\n- **Improved User Interface:** The latest software versions feature user-friendly interfaces that simplify navigation and reduce the learning curve for new users.\n- **Integration with Machine Learning:** The incorporation of machine learning algorithms enables more accurate predictions and analyses, facilitating deeper insights into biological processes.\n\n**Recommended Actions:**\n- Explore the new features in your current bioinformatics software to leverage improved functionalities.\n- Consider attending workshops or webinars to get hands-on experience with the latest tools.\n- Stay updated on future releases and enhancements by subscribing to relevant channels and forums in the bioinformatics community.",
+          "content": "**Summary:**\nThe video discusses the latest advancements in bioinformatics software, highlighting new features that enhance data analysis, visualization, and user experience. It emphasizes the importance of these tools in modern biological research and how they can streamline workflows for researchers.\n\n**Bullet Highlights:**\n- **Enhanced Data Visualization:** New tools allow for more intuitive graphical representations of complex biological data, making it easier for researchers to interpret results.\n- **Improved User Interface:** The latest software versions feature user-friendly interfaces that simplify navigation and reduce the learning curve for new users.\n- **Integration with Machine Learning:** The incorporation of machine learning algorithms enables more accurate predictions and analyses, facilitating deeper insights into biological processes.\n\n**Recommended Actions:**\n- Explore the new features in your current bioinformatics software to leverage improved functionalities.\n- Consider attending workshops or webinars to get hands-on experience with the latest tools.\n- Stay updated on future releases and enhancements by subscribing to relevant channels and forums in the bioinformatics community.",
+          "source": "https://www.youtube.com/watch?v=LS_3mqoAe6Y",
+          "pdf_url": null
+        },
+        {
+          "title": "CloudQTL: Evolving a Bioinformatics Application to the Cloud",
+          "url": "http://arxiv.org/abs/1412.1419v1",
+          "summary": "A timeline is presented which shows the stages involved in converting a\nbioinformatics software application from a set of standalone algorithms through\nto a simple web based tool then to a web based p",
+          "agent": "Data Intelligence",
+          "source_type": "Academic",
+          "medium": "arXiv API"
+        },
+        {
+          "title": "A data-supported history of bioinformatics tools",
+          "url": "http://arxiv.org/abs/1807.06808v1",
+          "summary": "Since the advent of next-generation sequencing in the early 2000s, the volume\nof bioinformatics software tools and databases has exploded and continues to\ngrow rapidly. Documenting this evolution on a",
+          "agent": "Data Intelligence",
+          "source_type": "Academic",
+          "medium": "arXiv API"
+        }
+      ],
+      "total_cost": 0.003411,
+      "total_tokens": 1137,
+      "execution_time": 35.814799308776855,
+      "confidence_score": 79,
+      "mock_mode": false,
+      "agent_data": [
+        {
+          "agent_name": "Market Intelligence",
+          "source_count": 2,
+          "sources_retrieved": 2,
+          "findings_count": 5,
+          "insights_count": 3,
+          "cost": 0.003411,
+          "tokens": 1137,
+          "prompt_tokens": 35,
+          "completion_tokens": 1102,
+          "execution_time": 18.932008028030396,
+          "status": "✅ Success",
+          "model_used": "sonar-pro",
+          "model_type": "Deep Research",
+          "medium": "Perplexity API",
+          "data_type": "Live Research"
+        },
+        {
+          "agent_name": "Sentiment Analytics",
+          "source_count": 3,
+          "sources_retrieved": 3,
+          "findings_count": 1,
+          "insights_count": 2,
+          "cost": 0.0,
+          "tokens": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "execution_time": 15.250114917755127,
+          "status": "✅ Success",
+          "model_used": "N/A",
+          "model_type": "N/A",
+          "medium": "YouTube API + LLM",
+          "data_type": "Video Analysis"
+        },
+        {
+          "agent_name": "Data Intelligence",
+          "source_count": 2,
+          "sources_retrieved": 2,
+          "findings_count": 2,
+          "insights_count": 2,
+          "cost": 0.0,
+          "tokens": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "execution_time": 1.632676362991333,
+          "status": "✅ Success",
+          "model_used": "N/A",
+          "model_type": "N/A",
+          "medium": "arXiv API + LLM",
+          "data_type": "Academic Research"
+        }
+      ],
+      "agent_results": {
+        "Market Intelligence": {
+          "success": true,
+          "agent_name": "Market Intelligence",
+          "summary": "The latest trends in **bioinformatics** are defined by the rapid integration of artificial intelligence (AI), the rise of cloud-based services, advances in multi-omics, and a focus on precision medicine and scalable data analysis. These trends are transforming both research and clinical applications, driving innovation and market growth across the life sciences.\n\n**Key Trends in Bioinformatics (2024–2025):**\n\n- **AI and Machine Learning Integration**\n  - AI is now central to bioinformatics, powe",
+          "findings": [
+            "**AI and Machine Learning Integration**",
+            "AI is now central to bioinformatics, powering everything from protein structure prediction and drug discovery to the interpretation of complex omics datasets[1][2][5][7].",
+            "AI-driven tools are enabling the analysis of massive biological datasets, such as those from next-generation sequencing (NGS), proteomics, and spatial omics, with greater speed and accuracy[2][5].",
+            "Machine learning (ML), especially deep learning and graph neural networks, is accelerating multi-target drug discovery and systems pharmacology, allowing for more effective treatments of complex diseases[4][8].",
+            "Generative AI and protein language models are being used to design novel enzymes and predict the effects of genetic mutations[8][9]."
+          ],
+          "insights": [
+            "**Bioinformatics-as-a-Service (BaaS) and Cloud Computing**",
+            "The BaaS market is expanding rapidly, offering cloud-based, scalable, and subscription-driven platforms for data analysis, storage, and workflow automation[3][5].",
+            "These services democratize access to high-performance computing, reduce infrastructure costs, and support secure, federated analytics for multi-cohort studies[3]."
+          ],
+          "sources": [
+            {
+              "title": "https://blog.igem.org/blog/2025/9/11/inside-the-2025-igem-startups-cohort-sector-distribution-key-trends-and-highlights",
+              "url": "https://blog.igem.org/blog/2025/9/11/inside-the-2025-igem-startups-cohort-sector-distribution-key-trends-and-highlights",
+              "summary": "Citation #1 from Perplexity research",
+              "agent": "Market Intelligence",
+              "source_type": "Web Research",
+              "medium": "Perplexity API"
+            },
+            {
+              "title": "https://www.nature.com/subjects/computational-biology-and-bioinformatics/nmeth",
+              "url": "https://www.nature.com/subjects/computational-biology-and-bioinformatics/nmeth",
+              "summary": "Citation #2 from Perplexity research",
+              "agent": "Market Intelligence",
+              "source_type": "Web Research",
+              "medium": "Perplexity API"
+            }
+          ],
+          "source_count": 2,
+          "sources_retrieved": 2,
+          "tokens": 1137,
+          "prompt_tokens": 35,
+          "completion_tokens": 1102,
+          "cost": 0.003411,
+          "status": "✅ Success",
+          "model_used": "sonar-pro",
+          "model_type": "Deep Research",
+          "medium": "Perplexity API",
+          "data_type": "Live Research",
+          "execution_time": 18.932008028030396
+        },
+        "Sentiment Analytics": {
+          "success": true,
+          "agent_name": "Sentiment Analytics",
+          "summary": "YouTube analysis from 3 videos",
+          "findings": [
+            "Analyzed 3 video sources"
+          ],
+          "insights": [
+            "Video content provides sentiment perspective",
+            "Expert commentary supports analysis"
+          ],
+          "sources": [
+            {
+              "published_date": "2025-08-20T14:01:32Z",
+              "title": "2025’s Biggest Fall Fashion Trends You Can’t Ignore!",
+              "authors": [
+                "The Essence Of Elegance"
+              ],
+              "summary": "**Summary:**\nThe video \"2025’s Biggest Fall Fashion Trends You Can’t Ignore!\" from The Essence Of Elegance explores the upcoming fashion trends for the fall season of 2025. It highlights key styles, colors, and accessories that are set to dominate the fashion scene, encouraging viewers to embrace these trends to stay stylish and relevant.\n\n**Bullet Highlights:**\n- **Bold Colors and Patterns:** Expect to see vibrant hues and eye-catching patterns, moving away from muted tones to make a statement this fall.\n- **Layering Techniques:** The video emphasizes the art of layering, showcasing how to mix textures and lengths for a chic, put-together look.\n- **Sustainable Fashion:** A strong focus on eco-friendly materials and sustainable practices is highlighted, encouraging consumers to make conscious fashion choices.\n\n**Recommended Actions:**\n- Update your wardrobe by incorporating bold colors and patterns to stay on-trend.\n- Experiment with layering different pieces to create unique outfits.\n- Consider investing in sustainable fashion brands to align with the eco-conscious movement in the industry.",
+              "content": "**Summary:**\nThe video \"2025’s Biggest Fall Fashion Trends You Can’t Ignore!\" from The Essence Of Elegance explores the upcoming fashion trends for the fall season of 2025. It highlights key styles, colors, and accessories that are set to dominate the fashion scene, encouraging viewers to embrace these trends to stay stylish and relevant.\n\n**Bullet Highlights:**\n- **Bold Colors and Patterns:** Expect to see vibrant hues and eye-catching patterns, moving away from muted tones to make a statement this fall.\n- **Layering Techniques:** The video emphasizes the art of layering, showcasing how to mix textures and lengths for a chic, put-together look.\n- **Sustainable Fashion:** A strong focus on eco-friendly materials and sustainable practices is highlighted, encouraging consumers to make conscious fashion choices.\n\n**Recommended Actions:**\n- Update your wardrobe by incorporating bold colors and patterns to stay on-trend.\n- Experiment with layering different pieces to create unique outfits.\n- Consider investing in sustainable fashion brands to align with the eco-conscious movement in the industry.",
+              "source": "https://www.youtube.com/watch?v=ug3TEjXFZ-Y",
+              "pdf_url": null
+            },
+            {
+              "published_date": "2025-07-26T13:59:13Z",
+              "title": "What New Features Are Available in the Latest Bioinformatics Software? - Biology For Everyone",
+              "authors": [
+                "Biology for Everyone"
+              ],
+              "summary": "**Summary:**\nThe video discusses the latest advancements in bioinformatics software, highlighting new features that enhance data analysis, visualization, and user experience. It emphasizes the importance of these tools in modern biological research and how they can streamline workflows for researchers.\n\n**Bullet Highlights:**\n- **Enhanced Data Visualization:** New tools allow for more intuitive graphical representations of complex biological data, making it easier for researchers to interpret results.\n- **Improved User Interface:** The latest software versions feature user-friendly interfaces that simplify navigation and reduce the learning curve for new users.\n- **Integration with Machine Learning:** The incorporation of machine learning algorithms enables more accurate predictions and analyses, facilitating deeper insights into biological processes.\n\n**Recommended Actions:**\n- Explore the new features in your current bioinformatics software to leverage improved functionalities.\n- Consider attending workshops or webinars to get hands-on experience with the latest tools.\n- Stay updated on future releases and enhancements by subscribing to relevant channels and forums in the bioinformatics community.",
+              "content": "**Summary:**\nThe video discusses the latest advancements in bioinformatics software, highlighting new features that enhance data analysis, visualization, and user experience. It emphasizes the importance of these tools in modern biological research and how they can streamline workflows for researchers.\n\n**Bullet Highlights:**\n- **Enhanced Data Visualization:** New tools allow for more intuitive graphical representations of complex biological data, making it easier for researchers to interpret results.\n- **Improved User Interface:** The latest software versions feature user-friendly interfaces that simplify navigation and reduce the learning curve for new users.\n- **Integration with Machine Learning:** The incorporation of machine learning algorithms enables more accurate predictions and analyses, facilitating deeper insights into biological processes.\n\n**Recommended Actions:**\n- Explore the new features in your current bioinformatics software to leverage improved functionalities.\n- Consider attending workshops or webinars to get hands-on experience with the latest tools.\n- Stay updated on future releases and enhancements by subscribing to relevant channels and forums in the bioinformatics community.",
+              "source": "https://www.youtube.com/watch?v=LS_3mqoAe6Y",
+              "pdf_url": null
+            }
+          ],
+          "source_count": 3,
+          "sources_retrieved": 3,
+          "tokens": 0,
+          "cost": 0.0,
+          "execution_time": 15.250114917755127,
+          "status": "✅ Success",
+          "medium": "YouTube API + LLM",
+          "data_type": "Video Analysis"
+        },
+        "Data Intelligence": {
+          "success": true,
+          "agent_name": "Data Intelligence",
+          "summary": "Academic analysis from 2 papers",
+          "findings": [
+            "A timeline is presented which shows the stages involved in converting a\nbioinformatics software application from a set of standalone algorithms throug",
+            "Since the advent of next-generation sequencing in the early 2000s, the volume\nof bioinformatics software tools and databases has exploded and continue"
+          ],
+          "insights": [
+            "Academic research provides evidence-based insights",
+            "Peer-reviewed sources validate findings"
+          ],
+          "sources": [
+            {
+              "title": "CloudQTL: Evolving a Bioinformatics Application to the Cloud",
+              "url": "http://arxiv.org/abs/1412.1419v1",
+              "summary": "A timeline is presented which shows the stages involved in converting a\nbioinformatics software application from a set of standalone algorithms through\nto a simple web based tool then to a web based p",
+              "agent": "Data Intelligence",
+              "source_type": "Academic",
+              "medium": "arXiv API"
+            },
+            {
+              "title": "A data-supported history of bioinformatics tools",
+              "url": "http://arxiv.org/abs/1807.06808v1",
+              "summary": "Since the advent of next-generation sequencing in the early 2000s, the volume\nof bioinformatics software tools and databases has exploded and continues to\ngrow rapidly. Documenting this evolution on a",
+              "agent": "Data Intelligence",
+              "source_type": "Academic",
+              "medium": "arXiv API"
+            }
+          ],
+          "source_count": 2,
+          "sources_retrieved": 2,
+          "tokens": 0,
+          "cost": 0.0,
+          "execution_time": 1.632676362991333,
+          "status": "✅ Success",
+          "medium": "arXiv API + LLM",
+          "data_type": "Academic Research"
+        }
+      }
+    }
   }
 ]
