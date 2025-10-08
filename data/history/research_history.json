@@ -1,8 +1,8 @@
 [
   {
-    "query": "NVIDIA stocks",
-    "domain": "Stock Market Analysis",
-    "timestamp": "2025-10-08 07:15:06",
+    "query": "Bioinformatics whats the latest trends",
+    "domain": "Medical Research",
+    "timestamp": "2025-10-08 08:25:14",
     "agents_state": {
       "Market Intelligence": true,
       "Sentiment Analytics": true,
@@ -13,9 +13,9 @@
     "sentiment_sources": 2,
     "data_sources": 2,
     "results": {
-      "query": "NVIDIA stocks",
-      "domain": "Stock Market Analysis",
-      "timestamp": "2025-10-08 07:15:06",
+      "query": "Bioinformatics whats the latest trends",
+      "domain": "Medical Research",
+      "timestamp": "2025-10-08 08:25:14",
       "agents_used": [
         "Market Intelligence",
         "Sentiment Analytics",
@@ -24,59 +24,84 @@
       "model_type": "Quick Search",
       "summary": "Academic analysis from 2 papers",
       "key_findings": [
-        "**Strong Analyst Consensus and Price Targets:** Among 37 analysts covering NVIDIA, 54% recommend a Strong Buy and 41% a Buy, with no analysts recommending selling, indicating strong market confidence[6]. Barclays recently raised its price target from $200 to $240 per share, one of the highest on Wall Street, reflecting bullish sentiment despite some short-term stock price dips[1].",
-        "**Exceptional Stock Performance:** NVIDIA’s stock has surged approximately 49% over the past year and an extraordinary 1,249% over the past three years, far outpacing the broader market and making it one of the top-performing semiconductor stocks[2].",
-        "**Shift to Full Systems and Networking:** NVIDIA is transitioning beyond GPUs to become a full systems provider, with networking emerging as a major growth driver. This shift is exemplified by demand for high-speed interconnects linking GPU racks into unified nodes, supporting AI workloads at hyperscale[4]. This evolution supports NVIDIA’s ability to sustain growth amid semiconductor industry cyclicality.",
-        "**AI-Driven Demand and Structural Growth:** AI capital expenditures (CapEx) are becoming a structural baseline for NVIDIA’s business, underpinning sustained demand. The company’s recent Q3 earnings beat expectations despite challenges like the absence of China sales, and it projects around 40% earnings per share (EPS) growth over the next year, extraordinary for a company of its size[4].",
-        "**Market Risks and Bubble Concerns:** Despite optimism, some market commentators, including Jim Cramer, warn about the risks of an AI “circular economy” where excessive vendor financing and speculative AI spending could create a bubble that might burst, posing downside risks to NVIDIA’s stock[1].",
-        "Forecasting stock prices remains a considerable challenge in financial\nmarkets, bearing significant implications for investors, traders, and financial",
-        "In this paper we outline the development methodology for an automatic dog\ntreat dispenser which combines machine learning and embedded hardware to\nide"
+        "**AI in Bioinformatics**: The integration of artificial intelligence (AI) and machine learning (ML) is transforming bioinformatics. AI-powered tools are being used for predictive analysis, drug discovery, and personalized medicine[5][9]. The AI in bioinformatics market is projected to reach $26 billion by 2029, driven by companies like Thermo Fisher Scientific and Illumina[10].",
+        "**Machine Learning Applications**: ML is crucial for multi-target drug discovery, enabling the development of safer and more effective therapeutics by analyzing large-scale biological data[4]. It also aids in predicting biomolecular interactions and interpreting proteomics data[2].",
+        "**BaaS Market Growth**: The BaaS market is expanding rapidly, with a predicted size of $14.56 billion by the end of the forecast period. This growth is driven by cloud-based subscription models that provide scalable computational resources, reducing infrastructure costs[3].",
+        "**Cloud-Based Platforms**: The shift towards cloud-based bioinformatics platforms offers scalability and cost reduction, facilitating the integration of big data into healthcare and scientific research[3][5].",
+        "**Genomics and NGS**: The demand for personalized medicine and advancements in NGS are driving the bioinformatics market. Over 70% of genomic research projects rely on advanced computational tools[5].",
+        "Analyzed 3 video sources",
+        "A timeline is presented which shows the stages involved in converting a\nbioinformatics software application from a set of standalone algorithms throug",
+        "Since the advent of next-generation sequencing in the early 2000s, the volume\nof bioinformatics software tools and databases has exploded and continue"
       ],
       "insights": [
-        "**Technical Trading Insights:** Daily technical analyses highlight critical support and resistance levels for NVIDIA’s stock, useful for traders seeking directional clarity in the short term[3].",
-        "**Strategic Partnerships:** NVIDIA’s $5 billion investment in Intel to jointly develop AI infrastructure and personal computing products signals strategic moves to expand its ecosystem and influence in AI hardware[7].",
-        "**Valuation Considerations:** While NVIDIA’s valuation is considered slightly overvalued by some narratives, the market appears to be pricing in years of future growth, reflecting confidence in its AI-driven expansion and innovation pipeline[2].",
+        "**Genome Sequencing Costs**: The decreasing cost of genome sequencing is fueling the growth of the bioinformatics market, expected to reach $58.1 billion by the end of the forecast period[9].",
+        "**Precision Medicine**: There is a growing focus on precision medicine, with AI and bioinformatics playing key roles in developing patient-specific therapeutic solutions[5].",
+        "**Collaborations and Funding**: Increased collaborations between pharmaceutical companies, biotech firms, and academic institutions, along with government funding, are supporting this trend[5][7].",
+        "Video content provides sentiment perspective",
+        "Expert commentary supports analysis",
         "Academic research provides evidence-based insights",
         "Peer-reviewed sources validate findings"
       ],
       "sources": [
         {
-          "title": "https://www.youtube.com/watch?v=Jt6vRxm5vcg",
-          "url": "https://www.youtube.com/watch?v=Jt6vRxm5vcg",
+          "title": "https://blog.igem.org/blog/2025/9/11/inside-the-2025-igem-startups-cohort-sector-distribution-key-trends-and-highlights",
+          "url": "https://blog.igem.org/blog/2025/9/11/inside-the-2025-igem-startups-cohort-sector-distribution-key-trends-and-highlights",
           "summary": "Citation #1 from Perplexity research",
           "agent": "Market Intelligence",
           "source_type": "Web Research",
           "medium": "Perplexity API"
         },
         {
-          "title": "https://www.webull.com/news/13510865166554112",
-          "url": "https://www.webull.com/news/13510865166554112",
+          "title": "https://www.nature.com/subjects/computational-biology-and-bioinformatics/nmeth",
+          "url": "https://www.nature.com/subjects/computational-biology-and-bioinformatics/nmeth",
           "summary": "Citation #2 from Perplexity research",
           "agent": "Market Intelligence",
           "source_type": "Web Research",
           "medium": "Perplexity API"
         },
         {
-          "title": "Predicting NVIDIA's Next-Day Stock Price: A Comparative Analysis of\n  LSTM, MLP, ARIMA, and ARIMA-GARCH Models",
-          "url": "http://arxiv.org/abs/2405.08284v1",
-          "summary": "Forecasting stock prices remains a considerable challenge in financial\nmarkets, bearing significant implications for investors, traders, and financial\ninstitutions. Amid the ongoing AI revolution, NVI",
+          "published_date": "2025-09-13T10:42:25Z",
+          "title": "MultiQC: The Ultimate Bioinformatics QC Dashboard You Need in 2025 #bioinformatics #biotech #omics",
+          "authors": [
+            "Dr. Jyoti Bala"
+          ],
+          "summary": "### Summary:\nIn the video \"MultiQC: The Ultimate Bioinformatics QC Dashboard You Need in 2025,\" Dr. Jyoti Bala introduces MultiQC, a powerful tool designed for aggregating and visualizing quality control (QC) metrics from various bioinformatics analyses. The video emphasizes the importance of QC in ensuring the reliability of omics data and demonstrates how MultiQC can streamline the process of data assessment, making it easier for researchers to interpret results and maintain high standards in their workflows.\n\n### Bullet Highlights:\n- **Comprehensive QC Visualization**: MultiQC consolidates QC reports from multiple bioinformatics tools into a single, interactive dashboard, allowing for easier comparison and assessment of data quality.\n- **User-Friendly Interface**: The tool is designed to be intuitive, enabling users to quickly generate reports and visualize data without extensive programming knowledge.\n- **Future-Proofing Bioinformatics**: As the field of bioinformatics evolves, MultiQC is positioned as an essential resource for researchers to ensure data integrity and reproducibility in their studies.\n\n### Recommended Actions:\n- **Explore MultiQC**: Researchers and bioinformaticians should consider integrating MultiQC into their data analysis pipelines to enhance QC processes.\n- **Stay Updated**: Follow developments in bioinformatics tools and methodologies to ensure the adoption of best practices in data quality assessment.\n- **Engage with the Community**: Participate in forums or discussions related to MultiQC and bioinformatics to share insights and learn from others' experiences.",
+          "content": "### Summary:\nIn the video \"MultiQC: The Ultimate Bioinformatics QC Dashboard You Need in 2025,\" Dr. Jyoti Bala introduces MultiQC, a powerful tool designed for aggregating and visualizing quality control (QC) metrics from various bioinformatics analyses. The video emphasizes the importance of QC in ensuring the reliability of omics data and demonstrates how MultiQC can streamline the process of data assessment, making it easier for researchers to interpret results and maintain high standards in their workflows.\n\n### Bullet Highlights:\n- **Comprehensive QC Visualization**: MultiQC consolidates QC reports from multiple bioinformatics tools into a single, interactive dashboard, allowing for easier comparison and assessment of data quality.\n- **User-Friendly Interface**: The tool is designed to be intuitive, enabling users to quickly generate reports and visualize data without extensive programming knowledge.\n- **Future-Proofing Bioinformatics**: As the field of bioinformatics evolves, MultiQC is positioned as an essential resource for researchers to ensure data integrity and reproducibility in their studies.\n\n### Recommended Actions:\n- **Explore MultiQC**: Researchers and bioinformaticians should consider integrating MultiQC into their data analysis pipelines to enhance QC processes.\n- **Stay Updated**: Follow developments in bioinformatics tools and methodologies to ensure the adoption of best practices in data quality assessment.\n- **Engage with the Community**: Participate in forums or discussions related to MultiQC and bioinformatics to share insights and learn from others' experiences.",
+          "source": "https://www.youtube.com/watch?v=xHtFcS0CoeE",
+          "pdf_url": null
+        },
+        {
+          "published_date": "2025-08-20T14:01:32Z",
+          "title": "2025’s Biggest Fall Fashion Trends You Can’t Ignore!",
+          "authors": [
+            "The Essence Of Elegance"
+          ],
+          "summary": "**Summary:**\nThe video \"2025’s Biggest Fall Fashion Trends You Can’t Ignore!\" from The Essence Of Elegance explores the upcoming fashion trends for the fall season of 2025. It emphasizes a blend of comfort, sustainability, and bold aesthetics, showcasing how these elements will shape wardrobes in the coming year.\n\n**Bullet Highlights:**\n- **Sustainable Fabrics:** A strong focus on eco-friendly materials, with brands prioritizing sustainability in their collections.\n- **Layering Techniques:** Creative layering will be key, featuring oversized outerwear and versatile pieces that can be mixed and matched.\n- **Bold Colors and Patterns:** Expect vibrant hues and striking patterns to dominate the season, moving away from traditional fall palettes.\n\n**Recommended Actions:**\n- **Update Your Wardrobe:** Begin incorporating sustainable pieces into your collection, focusing on brands that prioritize eco-friendly practices.\n- **Experiment with Layering:** Try out different layering combinations to create unique outfits that reflect the upcoming trends.\n- **Embrace Color:** Don’t shy away from bold colors and patterns; consider adding statement pieces that can elevate your fall looks.",
+          "content": "**Summary:**\nThe video \"2025’s Biggest Fall Fashion Trends You Can’t Ignore!\" from The Essence Of Elegance explores the upcoming fashion trends for the fall season of 2025. It emphasizes a blend of comfort, sustainability, and bold aesthetics, showcasing how these elements will shape wardrobes in the coming year.\n\n**Bullet Highlights:**\n- **Sustainable Fabrics:** A strong focus on eco-friendly materials, with brands prioritizing sustainability in their collections.\n- **Layering Techniques:** Creative layering will be key, featuring oversized outerwear and versatile pieces that can be mixed and matched.\n- **Bold Colors and Patterns:** Expect vibrant hues and striking patterns to dominate the season, moving away from traditional fall palettes.\n\n**Recommended Actions:**\n- **Update Your Wardrobe:** Begin incorporating sustainable pieces into your collection, focusing on brands that prioritize eco-friendly practices.\n- **Experiment with Layering:** Try out different layering combinations to create unique outfits that reflect the upcoming trends.\n- **Embrace Color:** Don’t shy away from bold colors and patterns; consider adding statement pieces that can elevate your fall looks.",
+          "source": "https://www.youtube.com/watch?v=ug3TEjXFZ-Y",
+          "pdf_url": null
+        },
+        {
+          "title": "CloudQTL: Evolving a Bioinformatics Application to the Cloud",
+          "url": "http://arxiv.org/abs/1412.1419v1",
+          "summary": "A timeline is presented which shows the stages involved in converting a\nbioinformatics software application from a set of standalone algorithms through\nto a simple web based tool then to a web based p",
           "agent": "Data Intelligence",
           "source_type": "Academic",
           "medium": "arXiv API"
         },
         {
-          "title": "Who's a Good Boy? Reinforcing Canine Behavior in Real-Time using Machine\n  Learning",
-          "url": "http://arxiv.org/abs/2101.02380v2",
-          "summary": "In this paper we outline the development methodology for an automatic dog\ntreat dispenser which combines machine learning and embedded hardware to\nidentify and reward dog behaviors in real-time. Using",
+          "title": "A data-supported history of bioinformatics tools",
+          "url": "http://arxiv.org/abs/1807.06808v1",
+          "summary": "Since the advent of next-generation sequencing in the early 2000s, the volume\nof bioinformatics software tools and databases has exploded and continues to\ngrow rapidly. Documenting this evolution on a",
           "agent": "Data Intelligence",
           "source_type": "Academic",
           "medium": "arXiv API"
         }
       ],
-      "total_cost": 0.000665,
-      "total_tokens": 665,
-      "execution_time": 15.96855354309082,
-      "confidence_score": 76,
+      "total_cost": 0.000727,
+      "total_tokens": 727,
+      "execution_time": 25.161860466003418,
+      "confidence_score": 79,
       "mock_mode": false,
       "agent_data": [
         {
@@ -85,11 +110,11 @@
           "sources_retrieved": 2,
           "findings_count": 5,
           "insights_count": 3,
-          "cost": 0.000665,
-          "tokens": 665,
-          "prompt_tokens": 31,
-          "completion_tokens": 634,
-          "execution_time": 13.83784294128418,
+          "cost": 0.000727,
+          "tokens": 727,
+          "prompt_tokens": 35,
+          "completion_tokens": 692,
+          "execution_time": 6.050808668136597,
           "status": "✅ Success",
           "model_used": "sonar",
           "model_type": "Quick Search",
@@ -98,16 +123,20 @@
         },
         {
           "agent_name": "Sentiment Analytics",
-          "source_count": 0,
-          "sources_retrieved": 0,
-          "findings_count": 0,
-          "insights_count": 0,
+          "source_count": 3,
+          "sources_retrieved": 3,
+          "findings_count": 1,
+          "insights_count": 2,
           "cost": 0.0,
           "tokens": 0,
-          "execution_time": 5.857848882675171,
-          "status": "❌ API Failed",
-          "error": "YouTube API error: cannot import name 'analyze_youtube' from 'agents.youtube_researcher' (C:\\Projects\\AI\\2025\\Lumina\\lumina\\agents\\youtube_researcher.py)",
-          "medium": "YouTube API"
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "execution_time": 17.187891244888306,
+          "status": "✅ Success",
+          "model_used": "N/A",
+          "model_type": "N/A",
+          "medium": "YouTube API + LLM",
+          "data_type": "Video Analysis"
         },
         {
           "agent_name": "Data Intelligence",
@@ -119,7 +148,7 @@
           "tokens": 0,
           "prompt_tokens": 0,
           "completion_tokens": 0,
-          "execution_time": 2.1307106018066406,
+          "execution_time": 1.9231605529785156,
           "status": "✅ Success",
           "model_used": "N/A",
           "model_type": "N/A",
@@ -131,31 +160,31 @@
         "Market Intelligence": {
           "success": true,
           "agent_name": "Market Intelligence",
-          "summary": "NVIDIA stock remains a highly watched and broadly favored investment in 2025, driven primarily by its leadership in AI-related semiconductor technology and its strategic evolution from a GPU maker to a full systems company. Analysts overwhelmingly rate NVIDIA as a \"Buy,\" with many projecting significant growth, though some caution about valuation risks and potential market bubbles linked to AI hype.\n\nKey points from recent analysis and market data include:\n\n- **Strong Analyst Consensus and Price",
+          "summary": "## Latest Trends in Bioinformatics\n\nBioinformatics is a rapidly evolving field that combines biology, computer science, and information technology to analyze and interpret complex biological data. Recent trends highlight significant advancements in technology, applications, and market growth.\n\n### 1. **Integration of AI and Machine Learning**\n\n- **AI in Bioinformatics**: The integration of artificial intelligence (AI) and machine learning (ML) is transforming bioinformatics. AI-powered tools are",
           "findings": [
-            "**Strong Analyst Consensus and Price Targets:** Among 37 analysts covering NVIDIA, 54% recommend a Strong Buy and 41% a Buy, with no analysts recommending selling, indicating strong market confidence[6]. Barclays recently raised its price target from $200 to $240 per share, one of the highest on Wall Street, reflecting bullish sentiment despite some short-term stock price dips[1].",
-            "**Exceptional Stock Performance:** NVIDIA’s stock has surged approximately 49% over the past year and an extraordinary 1,249% over the past three years, far outpacing the broader market and making it one of the top-performing semiconductor stocks[2].",
-            "**Shift to Full Systems and Networking:** NVIDIA is transitioning beyond GPUs to become a full systems provider, with networking emerging as a major growth driver. This shift is exemplified by demand for high-speed interconnects linking GPU racks into unified nodes, supporting AI workloads at hyperscale[4]. This evolution supports NVIDIA’s ability to sustain growth amid semiconductor industry cyclicality.",
-            "**AI-Driven Demand and Structural Growth:** AI capital expenditures (CapEx) are becoming a structural baseline for NVIDIA’s business, underpinning sustained demand. The company’s recent Q3 earnings beat expectations despite challenges like the absence of China sales, and it projects around 40% earnings per share (EPS) growth over the next year, extraordinary for a company of its size[4].",
-            "**Market Risks and Bubble Concerns:** Despite optimism, some market commentators, including Jim Cramer, warn about the risks of an AI “circular economy” where excessive vendor financing and speculative AI spending could create a bubble that might burst, posing downside risks to NVIDIA’s stock[1]."
+            "**AI in Bioinformatics**: The integration of artificial intelligence (AI) and machine learning (ML) is transforming bioinformatics. AI-powered tools are being used for predictive analysis, drug discovery, and personalized medicine[5][9]. The AI in bioinformatics market is projected to reach $26 billion by 2029, driven by companies like Thermo Fisher Scientific and Illumina[10].",
+            "**Machine Learning Applications**: ML is crucial for multi-target drug discovery, enabling the development of safer and more effective therapeutics by analyzing large-scale biological data[4]. It also aids in predicting biomolecular interactions and interpreting proteomics data[2].",
+            "**BaaS Market Growth**: The BaaS market is expanding rapidly, with a predicted size of $14.56 billion by the end of the forecast period. This growth is driven by cloud-based subscription models that provide scalable computational resources, reducing infrastructure costs[3].",
+            "**Cloud-Based Platforms**: The shift towards cloud-based bioinformatics platforms offers scalability and cost reduction, facilitating the integration of big data into healthcare and scientific research[3][5].",
+            "**Genomics and NGS**: The demand for personalized medicine and advancements in NGS are driving the bioinformatics market. Over 70% of genomic research projects rely on advanced computational tools[5]."
           ],
           "insights": [
-            "**Technical Trading Insights:** Daily technical analyses highlight critical support and resistance levels for NVIDIA’s stock, useful for traders seeking directional clarity in the short term[3].",
-            "**Strategic Partnerships:** NVIDIA’s $5 billion investment in Intel to jointly develop AI infrastructure and personal computing products signals strategic moves to expand its ecosystem and influence in AI hardware[7].",
-            "**Valuation Considerations:** While NVIDIA’s valuation is considered slightly overvalued by some narratives, the market appears to be pricing in years of future growth, reflecting confidence in its AI-driven expansion and innovation pipeline[2]."
+            "**Genome Sequencing Costs**: The decreasing cost of genome sequencing is fueling the growth of the bioinformatics market, expected to reach $58.1 billion by the end of the forecast period[9].",
+            "**Precision Medicine**: There is a growing focus on precision medicine, with AI and bioinformatics playing key roles in developing patient-specific therapeutic solutions[5].",
+            "**Collaborations and Funding**: Increased collaborations between pharmaceutical companies, biotech firms, and academic institutions, along with government funding, are supporting this trend[5][7]."
           ],
           "sources": [
             {
-              "title": "https://www.youtube.com/watch?v=Jt6vRxm5vcg",
-              "url": "https://www.youtube.com/watch?v=Jt6vRxm5vcg",
+              "title": "https://blog.igem.org/blog/2025/9/11/inside-the-2025-igem-startups-cohort-sector-distribution-key-trends-and-highlights",
+              "url": "https://blog.igem.org/blog/2025/9/11/inside-the-2025-igem-startups-cohort-sector-distribution-key-trends-and-highlights",
               "summary": "Citation #1 from Perplexity research",
               "agent": "Market Intelligence",
               "source_type": "Web Research",
               "medium": "Perplexity API"
             },
             {
-              "title": "https://www.webull.com/news/13510865166554112",
-              "url": "https://www.webull.com/news/13510865166554112",
+              "title": "https://www.nature.com/subjects/computational-biology-and-bioinformatics/nmeth",
+              "url": "https://www.nature.com/subjects/computational-biology-and-bioinformatics/nmeth",
               "summary": "Citation #2 from Perplexity research",
               "agent": "Market Intelligence",
               "source_type": "Web Research",
@@ -164,33 +193,68 @@
           ],
           "source_count": 2,
           "sources_retrieved": 2,
-          "tokens": 665,
-          "prompt_tokens": 31,
-          "completion_tokens": 634,
-          "cost": 0.000665,
+          "tokens": 727,
+          "prompt_tokens": 35,
+          "completion_tokens": 692,
+          "cost": 0.000727,
           "status": "✅ Success",
           "model_used": "sonar",
           "model_type": "Quick Search",
           "medium": "Perplexity API",
           "data_type": "Live Research",
-          "execution_time": 13.83784294128418
+          "execution_time": 6.050808668136597
         },
         "Sentiment Analytics": {
-          "success": false,
+          "success": true,
           "agent_name": "Sentiment Analytics",
-          "execution_time": 5.857848882675171,
-          "status": "❌ API Failed",
-          "error": "YouTube API error: cannot import name 'analyze_youtube' from 'agents.youtube_researcher' (C:\\Projects\\AI\\2025\\Lumina\\lumina\\agents\\youtube_researcher.py)",
-          "medium": "YouTube API",
-          "suggestion": "Check YOUTUBE_API_KEY in .env"
+          "summary": "YouTube analysis from 3 videos",
+          "findings": [
+            "Analyzed 3 video sources"
+          ],
+          "insights": [
+            "Video content provides sentiment perspective",
+            "Expert commentary supports analysis"
+          ],
+          "sources": [
+            {
+              "published_date": "2025-09-13T10:42:25Z",
+              "title": "MultiQC: The Ultimate Bioinformatics QC Dashboard You Need in 2025 #bioinformatics #biotech #omics",
+              "authors": [
+                "Dr. Jyoti Bala"
+              ],
+              "summary": "### Summary:\nIn the video \"MultiQC: The Ultimate Bioinformatics QC Dashboard You Need in 2025,\" Dr. Jyoti Bala introduces MultiQC, a powerful tool designed for aggregating and visualizing quality control (QC) metrics from various bioinformatics analyses. The video emphasizes the importance of QC in ensuring the reliability of omics data and demonstrates how MultiQC can streamline the process of data assessment, making it easier for researchers to interpret results and maintain high standards in their workflows.\n\n### Bullet Highlights:\n- **Comprehensive QC Visualization**: MultiQC consolidates QC reports from multiple bioinformatics tools into a single, interactive dashboard, allowing for easier comparison and assessment of data quality.\n- **User-Friendly Interface**: The tool is designed to be intuitive, enabling users to quickly generate reports and visualize data without extensive programming knowledge.\n- **Future-Proofing Bioinformatics**: As the field of bioinformatics evolves, MultiQC is positioned as an essential resource for researchers to ensure data integrity and reproducibility in their studies.\n\n### Recommended Actions:\n- **Explore MultiQC**: Researchers and bioinformaticians should consider integrating MultiQC into their data analysis pipelines to enhance QC processes.\n- **Stay Updated**: Follow developments in bioinformatics tools and methodologies to ensure the adoption of best practices in data quality assessment.\n- **Engage with the Community**: Participate in forums or discussions related to MultiQC and bioinformatics to share insights and learn from others' experiences.",
+              "content": "### Summary:\nIn the video \"MultiQC: The Ultimate Bioinformatics QC Dashboard You Need in 2025,\" Dr. Jyoti Bala introduces MultiQC, a powerful tool designed for aggregating and visualizing quality control (QC) metrics from various bioinformatics analyses. The video emphasizes the importance of QC in ensuring the reliability of omics data and demonstrates how MultiQC can streamline the process of data assessment, making it easier for researchers to interpret results and maintain high standards in their workflows.\n\n### Bullet Highlights:\n- **Comprehensive QC Visualization**: MultiQC consolidates QC reports from multiple bioinformatics tools into a single, interactive dashboard, allowing for easier comparison and assessment of data quality.\n- **User-Friendly Interface**: The tool is designed to be intuitive, enabling users to quickly generate reports and visualize data without extensive programming knowledge.\n- **Future-Proofing Bioinformatics**: As the field of bioinformatics evolves, MultiQC is positioned as an essential resource for researchers to ensure data integrity and reproducibility in their studies.\n\n### Recommended Actions:\n- **Explore MultiQC**: Researchers and bioinformaticians should consider integrating MultiQC into their data analysis pipelines to enhance QC processes.\n- **Stay Updated**: Follow developments in bioinformatics tools and methodologies to ensure the adoption of best practices in data quality assessment.\n- **Engage with the Community**: Participate in forums or discussions related to MultiQC and bioinformatics to share insights and learn from others' experiences.",
+              "source": "https://www.youtube.com/watch?v=xHtFcS0CoeE",
+              "pdf_url": null
+            },
+            {
+              "published_date": "2025-08-20T14:01:32Z",
+              "title": "2025’s Biggest Fall Fashion Trends You Can’t Ignore!",
+              "authors": [
+                "The Essence Of Elegance"
+              ],
+              "summary": "**Summary:**\nThe video \"2025’s Biggest Fall Fashion Trends You Can’t Ignore!\" from The Essence Of Elegance explores the upcoming fashion trends for the fall season of 2025. It emphasizes a blend of comfort, sustainability, and bold aesthetics, showcasing how these elements will shape wardrobes in the coming year.\n\n**Bullet Highlights:**\n- **Sustainable Fabrics:** A strong focus on eco-friendly materials, with brands prioritizing sustainability in their collections.\n- **Layering Techniques:** Creative layering will be key, featuring oversized outerwear and versatile pieces that can be mixed and matched.\n- **Bold Colors and Patterns:** Expect vibrant hues and striking patterns to dominate the season, moving away from traditional fall palettes.\n\n**Recommended Actions:**\n- **Update Your Wardrobe:** Begin incorporating sustainable pieces into your collection, focusing on brands that prioritize eco-friendly practices.\n- **Experiment with Layering:** Try out different layering combinations to create unique outfits that reflect the upcoming trends.\n- **Embrace Color:** Don’t shy away from bold colors and patterns; consider adding statement pieces that can elevate your fall looks.",
+              "content": "**Summary:**\nThe video \"2025’s Biggest Fall Fashion Trends You Can’t Ignore!\" from The Essence Of Elegance explores the upcoming fashion trends for the fall season of 2025. It emphasizes a blend of comfort, sustainability, and bold aesthetics, showcasing how these elements will shape wardrobes in the coming year.\n\n**Bullet Highlights:**\n- **Sustainable Fabrics:** A strong focus on eco-friendly materials, with brands prioritizing sustainability in their collections.\n- **Layering Techniques:** Creative layering will be key, featuring oversized outerwear and versatile pieces that can be mixed and matched.\n- **Bold Colors and Patterns:** Expect vibrant hues and striking patterns to dominate the season, moving away from traditional fall palettes.\n\n**Recommended Actions:**\n- **Update Your Wardrobe:** Begin incorporating sustainable pieces into your collection, focusing on brands that prioritize eco-friendly practices.\n- **Experiment with Layering:** Try out different layering combinations to create unique outfits that reflect the upcoming trends.\n- **Embrace Color:** Don’t shy away from bold colors and patterns; consider adding statement pieces that can elevate your fall looks.",
+              "source": "https://www.youtube.com/watch?v=ug3TEjXFZ-Y",
+              "pdf_url": null
+            }
+          ],
+          "source_count": 3,
+          "sources_retrieved": 3,
+          "tokens": 0,
+          "cost": 0.0,
+          "execution_time": 17.187891244888306,
+          "status": "✅ Success",
+          "medium": "YouTube API + LLM",
+          "data_type": "Video Analysis"
         },
         "Data Intelligence": {
           "success": true,
           "agent_name": "Data Intelligence",
           "summary": "Academic analysis from 2 papers",
           "findings": [
-            "Forecasting stock prices remains a considerable challenge in financial\nmarkets, bearing significant implications for investors, traders, and financial",
-            "In this paper we outline the development methodology for an automatic dog\ntreat dispenser which combines machine learning and embedded hardware to\nide"
+            "A timeline is presented which shows the stages involved in converting a\nbioinformatics software application from a set of standalone algorithms throug",
+            "Since the advent of next-generation sequencing in the early 2000s, the volume\nof bioinformatics software tools and databases has exploded and continue"
           ],
           "insights": [
             "Academic research provides evidence-based insights",
@@ -198,17 +262,17 @@
           ],
           "sources": [
             {
-              "title": "Predicting NVIDIA's Next-Day Stock Price: A Comparative Analysis of\n  LSTM, MLP, ARIMA, and ARIMA-GARCH Models",
-              "url": "http://arxiv.org/abs/2405.08284v1",
-              "summary": "Forecasting stock prices remains a considerable challenge in financial\nmarkets, bearing significant implications for investors, traders, and financial\ninstitutions. Amid the ongoing AI revolution, NVI",
+              "title": "CloudQTL: Evolving a Bioinformatics Application to the Cloud",
+              "url": "http://arxiv.org/abs/1412.1419v1",
+              "summary": "A timeline is presented which shows the stages involved in converting a\nbioinformatics software application from a set of standalone algorithms through\nto a simple web based tool then to a web based p",
               "agent": "Data Intelligence",
               "source_type": "Academic",
               "medium": "arXiv API"
             },
             {
-              "title": "Who's a Good Boy? Reinforcing Canine Behavior in Real-Time using Machine\n  Learning",
-              "url": "http://arxiv.org/abs/2101.02380v2",
-              "summary": "In this paper we outline the development methodology for an automatic dog\ntreat dispenser which combines machine learning and embedded hardware to\nidentify and reward dog behaviors in real-time. Using",
+              "title": "A data-supported history of bioinformatics tools",
+              "url": "http://arxiv.org/abs/1807.06808v1",
+              "summary": "Since the advent of next-generation sequencing in the early 2000s, the volume\nof bioinformatics software tools and databases has exploded and continues to\ngrow rapidly. Documenting this evolution on a",
               "agent": "Data Intelligence",
               "source_type": "Academic",
               "medium": "arXiv API"
@@ -218,234 +282,7 @@
           "sources_retrieved": 2,
           "tokens": 0,
           "cost": 0.0,
-          "execution_time": 2.1307106018066406,
-          "status": "✅ Success",
-          "medium": "arXiv API + LLM",
-          "data_type": "Academic Research"
-        }
-      }
-    }
-  },
-  {
-    "query": "ola electric shares latest information",
-    "domain": "Stock Market Analysis",
-    "timestamp": "2025-10-08 08:05:40",
-    "agents_state": {
-      "Market Intelligence": true,
-      "Sentiment Analytics": true,
-      "Data Intelligence": true
-    },
-    "model_type": "Quick Search",
-    "market_sources": 2,
-    "sentiment_sources": 2,
-    "data_sources": 2,
-    "results": {
-      "query": "ola electric shares latest information",
-      "domain": "Stock Market Analysis",
-      "timestamp": "2025-10-08 08:05:40",
-      "agents_used": [
-        "Market Intelligence",
-        "Sentiment Analytics",
-        "Data Intelligence"
-      ],
-      "model_type": "Quick Search",
-      "summary": "Academic analysis from 2 papers",
-      "key_findings": [
-        "**Revenue Growth**: Ola Electric reported a 35.5% quarter-over-quarter (QoQ) increase in revenue, indicating strong growth momentum[1].",
-        "**EBITDA Positive**: The company's auto business turned EBITDA positive in June 2025, marking a significant milestone in its financial journey[1].",
-        "**Net Loss**: Despite growth, Ola Electric posted a consolidated net loss of ₹428 crore for the April-June quarter of FY25-26[2].",
-        "**PLI Claim**: Ola Electric has filed a PLI claim of ₹400 crore, which is expected to boost its liquidity and financial performance. The incentive is calculated at a rate of 13 to 14% of eligible sales[2].",
-        "**Impact**: This certification is anticipated to strengthen the company's profitability from the second quarter of FY26[2].",
-        "This paper analyzes a broadcasting technique for wireless multi-hop sensor\nnetworks that uses a form of cooperative diversity called opportunistic lar",
-        "Bremsstrahlung radiation emission is an important energy loss mechanism for\nenergetic electrons in plasmas. In this paper we investigate the effect of"
-      ],
-      "insights": [
-        "**Share Price Movement**: Ola Electric shares rose by over 3% following the announcement of the PLI certification, reaching an intraday high of ₹61.02 on the NSE[2].",
-        "**52-Week High and Low**: The stock touched its 52-week high of ₹123.90 on September 18, 2024, and its 52-week low of ₹39.60 on July 14, 2025[2].",
-        "**Market Capitalization**: Ola Electric's market capitalization currently stands at approximately ₹26,160.63 crore[2].",
-        "Academic research provides evidence-based insights",
-        "Peer-reviewed sources validate findings"
-      ],
-      "sources": [
-        {
-          "title": "https://www.olaelectric.com/investor-relations/announcements",
-          "url": "https://www.olaelectric.com/investor-relations/announcements",
-          "summary": "Citation #1 from Perplexity research",
-          "agent": "Market Intelligence",
-          "source_type": "Web Research",
-          "medium": "Perplexity API"
-        },
-        {
-          "title": "https://upstox.com/news/market-news/stocks/ola-electric-share-price-rises-over-3-on-filing-pli-claim-of-400-crore/article-181294/",
-          "url": "https://upstox.com/news/market-news/stocks/ola-electric-share-price-rises-over-3-on-filing-pli-claim-of-400-crore/article-181294/",
-          "summary": "Citation #2 from Perplexity research",
-          "agent": "Market Intelligence",
-          "source_type": "Web Research",
-          "medium": "Perplexity API"
-        },
-        {
-          "title": "A Simple Cooperative Transmission Protocol for Energy-Efficient\n  Broadcasting Over Multi-Hop Wireless Networks",
-          "url": "http://arxiv.org/abs/0903.1675v1",
-          "summary": "This paper analyzes a broadcasting technique for wireless multi-hop sensor\nnetworks that uses a form of cooperative diversity called opportunistic large\narrays (OLAs). We propose a method for autonomo",
-          "agent": "Data Intelligence",
-          "source_type": "Academic",
-          "medium": "arXiv API"
-        },
-        {
-          "title": "Effect of bremsstrahlung radiation emission on fast electrons in plasmas",
-          "url": "http://arxiv.org/abs/1604.03331v1",
-          "summary": "Bremsstrahlung radiation emission is an important energy loss mechanism for\nenergetic electrons in plasmas. In this paper we investigate the effect of\nspontaneous bremsstrahlung emission on the moment",
-          "agent": "Data Intelligence",
-          "source_type": "Academic",
-          "medium": "arXiv API"
-        }
-      ],
-      "total_cost": 0.000846,
-      "total_tokens": 846,
-      "execution_time": 8.962786674499512,
-      "confidence_score": 76,
-      "mock_mode": false,
-      "agent_data": [
-        {
-          "agent_name": "Market Intelligence",
-          "source_count": 2,
-          "sources_retrieved": 2,
-          "findings_count": 5,
-          "insights_count": 3,
-          "cost": 0.000846,
-          "tokens": 846,
-          "prompt_tokens": 34,
-          "completion_tokens": 812,
-          "execution_time": 6.812972068786621,
-          "status": "✅ Success",
-          "model_used": "sonar",
-          "model_type": "Quick Search",
-          "medium": "Perplexity API",
-          "data_type": "Live Research"
-        },
-        {
-          "agent_name": "Sentiment Analytics",
-          "source_count": 0,
-          "sources_retrieved": 0,
-          "findings_count": 0,
-          "insights_count": 0,
-          "cost": 0.0,
-          "tokens": 0,
-          "execution_time": 17.86807918548584,
-          "status": "❌ API Failed",
-          "error": "YouTube API error: cannot import name 'analyze_youtube' from 'agents.youtube_researcher' (C:\\Projects\\AI\\2025\\Lumina\\lumina\\agents\\youtube_researcher.py)",
-          "medium": "YouTube API"
-        },
-        {
-          "agent_name": "Data Intelligence",
-          "source_count": 2,
-          "sources_retrieved": 2,
-          "findings_count": 2,
-          "insights_count": 2,
-          "cost": 0.0,
-          "tokens": 0,
-          "prompt_tokens": 0,
-          "completion_tokens": 0,
-          "execution_time": 2.1498146057128906,
-          "status": "✅ Success",
-          "model_used": "N/A",
-          "model_type": "N/A",
-          "medium": "arXiv API + LLM",
-          "data_type": "Academic Research"
-        }
-      ],
-      "agent_results": {
-        "Market Intelligence": {
-          "success": true,
-          "agent_name": "Market Intelligence",
-          "summary": "## Comprehensive Analysis of Ola Electric Shares\n\n### Introduction\n\nOla Electric is a leading electric vehicle (EV) manufacturer in India, known for its electric scooters and innovative technologies. The company has been actively involved in expanding its operations and improving its financial performance. This analysis provides an overview of the latest developments and trends in Ola Electric shares.\n\n### Recent Financial Performance\n\n- **Revenue Growth**: Ola Electric reported a 35.5% quarter-",
-          "findings": [
-            "**Revenue Growth**: Ola Electric reported a 35.5% quarter-over-quarter (QoQ) increase in revenue, indicating strong growth momentum[1].",
-            "**EBITDA Positive**: The company's auto business turned EBITDA positive in June 2025, marking a significant milestone in its financial journey[1].",
-            "**Net Loss**: Despite growth, Ola Electric posted a consolidated net loss of ₹428 crore for the April-June quarter of FY25-26[2].",
-            "**PLI Claim**: Ola Electric has filed a PLI claim of ₹400 crore, which is expected to boost its liquidity and financial performance. The incentive is calculated at a rate of 13 to 14% of eligible sales[2].",
-            "**Impact**: This certification is anticipated to strengthen the company's profitability from the second quarter of FY26[2]."
-          ],
-          "insights": [
-            "**Share Price Movement**: Ola Electric shares rose by over 3% following the announcement of the PLI certification, reaching an intraday high of ₹61.02 on the NSE[2].",
-            "**52-Week High and Low**: The stock touched its 52-week high of ₹123.90 on September 18, 2024, and its 52-week low of ₹39.60 on July 14, 2025[2].",
-            "**Market Capitalization**: Ola Electric's market capitalization currently stands at approximately ₹26,160.63 crore[2]."
-          ],
-          "sources": [
-            {
-              "title": "https://www.olaelectric.com/investor-relations/announcements",
-              "url": "https://www.olaelectric.com/investor-relations/announcements",
-              "summary": "Citation #1 from Perplexity research",
-              "agent": "Market Intelligence",
-              "source_type": "Web Research",
-              "medium": "Perplexity API"
-            },
-            {
-              "title": "https://upstox.com/news/market-news/stocks/ola-electric-share-price-rises-over-3-on-filing-pli-claim-of-400-crore/article-181294/",
-              "url": "https://upstox.com/news/market-news/stocks/ola-electric-share-price-rises-over-3-on-filing-pli-claim-of-400-crore/article-181294/",
-              "summary": "Citation #2 from Perplexity research",
-              "agent": "Market Intelligence",
-              "source_type": "Web Research",
-              "medium": "Perplexity API"
-            }
-          ],
-          "source_count": 2,
-          "sources_retrieved": 2,
-          "tokens": 846,
-          "prompt_tokens": 34,
-          "completion_tokens": 812,
-          "cost": 0.000846,
-          "status": "✅ Success",
-          "model_used": "sonar",
-          "model_type": "Quick Search",
-          "medium": "Perplexity API",
-          "data_type": "Live Research",
-          "execution_time": 6.812972068786621
-        },
-        "Sentiment Analytics": {
-          "success": false,
-          "agent_name": "Sentiment Analytics",
-          "execution_time": 17.86807918548584,
-          "status": "❌ API Failed",
-          "error": "YouTube API error: cannot import name 'analyze_youtube' from 'agents.youtube_researcher' (C:\\Projects\\AI\\2025\\Lumina\\lumina\\agents\\youtube_researcher.py)",
-          "medium": "YouTube API",
-          "suggestion": "Check YOUTUBE_API_KEY in .env"
-        },
-        "Data Intelligence": {
-          "success": true,
-          "agent_name": "Data Intelligence",
-          "summary": "Academic analysis from 2 papers",
-          "findings": [
-            "This paper analyzes a broadcasting technique for wireless multi-hop sensor\nnetworks that uses a form of cooperative diversity called opportunistic lar",
-            "Bremsstrahlung radiation emission is an important energy loss mechanism for\nenergetic electrons in plasmas. In this paper we investigate the effect of"
-          ],
-          "insights": [
-            "Academic research provides evidence-based insights",
-            "Peer-reviewed sources validate findings"
-          ],
-          "sources": [
-            {
-              "title": "A Simple Cooperative Transmission Protocol for Energy-Efficient\n  Broadcasting Over Multi-Hop Wireless Networks",
-              "url": "http://arxiv.org/abs/0903.1675v1",
-              "summary": "This paper analyzes a broadcasting technique for wireless multi-hop sensor\nnetworks that uses a form of cooperative diversity called opportunistic large\narrays (OLAs). We propose a method for autonomo",
-              "agent": "Data Intelligence",
-              "source_type": "Academic",
-              "medium": "arXiv API"
-            },
-            {
-              "title": "Effect of bremsstrahlung radiation emission on fast electrons in plasmas",
-              "url": "http://arxiv.org/abs/1604.03331v1",
-              "summary": "Bremsstrahlung radiation emission is an important energy loss mechanism for\nenergetic electrons in plasmas. In this paper we investigate the effect of\nspontaneous bremsstrahlung emission on the moment",
-              "agent": "Data Intelligence",
-              "source_type": "Academic",
-              "medium": "arXiv API"
-            }
-          ],
-          "source_count": 2,
-          "sources_retrieved": 2,
-          "tokens": 0,
-          "cost": 0.0,
-          "execution_time": 2.1498146057128906,
+          "execution_time": 1.9231605529785156,
           "status": "✅ Success",
           "medium": "arXiv API + LLM",
           "data_type": "Academic Research"

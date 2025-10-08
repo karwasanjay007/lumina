@@ -7,6 +7,7 @@ from __future__ import annotations
 import json
 import logging
 import time
+import re
 from functools import lru_cache
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -127,31 +128,30 @@ def _fetch_video_details(api_key: str, video_ids: List[str]) -> Dict[str, Dict[s
     response.raise_for_status()
     data = response.json()
     
-    details_map = {}
+    details = {}
     for item in data.get("items", []):
-        video_id = item.get("id")
+        video_id = item["id"]
         snippet = item.get("snippet", {})
-        stats = item.get("statistics", {})
         content = item.get("contentDetails", {})
+        stats = item.get("statistics", {})
         
-        details_map[video_id] = {
+        details[video_id] = {
+            "duration": content.get("duration", "PT0S"),
+            "views": stats.get("viewCount", "0"),
+            "likes": stats.get("likeCount", "0"),
+            "comments": stats.get("commentCount", "0"),
             "description": snippet.get("description", ""),
             "tags": snippet.get("tags", []),
             "category_id": snippet.get("categoryId", ""),
             "default_language": snippet.get("defaultLanguage", ""),
-            "duration": content.get("duration", ""),
-            "views": stats.get("viewCount", "0"),
-            "likes": stats.get("likeCount", "0"),
-            "comments": stats.get("commentCount", "0"),
         }
     
-    return details_map
+    return details
 
 
-def _parse_duration(iso_duration: str) -> str:
-    """Parse ISO 8601 duration string to human-readable format."""
-    import re
-    match = re.search(r'PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?', iso_duration)
+def _format_duration(iso_duration: str) -> str:
+    """Convert ISO 8601 duration to human-readable format."""
+    match = re.match(r'PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?', iso_duration)
     if not match:
         return "Unknown"
     
@@ -200,31 +200,51 @@ def _summarize_video(
     )
     
     # Get summary from LLM
+    # FIXED: invoke_llm(name, prompt) - correct parameter order
     try:
-        result = invoke_llm(prompt, model="youtube_summarizer")
+        response, llm_metrics = invoke_llm("youtube_summarizer", prompt)
+        summary_text = response.content if hasattr(response, 'content') else str(response)
         
-        # FIXED: Access dictionary properly
-        summary_text = result.get("response", "")
-        metrics = result.get("metrics", zero_metrics())
-        
-        return summary_text, metrics
+        # Return summary and metrics dictionary
+        metrics_dict = {
+            "total_tokens": llm_metrics.total_tokens,
+            "cost": llm_metrics.cost,
+            "prompt_tokens": llm_metrics.prompt_tokens,
+            "completion_tokens": llm_metrics.completion_tokens
+        }
+        return summary_text, metrics_dict
         
     except Exception as exc:
         logger.warning(f"Failed to summarize video: {exc}")
-        return f"Video: {title}\nChannel: {channel}\nViews: {views}\nDuration: {duration}", zero_metrics()
+        fallback = f"Video: {title}\nChannel: {channel}\nViews: {views}\nDuration: {duration}"
+        # FIXED: zero_metrics requires name parameter
+        zero_m = zero_metrics("youtube_summarizer")
+        return fallback, {
+            "total_tokens": zero_m.total_tokens,
+            "cost": zero_m.cost,
+            "prompt_tokens": zero_m.prompt_tokens,
+            "completion_tokens": zero_m.completion_tokens
+        }
 
 
-def research_youtube_videos(state: ResearchState, mode: str = "simple") -> dict:
+# FIXED: Function name changed from research_youtube_videos to analyze_youtube
+def analyze_youtube(state: ResearchState) -> dict:
     """
     Research YouTube videos for a given topic
     
     FIXED VERSION:
-    - Removed agent_name from build_structured_record calls
+    - Function renamed from research_youtube_videos to analyze_youtube
+    - Matches imports in research_engine.py and graph/builder.py
+    - Fixed invoke_llm parameter order
+    - Fixed zero_metrics to include name parameter
     - Fixed metrics dictionary access
+    - Fixed build_structured_record to use 'source' instead of 'url'
     - Returns proper structure
     """
     start = time.time()
-    topic = state["research_topic"]
+    topic = state.get("topic") or state.get("research_topic", "")
+    mode = state.get("mode", "simple")
+    
     logger.info(f"Analyzing YouTube videos for topic: {topic} (mode={mode})")
     
     api_key = get_youtube_api_key()
@@ -232,12 +252,14 @@ def research_youtube_videos(state: ResearchState, mode: str = "simple") -> dict:
     if not api_key:
         elapsed = time.time() - start
         logger.warning("YouTube API key not configured")
+        # FIXED: Use zero_metrics with name parameter for consistent error reporting
+        zero_m = zero_metrics("youtube_summarizer")
         return {
             "youtube_results": {
                 "sources": [],
                 "elapsed": elapsed,
-                "tokens": 0,
-                "cost": 0.0,
+                "tokens": zero_m.total_tokens,
+                "cost": zero_m.cost,
                 "details": {"error": "YOUTUBE_API_KEY not configured"},
             }
         }
@@ -251,12 +273,14 @@ def research_youtube_videos(state: ResearchState, mode: str = "simple") -> dict:
     except Exception as exc:
         elapsed = time.time() - start
         logger.exception("YouTube search failed")
+        # FIXED: Use zero_metrics with name parameter
+        zero_m = zero_metrics("youtube_summarizer")
         return {
             "youtube_results": {
                 "sources": [],
                 "elapsed": elapsed,
-                "tokens": 0,
-                "cost": 0.0,
+                "tokens": zero_m.total_tokens,
+                "cost": zero_m.cost,
                 "details": {"error": f"YouTube search failed: {exc}"},
             }
         }
@@ -280,49 +304,52 @@ def research_youtube_videos(state: ResearchState, mode: str = "simple") -> dict:
     total_cost = 0.0
     
     # Process each video
-    for video in search_results:
-        if len(summaries) >= max_results:
-            break
-        
+    for video in search_results[:max_results]:
         video_id = video["video_id"]
-        url = f"https://www.youtube.com/watch?v={video_id}"
         metadata = video_details.get(video_id, {})
         
-        # Get full description and tags from detailed metadata
-        full_description = metadata.get("description", video.get("description", ""))
-        tags = metadata.get("tags", [])
+        # Format video metadata
+        duration_iso = metadata.get("duration", "PT0S")
+        duration = _format_duration(duration_iso)
         views = metadata.get("views", "0")
-        duration = _parse_duration(metadata.get("duration", ""))
+        tags = metadata.get("tags", [])
+        full_description = metadata.get("description", video.get("description", ""))
         
-        # Summarize based on metadata only (no transcript)
-        summary_text, metrics = _summarize_video(
-            video.get("title", ""),
-            video.get("channel", ""),
-            full_description,
-            url,
-            tags,
-            views,
-            duration
+        url = f"https://www.youtube.com/watch?v={video_id}"
+        
+        # Generate summary using LLM
+        summary_text, llm_metrics = _summarize_video(
+            title=video["title"],
+            channel=video["channel"],
+            description=full_description,
+            url=url,
+            tags=tags,
+            views=views,
+            duration=duration,
         )
         
-        # FIXED: Proper dictionary access
-        total_tokens += metrics.get("total_tokens", 0)
-        total_cost += metrics.get("cost", 0.0)
+        # Track costs - llm_metrics is now a dict
+        total_tokens += llm_metrics.get("total_tokens", 0)
+        total_cost += llm_metrics.get("cost", 0.0)
         
-        # FIXED: Build summary item WITHOUT agent_name parameter
-        item = build_structured_record(
-            published_date=video.get("published_at", ""),
-            title=video.get("title", ""),
-            authors=[video.get("channel", "")] if video.get("channel") else None,
-            summary=summary_text,
-            content=None,  # No transcript content
+        # FIXED: Use correct parameter name 'source' instead of 'url'
+        # Also removed non-existent parameters 'source_type' and 'medium'
+        record = build_structured_record(
+            title=video["title"],
             source=url,
-            pdf_url=None,
+            summary=summary_text,
+            content=summary_text,
+            published_date=video.get("published_at"),
+            authors=[video["channel"]]
         )
-        summaries.append(item)
+        summaries.append(record)
         
-        # Build metadata record
+        # Store metadata
         meta_rec = {
+            "title": video["title"],
+            "channel": video["channel"],
+            "url": url,
+            "published_at": video.get("published_at", ""),
             "video_id": video_id,
             "channel_id": video.get("channel_id", ""),
             "duration": duration,
@@ -353,7 +380,7 @@ def research_youtube_videos(state: ResearchState, mode: str = "simple") -> dict:
         total_cost
     )
     
-    # FIXED: Return properly structured results
+    # Return properly structured results
     return {
         "youtube_results": {
             "sources": summaries,  # Direct list of structured records
