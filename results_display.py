@@ -115,7 +115,7 @@ def display_results(results):
             results_json,
             json_filename,
             "application/json",
-            use_container_width=True,
+            width='stretch',
             key="download_results_json_btn"
         )
     
@@ -130,15 +130,15 @@ def display_results(results):
                         pdf_buffer,
                         pdf_filename,
                         "application/pdf",
-                        use_container_width=True,
+                        width='stretch',
                         key="download_pdf_btn"
                     )
                 else:
-                    st.button("📄 PDF Export", disabled=True, use_container_width=True)
+                    st.button("📄 PDF Export", disabled=True, width='stretch')
             except Exception as e:
-                st.button(f"📄 PDF Error: {str(e)[:30]}", disabled=True, use_container_width=True)
+                st.button(f"📄 PDF Error: {str(e)[:30]}", disabled=True, width='stretch')
         else:
-            st.button("📄 PDF Unavailable", disabled=True, use_container_width=True)
+            st.button("📄 PDF Unavailable", disabled=True, width='stretch')
     
     # TABS
     tabs = st.tabs([
@@ -197,7 +197,7 @@ def display_overview_tab(results):
         # Display table
         st.dataframe(
             df,
-            use_container_width=True,
+            width='stretch',
             hide_index=True
         )
     else:

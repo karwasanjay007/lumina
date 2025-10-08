@@ -2,7 +2,7 @@
   {
     "query": "NVIDIA stocks",
     "domain": "Stock Market Analysis",
-    "timestamp": "2025-10-07 22:48:59",
+    "timestamp": "2025-10-08 07:15:06",
     "agents_state": {
       "Market Intelligence": true,
       "Sentiment Analytics": true,
@@ -15,7 +15,7 @@
     "results": {
       "query": "NVIDIA stocks",
       "domain": "Stock Market Analysis",
-      "timestamp": "2025-10-07 22:48:59",
+      "timestamp": "2025-10-08 07:15:06",
       "agents_used": [
         "Market Intelligence",
         "Sentiment Analytics",
@@ -24,18 +24,18 @@
       "model_type": "Quick Search",
       "summary": "Academic analysis from 2 papers",
       "key_findings": [
-        "Barclays recently raised its price target for NVIDIA from $200 to $240 per share, reflecting strong confidence in the company’s growth, though the stock experienced some pullbacks amid broader market volatility[1].",
-        "Among 44 analysts surveyed recently, there is a mix of bullish and bearish views, but the overall trend leans positive due to NVIDIA’s dominant position in AI and data center markets[6].",
-        "Market commentators like Jim Cramer acknowledge the enormous AI-driven revenue potential but caution about speculative risks and a possible AI spending bubble[1].",
-        "Tom Lee and other market strategists continue to view NVIDIA as the \"AI market darling,\" with momentum sustained by partnerships and AI adoption[3].",
-        "NVIDIA is evolving beyond GPUs into a full systems company, with networking and AI infrastructure as major new growth engines. Its Blackwell GPU architecture and high-speed interconnects for data centers are driving demand[2].",
+        "**Strong Analyst Consensus and Price Targets:** Among 37 analysts covering NVIDIA, 54% recommend a Strong Buy and 41% a Buy, with no analysts recommending selling, indicating strong market confidence[6]. Barclays recently raised its price target from $200 to $240 per share, one of the highest on Wall Street, reflecting bullish sentiment despite some short-term stock price dips[1].",
+        "**Exceptional Stock Performance:** NVIDIA’s stock has surged approximately 49% over the past year and an extraordinary 1,249% over the past three years, far outpacing the broader market and making it one of the top-performing semiconductor stocks[2].",
+        "**Shift to Full Systems and Networking:** NVIDIA is transitioning beyond GPUs to become a full systems provider, with networking emerging as a major growth driver. This shift is exemplified by demand for high-speed interconnects linking GPU racks into unified nodes, supporting AI workloads at hyperscale[4]. This evolution supports NVIDIA’s ability to sustain growth amid semiconductor industry cyclicality.",
+        "**AI-Driven Demand and Structural Growth:** AI capital expenditures (CapEx) are becoming a structural baseline for NVIDIA’s business, underpinning sustained demand. The company’s recent Q3 earnings beat expectations despite challenges like the absence of China sales, and it projects around 40% earnings per share (EPS) growth over the next year, extraordinary for a company of its size[4].",
+        "**Market Risks and Bubble Concerns:** Despite optimism, some market commentators, including Jim Cramer, warn about the risks of an AI “circular economy” where excessive vendor financing and speculative AI spending could create a bubble that might burst, posing downside risks to NVIDIA’s stock[1].",
         "Forecasting stock prices remains a considerable challenge in financial\nmarkets, bearing significant implications for investors, traders, and financial",
         "In this paper we outline the development methodology for an automatic dog\ntreat dispenser which combines machine learning and embedded hardware to\nide"
       ],
       "insights": [
-        "The company’s Q3 2025 earnings beat expectations despite challenges like the absence of China sales, and it projects approximately 40% EPS growth over the next year, which is exceptional for a company of its size[2].",
-        "AI capital expenditure (CapEx) is becoming a structural baseline in the semiconductor industry, benefiting NVIDIA’s fabless innovation model and scaling efficiency[2].",
-        "NVIDIA recently announced a $5 billion investment in Intel, aiming to collaborate on AI infrastructure and personal computing products, which could enhance its ecosystem and market reach[7].",
+        "**Technical Trading Insights:** Daily technical analyses highlight critical support and resistance levels for NVIDIA’s stock, useful for traders seeking directional clarity in the short term[3].",
+        "**Strategic Partnerships:** NVIDIA’s $5 billion investment in Intel to jointly develop AI infrastructure and personal computing products signals strategic moves to expand its ecosystem and influence in AI hardware[7].",
+        "**Valuation Considerations:** While NVIDIA’s valuation is considered slightly overvalued by some narratives, the market appears to be pricing in years of future growth, reflecting confidence in its AI-driven expansion and innovation pipeline[2].",
         "Academic research provides evidence-based insights",
         "Peer-reviewed sources validate findings"
       ],
@@ -49,8 +49,8 @@
           "medium": "Perplexity API"
         },
         {
-          "title": "https://www.vaneck.com/us/en/blogs/thematic-investing/nvidia-q3-earnings-shift-full-systems/",
-          "url": "https://www.vaneck.com/us/en/blogs/thematic-investing/nvidia-q3-earnings-shift-full-systems/",
+          "title": "https://www.webull.com/news/13510865166554112",
+          "url": "https://www.webull.com/news/13510865166554112",
           "summary": "Citation #2 from Perplexity research",
           "agent": "Market Intelligence",
           "source_type": "Web Research",
@@ -73,9 +73,9 @@
           "medium": "arXiv API"
         }
       ],
-      "total_cost": 0.000824,
-      "total_tokens": 824,
-      "execution_time": 14.969709634780884,
+      "total_cost": 0.000665,
+      "total_tokens": 665,
+      "execution_time": 15.96855354309082,
       "confidence_score": 76,
       "mock_mode": false,
       "agent_data": [
@@ -85,11 +85,11 @@
           "sources_retrieved": 2,
           "findings_count": 5,
           "insights_count": 3,
-          "cost": 0.000824,
-          "tokens": 824,
+          "cost": 0.000665,
+          "tokens": 665,
           "prompt_tokens": 31,
-          "completion_tokens": 793,
-          "execution_time": 13.213679075241089,
+          "completion_tokens": 634,
+          "execution_time": 13.83784294128418,
           "status": "✅ Success",
           "model_used": "sonar",
           "model_type": "Quick Search",
@@ -104,9 +104,9 @@
           "insights_count": 0,
           "cost": 0.0,
           "tokens": 0,
-          "execution_time": 25.036243438720703,
+          "execution_time": 5.857848882675171,
           "status": "❌ API Failed",
-          "error": "YouTube API error: build_structured_record() got an unexpected keyword argument 'agent_name'",
+          "error": "YouTube API error: cannot import name 'analyze_youtube' from 'agents.youtube_researcher' (C:\\Projects\\AI\\2025\\Lumina\\lumina\\agents\\youtube_researcher.py)",
           "medium": "YouTube API"
         },
         {
@@ -119,7 +119,7 @@
           "tokens": 0,
           "prompt_tokens": 0,
           "completion_tokens": 0,
-          "execution_time": 1.756030559539795,
+          "execution_time": 2.1307106018066406,
           "status": "✅ Success",
           "model_used": "N/A",
           "model_type": "N/A",
@@ -131,18 +131,18 @@
         "Market Intelligence": {
           "success": true,
           "agent_name": "Market Intelligence",
-          "summary": "As of October 2025, **NVIDIA (NVDA) stock remains a leading and highly watched equity in the semiconductor and AI sectors**, with strong growth prospects driven by its transition from a GPU-focused company to a full systems provider, particularly in AI infrastructure and networking[2]. Analysts are generally bullish, with some raising price targets significantly, though concerns about valuation and potential AI market bubbles persist[1][6].\n\nKey points in a comprehensive analysis of NVIDIA stock",
+          "summary": "NVIDIA stock remains a highly watched and broadly favored investment in 2025, driven primarily by its leadership in AI-related semiconductor technology and its strategic evolution from a GPU maker to a full systems company. Analysts overwhelmingly rate NVIDIA as a \"Buy,\" with many projecting significant growth, though some caution about valuation risks and potential market bubbles linked to AI hype.\n\nKey points from recent analysis and market data include:\n\n- **Strong Analyst Consensus and Price",
           "findings": [
-            "Barclays recently raised its price target for NVIDIA from $200 to $240 per share, reflecting strong confidence in the company’s growth, though the stock experienced some pullbacks amid broader market volatility[1].",
-            "Among 44 analysts surveyed recently, there is a mix of bullish and bearish views, but the overall trend leans positive due to NVIDIA’s dominant position in AI and data center markets[6].",
-            "Market commentators like Jim Cramer acknowledge the enormous AI-driven revenue potential but caution about speculative risks and a possible AI spending bubble[1].",
-            "Tom Lee and other market strategists continue to view NVIDIA as the \"AI market darling,\" with momentum sustained by partnerships and AI adoption[3].",
-            "NVIDIA is evolving beyond GPUs into a full systems company, with networking and AI infrastructure as major new growth engines. Its Blackwell GPU architecture and high-speed interconnects for data centers are driving demand[2]."
+            "**Strong Analyst Consensus and Price Targets:** Among 37 analysts covering NVIDIA, 54% recommend a Strong Buy and 41% a Buy, with no analysts recommending selling, indicating strong market confidence[6]. Barclays recently raised its price target from $200 to $240 per share, one of the highest on Wall Street, reflecting bullish sentiment despite some short-term stock price dips[1].",
+            "**Exceptional Stock Performance:** NVIDIA’s stock has surged approximately 49% over the past year and an extraordinary 1,249% over the past three years, far outpacing the broader market and making it one of the top-performing semiconductor stocks[2].",
+            "**Shift to Full Systems and Networking:** NVIDIA is transitioning beyond GPUs to become a full systems provider, with networking emerging as a major growth driver. This shift is exemplified by demand for high-speed interconnects linking GPU racks into unified nodes, supporting AI workloads at hyperscale[4]. This evolution supports NVIDIA’s ability to sustain growth amid semiconductor industry cyclicality.",
+            "**AI-Driven Demand and Structural Growth:** AI capital expenditures (CapEx) are becoming a structural baseline for NVIDIA’s business, underpinning sustained demand. The company’s recent Q3 earnings beat expectations despite challenges like the absence of China sales, and it projects around 40% earnings per share (EPS) growth over the next year, extraordinary for a company of its size[4].",
+            "**Market Risks and Bubble Concerns:** Despite optimism, some market commentators, including Jim Cramer, warn about the risks of an AI “circular economy” where excessive vendor financing and speculative AI spending could create a bubble that might burst, posing downside risks to NVIDIA’s stock[1]."
           ],
           "insights": [
-            "The company’s Q3 2025 earnings beat expectations despite challenges like the absence of China sales, and it projects approximately 40% EPS growth over the next year, which is exceptional for a company of its size[2].",
-            "AI capital expenditure (CapEx) is becoming a structural baseline in the semiconductor industry, benefiting NVIDIA’s fabless innovation model and scaling efficiency[2].",
-            "NVIDIA recently announced a $5 billion investment in Intel, aiming to collaborate on AI infrastructure and personal computing products, which could enhance its ecosystem and market reach[7]."
+            "**Technical Trading Insights:** Daily technical analyses highlight critical support and resistance levels for NVIDIA’s stock, useful for traders seeking directional clarity in the short term[3].",
+            "**Strategic Partnerships:** NVIDIA’s $5 billion investment in Intel to jointly develop AI infrastructure and personal computing products signals strategic moves to expand its ecosystem and influence in AI hardware[7].",
+            "**Valuation Considerations:** While NVIDIA’s valuation is considered slightly overvalued by some narratives, the market appears to be pricing in years of future growth, reflecting confidence in its AI-driven expansion and innovation pipeline[2]."
           ],
           "sources": [
             {
@@ -154,8 +154,8 @@
               "medium": "Perplexity API"
             },
             {
-              "title": "https://www.vaneck.com/us/en/blogs/thematic-investing/nvidia-q3-earnings-shift-full-systems/",
-              "url": "https://www.vaneck.com/us/en/blogs/thematic-investing/nvidia-q3-earnings-shift-full-systems/",
+              "title": "https://www.webull.com/news/13510865166554112",
+              "url": "https://www.webull.com/news/13510865166554112",
               "summary": "Citation #2 from Perplexity research",
               "agent": "Market Intelligence",
               "source_type": "Web Research",
@@ -164,23 +164,23 @@
           ],
           "source_count": 2,
           "sources_retrieved": 2,
-          "tokens": 824,
+          "tokens": 665,
           "prompt_tokens": 31,
-          "completion_tokens": 793,
-          "cost": 0.000824,
+          "completion_tokens": 634,
+          "cost": 0.000665,
           "status": "✅ Success",
           "model_used": "sonar",
           "model_type": "Quick Search",
           "medium": "Perplexity API",
           "data_type": "Live Research",
-          "execution_time": 13.213679075241089
+          "execution_time": 13.83784294128418
         },
         "Sentiment Analytics": {
           "success": false,
           "agent_name": "Sentiment Analytics",
-          "execution_time": 25.036243438720703,
+          "execution_time": 5.857848882675171,
           "status": "❌ API Failed",
-          "error": "YouTube API error: build_structured_record() got an unexpected keyword argument 'agent_name'",
+          "error": "YouTube API error: cannot import name 'analyze_youtube' from 'agents.youtube_researcher' (C:\\Projects\\AI\\2025\\Lumina\\lumina\\agents\\youtube_researcher.py)",
           "medium": "YouTube API",
           "suggestion": "Check YOUTUBE_API_KEY in .env"
         },
@@ -218,7 +218,234 @@
           "sources_retrieved": 2,
           "tokens": 0,
           "cost": 0.0,
-          "execution_time": 1.756030559539795,
+          "execution_time": 2.1307106018066406,
+          "status": "✅ Success",
+          "medium": "arXiv API + LLM",
+          "data_type": "Academic Research"
+        }
+      }
+    }
+  },
+  {
+    "query": "ola electric shares latest information",
+    "domain": "Stock Market Analysis",
+    "timestamp": "2025-10-08 08:05:40",
+    "agents_state": {
+      "Market Intelligence": true,
+      "Sentiment Analytics": true,
+      "Data Intelligence": true
+    },
+    "model_type": "Quick Search",
+    "market_sources": 2,
+    "sentiment_sources": 2,
+    "data_sources": 2,
+    "results": {
+      "query": "ola electric shares latest information",
+      "domain": "Stock Market Analysis",
+      "timestamp": "2025-10-08 08:05:40",
+      "agents_used": [
+        "Market Intelligence",
+        "Sentiment Analytics",
+        "Data Intelligence"
+      ],
+      "model_type": "Quick Search",
+      "summary": "Academic analysis from 2 papers",
+      "key_findings": [
+        "**Revenue Growth**: Ola Electric reported a 35.5% quarter-over-quarter (QoQ) increase in revenue, indicating strong growth momentum[1].",
+        "**EBITDA Positive**: The company's auto business turned EBITDA positive in June 2025, marking a significant milestone in its financial journey[1].",
+        "**Net Loss**: Despite growth, Ola Electric posted a consolidated net loss of ₹428 crore for the April-June quarter of FY25-26[2].",
+        "**PLI Claim**: Ola Electric has filed a PLI claim of ₹400 crore, which is expected to boost its liquidity and financial performance. The incentive is calculated at a rate of 13 to 14% of eligible sales[2].",
+        "**Impact**: This certification is anticipated to strengthen the company's profitability from the second quarter of FY26[2].",
+        "This paper analyzes a broadcasting technique for wireless multi-hop sensor\nnetworks that uses a form of cooperative diversity called opportunistic lar",
+        "Bremsstrahlung radiation emission is an important energy loss mechanism for\nenergetic electrons in plasmas. In this paper we investigate the effect of"
+      ],
+      "insights": [
+        "**Share Price Movement**: Ola Electric shares rose by over 3% following the announcement of the PLI certification, reaching an intraday high of ₹61.02 on the NSE[2].",
+        "**52-Week High and Low**: The stock touched its 52-week high of ₹123.90 on September 18, 2024, and its 52-week low of ₹39.60 on July 14, 2025[2].",
+        "**Market Capitalization**: Ola Electric's market capitalization currently stands at approximately ₹26,160.63 crore[2].",
+        "Academic research provides evidence-based insights",
+        "Peer-reviewed sources validate findings"
+      ],
+      "sources": [
+        {
+          "title": "https://www.olaelectric.com/investor-relations/announcements",
+          "url": "https://www.olaelectric.com/investor-relations/announcements",
+          "summary": "Citation #1 from Perplexity research",
+          "agent": "Market Intelligence",
+          "source_type": "Web Research",
+          "medium": "Perplexity API"
+        },
+        {
+          "title": "https://upstox.com/news/market-news/stocks/ola-electric-share-price-rises-over-3-on-filing-pli-claim-of-400-crore/article-181294/",
+          "url": "https://upstox.com/news/market-news/stocks/ola-electric-share-price-rises-over-3-on-filing-pli-claim-of-400-crore/article-181294/",
+          "summary": "Citation #2 from Perplexity research",
+          "agent": "Market Intelligence",
+          "source_type": "Web Research",
+          "medium": "Perplexity API"
+        },
+        {
+          "title": "A Simple Cooperative Transmission Protocol for Energy-Efficient\n  Broadcasting Over Multi-Hop Wireless Networks",
+          "url": "http://arxiv.org/abs/0903.1675v1",
+          "summary": "This paper analyzes a broadcasting technique for wireless multi-hop sensor\nnetworks that uses a form of cooperative diversity called opportunistic large\narrays (OLAs). We propose a method for autonomo",
+          "agent": "Data Intelligence",
+          "source_type": "Academic",
+          "medium": "arXiv API"
+        },
+        {
+          "title": "Effect of bremsstrahlung radiation emission on fast electrons in plasmas",
+          "url": "http://arxiv.org/abs/1604.03331v1",
+          "summary": "Bremsstrahlung radiation emission is an important energy loss mechanism for\nenergetic electrons in plasmas. In this paper we investigate the effect of\nspontaneous bremsstrahlung emission on the moment",
+          "agent": "Data Intelligence",
+          "source_type": "Academic",
+          "medium": "arXiv API"
+        }
+      ],
+      "total_cost": 0.000846,
+      "total_tokens": 846,
+      "execution_time": 8.962786674499512,
+      "confidence_score": 76,
+      "mock_mode": false,
+      "agent_data": [
+        {
+          "agent_name": "Market Intelligence",
+          "source_count": 2,
+          "sources_retrieved": 2,
+          "findings_count": 5,
+          "insights_count": 3,
+          "cost": 0.000846,
+          "tokens": 846,
+          "prompt_tokens": 34,
+          "completion_tokens": 812,
+          "execution_time": 6.812972068786621,
+          "status": "✅ Success",
+          "model_used": "sonar",
+          "model_type": "Quick Search",
+          "medium": "Perplexity API",
+          "data_type": "Live Research"
+        },
+        {
+          "agent_name": "Sentiment Analytics",
+          "source_count": 0,
+          "sources_retrieved": 0,
+          "findings_count": 0,
+          "insights_count": 0,
+          "cost": 0.0,
+          "tokens": 0,
+          "execution_time": 17.86807918548584,
+          "status": "❌ API Failed",
+          "error": "YouTube API error: cannot import name 'analyze_youtube' from 'agents.youtube_researcher' (C:\\Projects\\AI\\2025\\Lumina\\lumina\\agents\\youtube_researcher.py)",
+          "medium": "YouTube API"
+        },
+        {
+          "agent_name": "Data Intelligence",
+          "source_count": 2,
+          "sources_retrieved": 2,
+          "findings_count": 2,
+          "insights_count": 2,
+          "cost": 0.0,
+          "tokens": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "execution_time": 2.1498146057128906,
+          "status": "✅ Success",
+          "model_used": "N/A",
+          "model_type": "N/A",
+          "medium": "arXiv API + LLM",
+          "data_type": "Academic Research"
+        }
+      ],
+      "agent_results": {
+        "Market Intelligence": {
+          "success": true,
+          "agent_name": "Market Intelligence",
+          "summary": "## Comprehensive Analysis of Ola Electric Shares\n\n### Introduction\n\nOla Electric is a leading electric vehicle (EV) manufacturer in India, known for its electric scooters and innovative technologies. The company has been actively involved in expanding its operations and improving its financial performance. This analysis provides an overview of the latest developments and trends in Ola Electric shares.\n\n### Recent Financial Performance\n\n- **Revenue Growth**: Ola Electric reported a 35.5% quarter-",
+          "findings": [
+            "**Revenue Growth**: Ola Electric reported a 35.5% quarter-over-quarter (QoQ) increase in revenue, indicating strong growth momentum[1].",
+            "**EBITDA Positive**: The company's auto business turned EBITDA positive in June 2025, marking a significant milestone in its financial journey[1].",
+            "**Net Loss**: Despite growth, Ola Electric posted a consolidated net loss of ₹428 crore for the April-June quarter of FY25-26[2].",
+            "**PLI Claim**: Ola Electric has filed a PLI claim of ₹400 crore, which is expected to boost its liquidity and financial performance. The incentive is calculated at a rate of 13 to 14% of eligible sales[2].",
+            "**Impact**: This certification is anticipated to strengthen the company's profitability from the second quarter of FY26[2]."
+          ],
+          "insights": [
+            "**Share Price Movement**: Ola Electric shares rose by over 3% following the announcement of the PLI certification, reaching an intraday high of ₹61.02 on the NSE[2].",
+            "**52-Week High and Low**: The stock touched its 52-week high of ₹123.90 on September 18, 2024, and its 52-week low of ₹39.60 on July 14, 2025[2].",
+            "**Market Capitalization**: Ola Electric's market capitalization currently stands at approximately ₹26,160.63 crore[2]."
+          ],
+          "sources": [
+            {
+              "title": "https://www.olaelectric.com/investor-relations/announcements",
+              "url": "https://www.olaelectric.com/investor-relations/announcements",
+              "summary": "Citation #1 from Perplexity research",
+              "agent": "Market Intelligence",
+              "source_type": "Web Research",
+              "medium": "Perplexity API"
+            },
+            {
+              "title": "https://upstox.com/news/market-news/stocks/ola-electric-share-price-rises-over-3-on-filing-pli-claim-of-400-crore/article-181294/",
+              "url": "https://upstox.com/news/market-news/stocks/ola-electric-share-price-rises-over-3-on-filing-pli-claim-of-400-crore/article-181294/",
+              "summary": "Citation #2 from Perplexity research",
+              "agent": "Market Intelligence",
+              "source_type": "Web Research",
+              "medium": "Perplexity API"
+            }
+          ],
+          "source_count": 2,
+          "sources_retrieved": 2,
+          "tokens": 846,
+          "prompt_tokens": 34,
+          "completion_tokens": 812,
+          "cost": 0.000846,
+          "status": "✅ Success",
+          "model_used": "sonar",
+          "model_type": "Quick Search",
+          "medium": "Perplexity API",
+          "data_type": "Live Research",
+          "execution_time": 6.812972068786621
+        },
+        "Sentiment Analytics": {
+          "success": false,
+          "agent_name": "Sentiment Analytics",
+          "execution_time": 17.86807918548584,
+          "status": "❌ API Failed",
+          "error": "YouTube API error: cannot import name 'analyze_youtube' from 'agents.youtube_researcher' (C:\\Projects\\AI\\2025\\Lumina\\lumina\\agents\\youtube_researcher.py)",
+          "medium": "YouTube API",
+          "suggestion": "Check YOUTUBE_API_KEY in .env"
+        },
+        "Data Intelligence": {
+          "success": true,
+          "agent_name": "Data Intelligence",
+          "summary": "Academic analysis from 2 papers",
+          "findings": [
+            "This paper analyzes a broadcasting technique for wireless multi-hop sensor\nnetworks that uses a form of cooperative diversity called opportunistic lar",
+            "Bremsstrahlung radiation emission is an important energy loss mechanism for\nenergetic electrons in plasmas. In this paper we investigate the effect of"
+          ],
+          "insights": [
+            "Academic research provides evidence-based insights",
+            "Peer-reviewed sources validate findings"
+          ],
+          "sources": [
+            {
+              "title": "A Simple Cooperative Transmission Protocol for Energy-Efficient\n  Broadcasting Over Multi-Hop Wireless Networks",
+              "url": "http://arxiv.org/abs/0903.1675v1",
+              "summary": "This paper analyzes a broadcasting technique for wireless multi-hop sensor\nnetworks that uses a form of cooperative diversity called opportunistic large\narrays (OLAs). We propose a method for autonomo",
+              "agent": "Data Intelligence",
+              "source_type": "Academic",
+              "medium": "arXiv API"
+            },
+            {
+              "title": "Effect of bremsstrahlung radiation emission on fast electrons in plasmas",
+              "url": "http://arxiv.org/abs/1604.03331v1",
+              "summary": "Bremsstrahlung radiation emission is an important energy loss mechanism for\nenergetic electrons in plasmas. In this paper we investigate the effect of\nspontaneous bremsstrahlung emission on the moment",
+              "agent": "Data Intelligence",
+              "source_type": "Academic",
+              "medium": "arXiv API"
+            }
+          ],
+          "source_count": 2,
+          "sources_retrieved": 2,
+          "tokens": 0,
+          "cost": 0.0,
+          "execution_time": 2.1498146057128906,
           "status": "✅ Success",
           "medium": "arXiv API + LLM",
           "data_type": "Academic Research"

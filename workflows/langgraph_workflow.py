@@ -1,7 +1,7 @@
 # ============================================================================
 # FILE: workflows/langgraph_workflow.py
 # DESCRIPTION: Complete workflow with built-in enhanced consolidation
-# VERSION: 2.0.1 - Single File - No Warnings
+# VERSION: 2.0.2 - Fixed text cleaning and synthesis
 # ============================================================================
 """
 Multi-Agent Research Workflow with Enhanced Consolidation
@@ -109,6 +109,8 @@ class ResearchWorkflow:
         
         # Execute agents in parallel
         tasks = []
+        agent_names_used = []
+        
         for agent_name in selected_agents:
             agent = self.agents.get(agent_name)
             
@@ -116,73 +118,41 @@ class ResearchWorkflow:
                 print(f"   ⚠️ Agent '{agent_name}' not available, skipping")
                 continue
             
-            # Get max sources for this agent from config
+            agent_names_used.append(agent_name)
             max_sources = config.get(f"max_{agent_name}_sources", 10)
             
             # Create async task for agent
             task = agent.research(query=query, domain=domain, max_sources=max_sources)
             tasks.append(task)
         
-        if not tasks:
-            # No agents available - return error state
-            return self._create_empty_result(query, domain)
-        
         # Wait for all agents to complete
+        print(f"\n   ⏳ Executing {len(tasks)} agents in parallel...")
         agent_results = await asyncio.gather(*tasks, return_exceptions=True)
         
-        # Filter out exceptions and collect valid results
-        valid_results: List[Dict[str, Any]] = []
-        for result in agent_results:
+        # Process results
+        processed_results = []
+        for i, result in enumerate(agent_results):
             if isinstance(result, Exception):
-                print(f"   ⚠️ Agent task failed: {result}")
-            elif isinstance(result, dict):
-                valid_results.append(result)
+                print(f"   ❌ Agent {agent_names_used[i]} failed: {result}")
+                processed_results.append({
+                    'agent_name': agent_names_used[i],
+                    'status': 'failed',
+                    'error': str(result)
+                })
+            else:
+                processed_results.append(result)
         
-        # Calculate execution time
         execution_time = (datetime.now() - start_time).total_seconds()
         
-        # Consolidate results with enhanced synthesis
+        # Consolidate results
         consolidated = self._consolidate_results(
             query=query,
             domain=domain,
-            agent_results=valid_results,
+            agent_results=processed_results,
             execution_time=execution_time
         )
         
-        print(f"✅ Research completed in {execution_time:.1f}s")
-        print(f"   Total sources: {consolidated['total_sources']}")
-        print(f"   Total tokens: {consolidated['total_tokens']:,}")
-        print(f"   Total cost: ${consolidated['total_cost']:.6f}")
-        print(f"   Confidence score: {consolidated['confidence_score']}/100\n")
-        
         return consolidated
-    
-    def _create_empty_result(self, query: str, domain: str) -> Dict[str, Any]:
-        """Create empty result structure when no agents available"""
-        return {
-            "query": query,
-            "domain": domain,
-            "summary": "No agents available to execute research",
-            "key_findings": [],
-            "insights": [],
-            "contradictions": [],
-            "agent_results": [],
-            "successful_agents": [],
-            "total_sources": 0,
-            "total_tokens": 0,
-            "total_cost": 0.0,
-            "execution_time": 0.0,
-            "confidence_score": 0.0,
-            "coverage_analysis": {
-                "breadth": "none",
-                "depth": "none",
-                "source_types": [],
-                "recommendations": ["Please select and configure agents"]
-            },
-            "timestamp": datetime.now().isoformat(),
-            "synthesis_quality": "none",
-            "error": "No agents available"
-        }
     
     # ========================================================================
     # CONSOLIDATION - MAIN METHOD
@@ -218,11 +188,9 @@ class ResearchWorkflow:
         summary = self._synthesize_summary(agent_results, query, domain)
         key_findings = self._synthesize_findings(agent_results)
         insights = self._synthesize_insights(agent_results, domain)
-        contradictions = self._detect_contradictions(agent_results)
         
         # Quality metrics
         confidence_score = self._calculate_confidence_score(agent_results)
-        coverage_analysis = self._analyze_coverage(agent_results, domain)
         
         # Build consolidated result
         consolidated: Dict[str, Any] = {
@@ -231,9 +199,7 @@ class ResearchWorkflow:
             "summary": summary,
             "key_findings": key_findings,
             "insights": insights,
-            "contradictions": contradictions,
             "confidence_score": confidence_score,
-            "coverage_analysis": coverage_analysis,
             "agent_results": agent_results,
             "successful_agents": successful_agents,
             "total_sources": len(all_sources),
@@ -283,48 +249,34 @@ class ResearchWorkflow:
         primary_summary = max(summaries, key=lambda x: x['length'])
         agent_names = list(set([s['agent'] for s in summaries]))
         
-        intro = f"**Multi-Agent Analysis** ({len(agent_names)} agents): "
+        intro = f"Multi-Agent Analysis ({len(agent_names)} agents): "
         if len(agent_names) > 1:
             intro += f"Insights synthesized from {', '.join(agent_names)} sources. "
         
         return intro + primary_summary['text']
     
     def _synthesize_findings(self, agent_results: List[Dict[str, Any]]) -> List[str]:
-        """Extract and deduplicate findings with semantic similarity"""
-        findings_data: List[Dict[str, str]] = []
+        """Extract and combine key findings from all agents"""
+        all_findings: List[str] = []
         
         for result in agent_results:
             if result.get('status') == 'success':
-                findings_list = result.get('key_findings', [])
-                for finding in findings_list:
-                    clean_finding = self._clean_text(str(finding))
-                    if clean_finding and len(clean_finding) > 20:
-                        findings_data.append({
-                            'text': clean_finding,
-                            'normalized': self._normalize_text(clean_finding)
-                        })
+                findings = result.get('findings', [])
+                for finding in findings:
+                    if isinstance(finding, str) and len(finding) > 20:
+                        # CLEAN the finding text
+                        clean_finding = self._clean_text(finding)
+                        if clean_finding:
+                            all_findings.append(clean_finding)
         
-        if not findings_data:
-            return []
+        if not all_findings:
+            return ["No specific findings available"]
         
-        # Deduplicate using semantic similarity
-        unique_findings: List[str] = []
-        seen_normalized: Set[str] = set()
+        # Deduplicate similar findings
+        unique_findings = self._deduplicate_findings(all_findings)
         
-        for finding_item in findings_data:
-            normalized = finding_item['normalized']
-            
-            is_duplicate = False
-            for seen in seen_normalized:
-                if self._texts_are_similar(normalized, seen):
-                    is_duplicate = True
-                    break
-            
-            if not is_duplicate:
-                seen_normalized.add(normalized)
-                unique_findings.append(finding_item['text'])
-        
-        return unique_findings[:10]  # Return top 10
+        # Return top findings (cleaned)
+        return unique_findings[:10]
     
     def _synthesize_insights(
         self,
@@ -343,187 +295,59 @@ class ResearchWorkflow:
                         insights_data.append(clean_insight)
         
         # Deduplicate
-        unique_insights: List[str] = []
-        for insight in insights_data:
-            normalized = self._normalize_text(insight)
-            
-            is_duplicate = False
-            for existing in unique_insights:
-                if self._texts_are_similar(normalized, self._normalize_text(existing)):
-                    is_duplicate = True
-                    break
-            
-            if not is_duplicate:
-                unique_insights.append(insight)
+        unique_insights = self._deduplicate_findings(insights_data)
         
-        # Generate fallback if needed
-        if not unique_insights:
-            unique_insights = self._generate_domain_insights(agent_results, domain)
-        
-        return unique_insights[:8]  # Return top 8
+        return unique_insights[:8]
     
-    def _detect_contradictions(self, agent_results: List[Dict[str, Any]]) -> List[Dict[str, str]]:
-        """Detect potential contradictions between agent findings"""
-        contradictions: List[Dict[str, str]] = []
+    def _calculate_confidence_score(self, agent_results: List[Dict[str, Any]]) -> int:
+        """Calculate overall confidence score based on agent results"""
+        base_score = 40
         
-        all_statements: List[Dict[str, str]] = []
-        for result in agent_results:
-            if result.get('status') == 'success':
-                agent_name = result.get('agent_name', 'unknown')
-                
-                for finding in result.get('key_findings', []):
-                    clean_text = self._clean_text(str(finding))
-                    if clean_text:
-                        all_statements.append({
-                            'text': clean_text,
-                            'agent': agent_name,
-                            'type': 'finding'
-                        })
-                
-                for insight in result.get('insights', []):
-                    clean_text = self._clean_text(str(insight))
-                    if clean_text:
-                        all_statements.append({
-                            'text': clean_text,
-                            'agent': agent_name,
-                            'type': 'insight'
-                        })
+        # Agent diversity bonus
+        successful_agents = sum(1 for r in agent_results if r.get('status') == 'success')
+        agent_bonus = min(successful_agents * 15, 30)
         
-        # Simple contradiction detection
-        contradiction_keywords = [
-            ('increases', 'decreases'),
-            ('positive', 'negative'),
-            ('bullish', 'bearish'),
-            ('effective', 'ineffective'),
-            ('safe', 'unsafe'),
-            ('recommended', 'not recommended'),
-            ('growth', 'decline'),
-            ('up', 'down')
-        ]
-        
-        for i, stmt1 in enumerate(all_statements):
-            for stmt2 in all_statements[i+1:]:
-                if stmt1['agent'] != stmt2['agent']:
-                    text1_lower = stmt1['text'].lower()
-                    text2_lower = stmt2['text'].lower()
-                    
-                    for word1, word2 in contradiction_keywords:
-                        if (word1 in text1_lower and word2 in text2_lower) or \
-                           (word2 in text1_lower and word1 in text2_lower):
-                            contradictions.append({
-                                'agent1': stmt1['agent'],
-                                'statement1': stmt1['text'][:100] + "...",
-                                'agent2': stmt2['agent'],
-                                'statement2': stmt2['text'][:100] + "...",
-                                'type': 'potential_contradiction'
-                            })
-                            break
-        
-        return contradictions[:5]
-    
-    # ========================================================================
-    # QUALITY METRICS
-    # ========================================================================
-    
-    def _calculate_confidence_score(self, agent_results: List[Dict[str, Any]]) -> float:
-        """Calculate overall confidence score (0-100)"""
-        if not agent_results:
-            return 0.0
-        
-        factors: Dict[str, float] = {
-            'agent_success_rate': 0.0,
-            'source_diversity': 0.0,
-            'finding_consistency': 0.0,
-            'insight_depth': 0.0
-        }
-        
-        # Agent success rate (0-30 points)
-        successful = len([r for r in agent_results if r.get('status') == 'success'])
-        factors['agent_success_rate'] = (successful / len(agent_results)) * 30
-        
-        # Source diversity (0-30 points)
+        # Source count bonus
         total_sources = sum(r.get('source_count', 0) for r in agent_results)
-        factors['source_diversity'] = min(total_sources / 10, 1.0) * 30
+        source_bonus = min((total_sources / 20) * 30, 30)
         
-        # Finding consistency (0-20 points)
-        total_findings = sum(len(r.get('key_findings', [])) for r in agent_results)
-        if total_findings > 0:
-            factors['finding_consistency'] = min(total_findings / 20, 1.0) * 20
-        
-        # Insight depth (0-20 points)
-        total_insights = sum(len(r.get('insights', [])) for r in agent_results)
-        if total_insights > 0:
-            factors['insight_depth'] = min(total_insights / 10, 1.0) * 20
-        
-        total_score = sum(factors.values())
-        return round(total_score, 1)
-    
-    def _analyze_coverage(
-        self,
-        agent_results: List[Dict[str, Any]],
-        domain: str
-    ) -> Dict[str, Any]:
-        """Analyze research coverage quality"""
-        total_sources = sum(r.get('source_count', 0) for r in agent_results)
-        total_findings = sum(len(r.get('key_findings', [])) for r in agent_results)
-        total_insights = sum(len(r.get('insights', [])) for r in agent_results)
-        
-        coverage: Dict[str, Any] = {
-            'breadth': 'medium',
-            'depth': 'medium',
-            'source_types': [],
-            'recommendations': []
-        }
-        
-        # Breadth assessment
-        if total_sources >= 30:
-            coverage['breadth'] = 'excellent'
-        elif total_sources >= 15:
-            coverage['breadth'] = 'good'
-        elif total_sources < 5:
-            coverage['breadth'] = 'limited'
-        
-        # Depth assessment
-        if total_findings >= 10 and total_insights >= 5:
-            coverage['depth'] = 'excellent'
-        elif total_findings >= 5 and total_insights >= 3:
-            coverage['depth'] = 'good'
-        elif total_findings < 3:
-            coverage['depth'] = 'limited'
-        
-        # Source types
-        agent_types: Set[str] = set()
-        for result in agent_results:
-            if result.get('status') == 'success':
-                agent_types.add(result.get('agent_name', 'unknown'))
-        coverage['source_types'] = list(agent_types)
-        
-        # Recommendations
-        if len(agent_types) == 1:
-            coverage['recommendations'].append("Consider using multiple agents for broader perspective")
-        if total_sources < 10:
-            coverage['recommendations'].append("Increase source count for more comprehensive analysis")
-        if total_insights < 3:
-            coverage['recommendations'].append("Refine query to generate more actionable insights")
-        
-        return coverage
+        total = base_score + agent_bonus + source_bonus
+        return min(int(total), 100)
     
     # ========================================================================
     # HELPER METHODS - TEXT PROCESSING
     # ========================================================================
     
     def _clean_text(self, text: str) -> str:
-        """Remove HTML/XML/markdown formatting"""
+        """
+        Remove markdown and special formatting from text
+        CRITICAL for fixing ** appearing in output
+        """
         if not text or not isinstance(text, str):
             return ""
         
-        text = re.sub(r'<[^>]+>', '', text)
+        # Remove markdown bold
         text = re.sub(r'\*\*([^*]+)\*\*', r'\1', text)
+        
+        # Remove markdown italic
         text = re.sub(r'\*([^*]+)\*', r'\1', text)
-        text = re.sub(r'#{1,6}\s+', '', text)
+        text = re.sub(r'_([^_]+)_', r'\1', text)
+        
+        # Remove headers
+        text = re.sub(r'^#+\s+', '', text, flags=re.MULTILINE)
+        
+        # Remove code blocks
+        text = re.sub(r'```[^`]*```', '', text)
         text = re.sub(r'`([^`]+)`', r'\1', text)
+        
+        # Remove citations
         text = re.sub(r'\[\d+\]', '', text)
-        text = re.sub(r'\s+', ' ', text)
+        
+        # Remove HTML/XML tags
+        text = re.sub(r'<[^>]+>', '', text)
+        
+        # Clean whitespace
+        text = ' '.join(text.split())
         
         return text.strip()
     
@@ -533,6 +357,30 @@ class ResearchWorkflow:
         text = re.sub(r'[^\w\s]', '', text)
         text = re.sub(r'\s+', ' ', text)
         return text
+    
+    def _deduplicate_findings(self, findings: List[str]) -> List[str]:
+        """Remove duplicate or very similar findings"""
+        if not findings:
+            return []
+        
+        unique_findings: List[str] = []
+        seen_normalized: Set[str] = set()
+        
+        for finding in findings:
+            normalized = self._normalize_text(finding)
+            
+            # Skip if too similar to existing finding
+            is_duplicate = False
+            for seen in seen_normalized:
+                if self._texts_are_similar(normalized, seen):
+                    is_duplicate = True
+                    break
+            
+            if not is_duplicate:
+                seen_normalized.add(normalized)
+                unique_findings.append(finding)
+        
+        return unique_findings
     
     def _texts_are_similar(self, text1: str, text2: str, threshold: float = 0.6) -> bool:
         """Simple similarity check using word overlap"""
@@ -561,50 +409,8 @@ class ResearchWorkflow:
     ) -> str:
         """Generate fallback summary when no agent summaries available"""
         return (
-            f"Comprehensive research on '{query}' in the {domain} domain. "
+            f"Comprehensive research on {query} in the {domain} domain. "
             f"Analysis utilized {agent_count} specialized agent(s) to examine {total_sources} sources, "
             f"providing multi-dimensional insights across various information channels. "
             f"Detailed findings and sources are available in the respective tabs."
         )
-    
-    def _generate_domain_insights(
-        self,
-        agent_results: List[Dict[str, Any]],
-        domain: str
-    ) -> List[str]:
-        """Generate domain-specific meta-insights when agents don't provide them"""
-        total_sources = sum(r.get('source_count', 0) for r in agent_results)
-        agent_names = [r.get('agent_name', 'unknown') for r in agent_results if r.get('status') == 'success']
-        
-        insights: List[str] = []
-        
-        insights.append(
-            f"Research incorporates {total_sources} sources from {len(agent_names)} specialized agents, "
-            f"providing comprehensive multi-perspective analysis"
-        )
-        
-        domain_insights: Dict[str, List[str]] = {
-            'technology': [
-                "Technology landscape analysis reveals emerging trends and innovation patterns",
-                "Cross-referencing technical sources provides validation of technological claims"
-            ],
-            'medical': [
-                "Clinical evidence synthesis requires careful evaluation of source quality and methodology",
-                "Multiple data sources help identify consensus and areas of ongoing research"
-            ],
-            'academic': [
-                "Scholarly research benefits from diverse source types including peer-reviewed papers",
-                "Academic consensus emerges from systematic evaluation of multiple authoritative sources"
-            ],
-            'stocks': [
-                "Market analysis requires integration of quantitative data, analyst opinions, and sentiment",
-                "Multiple information sources help identify investment opportunities while managing risk"
-            ]
-        }
-        
-        if domain in domain_insights:
-            insights.extend(domain_insights[domain])
-        else:
-            insights.append("Multi-source analysis provides robust foundation for informed decision-making")
-        
-        return insights[:5]

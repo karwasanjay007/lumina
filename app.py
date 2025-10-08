@@ -243,7 +243,7 @@ with st.sidebar:
             # FIXED: Create multiline button label with proper formatting
             button_label = f"📄 {query_display}\n🕒 {item['timestamp'][:16]}\n🔬 {item.get('model_type', 'N/A')[:20]}\n📊 {domain_display}"
             
-            if st.button(button_label, key=history_key, use_container_width=True):
+            if st.button(button_label, key=history_key, width='stretch'):
                 # Restore complete state from history
                 st.session_state.current_results = item['results']
                 st.session_state.current_query = item['query']
@@ -265,7 +265,7 @@ with st.sidebar:
             history_json,
             f"luminar_history_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json",
             "application/json",
-            use_container_width=True,
+            width='stretch',
             key="download_history_json"
         )
     else:
@@ -275,7 +275,7 @@ with st.sidebar:
     # ========================================================================
     # CLEAR HISTORY BUTTON - FIXED VERSION (ONLY ONE!)
     # ========================================================================
-    if st.button("🗑️ Clear History", use_container_width=True, key="clear_history_btn"):
+    if st.button("🗑️ Clear History", width='stretch', key="clear_history_btn"):
         if st.session_state.research_history and len(st.session_state.research_history) > 0:
             # FIXED: Clear directly without saving first
             st.session_state.research_history = []
@@ -468,7 +468,7 @@ st.markdown("---")
 # RESEARCH EXECUTION
 # ============================================================================
 
-if st.button("🚀 Start Deep Research", use_container_width=True, type="primary", key="start_research_btn"):
+if st.button("🚀 Start Deep Research", width='stretch', type="primary", key="start_research_btn"):
     if not query:
         st.error("⚠️ Please enter a research question")
     elif not any(st.session_state.current_agents.values()):
